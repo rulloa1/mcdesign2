@@ -224,7 +224,8 @@ function Index() {
               return (
                 <Link
                   key={g.id}
-                  to="/portfolio"
+                  to="/projects/$projectId"
+                  params={{ projectId: g.id }}
                   className={`project-card relative block overflow-hidden ${g.span} ${g.extra}`}
                 >
                   <div
