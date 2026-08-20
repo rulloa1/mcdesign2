@@ -163,7 +163,7 @@ export const projects: Project[] = [
     subtitle: "Development / Civil Engineering",
     categories: ["development", "civil", "residential-construction"],
     location: "SE Texas",
-    role: "Civil Engineering Contractor/Builder",
+    role: "Project Management, Development / Civil Engineering Contractor/Builder",
     specs: "45 Acres • 120+ Home Sites • 36 months",
     cover: developmentCivil,
   },
