@@ -3,7 +3,8 @@ import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 
 import { supabase } from "@/integrations/supabase/client";
-import { mediaSlots, type MediaSlot } from "@/data/media-slots";
+import { mediaSlots, projectSlotKey, type MediaSlot } from "@/data/media-slots";
+import { projectOrderQuery, saveProjectOrder, sortProjects } from "@/lib/project-order";
 import {
   mediaLogQuery,
   resetSiteMedia,
@@ -65,10 +66,51 @@ function MediaStudio() {
 
   const { data: overrides } = useQuery(siteMediaQuery);
   const { data: log } = useQuery({ ...mediaLogQuery, enabled: !!isAdmin });
+  const { data: order } = useQuery(projectOrderQuery);
 
   const refresh = () => {
     void queryClient.invalidateQueries({ queryKey: ["site-media"] });
     void queryClient.invalidateQueries({ queryKey: ["site-media-log"] });
+  };
+
+  const orderedProjects = sortProjects(order);
+  const [draftOrder, setDraftOrder] = useState<string[] | null>(null);
+  const [savingOrder, setSavingOrder] = useState(false);
+  const [orderError, setOrderError] = useState<string | null>(null);
+  const [dragId, setDragId] = useState<string | null>(null);
+  const ids = draftOrder ?? orderedProjects.map((p) => p.id);
+  const projectById = Object.fromEntries(orderedProjects.map((p) => [p.id, p]));
+
+  const commitOrder = async (next: string[]) => {
+    setDraftOrder(next);
+    setSavingOrder(true);
+    setOrderError(null);
+    try {
+      await saveProjectOrder(next);
+      await queryClient.invalidateQueries({ queryKey: ["project-order"] });
+      setDraftOrder(null);
+    } catch (err) {
+      setOrderError(err instanceof Error ? err.message : "Could not save the new order.");
+    } finally {
+      setSavingOrder(false);
+    }
+  };
+
+  const move = (id: string, delta: number) => {
+    const from = ids.indexOf(id);
+    const to = from + delta;
+    if (from < 0 || to < 0 || to >= ids.length) return;
+    const next = [...ids];
+    next.splice(to, 0, next.splice(from, 1)[0]!);
+    void commitOrder(next);
+  };
+
+  const dropOn = (targetId: string) => {
+    if (!dragId || dragId === targetId) return;
+    const next = ids.filter((i) => i !== dragId);
+    next.splice(ids.indexOf(targetId), 0, dragId);
+    setDragId(null);
+    void commitOrder(next);
   };
 
   const slotLabels = Object.fromEntries(mediaSlots.map((s) => [s.slot, s.label]));
@@ -128,6 +170,48 @@ function MediaStudio() {
             </div>
           </section>
         ))}
+
+        <section className="mb-16">
+          <div className="mb-6 flex flex-wrap items-baseline justify-between gap-3">
+            <h2 className="font-mono text-[0.65rem] uppercase tracking-[0.24em] text-bone/40">Project Covers</h2>
+            <p className="font-mono text-[0.6rem] uppercase tracking-[0.18em] text-bone/35">
+              {savingOrder ? "Saving order…" : "Drag cards to reorder the portfolio"}
+            </p>
+          </div>
+          {orderError && <p className="mb-4 text-xs text-brass">{orderError}</p>}
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {ids.map((id, index) => {
+              const project = projectById[id];
+              if (!project) return null;
+              const slot: MediaSlot = {
+                slot: projectSlotKey(id),
+                label: project.title,
+                group: "Project Covers",
+                fallback: project.cover,
+              };
+              return (
+                <div
+                  key={id}
+                  draggable={!!isAdmin}
+                  onDragStart={() => setDragId(id)}
+                  onDragOver={(e) => e.preventDefault()}
+                  onDrop={() => dropOn(id)}
+                  className={`transition-opacity ${dragId === id ? "opacity-40" : ""} ${isAdmin ? "cursor-grab" : ""}`}
+                >
+                  <SlotCard
+                    slot={slot}
+                    current={overrides?.[slot.slot]}
+                    canEdit={!!isAdmin}
+                    hasHistory={!!log?.some((e) => e.slot === slot.slot)}
+                    onDone={refresh}
+                    position={index + 1}
+                    onMove={isAdmin ? (delta) => move(id, delta) : undefined}
+                  />
+                </div>
+              );
+            })}
+          </div>
+        </section>
 
         {isAdmin && (
           <section className="mb-8">
