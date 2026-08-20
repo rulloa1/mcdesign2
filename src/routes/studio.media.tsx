@@ -124,7 +124,7 @@ function SlotCard({
   onDone,
 }: {
   slot: MediaSlot;
-  current?: string;
+  current: string | undefined;
   canEdit: boolean;
   onDone: () => void;
 }) {

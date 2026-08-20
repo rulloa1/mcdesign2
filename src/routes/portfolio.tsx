@@ -81,7 +81,7 @@ function Portfolio() {
           {shown.map((p) => (
             <article key={p.id} className="project-card group relative">
               <div className="relative h-[42vh] overflow-hidden" style={{ backgroundColor: "rgb(201 169 97 / 0.06)" }}>
-                <img src={p.cover} alt={p.title} loading="lazy" className="project-img" />
+                <img src={media(projectSlotKey(p.id), p.cover)} alt={p.title} loading="lazy" className="project-img" />
                 <div className="project-overlay" />
               </div>
               <div className="mt-4">
