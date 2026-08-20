@@ -268,7 +268,7 @@ function SlotCard({
   hasHistory: boolean;
   onDone: () => void;
   position?: number;
-  onMove?: (delta: number) => void;
+  onMove?: ((delta: number) => void) | undefined;
 }) {
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
