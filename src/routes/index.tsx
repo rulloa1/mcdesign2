@@ -9,6 +9,7 @@ import { projectSlotKey } from "@/data/media-slots";
 import { useSiteMedia } from "@/lib/site-media";
 
 import profile from "@/assets/mike-profile.webp";
+import heroImage from "@/assets/southcoast-cover.webp";
 import houstonOaks from "@/assets/houston-oaks-cover.png";
 import poolDetail from "@/assets/hospitality-pool-1.webp";
 import poolFinished from "@/assets/pool-design-36.webp";
@@ -125,11 +126,19 @@ function Index() {
           className="relative z-10 flex min-h-[100dvh] flex-col justify-center overflow-hidden bg-carbon px-6 pt-20 md:px-20"
         >
           <img
-            src={media("hero", profile)}
+            src={media("hero", heroImage)}
             alt=""
             aria-hidden="true"
-            className="absolute inset-0 h-full w-full object-cover"
-            style={{ filter: "grayscale(20%) brightness(0.55)" }}
+            className="absolute inset-0 h-full w-full scale-105 object-cover object-center"
+            style={{ filter: "grayscale(35%) contrast(1.05) brightness(0.7)" }}
+          />
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 bg-gradient-to-r from-carbon via-carbon/75 to-carbon/25"
+          />
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 bg-gradient-to-t from-carbon via-transparent to-carbon/60"
           />
 
           <div className="relative z-20 max-w-5xl">
