@@ -435,6 +435,9 @@ function Index() {
                 Email
               </a>
               <span>Spring, TX</span>
+              <Link to="/studio/media" className="transition-colors hover:text-brass">
+                Media Studio
+              </Link>
             </div>
           </div>
         </section>
