@@ -81,7 +81,12 @@ function Portfolio() {
 
         <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3">
           {shown.map((p) => (
-            <article key={p.id} className="project-card group relative">
+            <Link
+              key={p.id}
+              to="/projects/$projectId"
+              params={{ projectId: p.id }}
+              className="project-card group relative block"
+            >
               <div className="relative h-[42vh] overflow-hidden" style={{ backgroundColor: "rgb(201 169 97 / 0.06)" }}>
                 <img src={media(projectSlotKey(p.id), p.cover)} alt={p.title} loading="lazy" className="project-img" />
                 <div className="project-overlay" />
@@ -93,8 +98,11 @@ function Portfolio() {
                 </p>
                 <p className="mt-3 font-mono text-[0.65rem] uppercase tracking-[0.18em] text-brass-dark">{p.specs}</p>
                 <p className="mt-3 text-sm font-light leading-relaxed text-carbon/50">{p.role}</p>
+                <p className="mt-4 font-mono text-[0.6rem] uppercase tracking-[0.22em] text-brass-dark">
+                  View Album →
+                </p>
               </div>
-            </article>
+            </Link>
           ))}
         </div>
 
