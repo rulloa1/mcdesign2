@@ -142,14 +142,14 @@ function Index() {
           />
 
           <div className="relative z-20 max-w-5xl">
-            <p className="mb-6 font-mono text-sm uppercase tracking-[0.4em] text-brass md:text-base">
+            <p className="mb-4 font-mono text-xs uppercase tracking-[0.35em] text-brass md:mb-6 md:text-sm md:tracking-[0.4em]">
               Michael Chandler
             </p>
-            <h1 className="hero-headline mb-8 font-serif text-5xl leading-tight md:text-8xl">
+            <h1 className="hero-headline mb-6 font-serif text-5xl leading-[1.05] tracking-tight sm:text-6xl md:mb-8 md:text-7xl lg:text-8xl">
               Building What Others Can't.
             </h1>
-            <div className="my-8 h-px w-40 bg-brass" />
-            <p className="max-w-2xl text-lg font-light leading-relaxed text-bone/70 md:text-2xl">
+            <div className="my-6 h-px w-40 bg-brass md:my-8" />
+            <p className="max-w-xl text-base font-light leading-relaxed text-bone/80 sm:text-lg md:text-xl lg:text-2xl">
               Construction leadership across 20+ years and $500M+ in delivered architectural landmarks.
             </p>
           </div>
