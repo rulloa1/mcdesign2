@@ -9,17 +9,19 @@ const items = [
 ];
 
 export function Marquee() {
-  const doubled = [...items, ...items];
+  const loop = [...items, ...items];
   return (
-    <div className="overflow-hidden border-y border-border bg-surface py-5">
-      <div className="flex w-max animate-marquee items-center gap-8 whitespace-nowrap">
-        {doubled.map((item, i) => (
-          <span key={i} className="label-mono flex items-center gap-8 text-muted-foreground">
-            {item}
-            <span className="text-gold">&bull;</span>
+    <section className="marquee-container overflow-hidden border-y border-carbon/10 bg-bone py-6 whitespace-nowrap">
+      <div className="marquee-content">
+        {loop.map((item, i) => (
+          <span key={i}>
+            <span className="mx-12 inline-block font-serif text-xl uppercase tracking-[0.1em] text-brass-dark">
+              {item}
+            </span>
+            <span className="inline-block font-serif text-xl text-brass-dark">•</span>
           </span>
         ))}
       </div>
-    </div>
+    </section>
   );
 }

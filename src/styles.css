@@ -19,12 +19,6 @@
  */
 
 @theme inline {
-  --color-gold: var(--gold);
-  --color-gold-deep: var(--gold-deep);
-  --color-surface: var(--surface);
-  --font-display: var(--font-display);
-  --font-body: var(--font-body);
-  --font-mono: var(--font-mono);
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -68,32 +62,26 @@
 }
 
 :root {
-  --radius: 0.125rem;
-  --background: oklch(0.155 0.006 60);
-  --foreground: oklch(0.95 0.008 85);
-  --card: oklch(0.19 0.007 60);
-  --card-foreground: oklch(0.95 0.008 85);
-  --popover: oklch(0.19 0.007 60);
-  --popover-foreground: oklch(0.95 0.008 85);
-  --primary: oklch(0.78 0.11 84);
-  --primary-foreground: oklch(0.16 0.01 60);
-  --secondary: oklch(0.24 0.008 60);
-  --secondary-foreground: oklch(0.95 0.008 85);
-  --muted: oklch(0.24 0.008 60);
-  --muted-foreground: oklch(0.68 0.012 75);
-  --accent: oklch(0.78 0.11 84);
-  --accent-foreground: oklch(0.16 0.01 60);
+  --radius: 0.625rem;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.129 0.042 264.695);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.129 0.042 264.695);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.129 0.042 264.695);
+  --primary: oklch(0.208 0.042 265.755);
+  --primary-foreground: oklch(0.984 0.003 247.858);
+  --secondary: oklch(0.968 0.007 247.896);
+  --secondary-foreground: oklch(0.208 0.042 265.755);
+  --muted: oklch(0.968 0.007 247.896);
+  --muted-foreground: oklch(0.554 0.046 257.417);
+  --accent: oklch(0.968 0.007 247.896);
+  --accent-foreground: oklch(0.208 0.042 265.755);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.95 0.008 85 / 12%);
-  --input: oklch(0.95 0.008 85 / 16%);
-  --ring: oklch(0.78 0.11 84);
-  --gold: oklch(0.78 0.11 84);
-  --gold-deep: oklch(0.62 0.1 78);
-  --surface: oklch(0.115 0.005 60);
-  --font-display: "Playfair Display", Georgia, serif;
-  --font-body: "Barlow", system-ui, sans-serif;
-  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --border: oklch(0.929 0.013 255.508);
+  --input: oklch(0.929 0.013 255.508);
+  --ring: oklch(0.704 0.04 256.788);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
@@ -149,48 +137,152 @@
     border-color: var(--color-border);
   }
 
-  html {
-    scroll-behavior: smooth;
-    scroll-padding-top: 6rem;
-  }
-
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
-    font-family: var(--font-body);
-    -webkit-font-smoothing: antialiased;
-  }
-
-  h1, h2, h3, h4, blockquote {
-    font-family: var(--font-display);
   }
 }
 
-@utility label-mono {
-  font-family: var(--font-mono);
-  font-size: 0.6875rem;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
+/* ---------------------------------------------------------------
+   MC Design Build — brand layer (carbon / brass / bone)
+   --------------------------------------------------------------- */
+
+@theme inline {
+  --color-carbon: var(--carbon);
+  --color-brass: var(--brass);
+  --color-brass-dark: var(--brass-dark);
+  --color-bone: var(--bone);
+  --font-serif: "Playfair Display", serif;
+  --font-sans: "Plus Jakarta Sans", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
 }
 
-@keyframes marquee {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+:root {
+  --carbon: oklch(0.155 0 0);
+  --brass: oklch(0.723 0.076 85);
+  --brass-dark: oklch(0.549 0.068 84);
+  --bone: oklch(0.955 0.008 85);
+  --background: var(--bone);
+  --foreground: var(--carbon);
 }
 
-@keyframes rise {
-  from { opacity: 0; transform: translateY(28px); }
-  to { opacity: 1; transform: translateY(0); }
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
-@layer utilities {
-  .animate-marquee {
-    animation: marquee 40s linear infinite;
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bone);
+  color: var(--carbon);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background-color: var(--brass);
+  color: var(--carbon);
+}
+
+/* Fixed noise overlay */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: url('data:image/svg+xml;utf8,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)" opacity="0.04"/%3E%3C/svg%3E');
+}
+
+.hero-headline {
+  background: linear-gradient(to right, var(--bone), var(--brass));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@keyframes mc-marquee {
+  0% {
+    transform: translateX(0);
   }
-  .animate-rise {
-    animation: rise 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+  100% {
+    transform: translateX(-50%);
   }
-  .gold-rule {
-    background: linear-gradient(90deg, var(--gold), transparent);
+}
+
+.marquee-content {
+  display: inline-block;
+  animation: mc-marquee 30s linear infinite;
+}
+
+.marquee-container:hover .marquee-content {
+  animation-play-state: paused;
+}
+
+@keyframes mc-scroll-pulse {
+  0% {
+    background-position: 100% 100%;
   }
+  50% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 100% 100%;
+  }
+}
+
+.scroll-line {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, var(--brass) 50%, transparent 50%);
+  background-size: 100% 200%;
+  background-position: 100% 100%;
+  animation: mc-scroll-pulse 2s cubic-bezier(0.32, 0.72, 0, 1) infinite;
+}
+
+.project-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(30%) brightness(0.95);
+  transition:
+    transform 1.2s cubic-bezier(0.2, 0.8, 0.2, 1),
+    filter 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.project-card:hover .project-img {
+  transform: scale(1.05);
+  filter: grayscale(0%) brightness(1.02);
+}
+
+.project-overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgb(201 169 97 / 0);
+  transition: background-color 0.8s cubic-bezier(0.32, 0.72, 0, 1);
+  z-index: 10;
+}
+
+.project-card:hover .project-overlay {
+  background-color: rgb(201 169 97 / 0.15);
+}
+
+.view-case-study {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -40%);
+  opacity: 0;
+  z-index: 20;
+  transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.project-card:hover .view-case-study {
+  opacity: 1;
+  transform: translate(-50%, -50%);
+}
+
+.dot-grid {
+  background-image: radial-gradient(circle at 2px 2px, currentColor 1px, transparent 0);
+  background-size: 32px 32px;
 }

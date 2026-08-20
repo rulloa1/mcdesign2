@@ -77,13 +77,19 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Michael Chandler — Owner, MC Design Build" },
+      { title: "Michael Chandler — MC Design Build" },
       {
         name: "description",
         content:
-          "Executive construction leadership across 20+ years and $500M+ in delivered architectural landmarks.",
+          "Strategic construction executive. 20+ years and $500M+ delivered in ultra-luxury residential, hospitality, and civil projects.",
       },
       { name: "author", content: "Michael Chandler" },
+      { property: "og:title", content: "Michael Chandler — MC Design Build" },
+      {
+        property: "og:description",
+        content: "Strategic construction executive. 20+ years. $500M+ delivered.",
+      },
+      { property: "og:site_name", content: "MC Design Build" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -92,13 +98,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         rel: "stylesheet",
         href: appCss,
       },
+      { rel: "icon", href: "/favicon.svg", type: "image/svg+xml" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Barlow:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@300;400&display=swap",
       },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
     ],
   }),
   shellComponent: RootShell,

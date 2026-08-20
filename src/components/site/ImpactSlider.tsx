@@ -1,47 +1,55 @@
 import { useState } from "react";
 
-function fmt(n: number) {
-  return n.toLocaleString("en-US");
-}
-
 export function ImpactSlider() {
   const [years, setYears] = useState(20);
-  const projects = Math.round(years * 2.25);
-  const sqft = (years * 0.125).toFixed(2);
+
+  const projectsLed = Math.round(years * 2.25);
+  const sqft = (years * 0.125).toFixed(1);
   const capital = Math.round(years * 42.5);
 
-  const metrics = [
-    { label: "Projects Led", value: fmt(projects) },
-    { label: "Sq Ft Delivered", value: `${sqft}M` },
-    { label: "Capital Managed", value: `$${fmt(capital)}M` },
-  ];
-
   return (
-    <div className="mt-14 grid gap-12 lg:grid-cols-[1fr_1.2fr] lg:items-center">
-      <div>
-        <div className="flex items-baseline justify-between">
-          <span className="label-mono text-muted-foreground">Years in Industry</span>
-          <span className="font-display text-4xl text-gold">{years}</span>
-        </div>
-        <input
-          type="range"
-          min={1}
-          max={20}
-          value={years}
-          onChange={(e) => setYears(Number(e.target.value))}
-          aria-label="Years in industry"
-          className="mt-6 h-1 w-full cursor-pointer appearance-none rounded-full bg-secondary accent-gold"
-        />
-      </div>
+    <section className="border-t border-carbon/10 bg-bone px-6 py-32 md:px-20">
+      <div className="mx-auto flex max-w-5xl flex-col items-center gap-16 md:flex-row">
+        <div className="md:w-1/2">
+          <h2 className="mb-6 font-serif text-4xl md:text-5xl">Quantifiable Impact.</h2>
+          <p className="mb-10 text-lg text-carbon/60">
+            Use the slider to see the compounding value of experienced leadership.
+          </p>
 
-      <div className="grid grid-cols-3 gap-6 border-l border-border pl-6 md:gap-10 md:pl-12">
-        {metrics.map((m) => (
-          <div key={m.label}>
-            <p className="font-display text-2xl md:text-4xl">{m.value}</p>
-            <p className="label-mono mt-3 text-muted-foreground">{m.label}</p>
+          <label className="mb-4 flex justify-between font-mono text-xs uppercase tracking-widest text-carbon/50">
+            <span>Years in Industry</span>
+            <span className="font-bold text-brass-dark">{years}</span>
+          </label>
+          <input
+            type="range"
+            min={1}
+            max={25}
+            value={years}
+            onChange={(e) => setYears(Number(e.target.value))}
+            aria-label="Years in industry"
+            className="h-1 w-full cursor-pointer appearance-none rounded-lg bg-carbon/20 accent-brass"
+          />
+        </div>
+
+        <div className="w-full rounded-sm bg-carbon p-12 text-bone md:w-1/2">
+          <div className="space-y-8">
+            <div>
+              <div className="mb-2 text-xs uppercase tracking-widest text-brass">Projects Led</div>
+              <div className="font-serif text-5xl">{projectsLed}</div>
+            </div>
+            <div className="h-px w-full bg-bone/10" />
+            <div>
+              <div className="mb-2 text-xs uppercase tracking-widest text-brass">Sq Ft Delivered</div>
+              <div className="font-serif text-5xl">{sqft}M</div>
+            </div>
+            <div className="h-px w-full bg-bone/10" />
+            <div>
+              <div className="mb-2 text-xs uppercase tracking-widest text-brass">Capital Managed</div>
+              <div className="font-serif text-5xl">${capital}M</div>
+            </div>
           </div>
-        ))}
+        </div>
       </div>
-    </div>
+    </section>
   );
 }
