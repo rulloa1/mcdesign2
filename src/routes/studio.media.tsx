@@ -259,12 +259,16 @@ function SlotCard({
   canEdit,
   hasHistory,
   onDone,
+  position,
+  onMove,
 }: {
   slot: MediaSlot;
   current: string | undefined;
   canEdit: boolean;
   hasHistory: boolean;
   onDone: () => void;
+  position?: number;
+  onMove?: (delta: number) => void;
 }) {
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -295,7 +299,32 @@ function SlotCard({
       </div>
 
       <h3 className="mb-1 font-serif text-lg leading-snug">{slot.label}</h3>
-      <p className="mb-4 font-mono text-[0.55rem] uppercase tracking-[0.18em] text-bone/35">{slot.slot}</p>
+      <p className="mb-4 font-mono text-[0.55rem] uppercase tracking-[0.18em] text-bone/35">
+        {position ? `#${position} · ` : ""}
+        {slot.slot}
+      </p>
+
+      {onMove && (
+        <div className="mb-4 flex items-center gap-2 font-mono text-[0.6rem] uppercase tracking-[0.18em]">
+          <button
+            type="button"
+            onClick={() => onMove(-1)}
+            aria-label={`Move ${slot.label} earlier`}
+            className="border border-bone/15 px-3 py-1 text-bone/50 hover:border-brass/50 hover:text-brass"
+          >
+            ↑
+          </button>
+          <button
+            type="button"
+            onClick={() => onMove(1)}
+            aria-label={`Move ${slot.label} later`}
+            className="border border-bone/15 px-3 py-1 text-bone/50 hover:border-brass/50 hover:text-brass"
+          >
+            ↓
+          </button>
+          <span className="text-bone/30">Reorder</span>
+        </div>
+      )}
 
       <div className="flex flex-wrap items-center gap-3">
         <label
