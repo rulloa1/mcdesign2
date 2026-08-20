@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as PortfolioRouteImport } from './routes/portfolio'
+import { Route as StudioMediaRouteImport } from './routes/studio.media'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -28,35 +29,44 @@ const PortfolioRoute = PortfolioRouteImport.update({
   path: '/portfolio',
   getParentRoute: () => rootRouteImport,
 } as any)
+const StudioMediaRoute = StudioMediaRouteImport.update({
+  id: '/studio/media',
+  path: '/studio/media',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
   '/portfolio': typeof PortfolioRoute
+  '/studio/media': typeof StudioMediaRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
   '/portfolio': typeof PortfolioRoute
+  '/studio/media': typeof StudioMediaRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
   '/portfolio': typeof PortfolioRoute
+  '/studio/media': typeof StudioMediaRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/auth' | '/portfolio'
+  fullPaths: '/' | '/auth' | '/portfolio' | '/studio/media'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/auth' | '/portfolio'
-  id: '__root__' | '/' | '/auth' | '/portfolio'
+  to: '/' | '/auth' | '/portfolio' | '/studio/media'
+  id: '__root__' | '/' | '/auth' | '/portfolio' | '/studio/media'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AuthRoute: typeof AuthRoute
   PortfolioRoute: typeof PortfolioRoute
+  StudioMediaRoute: typeof StudioMediaRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -82,6 +92,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PortfolioRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/studio/media': {
+      id: '/studio/media'
+      path: '/studio/media'
+      fullPath: '/studio/media'
+      preLoaderRoute: typeof StudioMediaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -89,6 +106,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AuthRoute: AuthRoute,
   PortfolioRoute: PortfolioRoute,
+  StudioMediaRoute: StudioMediaRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
