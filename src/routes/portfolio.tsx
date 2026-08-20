@@ -36,13 +36,16 @@ const filters: (Category | "all")[] = [
   "design-build",
   "hospitality",
   "civil",
+  "development",
+  "commercial",
+  "estate-management",
 ];
 
 function Portfolio() {
   const [active, setActive] = useState<Category | "all">("all");
   const media = useSiteMedia();
   const ordered = useOrderedProjects();
-  const shown = active === "all" ? ordered : ordered.filter((p) => p.category === active);
+  const shown = active === "all" ? ordered : ordered.filter((p) => p.categories.includes(active));
 
   return (
     <div className="relative z-10 bg-bone">

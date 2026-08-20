@@ -25,13 +25,16 @@ export type Category =
   | "residential-construction"
   | "design-build"
   | "hospitality"
-  | "civil";
+  | "civil"
+  | "development"
+  | "commercial"
+  | "estate-management";
 
 export type Project = {
   id: string;
   title: string;
   subtitle: string;
-  category: Category;
+  categories: Category[];
   location: string;
   role: string;
   specs: string;
@@ -45,6 +48,9 @@ export const categoryLabels: Record<Category | "all", string> = {
   "design-build": "Design-Build",
   hospitality: "Hospitality",
   civil: "Civil",
+  development: "Development",
+  commercial: "Commercial",
+  "estate-management": "Estate Management",
 };
 
 export const projects: Project[] = [
@@ -52,7 +58,7 @@ export const projects: Project[] = [
     id: "bakers-bay",
     title: "Bakers Bay Resort",
     subtitle: "Luxury Resort Development",
-    category: "owners-representation",
+    categories: ["owners-representation"],
     location: "Bahamas",
     role: "Discovery Land Company Project's Rep",
     specs: "Resort Portfolio",
@@ -62,7 +68,7 @@ export const projects: Project[] = [
     id: "yellowstone-club",
     title: "Yellowstone Club",
     subtitle: "Ultra-Luxury Alpine Community",
-    category: "owners-representation",
+    categories: ["owners-representation"],
     location: "Montana",
     role: "Project Management: Final Finish of Main Lodge Addition & Completion of Private Condos",
     specs: "550,000 sqft • Final Finish of Main Lodge & 48 Private Condos",
@@ -72,7 +78,7 @@ export const projects: Project[] = [
     id: "houston-oaks",
     title: "Houston Oaks",
     subtitle: "Premium Country Club Estate",
-    category: "owners-representation",
+    categories: ["owners-representation"],
     location: "Texas",
     role: "Chief Projects Officer & Owner's Rep",
     specs: "Country Club Portfolio",
@@ -82,7 +88,7 @@ export const projects: Project[] = [
     id: "miami-beach",
     title: "S. Florida High Rise Luxe Condo",
     subtitle: "High Rise Luxe Condo",
-    category: "residential-construction",
+    categories: ["residential-construction", "owners-representation"],
     location: "S. Florida",
     role: "Owner Representation, Project Management, Property Management",
     specs: "4,200 sqft • 4 months • 4 bed · 4 bath",
@@ -92,7 +98,7 @@ export const projects: Project[] = [
     id: "alpine-ranch",
     title: "High Alpine Mtn. Ranch Luxe Retreat",
     subtitle: "Ranch Luxe Retreat",
-    category: "residential-construction",
+    categories: ["residential-construction", "owners-representation"],
     location: "Montana",
     role: "Owner Representation, Design Oversight, Project Management",
     specs: "2,300 sqft • 24 months • 2 bed · 2 bath",
@@ -102,7 +108,7 @@ export const projects: Project[] = [
     id: "hospitality-pool",
     title: "Ultra Luxe Private Club Resort Pool",
     subtitle: "Resort Pool",
-    category: "hospitality",
+    categories: ["hospitality", "owners-representation"],
     location: "SE Texas",
     role: "Owner Representation, Daily Project Management, Co-Design",
     specs: "189,000 Gallon • 18 months",
@@ -112,7 +118,7 @@ export const projects: Project[] = [
     id: "north-florida",
     title: "North Florida Renovation/Addition",
     subtitle: "Residential Addition",
-    category: "residential-construction",
+    categories: ["owners-representation", "estate-management"],
     location: "N. Florida",
     role: "Designer, Project Management, Owner Representative",
     specs: "3,600 + 1,200 sqft • 10 months",
@@ -122,7 +128,7 @@ export const projects: Project[] = [
     id: "southcoast",
     title: "South Coast Renovation",
     subtitle: "Complete Coastal Remodel",
-    category: "design-build",
+    categories: ["design-build"],
     location: "Big Sur, CA",
     role: "Design, Builder, Project Manager, Owner Representative",
     specs: "3,800 sqft • 16 months",
@@ -132,7 +138,7 @@ export const projects: Project[] = [
     id: "bigsur-civil",
     title: "Coastal Mountain Residence",
     subtitle: "Civil Site Work",
-    category: "civil",
+    categories: ["civil", "residential-construction"],
     location: "Big Sur, CA",
     role: "Owner Representative, Designer, Builder, Permit Procurement",
     specs: "11 months • 3,000 cu yds earth moved • 320 ln ft retaining walls",
@@ -142,7 +148,7 @@ export const projects: Project[] = [
     id: "carmel-knolls",
     title: "Carmel Knolls",
     subtitle: "More Than Lipstick on an Old Lady!",
-    category: "residential-construction",
+    categories: ["residential-construction", "civil", "design-build"],
     location: "Carmel, CA",
     role: "Designer, Int. Designer, Builder, Project Manager",
     specs: "2,200 sqft • 1,400 sqft decking • 12 months",
@@ -152,7 +158,7 @@ export const projects: Project[] = [
     id: "development-civil",
     title: "Development Civil",
     subtitle: "Development / Civil Engineering",
-    category: "civil",
+    categories: ["development", "civil", "residential-construction"],
     location: "SE Texas",
     role: "Civil Engineering Contractor/Builder",
     specs: "45 Acres • 120+ Home Sites • 36 months",
@@ -162,7 +168,7 @@ export const projects: Project[] = [
     id: "pacific-grove",
     title: "New Residential Construction In Historic Neighborhood",
     subtitle: "In Historic Neighborhood",
-    category: "design-build",
+    categories: ["residential-construction", "design-build"],
     location: "Central Coast, CA",
     role: "Owner's Rep, Designer, Builder",
     specs: "2,600 sqft • 14 months",
@@ -172,7 +178,7 @@ export const projects: Project[] = [
     id: "laguna-grande",
     title: "Laguna Grande",
     subtitle: "Spanish Revival Commercial",
-    category: "design-build",
+    categories: ["design-build", "commercial"],
     location: "Seaside, CA",
     role: "Owner's Representative, Designer, Builder, Permit Procurement",
     specs: "12,000 sqft • 22 months",
@@ -182,7 +188,7 @@ export const projects: Project[] = [
     id: "abaco-boathouse",
     title: "Abaco Luxe Boat House",
     subtitle: "Construction",
-    category: "residential-construction",
+    categories: ["residential-construction"],
     location: "Abaco, Bahamas",
     role: "Project Manager in a Foreign Country for US Owners",
     specs: "1,800 sqft • 6 months",
@@ -192,7 +198,7 @@ export const projects: Project[] = [
     id: "coastal-restoration",
     title: "Coastal Restoration",
     subtitle: "Erosion Repair",
-    category: "civil",
+    categories: ["civil"],
     location: "Monterey Peninsula, CA",
     role: "Civil Engineering Contractor, Builder, Permit Procurement",
     specs: "9 months • 2,500 cu yds earth moved • 180 ln ft retaining walls",
@@ -202,7 +208,7 @@ export const projects: Project[] = [
     id: "beachfront-estate",
     title: "Beachfront Estate Abaco",
     subtitle: "Residence",
-    category: "residential-construction",
+    categories: ["residential-construction", "development"],
     location: "Abaco, Bahamas",
     role: "Project Manager in Foreign Country for US Owners",
     specs: "6,800 sqft • 2.5 Acres • 180 ft beach frontage",
@@ -212,7 +218,7 @@ export const projects: Project[] = [
     id: "montana-condo",
     title: "Mtn. Mid-Rise Luxe Condo",
     subtitle: "Condo",
-    category: "residential-construction",
+    categories: ["residential-construction", "owners-representation"],
     location: "Montana",
     role: "Owner Representation, Project Management, Property Management",
     specs: "2,800 sqft • 8 months • New Build",
@@ -222,7 +228,7 @@ export const projects: Project[] = [
     id: "carmel-valley-new",
     title: "Carmel Forest to Ocean View",
     subtitle: "Custom Addition",
-    category: "residential-construction",
+    categories: ["residential-construction"],
     location: "Carmel By the Sea, CA",
     role: "Designer, Builder, Project Manager",
     specs: "4,800 sqft • 20 months",
@@ -232,7 +238,7 @@ export const projects: Project[] = [
     id: "syracuse",
     title: "Syracuse House",
     subtitle: "N. Utah Craftsman Estate",
-    category: "design-build",
+    categories: ["design-build", "owners-representation"],
     location: "N. Utah",
     role: "Owner Representation, Project Management, Property Management",
     specs: "6,200 sqft • 18 months",
@@ -242,7 +248,7 @@ export const projects: Project[] = [
     id: "carmel-remodel-23",
     title: "Carmel Remodel 2023",
     subtitle: "Modern Coastal Update",
-    category: "residential-construction",
+    categories: ["residential-construction", "owners-representation"],
     location: "Carmel, CA",
     role: "Owner Rep & Construction Manager",
     specs: "Modern Coastal Update",
@@ -252,7 +258,7 @@ export const projects: Project[] = [
     id: "hillside-restoration",
     title: "Hillside Restoration & Environmental Cleanup",
     subtitle: "Environmental Restoration",
-    category: "civil",
+    categories: ["civil", "residential-construction"],
     location: "Carmel, CA",
     role: "Civil Engineering Contractor/Builder, Permit Procurement",
     specs: "4 months • 1.5 Acres • 80 Tons debris removed",
