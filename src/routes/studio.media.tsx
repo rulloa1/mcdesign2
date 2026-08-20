@@ -28,7 +28,7 @@ export const Route = createFileRoute("/studio/media")({
   component: MediaStudio,
 });
 
-const groups = ["Hero & About", "Signature Sequences", "Project Covers"];
+const groups = ["Hero & About", "Signature Sequences"];
 
 function MediaStudio() {
   const navigate = useNavigate();
