@@ -204,7 +204,8 @@ export const projectAlbums: Record<string, ProjectAlbum> = {
       "/projects/assets/southcoast-50.webp",
       "/projects/assets/southcoast-51.webp",
       "/projects/assets/southcoast-52.webp",
-      "/projects/assets/southcoast-53.webp"
+      "/projects/assets/southcoast-53.webp",
+      "/projects/assets/southcoast-22b.webp"
     ]
   },
   "bigsur-civil": {
@@ -310,7 +311,8 @@ export const projectAlbums: Record<string, ProjectAlbum> = {
       "/projects/assets/coastal-restoration-12.webp",
       "/projects/assets/coastal-restoration-13.webp",
       "/projects/assets/coastal-restoration-14.webp",
-      "/projects/assets/coastal-restoration-15.webp"
+      "/projects/assets/coastal-restoration-15.webp",
+      "/projects/assets/coastal-restoration-15b.webp"
     ]
   },
   "beachfront-estate": {
@@ -400,7 +402,8 @@ export const projectAlbums: Record<string, ProjectAlbum> = {
       "/projects/assets/syracuse-43.webp",
       "/projects/assets/syracuse-44.webp",
       "/projects/assets/syracuse-45.webp",
-      "/projects/assets/syracuse-46.webp"
+      "/projects/assets/syracuse-46.webp",
+      "/projects/assets/syracuse-19b.webp"
     ]
   },
   "carmel-remodel-23": {
