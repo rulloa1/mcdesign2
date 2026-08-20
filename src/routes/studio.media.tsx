@@ -4,7 +4,14 @@ import { useQuery, useQueryClient } from "@tanstack/react-query";
 
 import { supabase } from "@/integrations/supabase/client";
 import { mediaSlots, type MediaSlot } from "@/data/media-slots";
-import { resetSiteMedia, siteMediaQuery, uploadSiteMedia } from "@/lib/site-media";
+import {
+  mediaLogQuery,
+  resetSiteMedia,
+  revertSiteMedia,
+  siteMediaQuery,
+  uploadSiteMedia,
+  type MediaLogEntry,
+} from "@/lib/site-media";
 
 export const Route = createFileRoute("/studio/media")({
   head: () => ({
@@ -57,6 +64,14 @@ function MediaStudio() {
   });
 
   const { data: overrides } = useQuery(siteMediaQuery);
+  const { data: log } = useQuery({ ...mediaLogQuery, enabled: !!isAdmin });
+
+  const refresh = () => {
+    void queryClient.invalidateQueries({ queryKey: ["site-media"] });
+    void queryClient.invalidateQueries({ queryKey: ["site-media-log"] });
+  };
+
+  const slotLabels = Object.fromEntries(mediaSlots.map((s) => [s.slot, s.label]));
 
   if (!checked) return <main className="min-h-[100dvh] bg-carbon" />;
 
@@ -106,12 +121,49 @@ function MediaStudio() {
                     slot={slot}
                     current={overrides?.[slot.slot]}
                     canEdit={!!isAdmin}
-                    onDone={() => queryClient.invalidateQueries({ queryKey: ["site-media"] })}
+                    hasHistory={!!log?.some((e) => e.slot === slot.slot)}
+                    onDone={refresh}
                   />
                 ))}
             </div>
           </section>
         ))}
+
+        {isAdmin && (
+          <section className="mb-8">
+            <h2 className="mb-6 font-mono text-[0.65rem] uppercase tracking-[0.24em] text-bone/40">Audit Log</h2>
+            {!log?.length ? (
+              <p className="text-sm text-bone/45">No image changes recorded yet.</p>
+            ) : (
+              <div className="overflow-x-auto border border-bone/10">
+                <table className="w-full min-w-[640px] text-left text-sm">
+                  <thead>
+                    <tr className="border-b border-bone/10 font-mono text-[0.55rem] uppercase tracking-[0.18em] text-bone/40">
+                      <th className="p-3 font-normal">When</th>
+                      <th className="p-3 font-normal">Slot</th>
+                      <th className="p-3 font-normal">Action</th>
+                      <th className="p-3 font-normal">By</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {log.map((entry: MediaLogEntry) => (
+                      <tr key={entry.id} className="border-b border-bone/5 text-bone/70">
+                        <td className="whitespace-nowrap p-3 font-mono text-[0.65rem] text-bone/50">
+                          {new Date(entry.created_at).toLocaleString()}
+                        </td>
+                        <td className="p-3">{slotLabels[entry.slot] ?? entry.slot}</td>
+                        <td className="p-3 font-mono text-[0.6rem] uppercase tracking-[0.16em] text-brass">
+                          {entry.action}
+                        </td>
+                        <td className="p-3 text-bone/60">{entry.actor_email ?? "Unknown"}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            )}
+          </section>
+        )}
       </div>
     </main>
   );
@@ -121,11 +173,13 @@ function SlotCard({
   slot,
   current,
   canEdit,
+  hasHistory,
   onDone,
 }: {
   slot: MediaSlot;
   current: string | undefined;
   canEdit: boolean;
+  hasHistory: boolean;
   onDone: () => void;
 }) {
   const [busy, setBusy] = useState(false);
@@ -196,6 +250,28 @@ function SlotCard({
             className="font-mono text-[0.6rem] uppercase tracking-[0.2em] text-bone/45 hover:text-brass"
           >
             Reset
+          </button>
+        )}
+
+        {canEdit && hasHistory && (
+          <button
+            type="button"
+            disabled={busy}
+            onClick={async () => {
+              setBusy(true);
+              setError(null);
+              try {
+                await revertSiteMedia(slot.slot);
+                onDone();
+              } catch (err) {
+                setError(err instanceof Error ? err.message : "Revert failed.");
+              } finally {
+                setBusy(false);
+              }
+            }}
+            className="font-mono text-[0.6rem] uppercase tracking-[0.2em] text-bone/45 hover:text-brass"
+          >
+            Revert
           </button>
         )}
       </div>
