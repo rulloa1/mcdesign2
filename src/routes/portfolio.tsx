@@ -3,6 +3,8 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 
 import { Nav } from "@/components/site/Nav";
 import { projects, categoryLabels, type Category } from "@/data/projects";
+import { projectSlotKey } from "@/data/media-slots";
+import { useSiteMedia } from "@/lib/site-media";
 
 export const Route = createFileRoute("/portfolio")({
   head: () => ({
@@ -37,6 +39,7 @@ const filters: (Category | "all")[] = [
 
 function Portfolio() {
   const [active, setActive] = useState<Category | "all">("all");
+  const media = useSiteMedia();
   const shown = active === "all" ? projects : projects.filter((p) => p.category === active);
 
   return (
