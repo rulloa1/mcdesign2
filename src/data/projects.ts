@@ -1,0 +1,261 @@
+import bakersBay from "@/assets/bakers-bay-cover.webp";
+import yellowstone from "@/assets/yellowstone-club-cover.png";
+import houstonOaks from "@/assets/houston-oaks-cover.png";
+import miamiBeach from "@/assets/miami-beach-cover-enhanced.webp";
+import alpineRanch from "@/assets/alpine-ranch-cover.webp";
+import hospitalityPool from "@/assets/hospitality-pool-cover.jpg";
+import northFlorida from "@/assets/north-florida-cover.jpg";
+import southcoast from "@/assets/southcoast-cover.webp";
+import bigsurCivil from "@/assets/bigsur-civil-cover.webp";
+import carmelKnolls from "@/assets/carmel-knolls-cover.webp";
+import developmentCivil from "@/assets/development-civil-cover.jpg";
+import pacificGrove from "@/assets/pacific-grove-cover.jpg";
+import lagunaGrande from "@/assets/laguna-grande-cover.webp";
+import abacoBoathouse from "@/assets/abaco-luxe-boathouse-cover.webp";
+import coastalRestoration from "@/assets/coastal-restoration-cover.webp";
+import beachfront from "@/assets/beachfront-cover.webp";
+import montanaCondo from "@/assets/montana-condo-cover.png";
+import carmelValleyNew from "@/assets/carmel-valley-new-cover.webp";
+import syracuse from "@/assets/syracuse-cover.webp";
+import carmelRemodel from "@/assets/carmel-remodel-23-cover.webp";
+import hillside from "@/assets/hillside-restoration-cover.jpg";
+
+export type Category =
+  | "owners-representation"
+  | "residential-construction"
+  | "design-build"
+  | "hospitality"
+  | "civil";
+
+export type Project = {
+  id: string;
+  title: string;
+  subtitle: string;
+  category: Category;
+  location: string;
+  role: string;
+  specs: string;
+  cover: string;
+};
+
+export const categoryLabels: Record<Category | "all", string> = {
+  all: "All Projects",
+  "owners-representation": "Owner's Representation",
+  "residential-construction": "Residential Construction",
+  "design-build": "Design-Build",
+  hospitality: "Hospitality",
+  civil: "Civil",
+};
+
+export const projects: Project[] = [
+  {
+    id: "bakers-bay",
+    title: "Bakers Bay Resort",
+    subtitle: "Luxury Resort Development",
+    category: "owners-representation",
+    location: "Bahamas",
+    role: "Discovery Land Company Project's Rep",
+    specs: "Resort Portfolio",
+    cover: bakersBay,
+  },
+  {
+    id: "yellowstone-club",
+    title: "Yellowstone Club",
+    subtitle: "Ultra-Luxury Alpine Community",
+    category: "owners-representation",
+    location: "Montana",
+    role: "Project Management: Final Finish of Main Lodge Addition & Completion of Private Condos",
+    specs: "550,000 sqft • Final Finish of Main Lodge & 48 Private Condos",
+    cover: yellowstone,
+  },
+  {
+    id: "houston-oaks",
+    title: "Houston Oaks",
+    subtitle: "Premium Country Club Estate",
+    category: "owners-representation",
+    location: "Texas",
+    role: "Chief Projects Officer & Owner's Rep",
+    specs: "Country Club Portfolio",
+    cover: houstonOaks,
+  },
+  {
+    id: "miami-beach",
+    title: "S. Florida High Rise Luxe Condo",
+    subtitle: "High Rise Luxe Condo",
+    category: "residential-construction",
+    location: "S. Florida",
+    role: "Owner Representation, Project Management, Property Management",
+    specs: "4,200 sqft • 4 months • 4 bed · 4 bath",
+    cover: miamiBeach,
+  },
+  {
+    id: "alpine-ranch",
+    title: "High Alpine Mtn. Ranch Luxe Retreat",
+    subtitle: "Ranch Luxe Retreat",
+    category: "residential-construction",
+    location: "Montana",
+    role: "Owner Representation, Design Oversight, Project Management",
+    specs: "2,300 sqft • 24 months • 2 bed · 2 bath",
+    cover: alpineRanch,
+  },
+  {
+    id: "hospitality-pool",
+    title: "Ultra Luxe Private Club Resort Pool",
+    subtitle: "Resort Pool",
+    category: "hospitality",
+    location: "SE Texas",
+    role: "Owner Representation, Daily Project Management, Co-Design",
+    specs: "189,000 Gallon • 18 months",
+    cover: hospitalityPool,
+  },
+  {
+    id: "north-florida",
+    title: "North Florida Renovation/Addition",
+    subtitle: "Residential Addition",
+    category: "residential-construction",
+    location: "N. Florida",
+    role: "Designer, Project Management, Owner Representative",
+    specs: "3,600 + 1,200 sqft • 10 months",
+    cover: northFlorida,
+  },
+  {
+    id: "southcoast",
+    title: "South Coast Renovation",
+    subtitle: "Complete Coastal Remodel",
+    category: "design-build",
+    location: "Big Sur, CA",
+    role: "Design, Builder, Project Manager, Owner Representative",
+    specs: "3,800 sqft • 16 months",
+    cover: southcoast,
+  },
+  {
+    id: "bigsur-civil",
+    title: "Coastal Mountain Residence",
+    subtitle: "Civil Site Work",
+    category: "civil",
+    location: "Big Sur, CA",
+    role: "Owner Representative, Designer, Builder, Permit Procurement",
+    specs: "11 months • 3,000 cu yds earth moved • 320 ln ft retaining walls",
+    cover: bigsurCivil,
+  },
+  {
+    id: "carmel-knolls",
+    title: "Carmel Knolls",
+    subtitle: "More Than Lipstick on an Old Lady!",
+    category: "residential-construction",
+    location: "Carmel, CA",
+    role: "Designer, Int. Designer, Builder, Project Manager",
+    specs: "2,200 sqft • 1,400 sqft decking • 12 months",
+    cover: carmelKnolls,
+  },
+  {
+    id: "development-civil",
+    title: "Development Civil",
+    subtitle: "Development / Civil Engineering",
+    category: "civil",
+    location: "SE Texas",
+    role: "Civil Engineering Contractor/Builder",
+    specs: "45 Acres • 120+ Home Sites • 36 months",
+    cover: developmentCivil,
+  },
+  {
+    id: "pacific-grove",
+    title: "New Residential Construction In Historic Neighborhood",
+    subtitle: "In Historic Neighborhood",
+    category: "design-build",
+    location: "Central Coast, CA",
+    role: "Owner's Rep, Designer, Builder",
+    specs: "2,600 sqft • 14 months",
+    cover: pacificGrove,
+  },
+  {
+    id: "laguna-grande",
+    title: "Laguna Grande",
+    subtitle: "Spanish Revival Commercial",
+    category: "design-build",
+    location: "Seaside, CA",
+    role: "Owner's Representative, Designer, Builder, Permit Procurement",
+    specs: "12,000 sqft • 22 months",
+    cover: lagunaGrande,
+  },
+  {
+    id: "abaco-boathouse",
+    title: "Abaco Luxe Boat House",
+    subtitle: "Construction",
+    category: "residential-construction",
+    location: "Abaco, Bahamas",
+    role: "Project Manager in a Foreign Country for US Owners",
+    specs: "1,800 sqft • 6 months",
+    cover: abacoBoathouse,
+  },
+  {
+    id: "coastal-restoration",
+    title: "Coastal Restoration",
+    subtitle: "Erosion Repair",
+    category: "civil",
+    location: "Monterey Peninsula, CA",
+    role: "Civil Engineering Contractor, Builder, Permit Procurement",
+    specs: "9 months • 2,500 cu yds earth moved • 180 ln ft retaining walls",
+    cover: coastalRestoration,
+  },
+  {
+    id: "beachfront-estate",
+    title: "Beachfront Estate Abaco",
+    subtitle: "Residence",
+    category: "residential-construction",
+    location: "Abaco, Bahamas",
+    role: "Project Manager in Foreign Country for US Owners",
+    specs: "6,800 sqft • 2.5 Acres • 180 ft beach frontage",
+    cover: beachfront,
+  },
+  {
+    id: "montana-condo",
+    title: "Mtn. Mid-Rise Luxe Condo",
+    subtitle: "Condo",
+    category: "residential-construction",
+    location: "Montana",
+    role: "Owner Representation, Project Management, Property Management",
+    specs: "2,800 sqft • 8 months • New Build",
+    cover: montanaCondo,
+  },
+  {
+    id: "carmel-valley-new",
+    title: "Carmel Forest to Ocean View",
+    subtitle: "Custom Addition",
+    category: "residential-construction",
+    location: "Carmel By the Sea, CA",
+    role: "Designer, Builder, Project Manager",
+    specs: "4,800 sqft • 20 months",
+    cover: carmelValleyNew,
+  },
+  {
+    id: "syracuse",
+    title: "Syracuse House",
+    subtitle: "N. Utah Craftsman Estate",
+    category: "design-build",
+    location: "N. Utah",
+    role: "Owner Representation, Project Management, Property Management",
+    specs: "6,200 sqft • 18 months",
+    cover: syracuse,
+  },
+  {
+    id: "carmel-remodel-23",
+    title: "Carmel Remodel 2023",
+    subtitle: "Modern Coastal Update",
+    category: "residential-construction",
+    location: "Carmel, CA",
+    role: "Owner Rep & Construction Manager",
+    specs: "Modern Coastal Update",
+    cover: carmelRemodel,
+  },
+  {
+    id: "hillside-restoration",
+    title: "Hillside Restoration & Environmental Cleanup",
+    subtitle: "Environmental Restoration",
+    category: "civil",
+    location: "Carmel, CA",
+    role: "Civil Engineering Contractor/Builder, Permit Procurement",
+    specs: "4 months • 1.5 Acres • 80 Tons debris removed",
+    cover: hillside,
+  },
+];
