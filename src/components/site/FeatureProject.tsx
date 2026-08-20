@@ -23,7 +23,7 @@ export function FeatureProject({
     <section className="border-b border-border py-24 md:py-32">
       <div className="mx-auto grid max-w-6xl gap-14 px-6 lg:grid-cols-2 lg:items-center">
         <div className={flip ? "lg:order-2" : ""}>
-          <div className="grid grid-cols-3 gap-3">
+          <div className="grid grid-cols-2 gap-3">
             {images.map((img, i) => (
               <img
                 key={img.src}
@@ -32,8 +32,8 @@ export function FeatureProject({
                 loading="lazy"
                 className={
                   i === 0
-                    ? "col-span-3 h-72 w-full object-cover md:h-96"
-                    : "col-span-3 h-40 w-full object-cover sm:col-span-1 sm:h-32"
+                    ? "col-span-2 h-72 w-full object-cover md:h-96"
+                    : "col-span-1 h-32 w-full object-cover md:h-40"
                 }
               />
             ))}
