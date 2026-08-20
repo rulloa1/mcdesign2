@@ -83,8 +83,15 @@ function ProjectPage() {
         <div className="absolute inset-0 bg-gradient-to-t from-carbon via-carbon/40 to-transparent" />
         <div className="absolute bottom-0 left-0 w-full px-6 pb-16 md:px-20">
           <div className="mx-auto max-w-[1600px] text-bone">
-            <div className="mb-5 inline-flex items-center rounded-full border border-brass/25 bg-brass/10 px-3 py-1 font-mono text-[0.6rem] uppercase tracking-[0.22em] text-brass">
-              {categoryLabels[project.category]}
+            <div className="mb-5 flex flex-wrap gap-2">
+              {project.categories.map((c) => (
+                <span
+                  key={c}
+                  className="inline-flex items-center rounded-full border border-brass/25 bg-brass/10 px-3 py-1 font-mono text-[0.6rem] uppercase tracking-[0.22em] text-brass"
+                >
+                  {categoryLabels[c]}
+                </span>
+              ))}
             </div>
             <h1 className="font-serif text-4xl md:text-6xl">{project.title}</h1>
             <p className="mt-4 text-lg font-light text-bone/70">
