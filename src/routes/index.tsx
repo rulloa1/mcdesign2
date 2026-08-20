@@ -5,6 +5,8 @@ import { Marquee } from "@/components/site/Marquee";
 import { PinnedCase } from "@/components/site/PinnedCase";
 import { ImpactSlider } from "@/components/site/ImpactSlider";
 import { projects } from "@/data/projects";
+import { projectSlotKey } from "@/data/media-slots";
+import { useSiteMedia } from "@/lib/site-media";
 
 import profile from "@/assets/mike-profile.webp";
 import houstonOaks from "@/assets/houston-oaks-cover.png";
@@ -110,6 +112,8 @@ const Arrow = () => (
 );
 
 function Index() {
+  const media = useSiteMedia();
+
   return (
     <div className="relative z-10">
       <Nav />
@@ -121,7 +125,7 @@ function Index() {
           className="relative z-10 flex min-h-[100dvh] flex-col justify-center overflow-hidden bg-carbon px-6 pt-20 md:px-20"
         >
           <img
-            src={profile}
+            src={media("hero", profile)}
             alt=""
             aria-hidden="true"
             className="absolute inset-0 h-full w-full object-cover"
@@ -156,7 +160,7 @@ function Index() {
               <div className="border border-brass/20 p-2" style={{ background: "rgb(201 169 97 / 0.04)" }}>
                 <div className="relative overflow-hidden">
                   <img
-                    src={profile}
+                    src={media("about-portrait", profile)}
                     alt="Michael Chandler — Owner, MC Design Build"
                     loading="lazy"
                     className="w-full object-cover"
@@ -227,7 +231,12 @@ function Index() {
                     className={`relative overflow-hidden ${g.height}`}
                     style={{ backgroundColor: "rgb(201 169 97 / 0.06)" }}
                   >
-                    <img src={project.cover} alt={g.label} loading="lazy" className="project-img" />
+                    <img
+                      src={media(projectSlotKey(g.id), project.cover)}
+                      alt={g.label}
+                      loading="lazy"
+                      className="project-img"
+                    />
                     <div className="project-overlay" />
                     <span className="view-case-study text-sm uppercase tracking-[0.1em] text-bone">View Album</span>
                   </div>
@@ -258,7 +267,11 @@ function Index() {
           id="featured-case"
           subtitle="Signature Project — SE Texas"
           title="Ultra Luxe Private Club Resort Pool"
-          images={[houstonOaks, poolDetail, poolFinished]}
+          images={[
+            media("case-pool-1", houstonOaks),
+            media("case-pool-2", poolDetail),
+            media("case-pool-3", poolFinished),
+          ]}
           alts={[
             "Ultra Luxe Pool — Daylight Overview",
             "Ultra Luxe Pool — Resort Detail",
@@ -278,7 +291,11 @@ function Index() {
           id="featured-case-2"
           subtitle="Signature Project — Montana"
           title="High Alpine Ranch Luxe Retreat"
-          images={[alpineCover, alpine3, alpine7]}
+          images={[
+            media("case-alpine-1", alpineCover),
+            media("case-alpine-2", alpine3),
+            media("case-alpine-3", alpine7),
+          ]}
           alts={[
             "Alpine Ranch — Mountain Vista",
             "Alpine Ranch — Craftsmanship Detail",
@@ -298,7 +315,11 @@ function Index() {
           id="featured-case-3"
           subtitle="Signature Project — S. Florida"
           title="S. Florida High Rise Luxe Condo"
-          images={[miamiCover, miami10, miami27]}
+          images={[
+            media("case-miami-1", miamiCover),
+            media("case-miami-2", miami10),
+            media("case-miami-3", miami27),
+          ]}
           alts={[
             "Miami Beach — Beachfront Panorama",
             "Miami Beach — Interior Execution",
@@ -414,6 +435,9 @@ function Index() {
                 Email
               </a>
               <span>Spring, TX</span>
+              <Link to="/studio/media" className="transition-colors hover:text-brass">
+                Media Studio
+              </Link>
             </div>
           </div>
         </section>
