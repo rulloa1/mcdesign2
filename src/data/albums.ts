@@ -128,7 +128,11 @@ export const projectAlbums: Record<string, ProjectAlbum> = {
       "/projects/assets/pool-design-27.webp",
       "/projects/assets/pool-design-28.webp",
       "/projects/assets/pool-design-29.webp",
-      "/projects/assets/pool-design-30.webp"
+      "/projects/assets/pool-design-30.webp",
+      "/projects/assets/pool-design-9b.webp",
+      "/projects/assets/pool-design-2b.webp",
+      "/projects/assets/pool-design-3b.webp",
+      "/projects/assets/pool-design-cover-b.webp"
     ]
   },
   "north-florida": {
@@ -205,7 +209,8 @@ export const projectAlbums: Record<string, ProjectAlbum> = {
       "/projects/assets/southcoast-51.webp",
       "/projects/assets/southcoast-52.webp",
       "/projects/assets/southcoast-53.webp",
-      "/projects/assets/southcoast-22b.webp"
+      "/projects/assets/southcoast-22b.webp",
+      "/projects/assets/southcoast-cover-b.webp"
     ]
   },
   "bigsur-civil": {
@@ -403,7 +408,9 @@ export const projectAlbums: Record<string, ProjectAlbum> = {
       "/projects/assets/syracuse-44.webp",
       "/projects/assets/syracuse-45.webp",
       "/projects/assets/syracuse-46.webp",
-      "/projects/assets/syracuse-19b.webp"
+      "/projects/assets/syracuse-19b.webp",
+      "/projects/assets/syracuse-9b.webp",
+      "/projects/assets/syracuse-24b.webp"
     ]
   },
   "carmel-remodel-23": {
