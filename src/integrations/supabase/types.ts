@@ -35,6 +35,39 @@ export type Database = {
         }
         Relationships: []
       }
+      site_media_log: {
+        Row: {
+          action: string
+          actor_email: string | null
+          actor_id: string | null
+          created_at: string
+          id: string
+          new_url: string | null
+          previous_url: string | null
+          slot: string
+        }
+        Insert: {
+          action: string
+          actor_email?: string | null
+          actor_id?: string | null
+          created_at?: string
+          id?: string
+          new_url?: string | null
+          previous_url?: string | null
+          slot: string
+        }
+        Update: {
+          action?: string
+          actor_email?: string | null
+          actor_id?: string | null
+          created_at?: string
+          id?: string
+          new_url?: string | null
+          previous_url?: string | null
+          slot?: string
+        }
+        Relationships: []
+      }
       user_roles: {
         Row: {
           created_at: string
