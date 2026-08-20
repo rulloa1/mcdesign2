@@ -24,19 +24,17 @@ export function FeatureProject({
       <div className="mx-auto grid max-w-6xl gap-14 px-6 lg:grid-cols-2 lg:items-center">
         <div className={flip ? "lg:order-2" : ""}>
           <div className="grid grid-cols-3 gap-3">
-            <img
-              src={images[0].src}
-              alt={images[0].alt}
-              loading="lazy"
-              className="col-span-3 h-72 w-full object-cover md:h-96"
-            />
-            {images.slice(1).map((img) => (
+            {images.map((img, i) => (
               <img
                 key={img.src}
                 src={img.src}
                 alt={img.alt}
                 loading="lazy"
-                className="col-span-3 h-40 w-full object-cover sm:col-span-1 sm:h-32"
+                className={
+                  i === 0
+                    ? "col-span-3 h-72 w-full object-cover md:h-96"
+                    : "col-span-3 h-40 w-full object-cover sm:col-span-1 sm:h-32"
+                }
               />
             ))}
           </div>
