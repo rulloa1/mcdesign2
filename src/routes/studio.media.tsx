@@ -3,6 +3,7 @@ import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 
 import { supabase } from "@/integrations/supabase/client";
+import { BulkUpload } from "@/components/studio/BulkUpload";
 import { mediaSlots, projectSlotKey, type MediaSlot } from "@/data/media-slots";
 import { projectOrderQuery, saveProjectOrder, sortProjects } from "@/lib/project-order";
 import {
@@ -150,6 +151,8 @@ function MediaStudio() {
             This account does not have studio access. Ask the site owner to grant admin access.
           </p>
         )}
+
+        <BulkUpload canEdit={!!isAdmin} onDone={refresh} />
 
         {groups.map((group) => (
           <section key={group} className="mb-16">
