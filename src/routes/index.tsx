@@ -20,21 +20,18 @@ import miamiCover from "@/assets/miami-beach-cover-enhanced.webp";
 import miami10 from "@/assets/miami-beach-10.webp";
 import miami27 from "@/assets/miami-beach-27.webp";
 
+const TITLE = "Michael Chandler — Luxury Construction Executive";
 const DESCRIPTION =
-  "Michael Chandler is a strategic construction executive with 20+ years and $500M+ in delivered ultra-luxury residential, hospitality, and civil projects across six global regions.";
+  "Ultra-luxury residential, hospitality, and civil construction led by Michael Chandler — 20+ years and $500M+ delivered across six global regions.";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Michael Chandler — MC Design Build" },
+      { title: TITLE },
       { name: "description", content: DESCRIPTION },
       { name: "theme-color", content: "#0E0E0E" },
-      { property: "og:title", content: "Michael Chandler — MC Design Build" },
-      {
-        property: "og:description",
-        content:
-          "Strategic construction executive. 20+ years. $500M+ delivered. Luxury residential, hospitality, and civil projects across six global regions.",
-      },
+      { property: "og:title", content: TITLE },
+      { property: "og:description", content: DESCRIPTION },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
