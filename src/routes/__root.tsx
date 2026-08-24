@@ -77,17 +77,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Michael Chandler — MC Design Build" },
+      { title: "Michael Chandler — Luxury Construction Executive" },
       {
         name: "description",
         content:
-          "Strategic construction executive. 20+ years and $500M+ delivered in ultra-luxury residential, hospitality, and civil projects.",
+          "Ultra-luxury residential, hospitality, and civil construction led by Michael Chandler — 20+ years and $500M+ delivered across six global regions.",
       },
       { name: "author", content: "Michael Chandler" },
-      { property: "og:title", content: "Michael Chandler — MC Design Build" },
+      { property: "og:title", content: "Michael Chandler — Luxury Construction Executive" },
       {
         property: "og:description",
-        content: "Strategic construction executive. 20+ years. $500M+ delivered.",
+        content:
+          "Ultra-luxury residential, hospitality, and civil construction led by Michael Chandler — 20+ years and $500M+ delivered across six global regions.",
       },
       { property: "og:site_name", content: "MC Design Build" },
       { property: "og:type", content: "website" },
