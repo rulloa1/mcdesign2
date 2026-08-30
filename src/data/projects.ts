@@ -123,7 +123,7 @@ export const projects: Project[] = [
     subtitle: "Residential Addition",
     categories: ["owners-representation", "estate-management"],
     location: "N. Florida",
-    role: "Designer, Project Management, Owner Representative",
+    role: "Designer (Manage/Oversight of Architect / Int. Design by Others), Project Management, Owner Representative, Craftsmen-Contractor / Contract Coordination, Property Management",
     specs: "3,600 + 1,200 sqft • 10 months",
     cover: northFlorida,
   },
