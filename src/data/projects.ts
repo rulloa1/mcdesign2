@@ -92,7 +92,7 @@ export const projects: Project[] = [
     categories: ["residential-construction", "owners-representation"],
     location: "S. Florida",
     role:
-      "Contractor Identification, Contract Negotiation, Project Management, Owner Representation, Property Management, International Furniture/Material/Art Receiving & Shipping",
+      "Design (Co-Design of Structure / Int. Design by Others), Project Management, Owner Representative, Craftsmen-Contractor / Contract Coordination, Property Management",
     specs: "4,200 sqft • 5 months • 4 bed · 4 bath",
     cover: miamiBeach,
   },
