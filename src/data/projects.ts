@@ -211,7 +211,7 @@ export const projects: Project[] = [
   {
     id: "beachfront-estate",
     title: "Beachfront Estate Abaco",
-    subtitle: "Residence",
+    subtitle: "House Residence",
     categories: ["residential-construction", "development"],
     location: "Abaco, Bahamas",
     role: "Project Manager in Foreign Country for US Owners",
