@@ -234,7 +234,7 @@ export const projects: Project[] = [
     subtitle: "Custom Residence",
     categories: ["design-build", "civil", "residential-construction"],
     location: "Carmel Valley, CA",
-    role: "Designer, Builder, Project Manager",
+    role: "Designer (Structure), Builder, Project Manager, Civil Engineering Contractor",
     specs: "4,800 sqft • 20 months",
     cover: carmelValleyNew,
   },
