@@ -134,7 +134,7 @@ export const projects: Project[] = [
     categories: ["design-build"],
     location: "Big Sur, CA",
     role:
-      "Owner Representative, Designer, Int. Designer, Builder, Project Manager, Property Manager, Owner Assignee during photo ad campaigns and cinema shoots",
+      "Design (Structure & Int. Design), Builder, Project Manager, Owner Representative",
     specs: "3,800 sqft • 16 months",
     cover: southcoast,
   },
