@@ -132,7 +132,8 @@ export const projectAlbums: Record<string, ProjectAlbum> = {
       "/projects/assets/pool-design-9b.webp",
       "/projects/assets/pool-design-2b.webp",
       "/projects/assets/pool-design-3b.webp",
-      "/projects/assets/pool-design-cover-b.webp"
+      "/projects/assets/pool-design-cover-b.webp",
+      "/projects/assets/pool-design-5b.webp"
     ]
   },
   "north-florida": {
@@ -345,7 +346,8 @@ export const projectAlbums: Record<string, ProjectAlbum> = {
       "/projects/assets/montana-8.webp",
       "/projects/assets/montana-9.webp",
       "/projects/assets/montana-10.webp",
-      "/projects/assets/montana-11.webp"
+      "/projects/assets/montana-11.webp",
+      "/projects/assets/montana-11b.webp"
     ]
   },
   "carmel-valley-new": {
@@ -391,6 +393,8 @@ export const projectAlbums: Record<string, ProjectAlbum> = {
       "/projects/assets/syracuse-27.webp",
       "/projects/assets/syracuse-28.webp",
       "/projects/assets/syracuse-29.webp",
+      "/projects/assets/syracuse-28b.webp",
+      "/projects/assets/syracuse-29b.webp",
       "/projects/assets/syracuse-30.webp",
       "/projects/assets/syracuse-31.webp",
       "/projects/assets/syracuse-32.webp",
