@@ -252,7 +252,7 @@ export const projectAlbums: Record<string, ProjectAlbum> = {
     ]
   },
   "development-civil": {
-    "description": "Over 36 months, we executed a 45-acre master-planned residential development, laying the groundwork for a new community. This comprehensive project included infrastructure for over 120 home sites, 3.2 miles of roads, and complete utility installation. We also created 2 miles of walking trails and community amenities, all while adhering to environmental compliance measures and coordinating with multiple municipal agencies. This project was about more than construction; it was about building a neighborhood.",
+    "description": "Over 36 months, we executed a 103-acre master-planned residential development, laying the groundwork for a new community. This comprehensive project included infrastructure, 3.2 miles of roads, and complete utility installation. We also created 2 miles of walking trails and community amenities, all while adhering to environmental compliance measures and coordinating with multiple municipal agencies. This project was about more than construction; it was about building a neighborhood.",
     "images": [
       "/projects/assets/development-civil-cover.webp",
       "/projects/assets/development-cover.webp",
