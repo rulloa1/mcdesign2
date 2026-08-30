@@ -286,7 +286,7 @@ export const projectAlbums: Record<string, ProjectAlbum> = {
     ]
   },
   "laguna-grande": {
-    "description": "We brought the timeless beauty of Spanish Colonial Revival architecture to a new 12,000 sq ft commercial complex. This 22-month design-build project features authentic details like hand-formed clay roof tiles, custom ironwork, and arched colonnades. We balanced traditional aesthetics with the demands of modern commercial spaces, creating a complex that is both beautiful and functional, a landmark in its coastal location.",
+    "description": "We brought the timeless beauty of Spanish Colonial Revival architecture to a new 12,000 sq ft commercial complex. This 14-month design-build project features authentic details like hand-formed clay roof tiles, custom ironwork, and arched colonnades. Although modern stucco was used, it was carefully applied so corners and edges were softened to look more like original hand-applied plaster, for authenticity. We balanced traditional aesthetics with the demands of modern commercial spaces, creating a complex that is both beautiful and functional, a landmark in its coastal location.",
     "images": [
       "/projects/assets/laguna-grande-1.webp",
       "/projects/assets/laguna-grande-2.webp"
