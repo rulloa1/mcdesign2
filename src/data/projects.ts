@@ -109,9 +109,9 @@ export const projects: Project[] = [
   },
   {
     id: "hospitality-pool",
-    title: "Ultra Luxe Private Club Resort Pool",
-    subtitle: "Resort Pool",
-    categories: ["hospitality", "owners-representation"],
+    title: "Luxe Pool Design & Construction",
+    subtitle: "Private Club / Resort Amenity",
+    categories: ["hospitality", "design-build", "owners-representation"],
     location: "SE Texas",
     role: "Owner Representation, Daily Project Management, Co-Design of Many Elements, Property Management",
     specs: "189,000 Gallon • 18 months",
