@@ -174,7 +174,7 @@ export const projects: Project[] = [
     subtitle: "In Historic Neighborhood",
     categories: ["residential-construction", "design-build"],
     location: "Central Coast, CA",
-    role: "Owner's Rep, Designer, Builder",
+    role: "Designer (Structure & Int. Design), Project Management, Owner Representative",
     specs: "2,600 sqft • 14 months",
     cover: pacificGrove,
   },
