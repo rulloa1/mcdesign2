@@ -16,6 +16,7 @@ import coastalRestoration from "@/assets/coastal-restoration-cover.webp";
 import beachfront from "@/assets/beachfront-cover.webp";
 import montanaCondo from "@/assets/montana-condo-cover.png";
 import carmelValleyNew from "@/assets/carmel-valley-new-cover.webp";
+import carmelForest from "@/assets/carmel-forest-cover.webp";
 import syracuse from "@/assets/syracuse-cover.webp";
 import carmelRemodel from "@/assets/carmel-remodel-23-cover.webp";
 import hillside from "@/assets/hillside-restoration-cover.jpg";
