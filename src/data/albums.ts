@@ -25,7 +25,7 @@ export const projectAlbums: Record<string, ProjectAlbum> = {
     ]
   },
   "miami-beach": {
-    "description": "Over 5 months, we transformed a 4,200 sq ft high-rise condominium into a beachfront sanctuary of modern design. The existing beautiful stone floors were the foundation from which color was drawn, with warmth added through bespoke millwork — custom scalloped solid wood paneling and built-ins with quarter-round wood ends, bent using old-world techniques. The rare South American wood was sourced from a millwork company's cancelled order during the pandemic; purchasing the lot saved jobs and delivered material that can no longer be obtained in this country. The newest smart-home technologies, most not yet available to the public here, were installed alongside hand-applied specialty wall finishes by world-class craftsmen. Delivered on time, on budget, and perfectly on point for a world-renowned interior designer — at the height of tragic world events, with no delays.",
+    "description": "Over five months, a 4,200 sq ft high-rise condominium became a beachfront sanctuary of modern design. Existing stone floors set the palette, warmed by bespoke millwork — scalloped solid-wood paneling and built-ins bent by old-world technique from rare South American wood, acquired as a cancelled pandemic order that saved a mill's jobs and can no longer be sourced in this country. Hand-applied specialty wall finishes by world-class craftsmen and smart-home systems not yet available here completed the residence — delivered on time, on budget, and with no delays.",
     "images": [
       "/projects/assets/miami-beach-1.webp",
       "/projects/assets/miami-beach-2.webp",
@@ -351,13 +351,18 @@ export const projectAlbums: Record<string, ProjectAlbum> = {
     ]
   },
   "carmel-valley-new": {
-    "description": "This project is a celebration of its stunning location — a coastal home that harmonizes with the natural beauty of the Carmel coastline. Our focus was on refined craftsmanship and thoughtful design, creating a space that feels both luxurious and deeply connected to its environment. The result is a home that is more than a structure; it is a serene retreat.",
+    "description": "A custom residence set on a Carmel Valley hilltop, designed and built to take in the full sweep of the surrounding ridgelines. The work spanned civil site development, gated entry, terraced landscape and the residence itself — 4,800 sq ft delivered over 20 months as a single design-build effort.",
     "images": [
       "/projects/assets/carmel-valley-new-cover.webp",
-      "/projects/assets/carmel-valley-new-2.webp",
       "/projects/assets/carmel-valley-new-1.webp",
       "/projects/assets/carmel-valley-new-3.webp",
       "/projects/assets/carmel-valley-new-4.webp"
+    ]
+  },
+  "carmel-forest": {
+    "description": "A custom addition in the pines of Carmel by the Sea, built to open the home from forest canopy to ocean view. Detailed carriage-style doors, a wrought-iron balcony and hand-set paver drive keep the new work indistinguishable from the original village architecture.",
+    "images": [
+      "/projects/assets/carmel-valley-new-2.webp"
     ]
   },
   "syracuse": {

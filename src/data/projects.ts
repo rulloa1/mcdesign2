@@ -16,6 +16,7 @@ import coastalRestoration from "@/assets/coastal-restoration-cover.webp";
 import beachfront from "@/assets/beachfront-cover.webp";
 import montanaCondo from "@/assets/montana-condo-cover.png";
 import carmelValleyNew from "@/assets/carmel-valley-new-cover.webp";
+import carmelForest from "@/assets/carmel-forest-cover.webp";
 import syracuse from "@/assets/syracuse-cover.webp";
 import carmelRemodel from "@/assets/carmel-remodel-23-cover.webp";
 import hillside from "@/assets/hillside-restoration-cover.jpg";
@@ -108,9 +109,9 @@ export const projects: Project[] = [
   },
   {
     id: "hospitality-pool",
-    title: "Ultra Luxe Private Club Resort Pool",
-    subtitle: "Resort Pool",
-    categories: ["hospitality", "owners-representation"],
+    title: "Luxe Pool Design & Construction",
+    subtitle: "Private Club / Resort Amenity",
+    categories: ["hospitality", "design-build", "owners-representation"],
     location: "SE Texas",
     role: "Owner Representation, Daily Project Management, Co-Design of Many Elements, Property Management",
     specs: "189,000 Gallon • 18 months",
@@ -210,7 +211,7 @@ export const projects: Project[] = [
   {
     id: "beachfront-estate",
     title: "Beachfront Estate Abaco",
-    subtitle: "Residence",
+    subtitle: "House Residence",
     categories: ["residential-construction", "development"],
     location: "Abaco, Bahamas",
     role: "Project Manager in Foreign Country for US Owners",
@@ -229,19 +230,29 @@ export const projects: Project[] = [
   },
   {
     id: "carmel-valley-new",
-    title: "Carmel Forest to Ocean View",
-    subtitle: "Custom Addition",
-    categories: ["residential-construction"],
-    location: "Carmel By the Sea, CA",
+    title: "Carmel Valley New",
+    subtitle: "Custom Residence",
+    categories: ["design-build", "civil", "residential-construction"],
+    location: "Carmel Valley, CA",
     role: "Designer, Builder, Project Manager",
     specs: "4,800 sqft • 20 months",
     cover: carmelValleyNew,
   },
   {
+    id: "carmel-forest",
+    title: "Carmel Forest to Ocean View",
+    subtitle: "Custom Addition",
+    categories: ["residential-construction", "design-build"],
+    location: "Carmel By the Sea, CA",
+    role: "Designer, Builder, Project Manager",
+    specs: "Custom Addition • Forest to Ocean Views",
+    cover: carmelForest,
+  },
+  {
     id: "syracuse",
     title: "Syracuse House",
     subtitle: "N. Utah Craftsman Estate",
-    categories: ["design-build", "owners-representation"],
+    categories: ["design-build", "residential-construction", "owners-representation"],
     location: "N. Utah",
     role: "Owner Representation, Project Management, Property Management",
     specs: "6,200 sqft • 18 months",
