@@ -242,7 +242,7 @@ export const projects: Project[] = [
     id: "syracuse",
     title: "Syracuse House",
     subtitle: "N. Utah Craftsman Estate",
-    categories: ["design-build", "owners-representation"],
+    categories: ["design-build", "residential-construction", "owners-representation"],
     location: "N. Utah",
     role: "Owner Representation, Project Management, Property Management",
     specs: "6,200 sqft • 18 months",
