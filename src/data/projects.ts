@@ -184,8 +184,8 @@ export const projects: Project[] = [
     subtitle: "Spanish Revival Commercial",
     categories: ["design-build", "commercial"],
     location: "Seaside, CA",
-    role: "Owner's Representative, Designer, Builder, Permit Procurement",
-    specs: "12,000 sqft • 22 months",
+    role: "Design (Structure), Builder, Project Manager, Owner's Representative, Civil Engineering Construction",
+    specs: "12,000 sqft • 14 months",
     cover: lagunaGrande,
   },
   {
