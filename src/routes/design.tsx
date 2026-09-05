@@ -50,8 +50,8 @@ const pools = [
 ];
 
 const concepts = [
-  { src: `${A}/laguna-grande-1.webp`, alt: "Spanish Colonial Revival commercial complex concept" },
-  { src: `${A}/carmel-knolls-3.webp`, alt: "Carmel Knolls residence design concept" },
+  { src: `${A}/carmel-valley-new-4.webp`, alt: "Aerial study of a hillside estate and its site plan" },
+  { src: `${A}/nfl-013.webp`, alt: "Aerial concept view of an estate with pool and grounds" },
 ];
 
 const furniture = [
