@@ -120,7 +120,7 @@ function DesignPage() {
               src={architecture}
               alt="Custom Carmel Valley residence with exposed steel and floor-to-ceiling glass"
               className="h-[46vh] md:h-[60vh]"
-              caption="Carmel Valley, CA"
+              caption="High Alpine Ranch, MT"
             />
           </div>
           <div className="md:col-span-5">
