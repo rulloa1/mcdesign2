@@ -39,6 +39,9 @@ export function Nav() {
                 {l.label}
               </a>
             ))}
+            <Link to="/design" className="transition-colors duration-500 hover:text-brass">
+              Design
+            </Link>
             <Link to="/portfolio" className="transition-colors duration-500 hover:text-brass">
               Portfolio
             </Link>
@@ -83,6 +86,9 @@ export function Nav() {
               {l.label}
             </a>
           ))}
+          <Link to="/design" onClick={() => setOpen(false)} className="hover:text-brass">
+            Design
+          </Link>
           <Link to="/portfolio" onClick={() => setOpen(false)} className="hover:text-brass">
             Portfolio
           </Link>
