@@ -31,10 +31,10 @@ const interiors = [
 ];
 
 const reimagined = [
-  { src: `${A}/southcoast-1.webp`, alt: "South Coast renovation before the coastal remodel" },
+  { src: `${A}/southcoast-2.webp`, alt: "South Coast renovation before the coastal remodel" },
   { src: `${A}/southcoast-22.webp`, alt: "South Coast renovation after opening the home to ocean views" },
-  { src: `${A}/nfl-1.webp`, alt: "North Florida home before renovation and addition" },
-  { src: `${A}/nfl-5.webp`, alt: "North Florida home after renovation and addition" },
+  { src: `${A}/nfl-002.webp`, alt: "North Florida home before renovation and addition" },
+  { src: `${A}/nfl-010.webp`, alt: "North Florida home after renovation and addition" },
 ];
 
 const development = [
