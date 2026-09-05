@@ -22,19 +22,19 @@ export const Route = createFileRoute("/design")({
 
 const A = "/projects/assets";
 
-const architecture = `${A}/carmel-valley-new-cover.webp`;
+const architecture = `${A}/alpine-ranch-cover.webp`;
 
 const interiors = [
-  { src: `${A}/miami-beach-10.webp`, alt: "Custom Italian marble living space in a South Florida high-rise" },
-  { src: `${A}/syracuse-9.webp`, alt: "Traditional living room with fireplace and built-in shelving" },
-  { src: `${A}/alpine-ranch-3.webp`, alt: "Warm timber interior of a high alpine mountain ranch" },
+  { src: `${A}/alpine-ranch-5.webp`, alt: "Timber great room with stone fireplace at a high alpine ranch" },
+  { src: `${A}/alpine-ranch-8.webp`, alt: "Custom kitchen with timber beams and stone detailing" },
+  { src: `${A}/miami-beach-20.webp`, alt: "High-rise living room opening to an ocean view" },
 ];
 
 const reimagined = [
-  { src: `${A}/southcoast-2.webp`, alt: "South Coast renovation before the coastal remodel" },
-  { src: `${A}/southcoast-22.webp`, alt: "South Coast renovation after opening the home to ocean views" },
-  { src: `${A}/nfl-002.webp`, alt: "North Florida home before renovation and addition" },
-  { src: `${A}/nfl-010.webp`, alt: "North Florida home after renovation and addition" },
+  { src: `${A}/carmel-3-1.webp`, alt: "Carmel residence before its remodel" },
+  { src: `${A}/carmel-3-4.webp`, alt: "Carmel residence after its remodel" },
+  { src: `${A}/carmel-3-3.webp`, alt: "Side entry before restoration work" },
+  { src: `${A}/carmel-3-2.webp`, alt: "Side entry after restoration with new decking and finishes" },
 ];
 
 const development = [
