@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthRouteImport } from './routes/auth'
+import { Route as DesignRouteImport } from './routes/design'
 import { Route as PortfolioRouteImport } from './routes/portfolio'
 import { Route as ProjectsProjectIdRouteImport } from './routes/projects.$projectId'
 import { Route as StudioMediaRouteImport } from './routes/studio.media'
@@ -23,6 +24,11 @@ const IndexRoute = IndexRouteImport.update({
 const AuthRoute = AuthRouteImport.update({
   id: '/auth',
   path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DesignRoute = DesignRouteImport.update({
+  id: '/design',
+  path: '/design',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PortfolioRoute = PortfolioRouteImport.update({
@@ -44,6 +50,7 @@ const StudioMediaRoute = StudioMediaRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
+  '/design': typeof DesignRoute
   '/portfolio': typeof PortfolioRoute
   '/projects/$projectId': typeof ProjectsProjectIdRoute
   '/studio/media': typeof StudioMediaRoute
@@ -51,6 +58,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
+  '/design': typeof DesignRoute
   '/portfolio': typeof PortfolioRoute
   '/projects/$projectId': typeof ProjectsProjectIdRoute
   '/studio/media': typeof StudioMediaRoute
@@ -59,6 +67,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
+  '/design': typeof DesignRoute
   '/portfolio': typeof PortfolioRoute
   '/projects/$projectId': typeof ProjectsProjectIdRoute
   '/studio/media': typeof StudioMediaRoute
@@ -66,13 +75,25 @@ export interface FileRoutesById {
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    '/' | '/auth' | '/portfolio' | '/projects/$projectId' | '/studio/media'
+    | '/'
+    | '/auth'
+    | '/design'
+    | '/portfolio'
+    | '/projects/$projectId'
+    | '/studio/media'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/auth' | '/portfolio' | '/projects/$projectId' | '/studio/media'
+  to:
+    | '/'
+    | '/auth'
+    | '/design'
+    | '/portfolio'
+    | '/projects/$projectId'
+    | '/studio/media'
   id:
     | '__root__'
     | '/'
     | '/auth'
+    | '/design'
     | '/portfolio'
     | '/projects/$projectId'
     | '/studio/media'
@@ -81,6 +102,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AuthRoute: typeof AuthRoute
+  DesignRoute: typeof DesignRoute
   PortfolioRoute: typeof PortfolioRoute
   ProjectsProjectIdRoute: typeof ProjectsProjectIdRoute
   StudioMediaRoute: typeof StudioMediaRoute
@@ -100,6 +122,13 @@ declare module '@tanstack/react-router' {
       path: '/auth'
       fullPath: '/auth'
       preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/design': {
+      id: '/design'
+      path: '/design'
+      fullPath: '/design'
+      preLoaderRoute: typeof DesignRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/portfolio': {
@@ -129,6 +158,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AuthRoute: AuthRoute,
+  DesignRoute: DesignRoute,
   PortfolioRoute: PortfolioRoute,
   ProjectsProjectIdRoute: ProjectsProjectIdRoute,
   StudioMediaRoute: StudioMediaRoute,
