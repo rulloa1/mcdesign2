@@ -31,10 +31,17 @@ const interiors = [
 ];
 
 const reimagined = [
-  { src: `${A}/carmel-3-1.webp`, alt: "Carmel residence before its remodel" },
-  { src: `${A}/carmel-3-4.webp`, alt: "Carmel residence after its remodel" },
-  { src: `${A}/carmel-3-3.webp`, alt: "Side entry before restoration work" },
-  { src: `${A}/carmel-3-2.webp`, alt: "Side entry after restoration with new decking and finishes" },
+  {
+    before: { src: `${A}/carmel-3-1.webp`, alt: "Carmel residence before its remodel" },
+    after: { src: `${A}/carmel-3-4.webp`, alt: "Carmel residence after its remodel" },
+  },
+  {
+    before: { src: `${A}/carmel-3-3.webp`, alt: "Side entry before restoration work" },
+    after: {
+      src: `${A}/carmel-3-2.webp`,
+      alt: "Side entry after restoration with new decking and finishes",
+    },
+  },
 ];
 
 const development = [
