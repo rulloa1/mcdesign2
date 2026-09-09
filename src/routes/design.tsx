@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 
+import { BeforeAfter } from "@/components/site/BeforeAfter";
 import { Nav } from "@/components/site/Nav";
 
 const TITLE = "Design — Architecture, Interiors & Concepts | MC Design Build";
