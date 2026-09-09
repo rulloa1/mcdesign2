@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 
+import { BeforeAfter } from "@/components/site/BeforeAfter";
 import { Nav } from "@/components/site/Nav";
 
 const TITLE = "Design — Architecture, Interiors & Concepts | MC Design Build";
@@ -31,10 +32,17 @@ const interiors = [
 ];
 
 const reimagined = [
-  { src: `${A}/carmel-3-1.webp`, alt: "Carmel residence before its remodel" },
-  { src: `${A}/carmel-3-4.webp`, alt: "Carmel residence after its remodel" },
-  { src: `${A}/carmel-3-3.webp`, alt: "Side entry before restoration work" },
-  { src: `${A}/carmel-3-2.webp`, alt: "Side entry after restoration with new decking and finishes" },
+  {
+    before: { src: `${A}/carmel-3-1.webp`, alt: "Carmel residence before its remodel" },
+    after: { src: `${A}/carmel-3-4.webp`, alt: "Carmel residence after its remodel" },
+  },
+  {
+    before: { src: `${A}/carmel-3-3.webp`, alt: "Side entry before restoration work" },
+    after: {
+      src: `${A}/carmel-3-2.webp`,
+      alt: "Side entry after restoration with new decking and finishes",
+    },
+  },
 ];
 
 const development = [
@@ -136,14 +144,16 @@ function DesignPage() {
         {/* Reimagined */}
         <section>
           <SectionLabel>Reimagined</SectionLabel>
-          <p className="mb-5 text-xs uppercase tracking-[0.25em] text-bone/45">Re-designs · before &amp; after</p>
-          <div className="grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-4">
-            {reimagined.map((img, i) => (
-              <Tile
-                key={img.src}
-                {...img}
-                className="h-[26vh] md:h-[34vh]"
-                caption={i % 2 === 0 ? "Before" : "After"}
+          <p className="mb-5 text-xs uppercase tracking-[0.25em] text-bone/45">
+            Re-designs · drag to compare
+          </p>
+          <div className="grid grid-cols-1 gap-3 md:grid-cols-2 md:gap-4">
+            {reimagined.map((pair) => (
+              <BeforeAfter
+                key={pair.before.src}
+                before={pair.before}
+                after={pair.after}
+                className="h-[38vh] md:h-[46vh]"
               />
             ))}
           </div>
