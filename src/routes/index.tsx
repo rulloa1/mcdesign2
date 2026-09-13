@@ -419,15 +419,15 @@ function Index() {
               For project inquiries, speaking engagements, and board consultations.
             </h2>
 
-            <a
-              href="mailto:mike.rcccon@yahoo.com"
+            <Link
+              to="/contact"
               className="group mt-8 inline-flex items-center gap-5 border border-brass/40 py-3 pr-3 pl-9 text-xs uppercase tracking-[0.22em] transition-all duration-700 hover:bg-brass hover:text-carbon"
             >
               <span>Begin a Conversation</span>
               <span className="flex h-10 w-10 items-center justify-center rounded-full border border-brass/30 transition-all duration-700 group-hover:border-carbon/20 group-hover:bg-carbon/10">
                 <Arrow />
               </span>
-            </a>
+            </Link>
 
             <div className="mt-20 flex flex-wrap justify-center gap-12 font-mono text-sm text-bone/60">
               <a

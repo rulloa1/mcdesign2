@@ -6,7 +6,6 @@ const links = [
   { href: "/#works", label: "Selected Works" },
   { href: "/#philosophy", label: "Philosophy" },
   { href: "/#process", label: "Process" },
-  { href: "/#contact", label: "Contact" },
 ];
 
 export function Nav() {
@@ -44,6 +43,9 @@ export function Nav() {
             </Link>
             <Link to="/portfolio" className="transition-colors duration-500 hover:text-brass">
               Portfolio
+            </Link>
+            <Link to="/contact" className="transition-colors duration-500 hover:text-brass">
+              Contact
             </Link>
           </div>
 
@@ -91,6 +93,9 @@ export function Nav() {
           </Link>
           <Link to="/portfolio" onClick={() => setOpen(false)} className="hover:text-brass">
             Portfolio
+          </Link>
+          <Link to="/contact" onClick={() => setOpen(false)} className="hover:text-brass">
+            Contact
           </Link>
         </div>
       </div>
