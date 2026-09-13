@@ -199,7 +199,7 @@ function ContactPage() {
   );
 }
 
-function Field({ label, error, required, full, children }: { label: string; error?: string; required?: boolean; full?: boolean; children: React.ReactNode }) {
+function Field({ label, error, required, full, children }: { label: string; error?: string | undefined; required?: boolean; full?: boolean; children: React.ReactNode }) {
   return (
     <div className={full ? "md:col-span-2" : undefined}>
       <label className="block font-mono text-[0.6rem] uppercase tracking-[0.22em] text-carbon/50">
