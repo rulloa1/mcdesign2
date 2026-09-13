@@ -10,13 +10,13 @@ import { useSiteMedia } from "@/lib/site-media";
 export const Route = createFileRoute("/portfolio")({
   head: () => ({
     meta: [
-      { title: "Portfolio — 21 Projects | Michael Chandler, MC Design Build" },
+      { title: "Portfolio — 23 Projects | Michael Chandler, MC Design Build" },
       {
         name: "description",
         content:
-          "Complete portfolio of 21 signature projects: ultra-luxury residential, hospitality, owner's representation, and civil work across six global regions.",
+          "Complete portfolio of 23 signature projects: ultra-luxury residential, hospitality, owner's representation, and civil work across six global regions.",
       },
-      { property: "og:title", content: "Portfolio — 21 Projects | MC Design Build" },
+      { property: "og:title", content: "Portfolio — 23 Projects | MC Design Build" },
       {
         property: "og:description",
         content:
@@ -56,7 +56,7 @@ function Portfolio() {
           <div className="mb-6 inline-flex items-center rounded-full border border-brass/20 bg-brass/5 px-3 py-1 font-mono text-[0.6rem] uppercase tracking-[0.22em] text-brass/80">
             Full Portfolio
           </div>
-          <h1 className="font-serif text-4xl md:text-6xl">Twenty-One Projects.</h1>
+          <h1 className="font-serif text-4xl md:text-6xl">Twenty-Three Projects.</h1>
           <p className="mt-6 max-w-2xl text-lg font-light leading-relaxed text-bone/60">
             Ultra-luxury residential, hospitality, owner's representation, and civil engineering — delivered across six
             global regions.

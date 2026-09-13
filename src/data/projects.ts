@@ -21,6 +21,8 @@ import syracuse from "@/assets/syracuse-cover.webp";
 import carmelRemodel from "@/assets/carmel-remodel-23-cover.webp";
 import hillside from "@/assets/hillside-restoration-cover.jpg";
 
+const infrastructureCover = "/projects/assets/development-site.webp";
+
 export type Category =
   | "owners-representation"
   | "residential-construction"
@@ -147,6 +149,16 @@ export const projects: Project[] = [
     role: "Owner Representative, Designer, Builder, Permit Procurement",
     specs: "11 months • 3,000 cu yds earth moved • 320 ln ft retaining walls",
     cover: bigsurCivil,
+  },
+  {
+    id: "civil-infrastructure",
+    title: "Civil Engineering — Infrastructure Projects",
+    subtitle: "Multi-State Civil Engineering Portfolio",
+    categories: ["civil", "development"],
+    location: "CA · TX · NM · CO · MT",
+    role: "Civil Engineering Contractor/Builder, Project Management, Permit Procurement",
+    specs: "2015–2024 • 50,000 cu yds earth moved • 2,500 ln ft retaining walls",
+    cover: infrastructureCover,
   },
   {
     id: "carmel-knolls",
