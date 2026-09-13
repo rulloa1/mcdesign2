@@ -261,7 +261,7 @@ function Index() {
               to="/portfolio"
               className="group inline-flex items-center gap-5 border border-carbon/25 py-3 pr-3 pl-9 text-xs uppercase tracking-[0.22em] transition-all duration-700 hover:bg-carbon hover:text-bone"
             >
-              <span>View All 21 Projects</span>
+              <span>View All {projects.length} Projects</span>
               <span className="flex h-10 w-10 items-center justify-center rounded-full border border-carbon/20 transition-all duration-700 group-hover:border-bone/20 group-hover:bg-bone/10">
                 <Arrow />
               </span>

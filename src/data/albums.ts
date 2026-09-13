@@ -236,6 +236,23 @@ export const projectAlbums: Record<string, ProjectAlbum> = {
       "/projects/assets/bigsur-15.webp"
     ]
   },
+  "civil-infrastructure": {
+    "description": "A multi-state portfolio of civil engineering and infrastructure work completed across California, Texas, New Mexico, Colorado and Montana from 2015 through 2024. The work spans site preparation, grading, drainage, access roads, utilities, erosion control and engineered retaining systems — totaling more than 50,000 cubic yards of earth moved and 2,500 linear feet of retaining walls.",
+    "images": [
+      "/projects/assets/development-site.webp",
+      "/projects/assets/development-1.webp",
+      "/projects/assets/development-2.webp",
+      "/projects/assets/development-3.webp",
+      "/projects/assets/bigsur-3.webp",
+      "/projects/assets/bigsur-5.webp",
+      "/projects/assets/bigsur-8.webp",
+      "/projects/assets/bigsur-12.webp",
+      "/projects/assets/coastal-restoration-3.webp",
+      "/projects/assets/coastal-restoration-6.webp",
+      "/projects/assets/coastal-restoration-10.webp",
+      "/projects/assets/coastal-restoration-14.webp"
+    ]
+  },
   "carmel-knolls": {
     "description": "This was more than a remodel; it was a complete transformation. Over 12 months, we took a 2,200 sq ft house and revitalized it from the ground up. The project included a new roofline, foundation repairs, 18 energy-efficient windows, and 1,400 sq ft of new composite decking. We also undertook extensive site work, including 200 linear feet of retaining walls and a complete landscape renovation, proving that with the right vision, any property can be reborn.",
     "images": [
