@@ -14,6 +14,48 @@ export type Database = {
   }
   public: {
     Tables: {
+      contact_inquiries: {
+        Row: {
+          budget: string | null
+          created_at: string
+          email: string
+          id: string
+          location: string | null
+          message: string
+          name: string
+          phone: string | null
+          project_type: string
+          timeline: string | null
+          updated_at: string
+        }
+        Insert: {
+          budget?: string | null
+          created_at?: string
+          email: string
+          id?: string
+          location?: string | null
+          message: string
+          name: string
+          phone?: string | null
+          project_type: string
+          timeline?: string | null
+          updated_at?: string
+        }
+        Update: {
+          budget?: string | null
+          created_at?: string
+          email?: string
+          id?: string
+          location?: string | null
+          message?: string
+          name?: string
+          phone?: string | null
+          project_type?: string
+          timeline?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
       project_order: {
         Row: {
           position: number
