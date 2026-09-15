@@ -10,7 +10,7 @@ import { useSiteMedia } from "@/lib/site-media";
 
 import profile from "@/assets/mike-profile.webp";
 import heroImage from "@/assets/southcoast-cover.webp";
-import houstonOaks from "@/assets/houston-oaks-cover.png";
+import houstonOaks from "@/assets/houston-oaks-cover.webp";
 import poolDetail from "@/assets/hospitality-pool-1.webp";
 import poolFinished from "@/assets/pool-design-36.webp";
 import alpineCover from "@/assets/alpine-ranch-cover.webp";
@@ -126,6 +126,8 @@ function Index() {
             src={media("hero", heroImage)}
             alt=""
             aria-hidden="true"
+            fetchPriority="high"
+            decoding="async"
             className="absolute inset-0 h-full w-full scale-105 object-cover object-center"
             style={{ filter: "grayscale(35%) contrast(1.05) brightness(0.7)" }}
           />

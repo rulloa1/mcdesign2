@@ -1,7 +1,7 @@
 import { projects } from "@/data/projects";
 
 import profile from "@/assets/mike-profile.webp";
-import houstonOaks from "@/assets/houston-oaks-cover.png";
+import houstonOaks from "@/assets/houston-oaks-cover.webp";
 import poolDetail from "@/assets/hospitality-pool-1.webp";
 import poolFinished from "@/assets/pool-design-36.webp";
 import alpine3 from "@/assets/alpine-ranch-3.webp";

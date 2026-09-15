@@ -39,6 +39,7 @@ const emptyForm: ContactInquiryInput = {
   budget: "",
   timeline: "",
   message: "",
+  website: "",
 };
 
 type FormErrors = Partial<Record<keyof ContactInquiryInput, string>>;
@@ -129,19 +130,19 @@ function ContactPage() {
               </div>
             ) : (
               <form onSubmit={submit} noValidate className="grid gap-x-8 gap-y-9 md:grid-cols-2">
-                <Field label="Name" error={errors.name} required>
-                  <input id="name" autoComplete="name" maxLength={100} value={form.name} onChange={(e) => update("name", e.target.value)} className={inputClass} placeholder="Your name" aria-invalid={Boolean(errors.name)} />
+                <Field label="Name" htmlFor="name" error={errors.name} required>
+                  <input id="name" required autoComplete="name" maxLength={100} value={form.name} onChange={(e) => update("name", e.target.value)} className={inputClass} placeholder="Your name" aria-invalid={Boolean(errors.name)} aria-describedby={errors.name ? "name-error" : undefined} />
                 </Field>
-                <Field label="Email" error={errors.email} required>
-                  <input id="email" type="email" autoComplete="email" maxLength={255} value={form.email} onChange={(e) => update("email", e.target.value)} className={inputClass} placeholder="you@company.com" aria-invalid={Boolean(errors.email)} />
+                <Field label="Email" htmlFor="email" error={errors.email} required>
+                  <input id="email" required type="email" autoComplete="email" maxLength={255} value={form.email} onChange={(e) => update("email", e.target.value)} className={inputClass} placeholder="you@company.com" aria-invalid={Boolean(errors.email)} aria-describedby={errors.email ? "email-error" : undefined} />
                 </Field>
-                <Field label="Phone">
+                <Field label="Phone" htmlFor="phone">
                   <input id="phone" type="tel" autoComplete="tel" maxLength={40} value={form.phone} onChange={(e) => update("phone", e.target.value)} className={inputClass} placeholder="Optional" />
                 </Field>
-                <Field label="Project location" error={errors.location}>
-                  <input id="location" autoComplete="address-level2" maxLength={120} value={form.location} onChange={(e) => update("location", e.target.value)} className={inputClass} placeholder="City, state or country" aria-invalid={Boolean(errors.location)} />
+                <Field label="Project location" htmlFor="location" error={errors.location}>
+                  <input id="location" autoComplete="address-level2" maxLength={120} value={form.location} onChange={(e) => update("location", e.target.value)} className={inputClass} placeholder="City, state or country" aria-invalid={Boolean(errors.location)} aria-describedby={errors.location ? "location-error" : undefined} />
                 </Field>
-                <Field label="Project type" error={errors.projectType} required>
+                <Field label="Project type" htmlFor="projectType" error={errors.projectType} required>
                   <select id="projectType" value={form.projectType} onChange={(e) => update("projectType", e.target.value as ContactInquiryInput["projectType"])} className={inputClass}>
                     <option value="owners-representation">Owner's Representation</option>
                     <option value="residential-construction">Residential Construction</option>
@@ -152,7 +153,7 @@ function ContactPage() {
                     <option value="other">Other</option>
                   </select>
                 </Field>
-                <Field label="Anticipated budget">
+                <Field label="Anticipated budget" htmlFor="budget">
                   <select id="budget" value={form.budget} onChange={(e) => update("budget", e.target.value as ContactInquiryInput["budget"])} className={inputClass}>
                     <option value="">Prefer not to say</option>
                     <option value="under-1m">Under $1M</option>
@@ -162,7 +163,7 @@ function ContactPage() {
                     <option value="not-sure">Not yet determined</option>
                   </select>
                 </Field>
-                <Field label="Anticipated start">
+                <Field label="Anticipated start" htmlFor="timeline">
                   <select id="timeline" value={form.timeline} onChange={(e) => update("timeline", e.target.value as ContactInquiryInput["timeline"])} className={inputClass}>
                     <option value="">Select a timeframe</option>
                     <option value="immediately">Immediately</option>
@@ -173,8 +174,12 @@ function ContactPage() {
                   </select>
                 </Field>
                 <div className="hidden md:block" />
-                <Field label="Tell us about the project" error={errors.message} required full>
-                  <textarea id="message" rows={6} minLength={10} maxLength={2000} value={form.message} onChange={(e) => update("message", e.target.value)} className={`${inputClass} resize-y leading-relaxed`} placeholder="Project scope, goals, current stage, and where experienced leadership would be most valuable." aria-invalid={Boolean(errors.message)} />
+                <div aria-hidden="true" className="absolute -left-[9999px] h-px w-px overflow-hidden">
+                  <label htmlFor="website">Leave this field empty</label>
+                  <input id="website" name="website" type="text" tabIndex={-1} autoComplete="off" value={form.website} onChange={(e) => update("website", e.target.value)} />
+                </div>
+                <Field label="Tell us about the project" htmlFor="message" error={errors.message} required full>
+                  <textarea id="message" required aria-describedby={errors.message ? "message-error" : undefined} rows={6} minLength={10} maxLength={2000} value={form.message} onChange={(e) => update("message", e.target.value)} className={`${inputClass} resize-y leading-relaxed`} placeholder="Project scope, goals, current stage, and where experienced leadership would be most valuable." aria-invalid={Boolean(errors.message)} />
                 </Field>
                 <div className="md:col-span-2 flex flex-col items-start gap-4 border-t border-carbon/10 pt-8 sm:flex-row sm:items-center sm:justify-between">
                   <p className="max-w-sm text-xs leading-relaxed text-carbon/45">Your details are used only to respond to this inquiry.</p>
@@ -199,14 +204,14 @@ function ContactPage() {
   );
 }
 
-function Field({ label, error, required, full, children }: { label: string; error?: string | undefined; required?: boolean; full?: boolean; children: React.ReactNode }) {
+function Field({ label, htmlFor, error, required, full, children }: { label: string; htmlFor: string; error?: string | undefined; required?: boolean; full?: boolean; children: React.ReactNode }) {
   return (
     <div className={full ? "md:col-span-2" : undefined}>
-      <label className="block font-mono text-[0.6rem] uppercase tracking-[0.22em] text-carbon/50">
-        {label}{required ? <span className="ml-1 text-brass-dark">*</span> : null}
+      <label htmlFor={htmlFor} className="block font-mono text-[0.6rem] uppercase tracking-[0.22em] text-carbon/50">
+        {label}{required ? <span aria-hidden="true" className="ml-1 text-brass-dark">*</span> : null}
       </label>
       {children}
-      {error ? <p className="mt-2 text-xs text-destructive">{error}</p> : null}
+      {error ? <p id={`${htmlFor}-error`} className="mt-2 text-xs text-destructive">{error}</p> : null}
     </div>
   );
 }

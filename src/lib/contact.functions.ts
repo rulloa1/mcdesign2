@@ -25,6 +25,8 @@ export const contactInquirySchema = z.object({
     .trim()
     .min(10, "Please share a little more about your project.")
     .max(2000, "Project details must be under 2,000 characters."),
+  // Honeypot: hidden from people, often auto-filled by spam bots.
+  website: z.string().max(200),
 });
 
 export type ContactInquiryInput = z.infer<typeof contactInquirySchema>;
@@ -32,6 +34,9 @@ export type ContactInquiryInput = z.infer<typeof contactInquirySchema>;
 export const submitContactInquiry = createServerFn({ method: "POST" })
   .inputValidator((input: ContactInquiryInput) => contactInquirySchema.parse(input))
   .handler(async ({ data }) => {
+    // Report success to bots that filled the honeypot, but store nothing.
+    if (data.website) return { ok: true };
+
     const url = process.env["SUPABASE_URL"];
     const key = process.env["SUPABASE_PUBLISHABLE_KEY"] ?? process.env["SUPABASE_ANON_KEY"];
     if (!url || !key) throw new Error("Inquiry service is temporarily unavailable.");
