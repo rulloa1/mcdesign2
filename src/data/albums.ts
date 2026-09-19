@@ -133,7 +133,12 @@ export const projectAlbums: Record<string, ProjectAlbum> = {
       "/projects/assets/pool-design-2b.webp",
       "/projects/assets/pool-design-3b.webp",
       "/projects/assets/pool-design-cover-b.webp",
-      "/projects/assets/pool-design-5b.webp"
+      "/projects/assets/pool-design-5b.webp",
+      "/projects/assets/pool-design-31.webp",
+      "/projects/assets/pool-design-32.webp",
+      "/projects/assets/pool-design-34.webp",
+      "/projects/assets/pool-design-35.webp",
+      "/projects/assets/pool-design-37.webp"
     ]
   },
   "north-florida": {
@@ -250,7 +255,14 @@ export const projectAlbums: Record<string, ProjectAlbum> = {
       "/projects/assets/coastal-restoration-3.webp",
       "/projects/assets/coastal-restoration-6.webp",
       "/projects/assets/coastal-restoration-10.webp",
-      "/projects/assets/coastal-restoration-14.webp"
+      "/projects/assets/coastal-restoration-14.webp",
+      "/projects/assets/civil-8.webp",
+      "/projects/assets/civil-9.webp",
+      "/projects/assets/civil-10.webp",
+      "/projects/assets/civil-11.webp",
+      "/projects/assets/civil-12.webp",
+      "/projects/assets/civil-17.webp",
+      "/projects/assets/civil-18.webp"
     ]
   },
   "carmel-knolls": {
@@ -284,7 +296,14 @@ export const projectAlbums: Record<string, ProjectAlbum> = {
       "/projects/assets/development-7.webp",
       "/projects/assets/development-8.webp",
       "/projects/assets/development-9.webp",
-      "/projects/assets/development-10.webp"
+      "/projects/assets/development-10.webp",
+      "/projects/assets/development-11.webp",
+      "/projects/assets/development-12.webp",
+      "/projects/assets/development-13.webp",
+      "/projects/assets/development-civil-4.webp",
+      "/projects/assets/development-entrance-1.webp",
+      "/projects/assets/links-estate-2.webp",
+      "/projects/assets/links-cover.webp"
     ]
   },
   "pacific-grove": {
@@ -299,7 +318,9 @@ export const projectAlbums: Record<string, ProjectAlbum> = {
       "/projects/assets/pg-7.webp",
       "/projects/assets/pg-8.webp",
       "/projects/assets/pg-9.webp",
-      "/projects/assets/pg-10.webp"
+      "/projects/assets/pg-10.webp",
+      "/projects/assets/pg-2-before.webp",
+      "/projects/assets/pg-3-before.webp"
     ]
   },
   "laguna-grande": {
@@ -373,13 +394,20 @@ export const projectAlbums: Record<string, ProjectAlbum> = {
       "/projects/assets/carmel-valley-new-cover.webp",
       "/projects/assets/carmel-valley-new-1.webp",
       "/projects/assets/carmel-valley-new-3.webp",
-      "/projects/assets/carmel-valley-new-4.webp"
+      "/projects/assets/carmel-valley-new-4.webp",
+      "/projects/assets/carmel-valley-1.webp",
+      "/projects/assets/carmel-valley-2.webp"
     ]
   },
   "carmel-forest": {
     "description": "A custom addition in the pines of Carmel by the Sea, built to open the home from forest canopy to ocean view. Detailed carriage-style doors, a wrought-iron balcony and hand-set paver drive keep the new work indistinguishable from the original village architecture.",
     "images": [
-      "/projects/assets/carmel-valley-new-2.webp"
+      "/projects/assets/carmel-valley-new-2.webp",
+      "/projects/assets/carmel-2-1.webp",
+      "/projects/assets/carmel-2-2.webp",
+      "/projects/assets/carmel-2-3.webp",
+      "/projects/assets/carmel-2-4.webp",
+      "/projects/assets/carmel-2-5.webp"
     ]
   },
   "syracuse": {
@@ -446,13 +474,51 @@ export const projectAlbums: Record<string, ProjectAlbum> = {
       "/projects/assets/carmel-3-2.webp",
       "/projects/assets/carmel-3-3.webp",
       "/projects/assets/carmel-3-4.webp",
-      "/projects/assets/carmel-3-5.webp"
+      "/projects/assets/carmel-3-5.webp",
+      "/projects/assets/carmel-3-11.webp",
+      "/projects/assets/carmel-3-12.webp",
+      "/projects/assets/carmel-3-13.webp",
+      "/projects/assets/carmel-3-14.webp",
+      "/projects/assets/carmel-3-15.webp",
+      "/projects/assets/carmel-3-16.webp",
+      "/projects/assets/carmel-3-17.webp",
+      "/projects/assets/carmel-3-18.webp",
+      "/projects/assets/carmel-3-19.webp",
+      "/projects/assets/carmel-3-20.webp",
+      "/projects/assets/carmel-3-21.webp",
+      "/projects/assets/carmel-3-22.webp",
+      "/projects/assets/carmel-3-23.webp",
+      "/projects/assets/carmel-3-24.webp",
+      "/projects/assets/carmel-3-25.webp",
+      "/projects/assets/carmel1-10-after.webp",
+      "/projects/assets/carmel1-12-before.webp",
+      "/projects/assets/carmel1-13-after.webp",
+      "/projects/assets/carmel1-14-before.webp",
+      "/projects/assets/carmel1-15-after.webp",
+      "/projects/assets/carmel1-16-before.webp",
+      "/projects/assets/carmel1-17-after.webp",
+      "/projects/assets/carmel1-18-after.webp",
+      "/projects/assets/carmel1-19-before.webp"
     ]
   },
   "hillside-restoration": {
     "description": "In just four months, we executed a critical environmental cleanup on a 1.5-acre hillside. We removed over 80 tons of debris, including abandoned vehicles and construction waste. We implemented erosion control measures, restored the native plant life with over 200 new specimens, and improved drainage systems. This project was about more than just cleaning up; it was about healing a piece of the natural landscape.",
     "images": [
-      "/projects/assets/hillside-restoration-cover.webp"
+      "/projects/assets/hillside-restoration-cover.webp",
+      "/projects/assets/cleanup-1.webp",
+      "/projects/assets/cleanup-2.webp",
+      "/projects/assets/cleanup-3.webp",
+      "/projects/assets/cleanup-4.webp",
+      "/projects/assets/cleanup-5.webp",
+      "/projects/assets/cleanup-6.webp",
+      "/projects/assets/cleanup-7.webp",
+      "/projects/assets/cleanup-8.webp",
+      "/projects/assets/cleanup-9.webp",
+      "/projects/assets/cleanup-10.webp",
+      "/projects/assets/cleanup-11.webp",
+      "/projects/assets/cleanup-12.webp",
+      "/projects/assets/cleanup-13.webp",
+      "/projects/assets/cleanup-15.webp"
     ]
   }
 };
