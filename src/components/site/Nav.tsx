@@ -44,6 +44,9 @@ export function Nav() {
             <Link to="/portfolio" className="transition-colors duration-500 hover:text-brass">
               Portfolio
             </Link>
+            <Link to="/resume" className="transition-colors duration-500 hover:text-brass">
+              Resume
+            </Link>
             <Link to="/contact" className="transition-colors duration-500 hover:text-brass">
               Contact
             </Link>
@@ -93,6 +96,9 @@ export function Nav() {
           </Link>
           <Link to="/portfolio" onClick={() => setOpen(false)} className="hover:text-brass">
             Portfolio
+          </Link>
+          <Link to="/resume" onClick={() => setOpen(false)} className="hover:text-brass">
+            Resume
           </Link>
           <Link to="/contact" onClick={() => setOpen(false)} className="hover:text-brass">
             Contact
