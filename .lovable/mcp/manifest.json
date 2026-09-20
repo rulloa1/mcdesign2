@@ -1,0 +1,81 @@
+{
+  "version": 1,
+  "sdk_version": "2.3.0",
+  "path": "/mcp",
+  "auth": {
+    "type": "none"
+  },
+  "mcp": {
+    "server": {
+      "name": "vivid-backgrounds",
+      "version": "0.1.0",
+      "title": "Vivid Backgrounds"
+    },
+    "tools": [
+      {
+        "name": "list_categories",
+        "title": "List project categories",
+        "description": "List the portfolio's project categories with their labels and project counts.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": null,
+        "outputSchema": null
+      },
+      {
+        "name": "list_projects",
+        "title": "List projects",
+        "description": "List the published portfolio projects of Michael Chandler / MC Design Build, optionally filtered by category. Returns id, title, location, specs and roles.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "category": {
+              "type": "string",
+              "description": "Optional category filter. One of: owners-representation, residential-construction, design-build, hospitality, civil, development, commercial, estate-management"
+            },
+            "search": {
+              "type": "string",
+              "description": "Optional free-text match on title, subtitle or location."
+            }
+          },
+          "additionalProperties": false,
+          "$schema": "http://json-schema.org/draft-07/schema#"
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "get_project",
+        "title": "Get project details",
+        "description": "Get the full published details of one portfolio project by id, including its narrative description and photo gallery paths.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "minLength": 1,
+              "description": "Project id, e.g. 'miami-beach' (use list_projects to discover ids)."
+            }
+          },
+          "required": [
+            "id"
+          ],
+          "additionalProperties": false,
+          "$schema": "http://json-schema.org/draft-07/schema#"
+        },
+        "outputSchema": null
+      }
+    ]
+  }
+}
