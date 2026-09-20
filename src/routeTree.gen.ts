@@ -14,6 +14,7 @@ import { Route as AuthRouteImport } from './routes/auth'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as DesignRouteImport } from './routes/design'
 import { Route as PortfolioRouteImport } from './routes/portfolio'
+import { Route as ResumeRouteImport } from './routes/resume'
 import { Route as ProjectsProjectIdRouteImport } from './routes/projects.$projectId'
 import { Route as StudioMediaRouteImport } from './routes/studio.media'
 
@@ -42,6 +43,11 @@ const PortfolioRoute = PortfolioRouteImport.update({
   path: '/portfolio',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ResumeRoute = ResumeRouteImport.update({
+  id: '/resume',
+  path: '/resume',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ProjectsProjectIdRoute = ProjectsProjectIdRouteImport.update({
   id: '/projects/$projectId',
   path: '/projects/$projectId',
@@ -59,6 +65,7 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/design': typeof DesignRoute
   '/portfolio': typeof PortfolioRoute
+  '/resume': typeof ResumeRoute
   '/projects/$projectId': typeof ProjectsProjectIdRoute
   '/studio/media': typeof StudioMediaRoute
 }
@@ -68,6 +75,7 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/design': typeof DesignRoute
   '/portfolio': typeof PortfolioRoute
+  '/resume': typeof ResumeRoute
   '/projects/$projectId': typeof ProjectsProjectIdRoute
   '/studio/media': typeof StudioMediaRoute
 }
@@ -78,6 +86,7 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/design': typeof DesignRoute
   '/portfolio': typeof PortfolioRoute
+  '/resume': typeof ResumeRoute
   '/projects/$projectId': typeof ProjectsProjectIdRoute
   '/studio/media': typeof StudioMediaRoute
 }
@@ -89,6 +98,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/design'
     | '/portfolio'
+    | '/resume'
     | '/projects/$projectId'
     | '/studio/media'
   fileRoutesByTo: FileRoutesByTo
@@ -98,6 +108,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/design'
     | '/portfolio'
+    | '/resume'
     | '/projects/$projectId'
     | '/studio/media'
   id:
@@ -107,6 +118,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/design'
     | '/portfolio'
+    | '/resume'
     | '/projects/$projectId'
     | '/studio/media'
   fileRoutesById: FileRoutesById
@@ -117,6 +129,7 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   DesignRoute: typeof DesignRoute
   PortfolioRoute: typeof PortfolioRoute
+  ResumeRoute: typeof ResumeRoute
   ProjectsProjectIdRoute: typeof ProjectsProjectIdRoute
   StudioMediaRoute: typeof StudioMediaRoute
 }
@@ -158,6 +171,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PortfolioRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/resume': {
+      id: '/resume'
+      path: '/resume'
+      fullPath: '/resume'
+      preLoaderRoute: typeof ResumeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/projects/$projectId': {
       id: '/projects/$projectId'
       path: '/projects/$projectId'
@@ -181,6 +201,7 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   DesignRoute: DesignRoute,
   PortfolioRoute: PortfolioRoute,
+  ResumeRoute: ResumeRoute,
   ProjectsProjectIdRoute: ProjectsProjectIdRoute,
   StudioMediaRoute: StudioMediaRoute,
 }
