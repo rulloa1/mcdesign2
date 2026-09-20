@@ -1,0 +1,18 @@
+# Normalise all text files to LF in the repo and on checkout.
+# Prevents Windows editors from producing whole-file CRLF diffs.
+* text=auto eol=lf
+
+# Binary assets - never touch
+*.webp binary
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.gif  binary
+*.ico  binary
+*.woff binary
+*.woff2 binary
+*.mp4  binary
+*.pdf  binary
+
+# Lockfile - keep LF, collapse merge noise
+bun.lock -diff
