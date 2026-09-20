@@ -13,8 +13,10 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as DesignRouteImport } from './routes/design'
+import { Route as McpRouteImport } from './routes/mcp'
 import { Route as PortfolioRouteImport } from './routes/portfolio'
 import { Route as ResumeRouteImport } from './routes/resume'
+import { Route as Char91DotwellKnownChar93OauthProtectedResourceRouteImport } from './routes/[.well-known]/oauth-protected-resource'
 import { Route as ProjectsProjectIdRouteImport } from './routes/projects.$projectId'
 import { Route as StudioMediaRouteImport } from './routes/studio.media'
 
@@ -38,6 +40,11 @@ const DesignRoute = DesignRouteImport.update({
   path: '/design',
   getParentRoute: () => rootRouteImport,
 } as any)
+const McpRoute = McpRouteImport.update({
+  id: '/mcp',
+  path: '/mcp',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PortfolioRoute = PortfolioRouteImport.update({
   id: '/portfolio',
   path: '/portfolio',
@@ -48,6 +55,12 @@ const ResumeRoute = ResumeRouteImport.update({
   path: '/resume',
   getParentRoute: () => rootRouteImport,
 } as any)
+const Char91DotwellKnownChar93OauthProtectedResourceRoute =
+  Char91DotwellKnownChar93OauthProtectedResourceRouteImport.update({
+    id: '/.well-known/oauth-protected-resource',
+    path: '/.well-known/oauth-protected-resource',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const ProjectsProjectIdRoute = ProjectsProjectIdRouteImport.update({
   id: '/projects/$projectId',
   path: '/projects/$projectId',
@@ -64,8 +77,10 @@ export interface FileRoutesByFullPath {
   '/auth': typeof AuthRoute
   '/contact': typeof ContactRoute
   '/design': typeof DesignRoute
+  '/mcp': typeof McpRoute
   '/portfolio': typeof PortfolioRoute
   '/resume': typeof ResumeRoute
+  '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/projects/$projectId': typeof ProjectsProjectIdRoute
   '/studio/media': typeof StudioMediaRoute
 }
@@ -74,8 +89,10 @@ export interface FileRoutesByTo {
   '/auth': typeof AuthRoute
   '/contact': typeof ContactRoute
   '/design': typeof DesignRoute
+  '/mcp': typeof McpRoute
   '/portfolio': typeof PortfolioRoute
   '/resume': typeof ResumeRoute
+  '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/projects/$projectId': typeof ProjectsProjectIdRoute
   '/studio/media': typeof StudioMediaRoute
 }
@@ -85,8 +102,10 @@ export interface FileRoutesById {
   '/auth': typeof AuthRoute
   '/contact': typeof ContactRoute
   '/design': typeof DesignRoute
+  '/mcp': typeof McpRoute
   '/portfolio': typeof PortfolioRoute
   '/resume': typeof ResumeRoute
+  '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/projects/$projectId': typeof ProjectsProjectIdRoute
   '/studio/media': typeof StudioMediaRoute
 }
@@ -97,8 +116,10 @@ export interface FileRouteTypes {
     | '/auth'
     | '/contact'
     | '/design'
+    | '/mcp'
     | '/portfolio'
     | '/resume'
+    | '/.well-known/oauth-protected-resource'
     | '/projects/$projectId'
     | '/studio/media'
   fileRoutesByTo: FileRoutesByTo
@@ -107,8 +128,10 @@ export interface FileRouteTypes {
     | '/auth'
     | '/contact'
     | '/design'
+    | '/mcp'
     | '/portfolio'
     | '/resume'
+    | '/.well-known/oauth-protected-resource'
     | '/projects/$projectId'
     | '/studio/media'
   id:
@@ -117,8 +140,10 @@ export interface FileRouteTypes {
     | '/auth'
     | '/contact'
     | '/design'
+    | '/mcp'
     | '/portfolio'
     | '/resume'
+    | '/.well-known/oauth-protected-resource'
     | '/projects/$projectId'
     | '/studio/media'
   fileRoutesById: FileRoutesById
@@ -128,8 +153,10 @@ export interface RootRouteChildren {
   AuthRoute: typeof AuthRoute
   ContactRoute: typeof ContactRoute
   DesignRoute: typeof DesignRoute
+  McpRoute: typeof McpRoute
   PortfolioRoute: typeof PortfolioRoute
   ResumeRoute: typeof ResumeRoute
+  Char91DotwellKnownChar93OauthProtectedResourceRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   ProjectsProjectIdRoute: typeof ProjectsProjectIdRoute
   StudioMediaRoute: typeof StudioMediaRoute
 }
@@ -164,6 +191,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DesignRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/mcp': {
+      id: '/mcp'
+      path: '/mcp'
+      fullPath: '/mcp'
+      preLoaderRoute: typeof McpRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/portfolio': {
       id: '/portfolio'
       path: '/portfolio'
@@ -176,6 +210,13 @@ declare module '@tanstack/react-router' {
       path: '/resume'
       fullPath: '/resume'
       preLoaderRoute: typeof ResumeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/.well-known/oauth-protected-resource': {
+      id: '/.well-known/oauth-protected-resource'
+      path: '/.well-known/oauth-protected-resource'
+      fullPath: '/.well-known/oauth-protected-resource'
+      preLoaderRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/projects/$projectId': {
@@ -200,8 +241,11 @@ const rootRouteChildren: RootRouteChildren = {
   AuthRoute: AuthRoute,
   ContactRoute: ContactRoute,
   DesignRoute: DesignRoute,
+  McpRoute: McpRoute,
   PortfolioRoute: PortfolioRoute,
   ResumeRoute: ResumeRoute,
+  Char91DotwellKnownChar93OauthProtectedResourceRoute:
+    Char91DotwellKnownChar93OauthProtectedResourceRoute,
   ProjectsProjectIdRoute: ProjectsProjectIdRoute,
   StudioMediaRoute: StudioMediaRoute,
 }
