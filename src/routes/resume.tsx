@@ -1,11 +1,13 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Footer } from "@/components/site/Footer";
 import { Nav } from "@/components/site/Nav";
+import { useReveal } from "@/hooks/use-reveal";
+import { DEFAULT_SHARE_IMAGE, SITE_ORIGIN } from "@/lib/seo";
 
 export const Route = createFileRoute("/resume")({
   head: () => ({
     meta: [
-      { title: "Resume — Michael Chandler | MC Design Build" },
+      { title: "Resume — Michael Chandler | McDesign" },
       {
         name: "description",
         content:
@@ -13,7 +15,7 @@ export const Route = createFileRoute("/resume")({
       },
       {
         property: "og:title",
-        content: "Resume — Michael Chandler | MC Design Build",
+        content: "Resume — Michael Chandler | McDesign",
       },
       {
         property: "og:description",
@@ -21,8 +23,12 @@ export const Route = createFileRoute("/resume")({
           "Professional experience, education, and skills of Michael Chandler — strategic construction executive with 37+ years and $500M+ delivered across 12 US states and 4 countries.",
       },
       { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
+      { property: "og:url", content: `${SITE_ORIGIN}/resume` },
+      { property: "og:image", content: DEFAULT_SHARE_IMAGE },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:image", content: DEFAULT_SHARE_IMAGE },
     ],
+    links: [{ rel: "canonical", href: `${SITE_ORIGIN}/resume` }],
   }),
   component: ResumePage,
 });
@@ -303,57 +309,59 @@ const certifications = [
 function SectionHeading({ children }: { children: string }) {
   return (
     <div className="mb-8 flex items-center gap-4">
-      <h2 className="shrink-0 font-mono text-[0.65rem] uppercase tracking-[0.28em] text-brass">{children}</h2>
-      <div className="h-px w-full bg-bone/10" />
+      <h2 className="label shrink-0 text-blueline">{children}</h2>
+      <div className="h-px w-full bg-rule" />
     </div>
   );
 }
 
 function RoleBlock({ role }: { role: Role }) {
   return (
-    <article className="border-l border-bone/10 pl-6 md:pl-8">
-      <div className="mb-2 flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
-        <h3 className="font-serif text-xl text-bone md:text-2xl">{role.company}</h3>
-        <span className="font-mono text-[0.65rem] uppercase tracking-[0.2em] text-bone/40">{role.period}</span>
+    <article data-reveal="rise" className="grid border-t border-rule py-7 md:grid-cols-[15rem_1fr] md:gap-8">
+      <div className="label text-graphite">
+        <p>{role.period}</p>
+        <p className="mt-2 text-blueline">{role.company}</p>
+        <p className="mt-2">{role.location}</p>
       </div>
-      <p className="mb-1 text-sm text-brass/90">
-        {role.title}
-        {role.location ? <span className="text-bone/40"> · {role.location}</span> : null}
-      </p>
-      {role.note ? <p className="mb-3 font-serif text-sm italic text-bone/50">{role.note}</p> : null}
+      <div className="mt-5 md:mt-0">
+      <div className="mb-2 flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
+        <h3 className="text-[22px] font-semibold text-ink">{role.title}</h3>
+      </div>
+      {role.note ? <p className="mt-2 text-sm italic text-graphite">{role.note}</p> : null}
       {role.bullets.length > 0 && (
         <ul className="mt-3 space-y-3">
           {role.bullets.map((b) => (
-            <li key={b.label ?? b.text} className="text-sm leading-relaxed text-bone/70">
-              {b.label ? <span className="text-bone/90">{b.label}: </span> : null}
+            <li key={b.label ?? b.text} className="text-sm leading-relaxed text-graphite">
+              {b.label ? <span className="font-semibold text-ink">{b.label}: </span> : null}
               {b.text}
             </li>
           ))}
         </ul>
       )}
       {role.bullets.length === 0 && (
-        <p className="mt-2 text-sm italic text-bone/40">Details available upon request.</p>
+        <p className="mt-2 text-sm italic text-graphite">Details available upon request.</p>
       )}
+      </div>
     </article>
   );
 }
 
 function ResumePage() {
+  useReveal();
   return (
-    <div className="min-h-[100dvh] bg-carbon text-bone">
+    <div className="min-h-dvh bg-mylar text-ink">
       <Nav />
-      <main className="px-6 pb-24 pt-32 md:pt-40">
-      <div className="mx-auto max-w-3xl">
-        <header className="mb-16">
-          <p className="mb-3 font-mono text-[0.6rem] uppercase tracking-[0.28em] text-brass">MC Design Build</p>
-          <h1 className="font-serif text-4xl leading-tight md:text-5xl">Michael Chandler</h1>
-          <p className="mt-3 font-mono text-xs uppercase tracking-[0.2em] text-bone/50">
+      <header className="sheet-grid border-b border-rule-on-dark bg-cyanotype pt-16 text-chalk">
+        <div className="page-grid py-20 md:py-28"><div className="col-span-12 lg:col-span-8">
+          <p className="label text-blueline-on-dark">G-200 · Resume</p>
+          <h1 className="display h1-size mt-6">Michael Chandler</h1>
+          <p className="label mt-5 text-blueline-on-dark">
             VP of Operations · Construction Executive
           </p>
-          <p className="mt-2 text-sm text-bone/60">
+          <p className="mt-3 text-sm text-chalk-muted">
             Spring, TX · mike.rcccon@yahoo.com · (435) 237-7373
           </p>
-          <p className="mt-6 text-sm leading-relaxed text-bone/70">
+          <p className="mt-6 text-chalk-muted">
             Strategic construction leader with 37+ years of experience steering multimillion-dollar developments
             from conception to handover. Expert in navigating the "triple threat" of modern construction: labor
             shortages, technological integration (Procore Certified), and complex international logistics. Proven
@@ -361,15 +369,18 @@ function ResumePage() {
             4 countries. Native-level fluency in Spanish with a unique ability to bridge high-level architectural
             design with rigorous P&L stewardship and field execution.
           </p>
-        </header>
+        </div></div>
+      </header>
+      <main id="main" className="page-grid py-16 md:py-24">
+      <div className="col-span-12 lg:col-span-10 lg:col-start-2">
 
         <section className="mb-16">
           <SectionHeading>Core Competencies</SectionHeading>
           <dl className="grid gap-4 sm:grid-cols-2">
             {competencies.map((c) => (
-              <div key={c.label} className="border border-bone/10 p-5" style={{ background: "rgb(201 169 97 / 0.03)" }}>
-                <dt className="mb-2 font-mono text-[0.6rem] uppercase tracking-[0.22em] text-brass">{c.label}</dt>
-                <dd className="text-sm leading-relaxed text-bone/70">{c.items}</dd>
+              <div key={c.label} className="border border-rule p-5">
+                <dt className="label mb-2 text-blueline">{c.label}</dt>
+                <dd className="text-sm leading-relaxed text-graphite">{c.items}</dd>
               </div>
             ))}
           </dl>
@@ -390,12 +401,12 @@ function ResumePage() {
             {earlierCareer.map((e) => (
               <article key={`${e.org}-${e.period}`}>
                 <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
-                  <h3 className="text-base text-bone/90">
-                    {e.role} · <span className="text-brass/90">{e.org}</span>
+                  <h3 className="text-base text-ink">
+                    {e.role} · <span className="text-blueline">{e.org}</span>
                   </h3>
-                  <span className="font-mono text-[0.65rem] uppercase tracking-[0.2em] text-bone/40">{e.period}</span>
+                  <span className="label text-graphite">{e.period}</span>
                 </div>
-                <p className="mt-1 text-sm leading-relaxed text-bone/60">{e.text}</p>
+                <p className="mt-1 text-sm leading-relaxed text-graphite">{e.text}</p>
               </article>
             ))}
           </div>
@@ -405,9 +416,9 @@ function ResumePage() {
           <SectionHeading>Career Impact</SectionHeading>
           <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
             {impact.map((m) => (
-              <div key={m.label} className="border border-bone/10 p-5 text-center" style={{ background: "rgb(201 169 97 / 0.03)" }}>
-                <p className="font-serif text-xl text-brass md:text-2xl">{m.value}</p>
-                <p className="mt-2 font-mono text-[0.55rem] uppercase tracking-[0.18em] text-bone/50">{m.label}</p>
+              <div key={m.label} className="border border-rule p-5 text-center">
+                <p className="display text-xl text-ink md:text-2xl">{m.value}</p>
+                <p className="label mt-2 text-graphite">{m.label}</p>
               </div>
             ))}
           </div>
@@ -416,8 +427,8 @@ function ResumePage() {
         <section className="mb-16">
           <SectionHeading>Education</SectionHeading>
           <div className="flex flex-wrap items-baseline justify-between gap-x-6">
-            <h3 className="font-serif text-lg text-bone">Architecture Studies — University of Texas</h3>
-            <span className="font-mono text-[0.65rem] uppercase tracking-[0.2em] text-bone/40">1985</span>
+            <h3 className="text-[22px] font-semibold text-ink">Architecture Studies — University of Texas</h3>
+            <span className="label text-graphite">1985</span>
           </div>
         </section>
 
@@ -425,12 +436,12 @@ function ResumePage() {
           <SectionHeading>Certifications & Distinctions</SectionHeading>
           <ul className="space-y-4">
             {certifications.map((c) => (
-              <li key={c.label} className="text-sm leading-relaxed text-bone/70">
-                <span className="text-bone/90">{c.label}</span> — {c.text}
+              <li key={c.label} className="text-sm leading-relaxed text-graphite">
+                <span className="font-semibold text-ink">{c.label}</span> — {c.text}
               </li>
             ))}
           </ul>
-          <p className="mt-10 border-t border-bone/10 pt-6 font-mono text-[0.6rem] uppercase tracking-[0.2em] text-bone/40">
+          <p className="label mt-10 border-t border-rule pt-6 text-graphite">
             Professional references and detailed project portfolio available upon request.
           </p>
         </section>
