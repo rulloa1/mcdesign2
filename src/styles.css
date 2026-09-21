@@ -316,6 +316,48 @@ table {
 .cover-line-mask {
   overflow: hidden;
 }
+.cover-line-mask.cover-line-cloud {
+  overflow: visible;
+}
+
+.skip-link {
+  position: fixed;
+  top: 0.5rem;
+  left: 0.5rem;
+  z-index: 200;
+  padding: 0.75rem 1rem;
+  background: var(--mylar);
+  color: var(--ink);
+  border: 1px solid var(--redline);
+  transform: translateY(-150%);
+  transition: transform var(--dur-micro) var(--ease-snap);
+}
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+.menu-icon {
+  display: grid;
+  width: 20px;
+  gap: 5px;
+}
+.menu-icon > span {
+  display: block;
+  height: 1px;
+  width: 20px;
+  background: currentColor;
+  transform-origin: center;
+  transition: transform var(--dur-micro) var(--ease-snap), opacity var(--dur-micro) var(--ease-snap);
+}
+.menu-icon.is-open > span:first-child {
+  transform: translateY(6px) rotate(45deg);
+}
+.menu-icon.is-open > span:nth-child(2) {
+  opacity: 0;
+}
+.menu-icon.is-open > span:last-child {
+  transform: translateY(-6px) rotate(-45deg);
+}
 
 .cover-edge {
   position: absolute;
@@ -443,6 +485,14 @@ html.js-motion:not(.intro-done) .cover-edge-right {
 html.js-motion:not(.intro-done) .cover-line {
   transform: translateY(110%);
   animation: cover-line-in var(--dur-scene) var(--ease-settle) forwards;
+}
+html.js-motion:not(.intro-done) .cover-line-cloud .cover-line {
+  transform: none;
+  animation: none;
+}
+html.js-motion:not(.intro-done) .cover-line-cloud .revision-text {
+  transform: translateY(110%);
+  animation: cover-line-in var(--dur-scene) var(--ease-settle) 240ms forwards;
 }
 html.js-motion:not(.intro-done) .cover-line-mask:nth-child(1) .cover-line {
   animation-delay: 120ms;
@@ -638,6 +688,7 @@ html.js-motion .scroll-cloud.is-revealed .revision-cloud-path {
   html.js-motion [data-reveal],
   html.js-motion .cover-edge,
   html.js-motion .cover-line,
+  html.js-motion .revision-text,
   html.js-motion .cover-photo,
   html.js-motion .cover-subhead,
   html.js-motion .cover-cta,
