@@ -12,6 +12,7 @@ import { useEffect, type ReactNode } from "react";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Button } from "@/components/ui/button";
+import { DEFAULT_SHARE_IMAGE } from "@/lib/seo";
 
 function NotFoundComponent() {
   return (
@@ -45,10 +46,10 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   return (
     <main id="main" className="flex min-h-dvh items-center justify-center bg-mylar px-4">
       <div className="max-w-md text-center">
-        <h1 className="text-xl font-semibold tracking-tight text-foreground">
+        <h1 className="display text-4xl text-ink">
           This page didn't load
         </h1>
-        <p className="mt-2 text-sm text-muted-foreground">
+        <p className="mt-3 text-graphite">
           Something went wrong on our end. You can try refreshing or head back home.
         </p>
         <div className="mt-6 flex flex-wrap justify-center gap-2">
@@ -93,7 +94,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       { property: "og:site_name", content: "McDesign" },
       { property: "og:type", content: "website" },
+      { property: "og:image", content: DEFAULT_SHARE_IMAGE },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:image", content: DEFAULT_SHARE_IMAGE },
     ],
     links: [
       {
