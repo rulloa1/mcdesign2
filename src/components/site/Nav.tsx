@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
+import { useActiveSheet } from "@/hooks/use-active-sheet";
 
 const links = [
   { href: "/#work", label: "G-002 Work" },
@@ -10,6 +11,7 @@ const links = [
 
 export function Nav() {
   const [open, setOpen] = useState(false);
+  const { active, coverGone, contactVisible } = useActiveSheet();
   const overlay = useRef<HTMLDivElement>(null);
   useEffect(() => {
     if (overlay.current) overlay.current.inert = !open;
@@ -44,9 +46,23 @@ export function Nav() {
           <a href="/#contact" onClick={() => setOpen(false)} className="label mt-auto flex h-[52px] items-center justify-center bg-redline text-chalk hover:bg-redline-press">Contact</a>
         </nav>
       </div>
-      <div className="fixed inset-x-0 bottom-0 z-50 flex h-[calc(56px+env(safe-area-inset-bottom))] items-start justify-between border-t border-blueline-on-dark bg-cyanotype-deep px-4 pt-1.5 lg:hidden">
-        <span className="label flex h-11 items-center text-chalk">G-001 · Cover</span><a href="/#contact" className="label flex h-11 items-center bg-redline px-4 text-chalk hover:bg-redline-press">Contact</a>
+       {coverGone && !contactVisible ? (
+         <aside aria-label="Current sheet" className="sheet-dock fixed bottom-6 right-6 z-40 hidden w-[280px] border border-blueline-on-dark bg-cyanotype-deep text-chalk lg:block">
+           <div key={`${active.number}-${active.title}`} className="sheet-dock-values grid grid-cols-2 border-b border-rule-on-dark">
+             <DockCell label="Sheet">{active.number}</DockCell>
+             <DockCell label="Title">{active.title}</DockCell>
+           </div>
+           <a href="/#contact" className="label m-3 flex h-10 items-center justify-center bg-redline px-4 text-paper-white hover:bg-redline-press">Contact</a>
+         </aside>
+       ) : null}
+       <div className="fixed inset-x-0 bottom-0 z-50 flex h-[calc(56px+env(safe-area-inset-bottom))] items-start justify-between border-t border-blueline-on-dark bg-cyanotype-deep px-4 pt-1.5 lg:hidden">
+         <span key={`${active.number}-${active.title}`} className="mobile-sheet-label label flex h-11 min-w-0 items-center truncate pr-3 text-chalk">{active.number} · {active.title}</span>
+         {!contactVisible ? <a href="/#contact" className="label flex h-11 shrink-0 items-center bg-redline px-4 text-paper-white hover:bg-redline-press">Contact</a> : null}
       </div>
     </>
   );
+}
+
+function DockCell({ label, children }: { label: string; children: React.ReactNode }) {
+  return <div className="border-r border-rule-on-dark p-3 last:border-r-0"><p className="label text-blueline-on-dark">{label}</p><p className="mt-1 text-sm text-chalk">{children}</p></div>;
 }
