@@ -22,7 +22,13 @@ export function Nav() {
   }, [open]);
   return (
     <>
-      <a href="#main" className="skip-link">Skip to content</a>
+      <a
+        href="#main"
+        className="skip-link"
+        onClick={() => window.requestAnimationFrame(() => document.querySelector<HTMLElement>("main#main")?.focus())}
+      >
+        Skip to content
+      </a>
       <header className="fixed inset-x-0 top-0 z-50 h-16 border-b border-rule-on-dark bg-cyanotype-deep">
         <nav className="page-grid h-full items-center" aria-label="Primary navigation">
           <Link to="/" className="col-span-8 flex min-w-0 items-center gap-4 lg:col-span-5">
