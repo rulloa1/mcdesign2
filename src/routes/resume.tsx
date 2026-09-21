@@ -1,4 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { Footer } from "@/components/site/Footer";
+import { Nav } from "@/components/site/Nav";
 
 export const Route = createFileRoute("/resume")({
   head: () => ({
@@ -338,7 +340,9 @@ function RoleBlock({ role }: { role: Role }) {
 
 function ResumePage() {
   return (
-    <main className="min-h-[100dvh] bg-carbon px-6 pb-24 pt-32 text-bone md:pt-40">
+    <div className="min-h-[100dvh] bg-carbon text-bone">
+      <Nav />
+      <main className="px-6 pb-24 pt-32 md:pt-40">
       <div className="mx-auto max-w-3xl">
         <header className="mb-16">
           <p className="mb-3 font-mono text-[0.6rem] uppercase tracking-[0.28em] text-brass">MC Design Build</p>
@@ -431,6 +435,8 @@ function ResumePage() {
           </p>
         </section>
       </div>
-    </main>
+      </main>
+      <Footer />
+    </div>
   );
 }

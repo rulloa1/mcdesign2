@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 
 import { BeforeAfter } from "@/components/site/BeforeAfter";
 import { Nav } from "@/components/site/Nav";
+import { Footer } from "@/components/site/Footer";
 
 const TITLE = "Design — Architecture, Interiors & Concepts | MC Design Build";
 const DESCRIPTION =
@@ -85,7 +86,9 @@ function Tile({
         src={src}
         alt={alt}
         loading="lazy"
-        className="h-full w-full object-cover transition-transform duration-[1.2s] ease-out group-hover:scale-[1.05]"
+        width="900"
+        height="675"
+        className="h-full w-full object-cover"
       />
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-carbon/70 via-transparent to-transparent opacity-70" />
       {caption ? (
@@ -105,7 +108,7 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
 
 function DesignPage() {
   return (
-    <main className="min-h-screen bg-carbon text-bone">
+     <div className="min-h-screen bg-carbon text-bone">
       <Nav />
 
       <section className="px-6 pt-36 pb-14 md:pt-44">
@@ -213,7 +216,8 @@ function DesignPage() {
             View the full project portfolio →
           </Link>
         </div>
-      </div>
-    </main>
+       </div>
+       <Footer />
+     </div>
   );
 }

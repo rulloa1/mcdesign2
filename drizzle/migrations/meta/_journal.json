@@ -1,0 +1,13 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1789974732032,
+      "tag": "0000_add_contact_inquiry_stage_and_executive_role",
+      "breakpoints": true
+    }
+  ]
+}
