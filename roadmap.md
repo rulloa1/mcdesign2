@@ -1,8 +1,7 @@
-# Stage 1 portfolio redesign
+# Stage 2 review fixes and motion
 
-- [x] Apply Drawing Set tokens, fonts, focus styles, and layout grid
-- [x] Replace shared navigation and add shared public footer/mobile contact bar
-- [x] Rebuild homepage as G-001 through G-008 portfolio sheets
-- [x] Extract shared booking form and restyle contact page
-- [x] Add inquiry project stage and executive-role support
-- [x] Verify desktop, mobile, keyboard, media slots, and diagnostics
+- [ ] Fix sheet spacing, cover composition, revision clouds, signature layouts, Yellowstone ordering, and form colors
+- [ ] Add first-paint cover intro and reusable scroll reveals
+- [ ] Add active-sheet dock and updating mobile bar
+- [ ] Refactor the homepage JSX for readability without changing content
+- [ ] Verify desktop, mobile, reduced motion, reload behavior, keyboard access, and diagnostics
