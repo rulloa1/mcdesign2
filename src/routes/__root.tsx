@@ -116,8 +116,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "document.documentElement.classList.add('js-motion');try{if(sessionStorage.getItem('mc-intro'))document.documentElement.classList.add('intro-done')}catch(e){}",
+          }}
+        />
         <HeadContent />
       </head>
       <body>
