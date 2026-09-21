@@ -17,7 +17,8 @@ export function useActiveSheet() {
 
     const middleObserver = new IntersectionObserver(
       (entries) => {
-        const current = entries.find((entry) => entry.isIntersecting)?.target as HTMLElement | undefined;
+        const current = entries.find((entry) => entry.isIntersecting)?.target as
+          HTMLElement | undefined;
         if (!current) return;
         setActive({
           number: current.dataset.sheetNumber ?? fallback.number,
