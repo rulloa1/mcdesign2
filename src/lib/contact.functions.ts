@@ -34,7 +34,7 @@ export const contactInquirySchema = z.object({
 export type ContactInquiryInput = z.infer<typeof contactInquirySchema>;
 
 export const submitContactInquiry = createServerFn({ method: "POST" })
-  .inputValidator((input: ContactInquiryInput) => contactInquirySchema.parse(input))
+  .validator((input: ContactInquiryInput) => contactInquirySchema.parse(input))
   .handler(async ({ data }) => {
     // Report success to bots that filled the honeypot, but store nothing.
     if (data.website) return { ok: true };
