@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 
 import { Nav } from "@/components/site/Nav";
+import { Footer } from "@/components/site/Footer";
 import { projects, categoryLabels } from "@/data/projects";
 import { projectAlbums } from "@/data/albums";
 import { projectSlotKey } from "@/data/media-slots";
@@ -78,6 +79,9 @@ function ProjectPage() {
         <img
           src={media(projectSlotKey(project.id), project.cover)}
           alt={project.title}
+          width="1600"
+          height="1000"
+          loading="eager"
           className="absolute inset-0 h-full w-full object-cover opacity-60"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-carbon via-carbon/40 to-transparent" />
@@ -135,11 +139,13 @@ function ProjectPage() {
                   onClick={() => setLightbox(i)}
                   className="group relative aspect-[4/3] overflow-hidden bg-brass/5"
                 >
-                  <img
+                   <img
                     src={src}
                     alt={`${project.title} — photo ${i + 1}`}
+                     width="800"
+                     height="600"
                     loading="lazy"
-                    className="h-full w-full object-cover transition-transform duration-[1200ms] group-hover:scale-[1.06]"
+                     className="h-full w-full object-cover"
                   />
                 </button>
               ))}
@@ -163,7 +169,8 @@ function ProjectPage() {
         </div>
       </main>
 
-      {lightbox !== null && images[lightbox] ? (
+       <Footer />
+       {lightbox !== null && images[lightbox] ? (
         <div
           className="fixed inset-0 z-[100] flex items-center justify-center bg-carbon/95 p-6"
           onClick={() => setLightbox(null)}
@@ -171,6 +178,8 @@ function ProjectPage() {
           <img
             src={images[lightbox]}
             alt={`${project.title} — photo ${lightbox + 1}`}
+             width="1600"
+             height="1200"
             className="max-h-[88vh] max-w-full object-contain"
           />
           <button

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 
 import { Nav } from "@/components/site/Nav";
+import { Footer } from "@/components/site/Footer";
 import { categoryLabels, type Category } from "@/data/projects";
 import { useOrderedProjects } from "@/lib/project-order";
 import { projectSlotKey } from "@/data/media-slots";
@@ -90,8 +91,8 @@ function Portfolio() {
               params={{ projectId: p.id }}
               className="project-card group relative block"
             >
-              <div className="relative h-[42vh] overflow-hidden" style={{ backgroundColor: "rgb(201 169 97 / 0.06)" }}>
-                <img src={media(projectSlotKey(p.id), p.cover)} alt={p.title} loading="lazy" className="project-img" />
+              <div className="relative h-[42vh] overflow-hidden bg-mylar">
+                <img src={media(projectSlotKey(p.id), p.cover)} alt={p.title} width="800" height="600" loading="lazy" className="project-img" />
                 <div className="project-overlay" />
               </div>
               <div className="mt-4">
@@ -119,9 +120,7 @@ function Portfolio() {
         </div>
       </main>
 
-      <footer className="bg-carbon px-6 py-16 text-center text-bone/40 md:px-20">
-        <p className="font-mono text-xs tracking-widest uppercase">MC Design Build — Michael Chandler</p>
-      </footer>
+       <Footer />
     </div>
   );
 }
