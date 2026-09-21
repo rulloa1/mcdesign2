@@ -118,6 +118,12 @@ function RootShell({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
       <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "document.documentElement.classList.add('js-motion');try{if(sessionStorage.getItem('mc-intro'))document.documentElement.classList.add('intro-done')}catch(e){}",
+          }}
+        />
         <HeadContent />
       </head>
       <body>
