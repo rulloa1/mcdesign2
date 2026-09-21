@@ -415,6 +415,15 @@ table {
   transform: scaleX(1);
 }
 
+.button-arrow {
+  transition: transform var(--dur-micro) var(--ease-snap);
+}
+
+.group:hover .button-arrow,
+.group:focus-visible .button-arrow {
+  transform: translateX(4px);
+}
+
 html.js-motion:not(.intro-done) .cover-edge-top,
 html.js-motion:not(.intro-done) .cover-edge-bottom {
   transform: scaleX(0);

@@ -232,9 +232,9 @@ function Cover() {
             <div className="cover-cta mt-6 flex flex-wrap items-center gap-6">
               <a
                 href="#work"
-                className="label flex h-[52px] items-center bg-redline px-6 text-paper-white hover:bg-redline-press"
+                className="label group flex h-[52px] items-center bg-redline px-6 text-paper-white hover:bg-redline-press"
               >
-                See the work →
+                See the work <span className="button-arrow ml-2" aria-hidden="true">→</span>
               </a>
               <Link to="/resume" className="draw-link text-chalk">
                 Resume
@@ -338,9 +338,9 @@ function WorkSheet() {
       </div>
       <Link
         to="/portfolio"
-        className="draw-link label col-span-12 mt-14 flex h-[52px] w-fit items-center border border-blueline px-6 text-ink hover:text-blueline"
+        className="draw-link label group col-span-12 mt-14 flex h-[52px] w-fit items-center border border-blueline px-6 text-ink hover:text-blueline"
       >
-        All {projects.length} projects →
+        All {projects.length} projects <span className="button-arrow ml-2" aria-hidden="true">→</span>
       </Link>
     </Sheet>
   );
