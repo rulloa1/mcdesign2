@@ -3,10 +3,12 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { BookingForm } from "@/components/site/BookingForm";
 import { Footer } from "@/components/site/Footer";
 import { Nav } from "@/components/site/Nav";
+import { ProjectCard } from "@/components/site/ProjectCard";
 import { projects, type Project } from "@/data/projects";
 import { projectSlotKey } from "@/data/media-slots";
 import { useReveal } from "@/hooks/use-reveal";
 import { useSiteMedia } from "@/lib/site-media";
+import { absoluteImage, LINKEDIN_URL, SITE_ORIGIN } from "@/lib/seo";
 import profile from "@/assets/mike-profile.webp";
 import heroImage from "@/assets/southcoast-cover.webp";
 import houstonOaks from "@/assets/houston-oaks-cover.webp";
@@ -19,9 +21,11 @@ import miamiCover from "@/assets/miami-beach-cover-enhanced.webp";
 import miami10 from "@/assets/miami-beach-10.webp";
 import miami27 from "@/assets/miami-beach-27.webp";
 
-const TITLE = "Michael Chandler — Luxury Construction Executive";
+const TITLE = "Michael Chandler — Construction Executive & Owner's Representative | McDesign";
 const DESCRIPTION =
-  "Ultra-luxury residential, hospitality, and civil construction led by Michael Chandler — 20+ years and $500M+ delivered across six global regions.";
+  "Portfolio of Michael Chandler: $500M+ of ultra-luxury residential, resort, and civil work across six regions, as builder, project manager, and owner's representative.";
+const HOME_URL = `${SITE_ORIGIN}/`;
+const SHARE_IMAGE = absoluteImage(heroImage);
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -31,9 +35,41 @@ export const Route = createFileRoute("/")({
       { property: "og:title", content: TITLE },
       { property: "og:description", content: DESCRIPTION },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: HOME_URL },
+      { property: "og:image", content: SHARE_IMAGE },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:image", content: SHARE_IMAGE },
+    ],
+    links: [{ rel: "canonical", href: HOME_URL }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Person",
+          name: "Michael Chandler",
+          jobTitle: "Construction Executive and Owner's Representative",
+          worksFor: { "@type": "Organization", name: "McDesign" },
+          address: {
+            "@type": "PostalAddress",
+            addressLocality: "Spring",
+            addressRegion: "TX",
+            addressCountry: "US",
+          },
+          sameAs: [LINKEDIN_URL],
+          email: "mailto:mike.rcccon@yahoo.com",
+          knowsAbout: [
+            "Owner's representation",
+            "Ultra-luxury residential construction",
+            "Design-build",
+            "Civil development",
+            "Hospitality construction",
+          ],
+        }),
+      },
     ],
   }),
+  staticData: { sitemap: true },
   component: Index,
 });
 
@@ -119,7 +155,9 @@ function RevisionCloud({
       className={`revision-cloud relative inline-block px-[.17em] py-[.06em] ${reveal ? "scroll-cloud" : ""}`}
       data-reveal={reveal ? "cloud" : undefined}
     >
-      {children}
+      <span className="revision-text-mask inline-block overflow-hidden align-bottom">
+        <span className="revision-text block">{children}</span>
+      </span>
       <svg
         aria-hidden="true"
         preserveAspectRatio="none"
@@ -218,8 +256,8 @@ function Cover() {
               <span className="cover-line-mask block">
                 <span className="cover-line block">Managed.</span>
               </span>
-              <span className="cover-line-mask mt-[.08em] block">
-                <span className="cover-line block">
+              <span className="cover-line-mask cover-line-cloud mt-[.08em] block overflow-visible">
+                <span className="cover-line block overflow-visible">
                   <RevisionCloud marker>Represented.</RevisionCloud>
                 </span>
               </span>
@@ -299,53 +337,21 @@ function WorkSheet() {
       <h2 className="display col-span-12 h2-size">Selected work.</h2>
       <div className="col-span-12 mt-14 grid gap-x-6 gap-y-14 md:grid-cols-2 lg:grid-cols-3">
         {selected.map((project, index) => (
-          <Link
+          <ProjectCard
             key={project.id}
-            to="/projects/$projectId"
-            params={{ projectId: project.id }}
-            className="group"
-          >
-            <p
-              data-reveal="rise"
-              style={{ "--i": index % 3 } as CSSProperties}
-              className="label mb-3 text-blueline"
-            >
-              {index + 1} / G-002
-            </p>
-            <div className="aspect-[4/3] overflow-hidden border border-blueline group-hover:outline group-hover:outline-1 group-hover:-outline-offset-1 group-hover:outline-blueline">
-              <img
-                data-reveal="develop"
-                style={{ "--i": index % 3 } as CSSProperties}
-                src={media(projectSlotKey(project.id), project.cover)}
-                alt={project.title}
-                width="800"
-                height="600"
-                loading="lazy"
-                className="h-full w-full object-cover"
-              />
-            </div>
-            <div data-reveal="rise" style={{ "--i": index % 3 } as CSSProperties}>
-              <h3 className="mt-5 text-[22px] font-semibold text-ink group-hover:underline">
-                {project.title}
-              </h3>
-              <p className="text-graphite">{project.location}</p>
-              <p className="label mt-3 text-blueline">
-                {project.role.split(",").slice(0, 2).join(",")}
-              </p>
-              <p className="mt-2 text-graphite [font-variant-numeric:tabular-nums]">
-                {project.specs}
-              </p>
-            </div>
-          </Link>
+            project={project}
+            image={media(projectSlotKey(project.id), project.cover)}
+            detail={`${index + 1} / G-002`}
+            revealIndex={index % 3}
+          />
         ))}
       </div>
       <Link
         to="/portfolio"
-        className="draw-link label group col-span-12 mt-14 flex h-[52px] w-fit items-center border border-blueline px-6 text-ink hover:text-blueline"
+        className="label group col-span-12 mt-14 flex h-[52px] w-fit items-center border border-blueline px-6 text-ink hover:text-blueline"
       >
-        All {projects.length} projects{" "}
-        <span className="button-arrow ml-2" aria-hidden="true">
-          →
+        <span className="draw-link">
+          All {projects.length} projects <span className="button-arrow inline-block" aria-hidden="true">→</span>
         </span>
       </Link>
     </Sheet>
@@ -392,6 +398,7 @@ function DetailFigure({
           width={large ? 1200 : 900}
           height={large ? 900 : 600}
           loading="lazy"
+          decoding="async"
           className="h-full w-full object-cover"
         />
       </div>
@@ -539,6 +546,7 @@ function RecordSheet() {
             width="800"
             height="1000"
             loading="lazy"
+            decoding="async"
             className="h-full w-full object-cover"
           />
         </div>
@@ -571,7 +579,7 @@ function RecordSheet() {
             Resume →
           </Link>
           <a
-            href="https://www.linkedin.com/in/michael-chandler-mc-design-build"
+            href={LINKEDIN_URL}
             target="_blank"
             rel="noreferrer"
             className="draw-link label text-blueline"
@@ -614,7 +622,7 @@ function Index() {
   return (
     <div className="bg-mylar">
       <Nav />
-      <main className="pt-16">
+      <main id="main" tabIndex={-1} className="pt-16">
         <Cover />
         <WorkSheet />
         <SignatureSheet

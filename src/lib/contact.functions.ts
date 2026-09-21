@@ -1,5 +1,4 @@
 import { createServerFn } from "@tanstack/react-start";
-import { createClient } from "@supabase/supabase-js";
 import { z } from "zod";
 
 import type { Database } from "@/integrations/supabase/types";
@@ -34,7 +33,7 @@ export const contactInquirySchema = z.object({
 export type ContactInquiryInput = z.infer<typeof contactInquirySchema>;
 
 export const submitContactInquiry = createServerFn({ method: "POST" })
-  .inputValidator((input: ContactInquiryInput) => contactInquirySchema.parse(input))
+  .validator((input: ContactInquiryInput) => contactInquirySchema.parse(input))
   .handler(async ({ data }) => {
     // Report success to bots that filled the honeypot, but store nothing.
     if (data.website) return { ok: true };
@@ -43,6 +42,7 @@ export const submitContactInquiry = createServerFn({ method: "POST" })
     const key = process.env["SUPABASE_PUBLISHABLE_KEY"] ?? process.env["SUPABASE_ANON_KEY"];
     if (!url || !key) throw new Error("Inquiry service is temporarily unavailable.");
 
+    const { createClient } = await import("@supabase/supabase-js");
     const supabasePublic = createClient<Database>(url, key, {
       auth: { storage: undefined, persistSession: false, autoRefreshToken: false },
       global: {

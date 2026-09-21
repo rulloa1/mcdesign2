@@ -18,10 +18,10 @@ import {
 export const Route = createFileRoute("/studio/media")({
   head: () => ({
     meta: [
-      { title: "Media Studio — Swap Site Images | MC Design Build" },
-      { name: "description", content: "Upload and replace hero and project images across the MC Design Build site." },
+      { title: "Media Studio — Swap Site Images | McDesign" },
+      { name: "description", content: "Upload and replace hero and project images across the McDesign site." },
       { name: "robots", content: "noindex" },
-      { property: "og:title", content: "Media Studio — MC Design Build" },
+      { property: "og:title", content: "Media Studio — McDesign" },
       { property: "og:description", content: "Upload and replace hero and project images across the site." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },

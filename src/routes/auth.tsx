@@ -6,11 +6,11 @@ import { supabase } from "@/integrations/supabase/client";
 export const Route = createFileRoute("/auth")({
   head: () => ({
     meta: [
-      { title: "Studio Sign In — MC Design Build" },
-      { name: "description", content: "Private sign-in for the MC Design Build media studio." },
+      { title: "Studio Sign In — McDesign" },
+      { name: "description", content: "Private sign-in for the McDesign media studio." },
       { name: "robots", content: "noindex" },
-      { property: "og:title", content: "Studio Sign In — MC Design Build" },
-      { property: "og:description", content: "Private sign-in for the MC Design Build media studio." },
+      { property: "og:title", content: "Studio Sign In — McDesign" },
+      { property: "og:description", content: "Private sign-in for the McDesign media studio." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
     ],

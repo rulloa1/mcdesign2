@@ -11,26 +11,28 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { Button } from "@/components/ui/button";
+import { DEFAULT_SHARE_IMAGE } from "@/lib/seo";
 
 function NotFoundComponent() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background px-4">
-      <div className="max-w-md text-center">
-        <h1 className="text-7xl font-bold text-foreground">404</h1>
-        <h2 className="mt-4 text-xl font-semibold text-foreground">Page not found</h2>
-        <p className="mt-2 text-sm text-muted-foreground">
+    <main id="main" tabIndex={-1} className="sheet-grid flex min-h-dvh items-center justify-center bg-cyanotype px-4 text-chalk">
+      <div className="max-w-md border border-rule-on-dark p-8 text-center">
+        <p className="label text-blueline-on-dark">G-404</p>
+        <h1 className="display mt-5 text-5xl">Sheet not found</h1>
+        <p className="mt-4 text-chalk-muted">
           The page you're looking for doesn't exist or has been moved.
         </p>
         <div className="mt-6">
           <Link
             to="/"
-            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+            className="draw-link label text-chalk"
           >
-            Go home
+            Back to the cover →
           </Link>
         </div>
       </div>
-    </div>
+    </main>
   );
 }
 
@@ -42,33 +44,33 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   }, [error]);
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background px-4">
+    <main id="main" tabIndex={-1} className="flex min-h-dvh items-center justify-center bg-mylar px-4">
       <div className="max-w-md text-center">
-        <h1 className="text-xl font-semibold tracking-tight text-foreground">
+        <h1 className="display text-4xl text-ink">
           This page didn't load
         </h1>
-        <p className="mt-2 text-sm text-muted-foreground">
+        <p className="mt-3 text-graphite">
           Something went wrong on our end. You can try refreshing or head back home.
         </p>
         <div className="mt-6 flex flex-wrap justify-center gap-2">
-          <button
+          <Button
             onClick={() => {
               router.invalidate();
               reset();
             }}
-            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+            className="rounded-none bg-redline text-paper-white shadow-none hover:bg-redline-press"
           >
             Try again
-          </button>
+          </Button>
           <a
             href="/"
-            className="inline-flex items-center justify-center rounded-md border border-input bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-accent"
+            className="label inline-flex min-h-11 items-center justify-center border border-blueline px-4 text-ink hover:text-blueline"
           >
             Go home
           </a>
         </div>
       </div>
-    </div>
+    </main>
   );
 }
 
@@ -77,22 +79,24 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Michael Chandler — Luxury Construction Executive" },
+      { title: "Michael Chandler — Construction Executive & Owner's Representative | McDesign" },
       {
         name: "description",
         content:
-          "Ultra-luxury residential, hospitality, and civil construction led by Michael Chandler — 20+ years and $500M+ delivered across six global regions.",
+          "Portfolio of Michael Chandler: $500M+ of ultra-luxury residential, resort, and civil work across six regions, as builder, project manager, and owner's representative.",
       },
       { name: "author", content: "Michael Chandler" },
-      { property: "og:title", content: "Michael Chandler — Luxury Construction Executive" },
+      { property: "og:title", content: "Michael Chandler — Construction Executive & Owner's Representative | McDesign" },
       {
         property: "og:description",
         content:
-          "Ultra-luxury residential, hospitality, and civil construction led by Michael Chandler — 20+ years and $500M+ delivered across six global regions.",
+          "Portfolio of Michael Chandler: $500M+ of ultra-luxury residential, resort, and civil work across six regions, as builder, project manager, and owner's representative.",
       },
-      { property: "og:site_name", content: "MC Design Build" },
+      { property: "og:site_name", content: "McDesign" },
       { property: "og:type", content: "website" },
+      { property: "og:image", content: DEFAULT_SHARE_IMAGE },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:image", content: DEFAULT_SHARE_IMAGE },
     ],
     links: [
       {

@@ -22,6 +22,19 @@ export function Nav() {
   }, [open]);
   return (
     <>
+      <a
+        href="#main"
+        className="skip-link"
+        onClick={(event) => {
+          event.preventDefault();
+          const main = document.querySelector<HTMLElement>("main#main");
+          main?.focus();
+          main?.scrollIntoView();
+          window.history.replaceState(null, "", "#main");
+        }}
+      >
+        Skip to content
+      </a>
       <header className="fixed inset-x-0 top-0 z-50 h-16 border-b border-rule-on-dark bg-cyanotype-deep">
         <nav className="page-grid h-full items-center" aria-label="Primary navigation">
           <Link to="/" className="col-span-8 flex min-w-0 items-center gap-4 lg:col-span-5">
@@ -55,17 +68,23 @@ export function Nav() {
               type="button"
               variant="ghost"
               size="icon"
-              aria-label={open ? "Close navigation menu" : "Open navigation menu"}
+              aria-label={open ? "Close menu" : "Open menu"}
               aria-expanded={open}
+              aria-controls="mobile-navigation"
               onClick={() => setOpen((value) => !value)}
               className="h-11 w-11 rounded-none text-chalk hover:bg-transparent hover:text-blueline-on-dark"
             >
-              <span className="label text-lg">{open ? "×" : "☰"}</span>
+              <span className={`menu-icon ${open ? "is-open" : ""}`} aria-hidden="true">
+                <span />
+                <span />
+                <span />
+              </span>
             </Button>
           </div>
         </nav>
       </header>
       <div
+        id="mobile-navigation"
         ref={overlay}
         aria-hidden={!open}
         className={`fixed inset-0 z-40 bg-cyanotype px-4 pb-8 pt-24 lg:hidden ${open ? "block" : "hidden"}`}
@@ -101,6 +120,7 @@ export function Nav() {
       </div>
       {coverGone && !contactVisible ? (
         <aside
+          role="complementary"
           aria-label="Current sheet"
           className="sheet-dock fixed bottom-6 right-6 z-40 hidden w-[280px] border border-blueline-on-dark bg-cyanotype-deep text-chalk lg:block"
         >

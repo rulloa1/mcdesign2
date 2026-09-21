@@ -3,8 +3,10 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { BeforeAfter } from "@/components/site/BeforeAfter";
 import { Nav } from "@/components/site/Nav";
 import { Footer } from "@/components/site/Footer";
+import { useReveal } from "@/hooks/use-reveal";
+import { absoluteImage, SITE_ORIGIN } from "@/lib/seo";
 
-const TITLE = "Design — Architecture, Interiors & Concepts | MC Design Build";
+const TITLE = "Design — Architecture, Interiors & Concepts | McDesign";
 const DESCRIPTION =
   "Architecture, interiors, reimagined renovations, development, pools and landscape, concepts, and custom furniture designed and delivered by Michael Chandler.";
 
@@ -16,8 +18,12 @@ export const Route = createFileRoute("/design")({
       { property: "og:title", content: TITLE },
       { property: "og:description", content: DESCRIPTION },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: `${SITE_ORIGIN}/design` },
+      { property: "og:image", content: absoluteImage(architecture) },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:image", content: absoluteImage(architecture) },
     ],
+    links: [{ rel: "canonical", href: `${SITE_ORIGIN}/design` }],
   }),
   component: DesignPage,
 });
@@ -81,18 +87,18 @@ function Tile({
   caption?: string;
 }) {
   return (
-    <figure className={`group relative overflow-hidden bg-carbon ${className}`}>
+    <figure data-reveal="develop" className={`group relative overflow-hidden border border-blueline bg-cyanotype ${className}`}>
       <img
         src={src}
         alt={alt}
         loading="lazy"
+        decoding="async"
         width="900"
         height="675"
         className="h-full w-full object-cover"
       />
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-carbon/70 via-transparent to-transparent opacity-70" />
       {caption ? (
-        <figcaption className="absolute bottom-4 left-4 text-[0.6rem] uppercase tracking-[0.28em] text-bone/80">
+        <figcaption className="label absolute bottom-4 left-4 bg-cyanotype-deep px-2 py-1 text-chalk">
           {caption}
         </figcaption>
       ) : null}
@@ -102,27 +108,30 @@ function Tile({
 
 function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
-    <h2 className="mb-4 font-serif text-xl uppercase tracking-[0.4em] text-brass md:text-2xl">{children}</h2>
+    <h2 className="display mb-5 text-3xl text-ink md:text-4xl">{children}</h2>
   );
 }
 
 function DesignPage() {
+  useReveal();
   return (
-     <div className="min-h-screen bg-carbon text-bone">
+     <div className="min-h-dvh bg-mylar text-ink">
       <Nav />
 
-      <section className="px-6 pt-36 pb-14 md:pt-44">
-        <div className="mx-auto max-w-6xl">
-          <p className="text-[0.65rem] uppercase tracking-[0.35em] text-bone/50">MC Design Build</p>
-          <h1 className="mt-4 font-serif text-5xl uppercase tracking-[0.3em] text-bone md:text-7xl">Design</h1>
-          <p className="mt-6 max-w-xl text-sm leading-relaxed text-bone/65 md:text-base">
+      <header className="sheet-grid border-b border-rule-on-dark bg-cyanotype pt-16 text-chalk">
+        <div className="page-grid py-20 md:py-28">
+          <div className="col-span-12 lg:col-span-8">
+          <p className="label text-blueline-on-dark">G-300 · Design</p>
+          <h1 className="display h1-size mt-6">Design</h1>
+          <p className="mt-6 max-w-xl text-chalk-muted">
             Architecture, interiors, and the craft in between — from first concept sketches to finished custom
             furniture.
           </p>
         </div>
-      </section>
+        </div>
+      </header>
 
-      <div className="mx-auto max-w-6xl space-y-16 px-6 pb-28">
+      <main id="main" tabIndex={-1} className="page-grid py-16 md:py-24"><div className="col-span-12 space-y-20">
         {/* Architecture + Interiors */}
         <section className="grid gap-6 md:grid-cols-12">
           <div className="md:col-span-7">
@@ -147,7 +156,7 @@ function DesignPage() {
         {/* Reimagined */}
         <section>
           <SectionLabel>Reimagined</SectionLabel>
-          <p className="mb-5 text-xs uppercase tracking-[0.25em] text-bone/45">
+          <p className="label mb-5 text-graphite">
             Re-designs · drag to compare
           </p>
           <div className="grid grid-cols-1 gap-3 md:grid-cols-2 md:gap-4">
@@ -208,15 +217,15 @@ function DesignPage() {
           </div>
         </section>
 
-        <div className="border-t border-bone/10 pt-10">
+        <div className="border-t border-rule pt-10">
           <Link
             to="/portfolio"
-            className="text-[0.7rem] uppercase tracking-[0.28em] text-brass transition-colors hover:text-bone"
+            className="draw-link label text-blueline"
           >
             View the full project portfolio →
           </Link>
         </div>
-       </div>
+       </div></main>
        <Footer />
      </div>
   );
