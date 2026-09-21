@@ -66,7 +66,7 @@ function Portfolio() {
         </div>
       </header>
 
-      <main id="main" className="page-grid py-16 md:py-24">
+      <main id="main" tabIndex={-1} className="page-grid py-16 md:py-24">
         <div className="col-span-12 mb-14 flex flex-wrap gap-2" aria-label="Filter projects">
           {filters.map((filter) => (
             <button

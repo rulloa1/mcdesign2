@@ -16,7 +16,7 @@ import { DEFAULT_SHARE_IMAGE } from "@/lib/seo";
 
 function NotFoundComponent() {
   return (
-    <main id="main" className="sheet-grid flex min-h-dvh items-center justify-center bg-cyanotype px-4 text-chalk">
+    <main id="main" tabIndex={-1} className="sheet-grid flex min-h-dvh items-center justify-center bg-cyanotype px-4 text-chalk">
       <div className="max-w-md border border-rule-on-dark p-8 text-center">
         <p className="label text-blueline-on-dark">G-404</p>
         <h1 className="display mt-5 text-5xl">Sheet not found</h1>
@@ -44,7 +44,7 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   }, [error]);
 
   return (
-    <main id="main" className="flex min-h-dvh items-center justify-center bg-mylar px-4">
+    <main id="main" tabIndex={-1} className="flex min-h-dvh items-center justify-center bg-mylar px-4">
       <div className="max-w-md text-center">
         <h1 className="display text-4xl text-ink">
           This page didn't load

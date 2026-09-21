@@ -622,7 +622,7 @@ function Index() {
   return (
     <div className="bg-mylar">
       <Nav />
-      <main id="main" className="pt-16">
+      <main id="main" tabIndex={-1} className="pt-16">
         <Cover />
         <WorkSheet />
         <SignatureSheet

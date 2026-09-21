@@ -62,7 +62,7 @@ function Fallback({ message }: { message: string }) {
   return (
     <div className="min-h-dvh bg-mylar text-ink">
       <Nav />
-      <main id="main" className="page-grid min-h-dvh items-center pt-16">
+      <main id="main" tabIndex={-1} className="page-grid min-h-dvh items-center pt-16">
         <div className="col-span-12 py-24 text-center">
           <p className="label text-blueline">G-404</p>
           <h1 className="display h1-size mt-5">{message}</h1>
@@ -124,7 +124,7 @@ function ProjectPage() {
         </div>
       </header>
 
-      <main id="main">
+      <main id="main" tabIndex={-1}>
         <section className="page-grid py-16 md:py-24" aria-labelledby="project-overview">
           <h2 id="project-overview" className="display h2-size col-span-12 lg:col-span-4">Project record.</h2>
           <p className="col-span-12 mt-8 text-graphite lg:col-span-7 lg:col-start-6 lg:mt-0">

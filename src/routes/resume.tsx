@@ -372,7 +372,7 @@ function ResumePage() {
           </p>
         </div><div className="col-span-12 mt-10 lg:col-span-3 lg:col-start-10 lg:mt-0"><img src={profile} alt="Michael Chandler" width="800" height="1000" loading="lazy" decoding="async" className="aspect-[4/5] w-full border border-blueline-on-dark object-cover" /></div></div>
       </header>
-      <main id="main" className="page-grid py-16 md:py-24">
+      <main id="main" tabIndex={-1} className="page-grid py-16 md:py-24">
       <div className="col-span-12 lg:col-span-10 lg:col-start-2">
 
         <section className="mb-16">

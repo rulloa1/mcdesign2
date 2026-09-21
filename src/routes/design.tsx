@@ -131,7 +131,7 @@ function DesignPage() {
         </div>
       </header>
 
-      <main id="main" className="page-grid py-16 md:py-24"><div className="col-span-12 space-y-20">
+      <main id="main" tabIndex={-1} className="page-grid py-16 md:py-24"><div className="col-span-12 space-y-20">
         {/* Architecture + Interiors */}
         <section className="grid gap-6 md:grid-cols-12">
           <div className="md:col-span-7">
