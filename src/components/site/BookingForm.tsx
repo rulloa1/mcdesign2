@@ -45,6 +45,6 @@ export function BookingForm({ tone }: { tone: Tone }) {
   );
 }
 
-function Field({ tone, label, id, error, required, full, children }: { tone: Tone; label: string; id: string; error?: string; required?: boolean; full?: boolean; children: ReactNode }) {
+function Field({ tone, label, id, error, required, full, children }: { tone: Tone; label: string; id: string; error?: string | undefined; required?: boolean; full?: boolean; children: ReactNode }) {
   return <div className={full ? "md:col-span-2" : undefined}><label htmlFor={id} className={`label block ${tone === "cyanotype" ? "text-blueline-on-dark" : "text-blueline"}`}>{label}{required ? " *" : ""}</label>{children}{error ? <p id={`${id}-error`} className={`mt-2 text-sm ${tone === "cyanotype" ? "text-redline-on-dark" : "text-redline"}`}>{error}</p> : null}</div>;
 }
