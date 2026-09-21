@@ -234,7 +234,10 @@ function Cover() {
                 href="#work"
                 className="label group flex h-[52px] items-center bg-redline px-6 text-paper-white hover:bg-redline-press"
               >
-                See the work <span className="button-arrow ml-2" aria-hidden="true">→</span>
+                See the work{" "}
+                <span className="button-arrow ml-2" aria-hidden="true">
+                  →
+                </span>
               </a>
               <Link to="/resume" className="draw-link text-chalk">
                 Resume
@@ -340,7 +343,10 @@ function WorkSheet() {
         to="/portfolio"
         className="draw-link label group col-span-12 mt-14 flex h-[52px] w-fit items-center border border-blueline px-6 text-ink hover:text-blueline"
       >
-        All {projects.length} projects <span className="button-arrow ml-2" aria-hidden="true">→</span>
+        All {projects.length} projects{" "}
+        <span className="button-arrow ml-2" aria-hidden="true">
+          →
+        </span>
       </Link>
     </Sheet>
   );
