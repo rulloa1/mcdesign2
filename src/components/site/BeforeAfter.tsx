@@ -41,7 +41,7 @@ export function BeforeAfter({ before, after, className = "" }: Props) {
   return (
     <div
       ref={ref}
-      className={`group relative select-none overflow-hidden bg-carbon touch-none ${className}`}
+      className={`group relative select-none overflow-hidden border border-blueline bg-cyanotype touch-none ${className}`}
       onPointerDown={(e) => {
         dragging.current = true;
         setFromClientX(e.clientX);
@@ -51,6 +51,9 @@ export function BeforeAfter({ before, after, className = "" }: Props) {
         src={after.src}
         alt={after.alt}
         loading="lazy"
+        decoding="async"
+        width="900"
+        height="675"
         draggable={false}
         className="h-full w-full object-cover"
       />
@@ -62,24 +65,27 @@ export function BeforeAfter({ before, after, className = "" }: Props) {
           src={before.src}
           alt={before.alt}
           loading="lazy"
+          decoding="async"
+          width="900"
+          height="675"
           draggable={false}
           className="h-full w-full object-cover"
         />
       </div>
 
-      <span className="pointer-events-none absolute bottom-4 left-4 text-[0.6rem] uppercase tracking-[0.28em] text-bone/80">
+      <span className="label pointer-events-none absolute bottom-4 left-4 bg-cyanotype-deep px-2 py-1 text-chalk">
         Before
       </span>
-      <span className="pointer-events-none absolute bottom-4 right-4 text-[0.6rem] uppercase tracking-[0.28em] text-bone/80">
+      <span className="label pointer-events-none absolute bottom-4 right-4 bg-cyanotype-deep px-2 py-1 text-chalk">
         After
       </span>
 
       <div
-        className="pointer-events-none absolute inset-y-0 w-px bg-brass"
+        className="pointer-events-none absolute inset-y-0 w-px bg-chalk"
         style={{ left: `${pos}%` }}
       >
-        <div className="absolute top-1/2 left-1/2 flex h-10 w-10 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-brass bg-carbon/70 backdrop-blur-sm">
-          <span className="text-[0.65rem] tracking-[0.1em] text-brass">‹›</span>
+        <div className="absolute top-1/2 left-1/2 flex h-11 w-11 -translate-x-1/2 -translate-y-1/2 items-center justify-center border border-chalk bg-redline">
+          <span className="label text-paper-white">‹›</span>
         </div>
       </div>
 

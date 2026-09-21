@@ -1,31 +1,35 @@
 import { useState } from "react";
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 
-import { Nav } from "@/components/site/Nav";
 import { Footer } from "@/components/site/Footer";
-import { categoryLabels, type Category } from "@/data/projects";
-import { useOrderedProjects } from "@/lib/project-order";
+import { Nav } from "@/components/site/Nav";
+import { ProjectCard } from "@/components/site/ProjectCard";
+import { categoryLabels, projects, type Category } from "@/data/projects";
 import { projectSlotKey } from "@/data/media-slots";
+import { useReveal } from "@/hooks/use-reveal";
+import { useOrderedProjects } from "@/lib/project-order";
+import { absoluteImage, DEFAULT_SHARE_IMAGE, SITE_ORIGIN } from "@/lib/seo";
 import { useSiteMedia } from "@/lib/site-media";
+
+const TITLE = `Portfolio — ${projects.length} Projects | Michael Chandler, McDesign`;
+const DESCRIPTION =
+  "Residential, resort, hospitality, civil, and owner's representation work across six regions.";
+const URL = `${SITE_ORIGIN}/portfolio`;
 
 export const Route = createFileRoute("/portfolio")({
   head: () => ({
     meta: [
-      { title: "Portfolio — 23 Projects | Michael Chandler, MC Design Build" },
-      {
-        name: "description",
-        content:
-          "Complete portfolio of 23 signature projects: ultra-luxury residential, hospitality, owner's representation, and civil work across six global regions.",
-      },
-      { property: "og:title", content: "Portfolio — 23 Projects | MC Design Build" },
-      {
-        property: "og:description",
-        content:
-          "Ultra-luxury residential, hospitality, and civil projects delivered by Michael Chandler, MC Design Build.",
-      },
+      { title: TITLE },
+      { name: "description", content: DESCRIPTION },
+      { property: "og:title", content: TITLE },
+      { property: "og:description", content: DESCRIPTION },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: URL },
+      { property: "og:image", content: absoluteImage(DEFAULT_SHARE_IMAGE) },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:image", content: absoluteImage(DEFAULT_SHARE_IMAGE) },
     ],
+    links: [{ rel: "canonical", href: URL }],
   }),
   component: Portfolio,
 });
@@ -46,81 +50,54 @@ function Portfolio() {
   const [active, setActive] = useState<Category | "all">("all");
   const media = useSiteMedia();
   const ordered = useOrderedProjects();
-  const shown = active === "all" ? ordered : ordered.filter((p) => p.categories.includes(active));
+  const shown = active === "all" ? ordered : ordered.filter((project) => project.categories.includes(active));
+  useReveal();
 
   return (
-    <div className="relative z-10 bg-bone">
+    <div className="bg-mylar text-ink">
       <Nav />
-
-      <header className="bg-carbon px-6 pt-40 pb-24 text-bone md:px-20">
-        <div className="mx-auto max-w-[1600px]">
-          <div className="mb-6 inline-flex items-center rounded-full border border-brass/20 bg-brass/5 px-3 py-1 font-mono text-[0.6rem] uppercase tracking-[0.22em] text-brass/80">
-            Full Portfolio
+      <header className="sheet-grid border-b border-rule-on-dark bg-cyanotype pt-16 text-chalk">
+        <div className="page-grid py-20 md:py-28">
+          <div className="col-span-12 lg:col-span-9">
+            <p className="label text-blueline-on-dark">G-100 · Project index</p>
+            <h1 className="display h1-size mt-6">{projects.length} projects.</h1>
+            <p className="mt-6 max-w-3xl text-chalk-muted">{DESCRIPTION}</p>
           </div>
-          <h1 className="font-serif text-4xl md:text-6xl">Twenty-Three Projects.</h1>
-          <p className="mt-6 max-w-2xl text-lg font-light leading-relaxed text-bone/60">
-            Ultra-luxury residential, hospitality, owner's representation, and civil engineering — delivered across six
-            global regions.
-          </p>
         </div>
       </header>
 
-      <main className="mx-auto max-w-[1600px] px-6 py-20 md:px-12">
-        <div className="mb-16 flex flex-wrap gap-3">
-          {filters.map((f) => (
+      <main id="main" className="page-grid py-16 md:py-24">
+        <div className="col-span-12 mb-14 flex flex-wrap gap-2" aria-label="Filter projects">
+          {filters.map((filter) => (
             <button
-              key={f}
+              key={filter}
               type="button"
-              onClick={() => setActive(f)}
-              className={`border px-5 py-2 text-[0.65rem] uppercase tracking-[0.22em] transition-all duration-500 ${
-                active === f
-                  ? "border-carbon bg-carbon text-bone"
-                  : "border-carbon/20 text-carbon/60 hover:border-carbon/50"
+              aria-pressed={active === filter}
+              onClick={() => setActive(filter)}
+              className={`label min-h-11 border px-4 ${
+                active === filter
+                  ? "border-ink bg-ink text-mylar"
+                  : "border-rule bg-mylar text-ink hover:border-blueline hover:text-blueline"
               }`}
             >
-              {categoryLabels[f]}
+              {categoryLabels[filter]}
             </button>
           ))}
         </div>
 
-        <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3">
-          {shown.map((p) => (
-            <Link
-              key={p.id}
-              to="/projects/$projectId"
-              params={{ projectId: p.id }}
-              className="project-card group relative block"
-            >
-              <div className="relative h-[42vh] overflow-hidden bg-mylar">
-                <img src={media(projectSlotKey(p.id), p.cover)} alt={p.title} width="800" height="600" loading="lazy" className="project-img" />
-                <div className="project-overlay" />
-              </div>
-              <div className="mt-4">
-                <h2 className="font-serif text-2xl">{p.title}</h2>
-                <p className="mt-1 text-sm text-carbon/60">
-                  {p.subtitle} • {p.location}
-                </p>
-                <p className="mt-3 font-mono text-[0.65rem] uppercase tracking-[0.18em] text-brass-dark">{p.specs}</p>
-                <p className="mt-3 text-sm font-light leading-relaxed text-carbon/50">{p.role}</p>
-                <p className="mt-4 font-mono text-[0.6rem] uppercase tracking-[0.22em] text-brass-dark">
-                  View Album →
-                </p>
-              </div>
-            </Link>
+        <div className="col-span-12 grid gap-x-6 gap-y-14 md:grid-cols-2 lg:grid-cols-3">
+          {shown.map((project, index) => (
+            <ProjectCard
+              key={project.id}
+              project={project}
+              image={media(projectSlotKey(project.id), project.cover)}
+              detail={`${index + 1} / G-100`}
+              revealIndex={index % 3}
+            />
           ))}
         </div>
-
-        <div className="mt-24 text-center">
-          <Link
-            to="/"
-            className="inline-flex items-center gap-4 border border-carbon/25 px-9 py-3 text-xs uppercase tracking-[0.22em] transition-all duration-700 hover:bg-carbon hover:text-bone"
-          >
-            Back to Home
-          </Link>
-        </div>
       </main>
-
-       <Footer />
+      <Footer />
     </div>
   );
 }
