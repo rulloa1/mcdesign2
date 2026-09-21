@@ -1,4 +1,5 @@
 import { createServerFn } from "@tanstack/react-start";
+import { createClient } from "@supabase/supabase-js";
 import { z } from "zod";
 
 import type { Database } from "@/integrations/supabase/types";
@@ -14,10 +15,8 @@ export const contactInquirySchema = z.object({
     "hospitality",
     "civil-development",
     "estate-management",
-    "executive-role",
     "other",
   ]),
-  projectStage: z.enum(["", "planning", "design", "bidding", "under-construction", "closeout"]),
   location: z.string().trim().max(120, "Location must be under 120 characters."),
   budget: z.enum(["", "under-1m", "1m-5m", "5m-15m", "15m-plus", "not-sure"]),
   timeline: z.enum(["", "immediately", "3-6-months", "6-12-months", "12-months-plus", "exploring"]),
@@ -33,7 +32,7 @@ export const contactInquirySchema = z.object({
 export type ContactInquiryInput = z.infer<typeof contactInquirySchema>;
 
 export const submitContactInquiry = createServerFn({ method: "POST" })
-  .validator((input: ContactInquiryInput) => contactInquirySchema.parse(input))
+  .inputValidator((input: ContactInquiryInput) => contactInquirySchema.parse(input))
   .handler(async ({ data }) => {
     // Report success to bots that filled the honeypot, but store nothing.
     if (data.website) return { ok: true };
@@ -42,7 +41,6 @@ export const submitContactInquiry = createServerFn({ method: "POST" })
     const key = process.env["SUPABASE_PUBLISHABLE_KEY"] ?? process.env["SUPABASE_ANON_KEY"];
     if (!url || !key) throw new Error("Inquiry service is temporarily unavailable.");
 
-    const { createClient } = await import("@supabase/supabase-js");
     const supabasePublic = createClient<Database>(url, key, {
       auth: { storage: undefined, persistSession: false, autoRefreshToken: false },
       global: {
@@ -62,7 +60,6 @@ export const submitContactInquiry = createServerFn({ method: "POST" })
       email: data.email,
       phone: data.phone || null,
       project_type: data.projectType,
-      project_stage: data.projectStage || null,
       location: data.location || null,
       budget: data.budget || null,
       timeline: data.timeline || null,

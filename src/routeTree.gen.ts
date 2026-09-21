@@ -16,7 +16,6 @@ import { Route as DesignRouteImport } from './routes/design'
 import { Route as McpRouteImport } from './routes/mcp'
 import { Route as PortfolioRouteImport } from './routes/portfolio'
 import { Route as ResumeRouteImport } from './routes/resume'
-import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as Char91DotwellKnownChar93OauthProtectedResourceRouteImport } from './routes/[.well-known]/oauth-protected-resource'
 import { Route as ProjectsProjectIdRouteImport } from './routes/projects.$projectId'
 import { Route as StudioMediaRouteImport } from './routes/studio.media'
@@ -56,11 +55,6 @@ const ResumeRoute = ResumeRouteImport.update({
   path: '/resume',
   getParentRoute: () => rootRouteImport,
 } as any)
-const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
-  id: '/sitemap.xml',
-  path: '/sitemap.xml',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const Char91DotwellKnownChar93OauthProtectedResourceRoute =
   Char91DotwellKnownChar93OauthProtectedResourceRouteImport.update({
     id: '/.well-known/oauth-protected-resource',
@@ -86,7 +80,6 @@ export interface FileRoutesByFullPath {
   '/mcp': typeof McpRoute
   '/portfolio': typeof PortfolioRoute
   '/resume': typeof ResumeRoute
-  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/projects/$projectId': typeof ProjectsProjectIdRoute
   '/studio/media': typeof StudioMediaRoute
@@ -99,7 +92,6 @@ export interface FileRoutesByTo {
   '/mcp': typeof McpRoute
   '/portfolio': typeof PortfolioRoute
   '/resume': typeof ResumeRoute
-  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/projects/$projectId': typeof ProjectsProjectIdRoute
   '/studio/media': typeof StudioMediaRoute
@@ -113,7 +105,6 @@ export interface FileRoutesById {
   '/mcp': typeof McpRoute
   '/portfolio': typeof PortfolioRoute
   '/resume': typeof ResumeRoute
-  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/projects/$projectId': typeof ProjectsProjectIdRoute
   '/studio/media': typeof StudioMediaRoute
@@ -128,7 +119,6 @@ export interface FileRouteTypes {
     | '/mcp'
     | '/portfolio'
     | '/resume'
-    | '/sitemap.xml'
     | '/.well-known/oauth-protected-resource'
     | '/projects/$projectId'
     | '/studio/media'
@@ -141,7 +131,6 @@ export interface FileRouteTypes {
     | '/mcp'
     | '/portfolio'
     | '/resume'
-    | '/sitemap.xml'
     | '/.well-known/oauth-protected-resource'
     | '/projects/$projectId'
     | '/studio/media'
@@ -154,7 +143,6 @@ export interface FileRouteTypes {
     | '/mcp'
     | '/portfolio'
     | '/resume'
-    | '/sitemap.xml'
     | '/.well-known/oauth-protected-resource'
     | '/projects/$projectId'
     | '/studio/media'
@@ -168,7 +156,6 @@ export interface RootRouteChildren {
   McpRoute: typeof McpRoute
   PortfolioRoute: typeof PortfolioRoute
   ResumeRoute: typeof ResumeRoute
-  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   Char91DotwellKnownChar93OauthProtectedResourceRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   ProjectsProjectIdRoute: typeof ProjectsProjectIdRoute
   StudioMediaRoute: typeof StudioMediaRoute
@@ -225,13 +212,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ResumeRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/sitemap.xml': {
-      id: '/sitemap.xml'
-      path: '/sitemap.xml'
-      fullPath: '/sitemap.xml'
-      preLoaderRoute: typeof SitemapDotxmlRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/.well-known/oauth-protected-resource': {
       id: '/.well-known/oauth-protected-resource'
       path: '/.well-known/oauth-protected-resource'
@@ -264,7 +244,6 @@ const rootRouteChildren: RootRouteChildren = {
   McpRoute: McpRoute,
   PortfolioRoute: PortfolioRoute,
   ResumeRoute: ResumeRoute,
-  SitemapDotxmlRoute: SitemapDotxmlRoute,
   Char91DotwellKnownChar93OauthProtectedResourceRoute:
     Char91DotwellKnownChar93OauthProtectedResourceRoute,
   ProjectsProjectIdRoute: ProjectsProjectIdRoute,

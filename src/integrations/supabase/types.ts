@@ -24,7 +24,6 @@ export type Database = {
           message: string
           name: string
           phone: string | null
-          project_stage: string | null
           project_type: string
           timeline: string | null
           updated_at: string
@@ -38,7 +37,6 @@ export type Database = {
           message: string
           name: string
           phone?: string | null
-          project_stage?: string | null
           project_type: string
           timeline?: string | null
           updated_at?: string
@@ -52,7 +50,6 @@ export type Database = {
           message?: string
           name?: string
           phone?: string | null
-          project_stage?: string | null
           project_type?: string
           timeline?: string | null
           updated_at?: string

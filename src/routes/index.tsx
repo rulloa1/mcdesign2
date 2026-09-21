@@ -1,14 +1,13 @@
-import { useEffect, type CSSProperties, type ReactNode } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { BookingForm } from "@/components/site/BookingForm";
-import { Footer } from "@/components/site/Footer";
+
 import { Nav } from "@/components/site/Nav";
-import { ProjectCard } from "@/components/site/ProjectCard";
-import { projects, type Project } from "@/data/projects";
+import { Marquee } from "@/components/site/Marquee";
+import { PinnedCase } from "@/components/site/PinnedCase";
+import { ImpactSlider } from "@/components/site/ImpactSlider";
+import { projects } from "@/data/projects";
 import { projectSlotKey } from "@/data/media-slots";
-import { useReveal } from "@/hooks/use-reveal";
 import { useSiteMedia } from "@/lib/site-media";
-import { absoluteImage, LINKEDIN_URL, SITE_ORIGIN } from "@/lib/seo";
+
 import profile from "@/assets/mike-profile.webp";
 import heroImage from "@/assets/southcoast-cover.webp";
 import houstonOaks from "@/assets/houston-oaks-cover.webp";
@@ -21,26 +20,21 @@ import miamiCover from "@/assets/miami-beach-cover-enhanced.webp";
 import miami10 from "@/assets/miami-beach-10.webp";
 import miami27 from "@/assets/miami-beach-27.webp";
 
-const TITLE = "Michael Chandler — Construction Executive & Owner's Representative | McDesign";
+const TITLE = "Michael Chandler — Luxury Construction Executive";
 const DESCRIPTION =
-  "Portfolio of Michael Chandler: $500M+ of ultra-luxury residential, resort, and civil work across six regions, as builder, project manager, and owner's representative.";
-const HOME_URL = `${SITE_ORIGIN}/`;
-const SHARE_IMAGE = absoluteImage(heroImage);
+  "Ultra-luxury residential, hospitality, and civil construction led by Michael Chandler — 20+ years and $500M+ delivered across six global regions.";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: TITLE },
       { name: "description", content: DESCRIPTION },
+      { name: "theme-color", content: "#0E0E0E" },
       { property: "og:title", content: TITLE },
       { property: "og:description", content: DESCRIPTION },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: HOME_URL },
-      { property: "og:image", content: SHARE_IMAGE },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:image", content: SHARE_IMAGE },
     ],
-    links: [{ rel: "canonical", href: HOME_URL }],
     scripts: [
       {
         type: "application/ld+json",
@@ -48,685 +42,415 @@ export const Route = createFileRoute("/")({
           "@context": "https://schema.org",
           "@type": "Person",
           name: "Michael Chandler",
-          jobTitle: "Construction Executive and Owner's Representative",
-          worksFor: { "@type": "Organization", name: "McDesign" },
-          address: {
-            "@type": "PostalAddress",
-            addressLocality: "Spring",
-            addressRegion: "TX",
-            addressCountry: "US",
-          },
-          sameAs: [LINKEDIN_URL],
-          email: "mailto:mike.rcccon@yahoo.com",
+          jobTitle: "Owner, Strategic Construction Executive",
+          email: "mike.rcccon@yahoo.com",
+          address: { "@type": "PostalAddress", addressLocality: "Spring", addressRegion: "TX" },
           knowsAbout: [
-            "Owner's representation",
             "Ultra-luxury residential construction",
-            "Design-build",
-            "Civil development",
+            "Design-build project management",
+            "Civil engineering",
+            "Owner's representation",
             "Hospitality construction",
+            "Discovery Land Company developments",
           ],
         }),
       },
     ],
   }),
-  staticData: { sitemap: true },
   component: Index,
 });
 
-const selectedIds = [
-  "bakers-bay",
-  "yellowstone-club",
-  "hospitality-pool",
-  "miami-beach",
-  "alpine-ranch",
-  "southcoast",
-  "syracuse",
-  "development-civil",
-  "laguna-grande",
+const gridProjects = [
+  { id: "miami-beach", span: "md:col-span-8", height: "h-[60vh] md:h-[80vh]", extra: "", meta: "Design-Build & Project Management • Miami Beach, FL", label: "S. Florida High Rise Luxe Condo" },
+  { id: "alpine-ranch", span: "md:col-span-4", height: "h-[50vh] md:h-[60vh]", extra: "md:mt-32", meta: "Design-Build Lead • Montana", label: "High Alpine Mtn. Ranch" },
+  { id: "southcoast", span: "md:col-span-5", height: "h-[50vh] md:h-[70vh]", extra: "", meta: "Complete Coastal Remodel • Big Sur, CA", label: "South Coast Renovation" },
+  { id: "hospitality-pool", span: "md:col-span-7", height: "h-[60vh] md:h-[90vh]", extra: "md:-mt-20", meta: "Construction Manager • SE Texas", label: "Ultra Luxe Private Club Resort Pool" },
+  { id: "bakers-bay", span: "md:col-span-6", height: "h-[50vh] md:h-[70vh]", extra: "", meta: "Discovery Land Company Rep • Bahamas", label: "Bakers Bay Resort" },
+  { id: "syracuse", span: "md:col-span-6", height: "h-[50vh] md:h-[70vh]", extra: "", meta: "Design-Build • Syracuse, UT", label: "Syracuse House" },
 ];
-const selected = selectedIds
-  .map((id) => projects.find((project) => project.id === id))
-  .filter((project): project is Project => Boolean(project));
 
-const notes = [
-  [
-    "Before construction",
-    [
-      "Design oversight: architect and interior designer held to your budget.",
-      "Contractor procurement, with bids leveled line by line.",
-      "Contract negotiation before you sign.",
-      "Permit procurement.",
-    ],
-  ],
-  [
-    "During construction",
-    [
-      "Daily project management on site.",
-      "Pay applications checked against work in place.",
-      "Change orders priced and negotiated.",
-      "Schedule held to the contract dates.",
-    ],
-  ],
-  ["After turnover", ["Punch list closed out.", "Property management once you move in."]],
-] as const;
+const processSteps = [
+  { n: "01", title: "Strategize", body: "Aligning capital vision with structural reality before a single dollar is deployed." },
+  { n: "02", title: "Assemble", body: "Curating tier-one architectural, engineering, and contracting talent specific to the asset." },
+  { n: "03", title: "Orchestrate", body: "Rigorous milestone management, value engineering, and risk mitigation." },
+  { n: "04", title: "Deliver", body: "Handover of a market-defining asset, on budget, to precise specifications." },
+];
 
-const cloudPath = ({
-  x,
-  y,
-  w,
-  h,
-  n,
-  m,
-}: {
-  x: number;
-  y: number;
-  w: number;
-  h: number;
-  n: number;
-  m: number;
-}) => {
-  const dx = w / n;
-  const dy = h / m;
-  const horizontalRadius = dx / 2;
-  const verticalRadius = dy / 2;
-  return [
-    `M${x} ${y}`,
-    ...Array.from({ length: n }, () => `a${horizontalRadius} ${horizontalRadius} 0 0 1 ${dx} 0`),
-    ...Array.from({ length: m }, () => `a${verticalRadius} ${verticalRadius} 0 0 1 0 ${dy}`),
-    ...Array.from({ length: n }, () => `a${horizontalRadius} ${horizontalRadius} 0 0 1 ${-dx} 0`),
-    ...Array.from({ length: m }, () => `a${verticalRadius} ${verticalRadius} 0 0 1 0 ${-dy}`),
-    "z",
-  ].join(" ");
-};
+const testimonials = [
+  {
+    quote:
+      "He brings an architectural sensitivity to raw construction management. Rare to find someone who protects the design intent while fiercely guarding the budget.",
+    source: "— Principal Architect, SOM",
+  },
+  {
+    quote:
+      "The only executive I trust with a nine-figure development. The risk mitigation and foresight are unparalleled in the industry.",
+    source: "— Managing Director, Real Estate Trust",
+  },
+  {
+    quote:
+      "An absolute force. Driven, precise, and possesses a commanding authority that makes complex, multi-stakeholder projects move without friction.",
+    source: "— City Planning Commissioner",
+  },
+];
 
-const revisionCloudPath = cloudPath({ x: 8, y: 8, w: 384, h: 64, n: 28, m: 4 });
-
-function RevisionCloud({
-  children,
-  marker = false,
-  reveal = false,
-}: {
-  children: ReactNode;
-  marker?: boolean;
-  reveal?: boolean;
-}) {
-  return (
-    <span
-      className={`revision-cloud relative inline-block px-[.17em] py-[.06em] ${reveal ? "scroll-cloud" : ""}`}
-      data-reveal={reveal ? "cloud" : undefined}
-    >
-      <span className="revision-text-mask inline-block overflow-hidden align-bottom">
-        <span className="revision-text block">{children}</span>
-      </span>
-      <svg
-        aria-hidden="true"
-        preserveAspectRatio="none"
-        viewBox="0 0 400 80"
-        className="pointer-events-none absolute -inset-x-[.17em] -inset-y-[.06em] h-[calc(100%+.12em)] w-[calc(100%+.34em)] overflow-visible fill-none stroke-redline-on-dark [stroke-width:1.5] [vector-effect:non-scaling-stroke]"
-      >
-        <path className="revision-cloud-path" pathLength="1" d={revisionCloudPath} />
-      </svg>
-      {marker ? (
-        <span className="revision-marker label absolute -right-2 -top-4 text-redline-on-dark">
-          △1
-        </span>
-      ) : null}
-    </span>
-  );
-}
-
-type SheetProps = {
-  id: string;
-  number: string;
-  title: string;
-  tone?: "mylar" | "cyanotype";
-  next?: string;
-  className?: string;
-  children: ReactNode;
-};
-
-function MatchLine({ next, dark = false }: { next: string; dark?: boolean }) {
-  return (
-    <div
-      data-reveal="plot-x"
-      className={`match-line col-span-12 border-t border-dashed pt-3 ${dark ? "border-rule-on-dark text-blueline-on-dark" : "border-rule text-blueline"}`}
-    >
-      <p className="label">Match line — see {next}</p>
-    </div>
-  );
-}
-
-function Sheet({ id, number, title, tone = "mylar", next, className = "", children }: SheetProps) {
-  const dark = tone === "cyanotype";
-  return (
-    <section
-      id={id}
-      data-sheet-number={number}
-      data-sheet-title={title}
-      className={`${dark ? "bg-cyanotype text-chalk" : "bg-mylar text-ink"} ${className}`}
-    >
-      <div className="page-grid sheet-content">
-        <header
-          className={`col-span-12 mb-14 border-t pt-3 ${dark ? "border-rule-on-dark text-blueline-on-dark" : "border-rule text-blueline"}`}
-        >
-          <p className="label">
-            {number} · {title}
-          </p>
-        </header>
-        {children}
-        {next ? <MatchLine next={next} dark={dark} /> : null}
-      </div>
-    </section>
-  );
-}
-
-function Cover() {
-  const media = useSiteMedia();
-  useEffect(() => {
-    const timer = window.setTimeout(() => {
-      try {
-        sessionStorage.setItem("mc-intro", "1");
-      } catch {
-        /* Storage can be unavailable. */
-      }
-      document.documentElement.classList.add("intro-done");
-    }, 2200);
-    return () => window.clearTimeout(timer);
-  }, []);
-
-  return (
-    <section
-      id="cover"
-      data-sheet-number="G-001"
-      data-sheet-title="Cover"
-      className="sheet-grid bg-cyanotype px-2 py-2 text-chalk md:px-6 md:py-6"
-    >
-      <div className="cover-sheet relative mx-auto flex min-h-[calc(100svh-80px)] max-w-[1440px] flex-col px-5 py-5 md:min-h-[calc(100svh-112px)] lg:min-h-[calc(100svh-112px)] lg:justify-center lg:px-10 lg:py-10">
-        <span aria-hidden="true" className="cover-edge cover-edge-top" />
-        <span aria-hidden="true" className="cover-edge cover-edge-right" />
-        <span aria-hidden="true" className="cover-edge cover-edge-bottom" />
-        <span aria-hidden="true" className="cover-edge cover-edge-left" />
-        <div className="grid grid-cols-12 gap-x-4 md:gap-x-6">
-          <div className="col-span-12 self-center lg:col-span-7 lg:pr-4">
-            <p className="label text-blueline-on-dark">Michael Chandler · Portfolio</p>
-            <h1 className="cover-title display mt-5 text-chalk">
-              <span className="cover-line-mask block">
-                <span className="cover-line block">Built.</span>
-              </span>
-              <span className="cover-line-mask block">
-                <span className="cover-line block">Managed.</span>
-              </span>
-              <span className="cover-line-mask cover-line-cloud mt-[.08em] block overflow-visible">
-                <span className="cover-line block overflow-visible">
-                  <RevisionCloud marker>Represented.</RevisionCloud>
-                </span>
-              </span>
-            </h1>
-            <p className="cover-subhead mt-6 text-lg text-chalk-muted lg:text-xl">
-              $500M+ of ultra-luxury residential, resort, and civil work across six regions, from
-              the California coast to the Bahamas, as the builder, the project manager, and the
-              owner's representative.
-            </p>
-            <div className="cover-cta mt-6 flex flex-wrap items-center gap-6">
-              <a
-                href="#work"
-                className="label group flex h-[52px] items-center bg-redline px-6 text-paper-white hover:bg-redline-press"
-              >
-                See the work{" "}
-                <span className="button-arrow ml-2" aria-hidden="true">
-                  →
-                </span>
-              </a>
-              <Link to="/resume" className="draw-link text-chalk">
-                Resume
-              </Link>
-            </div>
-          </div>
-          <div className="col-span-12 mt-7 lg:col-span-5 lg:mt-0">
-            <figure>
-              <div className="aspect-[3/2] overflow-hidden border border-blueline-on-dark lg:aspect-[10/11]">
-                <img
-                  src={media("hero", heroImage)}
-                  alt="Featured project"
-                  width="1200"
-                  height="1320"
-                  loading="eager"
-                  fetchPriority="high"
-                  className="cover-photo h-full w-full object-cover"
-                />
-              </div>
-              <figcaption className="label mt-3 text-blueline-on-dark">
-                Sheet G-001 · Cover photograph
-              </figcaption>
-            </figure>
-            <div className="cover-title-block mt-5 hidden grid-cols-3 border-l border-t border-rule-on-dark text-xs lg:grid">
-              <Cell label="Sheet" dark index={0}>
-                G-001
-              </Cell>
-              <Cell label="Projects" dark index={1}>
-                {projects.length}
-              </Cell>
-              <Cell label="Delivered" dark index={2}>
-                $500M+
-              </Cell>
-              <div
-                className="cover-cell col-span-3 border-b border-r border-rule-on-dark p-3"
-                style={{ "--i": 3 } as CSSProperties}
-              >
-                <p className="label text-blueline-on-dark">Rev △1</p>
-                <p className="mt-2 text-chalk">
-                  Also on the owner's side of the table: design oversight, contracts, pay
-                  applications, closeout.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="mt-auto pt-8">
-          <MatchLine next="G-002" dark />
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function WorkSheet() {
-  const media = useSiteMedia();
-  return (
-    <Sheet id="work" number="G-002" title="Work" next="G-003">
-      <h2 className="display col-span-12 h2-size">Selected work.</h2>
-      <div className="col-span-12 mt-14 grid gap-x-6 gap-y-14 md:grid-cols-2 lg:grid-cols-3">
-        {selected.map((project, index) => (
-          <ProjectCard
-            key={project.id}
-            project={project}
-            image={media(projectSlotKey(project.id), project.cover)}
-            detail={`${index + 1} / G-002`}
-            revealIndex={index % 3}
-          />
-        ))}
-      </div>
-      <Link
-        to="/portfolio"
-        className="label group col-span-12 mt-14 flex h-[52px] w-fit items-center border border-blueline px-6 text-ink hover:text-blueline"
-      >
-        <span className="draw-link">
-          All {projects.length} projects <span className="button-arrow inline-block" aria-hidden="true">→</span>
-        </span>
-      </Link>
-    </Sheet>
-  );
-}
-
-type SignatureProps = {
-  id: string;
-  number: string;
-  projectId: string;
-  location: string;
-  title: string;
-  images: [string, string, string];
-  alts: [string, string, string];
-  vision: string;
-  execution: string;
-  stats: [string, string][];
-  next: string;
-};
-
-function DetailFigure({
-  image,
-  alt,
-  detail,
-  index,
-  large = false,
-}: {
-  image: string;
-  alt: string;
-  detail: string;
-  index: number;
-  large?: boolean;
-}) {
-  return (
-    <figure className={`flex min-h-0 flex-col ${large ? "signature-large" : ""}`}>
-      <div
-        className={`min-h-0 overflow-hidden border border-blueline ${large ? "signature-large-frame" : "signature-small-frame"}`}
-      >
-        <img
-          data-reveal="develop"
-          style={{ "--i": index } as CSSProperties}
-          src={image}
-          alt={alt}
-          width={large ? 1200 : 900}
-          height={large ? 900 : 600}
-          loading="lazy"
-          decoding="async"
-          className="h-full w-full object-cover"
-        />
-      </div>
-      <figcaption
-        data-reveal="rise"
-        style={{ "--i": index } as CSSProperties}
-        className="label mt-3 text-blueline"
-      >
-        {detail}
-      </figcaption>
-    </figure>
-  );
-}
-
-function SignatureSheet(props: SignatureProps) {
-  return (
-    <Sheet id={props.id} number={props.number} title="Signature project" next={props.next}>
-      <div className="col-span-12">
-        <h2 className="display h2-size">{props.title}</h2>
-        <p className="label mt-4 text-blueline">{props.location}</p>
-      </div>
-      <div className="signature-media col-span-12 mt-12">
-        <DetailFigure
-          image={props.images[0]}
-          alt={props.alts[0]}
-          detail="Detail 1 · Vision"
-          index={0}
-          large
-        />
-        <div className="signature-side">
-          <DetailFigure
-            image={props.images[1]}
-            alt={props.alts[1]}
-            detail="Detail 2 · Execution"
-            index={1}
-          />
-          <DetailFigure
-            image={props.images[2]}
-            alt={props.alts[2]}
-            detail="Detail 3 · Result"
-            index={2}
-          />
-        </div>
-      </div>
-      <div className="col-span-12 mt-12 grid gap-8 border-t border-rule pt-8 lg:grid-cols-2">
-        <p data-reveal="rise" className="text-graphite">
-          {props.vision}
-        </p>
-        <p data-reveal="rise" style={{ "--i": 1 } as CSSProperties} className="text-graphite">
-          {props.execution}
-        </p>
-      </div>
-      <div className="col-span-12 mt-10 flex flex-wrap gap-8 border-y border-rule py-7">
-        {props.stats.map(([value, label], index) => (
-          <div key={label}>
-            <span className="highlight-stat display relative inline-block px-1 text-5xl text-ink">
-              <span
-                data-reveal="plot-x"
-                style={{ "--i": index } as CSSProperties}
-                aria-hidden="true"
-                className="highlight-wipe absolute inset-0 -z-0 bg-highlighter"
-              />
-              <span className="relative z-10">{value}</span>
-            </span>
-            <p className="label mt-3 text-graphite">{label}</p>
-          </div>
-        ))}
-      </div>
-      <Link
-        to="/projects/$projectId"
-        params={{ projectId: props.projectId }}
-        className="draw-link label col-span-12 mt-8 w-fit text-blueline"
-      >
-        View the album →
-      </Link>
-    </Sheet>
-  );
-}
-
-function ContactStrip() {
-  return (
-    <section id="contact-strip" className="bg-cyanotype py-14 text-chalk">
-      <div className="page-grid items-center">
-        <p className="col-span-12 text-[22px] lg:col-span-8">
-          Have a project to run or a role to fill? Start a conversation.
-        </p>
-        <div className="col-span-12 mt-8 px-3 lg:col-span-4 lg:mt-0">
-          <RevisionCloud reveal>
-            <a
-              href="#contact"
-              className="label relative z-10 flex h-[52px] items-center justify-center bg-redline px-6 text-paper-white hover:bg-redline-press"
-            >
-              Start a conversation
-            </a>
-          </RevisionCloud>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function ApproachSheet() {
-  return (
-    <Sheet id="approach" number="G-006" title="Approach" next="G-007">
-      <h2 className="display col-span-12 h2-size">How I run a project.</h2>
-      <div className="col-span-12 mt-14 grid gap-12 lg:grid-cols-3">
-        {notes.map(([heading, items], column) => (
-          <div key={heading}>
-            <div data-reveal="plot-x" className="border-t border-blueline pt-3">
-              <h3 className="label text-blueline">{heading}</h3>
-            </div>
-            <ol className="mt-5">
-              {items.map((item, index) => (
-                <li
-                  key={item}
-                  data-reveal="rise"
-                  style={{ "--i": index } as CSSProperties}
-                  className="grid grid-cols-[2rem_1fr] gap-3 border-b border-rule py-4"
-                >
-                  <span className="font-mono text-sm text-blueline">
-                    {String(column * 4 + index + 1).padStart(2, "0")}
-                  </span>
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ol>
-          </div>
-        ))}
-      </div>
-    </Sheet>
-  );
-}
-
-function RecordSheet() {
-  const media = useSiteMedia();
-  return (
-    <Sheet id="record" number="G-007" title="Record" next="G-008">
-      <h2 className="display col-span-12 h2-size">Michael Chandler</h2>
-      <div className="col-span-12 mt-14 lg:col-span-4">
-        <div className="aspect-[4/5] overflow-hidden border border-blueline">
-          <img
-            data-reveal="develop"
-            src={media("about-portrait", profile)}
-            alt="Michael Chandler"
-            width="800"
-            height="1000"
-            loading="lazy"
-            decoding="async"
-            className="h-full w-full object-cover"
-          />
-        </div>
-      </div>
-      <div className="col-span-12 mt-10 lg:col-span-7 lg:col-start-6 lg:mt-14">
-        <p data-reveal="rise" className="text-graphite">
-          Michael Chandler has spent more than 20 years running ultra-luxury residential, resort,
-          and civil projects, with over $500 million delivered across six regions, from the
-          California coast to the Bahamas. He has been the builder, the designer, the project
-          manager, and the owner's representative, so he knows a project from every side of the
-          table: where a budget leaks, what a schedule leaves out, and how to protect the design
-          through turnover. He works through McDesign, based in Spring, Texas.
-        </p>
-        <div className="mt-10 grid grid-cols-2 border-l border-t border-rule lg:grid-cols-4">
-          <Cell label="Projects" index={0}>
-            {projects.length}
-          </Cell>
-          <Cell label="Delivered" index={1}>
-            $500M+
-          </Cell>
-          <Cell label="Regions" index={2}>
-            6
-          </Cell>
-          <Cell label="Years" index={3}>
-            20+
-          </Cell>
-        </div>
-        <div className="mt-8 flex gap-8">
-          <Link to="/resume" className="draw-link label text-blueline">
-            Resume →
-          </Link>
-          <a
-            href={LINKEDIN_URL}
-            target="_blank"
-            rel="noreferrer"
-            className="draw-link label text-blueline"
-          >
-            LinkedIn →
-          </a>
-        </div>
-      </div>
-    </Sheet>
-  );
-}
-
-function ContactSheet() {
-  return (
-    <Sheet id="contact" number="G-008" title="Contact" tone="cyanotype" className="sheet-grid">
-      <h2 className="display col-span-12 h2-size text-chalk">Start a conversation.</h2>
-      <aside className="col-span-12 mt-12 lg:col-span-4">
-        <p className="text-chalk-muted">
-          For projects, owner's representation, and executive roles. Every message is read and
-          answered personally.
-        </p>
-        <a
-          href="mailto:mike.rcccon@yahoo.com"
-          className="draw-link mt-8 block w-fit break-all text-chalk"
-        >
-          mike.rcccon@yahoo.com
-        </a>
-        <p className="mt-3 text-chalk-muted">Spring, Texas · projects worldwide</p>
-      </aside>
-      <div className="col-span-12 mt-12 lg:col-span-7 lg:col-start-6">
-        <BookingForm tone="cyanotype" />
-      </div>
-    </Sheet>
-  );
-}
+const Arrow = () => (
+  <svg
+    width="13"
+    height="13"
+    viewBox="0 0 13 13"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.5"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <path d="M1.5 11.5L11.5 1.5M11.5 1.5H4.5M11.5 1.5V8.5" />
+  </svg>
+);
 
 function Index() {
   const media = useSiteMedia();
-  useReveal();
+
   return (
-    <div className="bg-mylar">
+    <div className="relative z-10">
       <Nav />
-      <main id="main" tabIndex={-1} className="pt-16">
-        <Cover />
-        <WorkSheet />
-        <SignatureSheet
-          id="case-pool"
-          number="G-003"
-          next="G-004"
-          projectId="hospitality-pool"
-          location="SE Texas"
-          title="Private club resort pool"
+
+      <main>
+        {/* Hero */}
+        <section
+          id="hero"
+          className="relative z-10 flex min-h-[100dvh] flex-col justify-center overflow-hidden bg-carbon px-6 pt-20 md:px-20"
+        >
+          <img
+            src={media("hero", heroImage)}
+            alt=""
+            aria-hidden="true"
+            fetchPriority="high"
+            decoding="async"
+            className="absolute inset-0 h-full w-full scale-105 object-cover object-center"
+            style={{ filter: "grayscale(35%) contrast(1.05) brightness(0.7)" }}
+          />
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 bg-gradient-to-r from-carbon via-carbon/75 to-carbon/25"
+          />
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 bg-gradient-to-t from-carbon via-transparent to-carbon/60"
+          />
+
+          <div className="relative z-20 max-w-5xl">
+            <p className="mb-4 font-mono text-xs uppercase tracking-[0.35em] text-brass md:mb-6 md:text-sm md:tracking-[0.4em]">
+              Michael Chandler
+            </p>
+            <h1 className="hero-headline mb-6 font-serif text-5xl leading-[1.05] tracking-tight sm:text-6xl md:mb-8 md:text-7xl lg:text-8xl">
+              Building What Others Can't.
+            </h1>
+            <div className="my-6 h-px w-40 bg-brass md:my-8" />
+            <p className="max-w-xl text-base font-light leading-relaxed text-bone/80 sm:text-lg md:text-xl lg:text-2xl">
+              Construction leadership across 20+ years and $500M+ in delivered architectural landmarks.
+            </p>
+          </div>
+
+          <div className="absolute bottom-12 left-1/2 z-20 flex -translate-x-1/2 flex-col items-center gap-4">
+            <span className="font-mono text-xs uppercase tracking-widest text-brass">Scroll</span>
+            <div className="scroll-line" />
+          </div>
+        </section>
+
+        <Marquee />
+
+        {/* About */}
+        <section id="about" className="bg-carbon px-6 py-32 text-bone md:px-20">
+          <div className="mx-auto flex max-w-7xl flex-col items-center gap-16 md:flex-row">
+            <div className="md:w-2/5">
+              <div className="border border-brass/20 p-2" style={{ background: "rgb(201 169 97 / 0.04)" }}>
+                <div className="relative overflow-hidden">
+                  <img
+                    src={media("about-portrait", profile)}
+                    alt="Michael Chandler — Owner, MC Design Build"
+                    loading="lazy"
+                    className="w-full object-cover"
+                    style={{ aspectRatio: "3 / 4", filter: "grayscale(15%)" }}
+                  />
+                  <div className="pointer-events-none absolute inset-0 border border-bone/5" />
+                </div>
+              </div>
+            </div>
+
+            <div className="md:w-3/5">
+              <div className="mb-5 inline-flex items-center rounded-full border border-brass/20 bg-brass/5 px-3 py-1 font-mono text-[0.6rem] uppercase tracking-[0.22em] text-brass/80">
+                About the Owner
+              </div>
+              <h2 className="mb-8 font-serif text-4xl md:text-5xl">Michael Chandler</h2>
+              <div className="space-y-6 text-lg font-light leading-relaxed text-bone/70">
+                <p>
+                  With over 20 years of executive construction leadership, Michael Chandler has managed and delivered
+                  more than $500 million in ultra-luxury residential, hospitality, and civil projects across six global
+                  regions — from California's coastline to the Caribbean.
+                </p>
+                <p>
+                  As Owner of MC Design Build, Michael brings a rare combination of architectural sensitivity and
+                  rigorous project management to every engagement. His portfolio spans Discovery Land Company
+                  developments, private island estates, alpine retreats, and complex coastal restorations.
+                </p>
+                <p>
+                  Known for his old-world craftsmanship standards and modern execution methodology, Michael personally
+                  curates every trade partner, material selection, and milestone — ensuring on-time, on-budget delivery
+                  without compromising design intent.
+                </p>
+              </div>
+              <div className="mt-10 flex flex-wrap gap-8">
+                {[
+                  { v: "21+", l: "Signature Projects" },
+                  { v: "$500M+", l: "Capital Managed" },
+                  { v: "6", l: "Global Regions" },
+                ].map((s) => (
+                  <div key={s.l}>
+                    <div className="font-serif text-3xl text-brass">{s.v}</div>
+                    <div className="mt-1 font-mono text-xs uppercase tracking-widest text-bone/40">{s.l}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Selected Works */}
+        <section id="works" className="mx-auto max-w-[1600px] px-6 py-32 md:px-12">
+          <div className="mb-20">
+            <div className="mb-6 inline-flex items-center rounded-full border border-carbon/12 bg-carbon/5 px-3 py-1 font-mono text-[0.6rem] uppercase tracking-[0.22em] text-carbon/60">
+              Selected Works
+            </div>
+            <h2 className="font-serif text-4xl md:text-6xl">A Legacy of Scale.</h2>
+          </div>
+
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-12 md:gap-12">
+            {gridProjects.map((g) => {
+              const project = projects.find((p) => p.id === g.id)!;
+              return (
+                <Link
+                  key={g.id}
+                  to="/projects/$projectId"
+                  params={{ projectId: g.id }}
+                  className={`project-card relative block overflow-hidden ${g.span} ${g.extra}`}
+                >
+                  <div
+                    className={`relative overflow-hidden ${g.height}`}
+                    style={{ backgroundColor: "rgb(201 169 97 / 0.06)" }}
+                  >
+                    <img
+                      src={media(projectSlotKey(g.id), project.cover)}
+                      alt={g.label}
+                      loading="lazy"
+                      className="project-img"
+                    />
+                    <div className="project-overlay" />
+                    <span className="view-case-study text-sm uppercase tracking-[0.1em] text-bone">View Album</span>
+                  </div>
+                  <div className="mt-4">
+                    <h3 className="font-serif text-2xl">{g.label}</h3>
+                    <p className="mt-1 text-sm text-carbon/60">{g.meta}</p>
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
+
+          <div className="mt-20 text-center">
+            <Link
+              to="/portfolio"
+              className="group inline-flex items-center gap-5 border border-carbon/25 py-3 pr-3 pl-9 text-xs uppercase tracking-[0.22em] transition-all duration-700 hover:bg-carbon hover:text-bone"
+            >
+              <span>View All {projects.length} Projects</span>
+              <span className="flex h-10 w-10 items-center justify-center rounded-full border border-carbon/20 transition-all duration-700 group-hover:border-bone/20 group-hover:bg-bone/10">
+                <Arrow />
+              </span>
+            </Link>
+          </div>
+        </section>
+
+        {/* Signature projects — pinned sequences */}
+        <PinnedCase
+          id="featured-case"
+          subtitle="Signature Project — SE Texas"
+          title="Ultra Luxe Private Club Resort Pool"
           images={[
             media("case-pool-1", houstonOaks),
             media("case-pool-2", poolDetail),
             media("case-pool-3", poolFinished),
           ]}
           alts={[
-            "Private club resort pool overview",
-            "Private club resort pool construction detail",
-            "Completed private club resort pool",
+            "Ultra Luxe Pool — Daylight Overview",
+            "Ultra Luxe Pool — Resort Detail",
+            "Ultra Luxe Pool — Finished Detail",
           ]}
-          vision="A resort-scale pool for one of Texas's most exclusive private clubs."
-          execution="18 months coordinating specialty aquatic, structural, and landscape contractors across a working club site."
+          captions={[
+            "Delivering a world-class aquatic resort experience for one of Texas's most exclusive private clubs — engineered from the ground up.",
+            "18 months of precision civil engineering, coordinating specialty aquatic, structural, and landscape contractors across a complex site.",
+          ]}
           stats={[
-            ["189,000", "gallons"],
-            ["$8M", "budget"],
-            ["18", "months"],
+            { value: "189,000", label: "Gallons Capacity" },
+            { value: "8", label: "Million Budget" },
           ]}
         />
-        <SignatureSheet
-          id="case-alpine"
-          number="G-004"
-          next="G-005"
-          projectId="alpine-ranch"
-          location="Montana"
-          title="High alpine ranch retreat"
+
+        <PinnedCase
+          id="featured-case-2"
+          subtitle="Signature Project — Montana"
+          title="High Alpine Ranch Luxe Retreat"
           images={[
             media("case-alpine-1", alpineCover),
             media("case-alpine-2", alpine3),
             media("case-alpine-3", alpine7),
           ]}
           alts={[
-            "High alpine ranch exterior",
-            "High alpine ranch craftsmanship detail",
-            "Completed high alpine ranch retreat",
+            "Alpine Ranch — Mountain Vista",
+            "Alpine Ranch — Craftsmanship Detail",
+            "Alpine Ranch — Finished Retreat",
           ]}
-          vision="A remote Montana ranch, with custom bronze windows from Italy framing the range."
-          execution="24 months of exposed timber, custom stone masonry, and radiant heating in one of the state's most remote settings."
+          captions={[
+            "A secluded Montana mountain ranch engineered for ultimate luxury — where custom bronze windows from Italy meet panoramic alpine vistas.",
+            "24 months of high-alpine craftsmanship — exposed timber, custom stone masonry, and radiant systems in one of Montana's most remote settings.",
+          ]}
           stats={[
-            ["2,300", "sq ft"],
-            ["24", "months"],
+            { value: "2,300", label: "Sq Ft" },
+            { value: "24", label: "Months Build" },
           ]}
         />
-        <SignatureSheet
-          id="case-miami"
-          number="G-005"
-          next="G-006"
-          projectId="miami-beach"
-          location="South Florida"
-          title="High-rise beachfront residence"
+
+        <PinnedCase
+          id="featured-case-3"
+          subtitle="Signature Project — S. Florida"
+          title="S. Florida High Rise Luxe Condo"
           images={[
             media("case-miami-1", miamiCover),
             media("case-miami-2", miami10),
             media("case-miami-3", miami27),
           ]}
           alts={[
-            "South Florida beachfront residence",
-            "Beachfront residence interior execution",
-            "Completed beachfront residence millwork",
+            "Miami Beach — Beachfront Panorama",
+            "Miami Beach — Interior Execution",
+            "Miami Beach — Finished Sanctuary",
           ]}
-          vision="4,200 sq ft of raw South Florida high-rise turned into a finished beachfront residence during the pandemic."
-          execution="Italian marble, hotel-grade millwork, and integrated smart-home systems."
+          captions={[
+            "Transforming 4,200 sq ft of raw South Florida high-rise into a beachfront sanctuary — delivered on schedule during the height of the pandemic.",
+            "Italian marble, hotel-grade bespoke millwork, and integrated smart home systems — zero delays, zero excuses.",
+          ]}
           stats={[
-            ["4,200", "sq ft"],
-            ["4", "bed · 4 bath"],
+            { value: "4,200", label: "Sq Ft" },
+            { value: "4", label: "Months Delivered" },
           ]}
         />
-        <ContactStrip />
-        <ApproachSheet />
-        <RecordSheet />
-        <ContactSheet />
-      </main>
-      <Footer />
-    </div>
-  );
-}
 
-function Cell({
-  label,
-  children,
-  dark = false,
-  index = 0,
-}: {
-  label: string;
-  children: ReactNode;
-  dark?: boolean;
-  index?: number;
-}) {
-  return (
-    <div
-      data-reveal={dark ? undefined : "rise"}
-      style={{ "--i": index } as CSSProperties}
-      className={`cover-cell border-b border-r p-3 ${dark ? "border-rule-on-dark" : "border-rule"}`}
-    >
-      <p className={`label ${dark ? "text-blueline-on-dark" : "text-blueline"}`}>{label}</p>
-      <p className={`mt-2 ${dark ? "text-chalk" : "text-ink"}`}>{children}</p>
+        {/* Philosophy */}
+        <section id="philosophy" className="relative overflow-hidden bg-bone px-6 py-40 md:px-20">
+          <div className="dot-grid pointer-events-none absolute inset-0 text-carbon opacity-5" />
+          <div className="relative z-10 mx-auto max-w-5xl text-center">
+            <p className="mb-16 font-serif text-3xl leading-tight text-carbon md:text-6xl">
+              "Great architecture is not just built; it is rigorously orchestrated. We don't construct buildings; we
+              construct the reality of a vision."
+            </p>
+            <div className="flex flex-col items-center justify-center">
+              <svg width="200" height="80" viewBox="0 0 200 80" className="mb-4" aria-hidden="true">
+                <path
+                  fill="none"
+                  stroke="var(--brass)"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M10,60 C30,20 50,70 70,30 C80,10 100,50 120,40 C140,30 160,60 180,20"
+                />
+              </svg>
+              <p className="text-sm uppercase tracking-[0.2em] text-carbon/60">Michael Chandler</p>
+            </div>
+          </div>
+        </section>
+
+        {/* Process */}
+        <section id="process" className="bg-carbon px-6 py-32 text-bone md:px-20">
+          <div className="mx-auto max-w-7xl">
+            <div className="mb-6 inline-flex items-center rounded-full border border-brass/20 bg-brass/5 px-3 py-1 font-mono text-[0.6rem] uppercase tracking-[0.22em] text-brass/80">
+              Methodology
+            </div>
+            <h2 className="mb-24 font-serif text-4xl md:text-5xl">The Architecture of Execution.</h2>
+
+            <div className="mb-12 h-0.5 w-full bg-bone/10">
+              <div className="h-full w-1/2 bg-brass" />
+            </div>
+
+            <div className="grid grid-cols-1 gap-12 md:grid-cols-4">
+              {processSteps.map((s) => (
+                <div key={s.n} className="opacity-70 transition-opacity duration-500 hover:opacity-100">
+                  <div className="mb-6 font-mono text-sm text-brass">{s.n}</div>
+                  <h3 className="mb-4 font-serif text-2xl">{s.title}</h3>
+                  <p className="text-sm font-light leading-relaxed text-bone/60">{s.body}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <ImpactSlider />
+
+        {/* Testimonials */}
+        <section className="bg-bone px-6 py-32 md:px-20">
+          <div className="mx-auto max-w-5xl">
+            <div className="mb-16 inline-flex items-center rounded-full border border-carbon/12 bg-carbon/5 px-3 py-1 font-mono text-[0.6rem] uppercase tracking-[0.22em] text-carbon/60">
+              Client Perspectives
+            </div>
+            <div className="divide-y divide-carbon/10">
+              {testimonials.map((t) => (
+                <blockquote key={t.source} className="py-14">
+                  <p className="mb-8 font-serif text-2xl italic leading-relaxed text-carbon md:text-3xl">{t.quote}</p>
+                  <footer className="font-mono text-[0.65rem] uppercase tracking-[0.22em] text-carbon/50">
+                    {t.source}
+                  </footer>
+                </blockquote>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Contact */}
+        <section id="contact" className="relative overflow-hidden bg-carbon px-6 py-40 text-center text-bone md:px-20">
+          <div className="dot-grid pointer-events-none absolute inset-0 text-bone opacity-5" />
+          <div className="relative z-10 mx-auto max-w-3xl">
+            <h2 className="mb-8 font-serif text-4xl md:text-6xl">
+              For project inquiries, speaking engagements, and board consultations.
+            </h2>
+
+            <Link
+              to="/contact"
+              className="group mt-8 inline-flex items-center gap-5 border border-brass/40 py-3 pr-3 pl-9 text-xs uppercase tracking-[0.22em] transition-all duration-700 hover:bg-brass hover:text-carbon"
+            >
+              <span>Begin a Conversation</span>
+              <span className="flex h-10 w-10 items-center justify-center rounded-full border border-brass/30 transition-all duration-700 group-hover:border-carbon/20 group-hover:bg-carbon/10">
+                <Arrow />
+              </span>
+            </Link>
+
+            <div className="mt-20 flex flex-wrap justify-center gap-12 font-mono text-sm text-bone/60">
+              <a
+                href="https://www.linkedin.com/in/michael-chandler-mc-design-build"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="transition-colors hover:text-brass"
+              >
+                LinkedIn
+              </a>
+              <a href="mailto:mike.rcccon@yahoo.com" className="transition-colors hover:text-brass">
+                Email
+              </a>
+              <span>Spring, TX</span>
+              <Link to="/studio/media" className="transition-colors hover:text-brass">
+                Media Studio
+              </Link>
+            </div>
+          </div>
+        </section>
+      </main>
     </div>
   );
 }
