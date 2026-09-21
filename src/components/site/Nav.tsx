@@ -25,7 +25,13 @@ export function Nav() {
       <a
         href="#main"
         className="skip-link"
-        onClick={() => window.requestAnimationFrame(() => document.querySelector<HTMLElement>("main#main")?.focus())}
+        onClick={(event) => {
+          event.preventDefault();
+          const main = document.querySelector<HTMLElement>("main#main");
+          main?.focus();
+          main?.scrollIntoView();
+          window.history.replaceState(null, "", "#main");
+        }}
       >
         Skip to content
       </a>
