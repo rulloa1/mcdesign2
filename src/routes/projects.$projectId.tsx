@@ -100,11 +100,21 @@ function ProjectPage() {
     <div className="bg-mylar text-ink">
       <Nav />
       <header className="sheet-grid border-b border-rule-on-dark bg-cyanotype pt-16 text-chalk">
-        <div className="page-grid py-20 md:py-28">
-          <div className="col-span-12 lg:col-span-9">
+        <div className="page-grid items-center py-20 md:py-28">
+          <div className="col-span-12 lg:col-span-7">
             <p className="label text-blueline-on-dark">{number} · Project</p>
             <h1 className="display h1-size mt-6">{project.title}</h1>
             <p className="mt-5 text-chalk-muted">{project.subtitle}</p>
+          </div>
+          <div className="col-span-12 mt-10 lg:col-span-4 lg:col-start-9 lg:mt-0">
+            <img
+              src={media(projectSlotKey(project.id), project.cover)}
+              alt={`${project.title} — cover`}
+              width="1200"
+              height="900"
+              loading="eager"
+              className="aspect-[4/3] w-full border border-blueline-on-dark object-cover"
+            />
           </div>
         </div>
         <div className="page-grid pb-10">
@@ -172,5 +182,5 @@ function ProjectPage() {
 }
 
 function TitleCell({ label, children }: { label: string; children: string }) {
-  return <div className="col-span-12 border border-rule-on-dark p-4 first:border-b-0 md:col-span-4 md:first:border-b md:not-first:border-l-0"><p className="label text-blueline-on-dark">{label}</p><p className="mt-2 text-sm text-chalk">{children}</p></div>;
+  return <div className="col-span-12 border border-rule-on-dark p-4 md:col-span-4"><p className="label text-blueline-on-dark">{label}</p><p className="mt-2 text-sm text-chalk">{children}</p></div>;
 }
