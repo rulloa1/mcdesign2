@@ -2,7 +2,8 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Footer } from "@/components/site/Footer";
 import { Nav } from "@/components/site/Nav";
 import { useReveal } from "@/hooks/use-reveal";
-import { DEFAULT_SHARE_IMAGE, SITE_ORIGIN } from "@/lib/seo";
+import { SITE_ORIGIN } from "@/lib/seo";
+import profile from "@/assets/mike-profile.webp";
 
 export const Route = createFileRoute("/resume")({
   head: () => ({
@@ -24,9 +25,9 @@ export const Route = createFileRoute("/resume")({
       },
       { property: "og:type", content: "website" },
       { property: "og:url", content: `${SITE_ORIGIN}/resume` },
-      { property: "og:image", content: DEFAULT_SHARE_IMAGE },
+      { property: "og:image", content: `${SITE_ORIGIN}${profile}` },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:image", content: DEFAULT_SHARE_IMAGE },
+      { name: "twitter:image", content: `${SITE_ORIGIN}${profile}` },
     ],
     links: [{ rel: "canonical", href: `${SITE_ORIGIN}/resume` }],
   }),
@@ -352,7 +353,7 @@ function ResumePage() {
     <div className="min-h-dvh bg-mylar text-ink">
       <Nav />
       <header className="sheet-grid border-b border-rule-on-dark bg-cyanotype pt-16 text-chalk">
-        <div className="page-grid py-20 md:py-28"><div className="col-span-12 lg:col-span-8">
+        <div className="page-grid items-center py-20 md:py-28"><div className="col-span-12 lg:col-span-8">
           <p className="label text-blueline-on-dark">G-200 · Resume</p>
           <h1 className="display h1-size mt-6">Michael Chandler</h1>
           <p className="label mt-5 text-blueline-on-dark">
@@ -369,7 +370,7 @@ function ResumePage() {
             4 countries. Native-level fluency in Spanish with a unique ability to bridge high-level architectural
             design with rigorous P&L stewardship and field execution.
           </p>
-        </div></div>
+        </div><div className="col-span-12 mt-10 lg:col-span-3 lg:col-start-10 lg:mt-0"><img src={profile} alt="Michael Chandler" width="800" height="1000" loading="lazy" decoding="async" className="aspect-[4/5] w-full border border-blueline-on-dark object-cover" /></div></div>
       </header>
       <main id="main" className="page-grid py-16 md:py-24">
       <div className="col-span-12 lg:col-span-10 lg:col-start-2">

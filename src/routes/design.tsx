@@ -4,7 +4,7 @@ import { BeforeAfter } from "@/components/site/BeforeAfter";
 import { Nav } from "@/components/site/Nav";
 import { Footer } from "@/components/site/Footer";
 import { useReveal } from "@/hooks/use-reveal";
-import { DEFAULT_SHARE_IMAGE, SITE_ORIGIN } from "@/lib/seo";
+import { absoluteImage, SITE_ORIGIN } from "@/lib/seo";
 
 const TITLE = "Design — Architecture, Interiors & Concepts | McDesign";
 const DESCRIPTION =
@@ -19,9 +19,9 @@ export const Route = createFileRoute("/design")({
       { property: "og:description", content: DESCRIPTION },
       { property: "og:type", content: "website" },
       { property: "og:url", content: `${SITE_ORIGIN}/design` },
-      { property: "og:image", content: DEFAULT_SHARE_IMAGE },
+      { property: "og:image", content: absoluteImage(architecture) },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:image", content: DEFAULT_SHARE_IMAGE },
+      { name: "twitter:image", content: absoluteImage(architecture) },
     ],
     links: [{ rel: "canonical", href: `${SITE_ORIGIN}/design` }],
   }),
@@ -127,6 +127,7 @@ function DesignPage() {
             Architecture, interiors, and the craft in between — from first concept sketches to finished custom
             furniture.
           </p>
+        </div>
         </div>
       </header>
 
