@@ -21,8 +21,8 @@ export function useActiveSheet() {
           HTMLElement | undefined;
         if (!current) return;
         setActive({
-          number: current.dataset.sheetNumber ?? fallback.number,
-          title: current.dataset.sheetTitle ?? fallback.title,
+          number: current.dataset["sheetNumber"] ?? fallback.number,
+          title: current.dataset["sheetTitle"] ?? fallback.title,
         });
       },
       { rootMargin: "-49.9% 0px -49.9% 0px", threshold: 0 },
