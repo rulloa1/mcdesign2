@@ -8,7 +8,8 @@ import { projects } from "@/data/projects";
 import { projectSlotKey } from "@/data/media-slots";
 import { useSiteMedia } from "@/lib/site-media";
 
-import profile from "@/assets/mike-profile.webp";
+import profileAsset from "@/assets/mike-headshot.jpg.asset.json";
+const profile = profileAsset.url;
 import heroImage from "@/assets/southcoast-cover.webp";
 import houstonOaks from "@/assets/houston-oaks-cover.webp";
 import poolDetail from "@/assets/hospitality-pool-1.webp";
