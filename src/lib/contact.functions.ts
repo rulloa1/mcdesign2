@@ -69,7 +69,9 @@ export const submitContactInquiry = createServerFn({ method: "POST" })
 
     if (error) {
       if (error.message === "rate_limited") {
-        throw new Error("We've received several inquiries from you recently. Please try again in an hour.");
+        throw new Error(
+          "We've received several inquiries from you recently. Please try again in an hour.",
+        );
       }
       console.error("Unable to save contact inquiry", { code: error.code });
       throw new Error("Your inquiry could not be sent. Please try again.");

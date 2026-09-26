@@ -43,7 +43,9 @@ async function logChange(entry: {
 }) {
   const { data } = await supabase.auth.getUser();
   const user = data.user;
-  if (!user) throw new Error("Image saved, but you appear to be signed out so the change was not logged.");
+  if (!user) {
+    throw new Error("Image saved, but you appear to be signed out so the change was not logged.");
+  }
   const { error } = await supabase.from("site_media_log").insert({
     ...entry,
     actor_id: user.id,
