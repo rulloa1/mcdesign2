@@ -1,6 +1,7 @@
 import { projects } from "@/data/projects";
 
-import profile from "@/assets/mike-profile.webp";
+import profileAsset from "@/assets/mike-headshot.jpg.asset.json";
+const profile = profileAsset.url;
 import houstonOaks from "@/assets/houston-oaks-cover.webp";
 import poolDetail from "@/assets/hospitality-pool-1.webp";
 import poolFinished from "@/assets/pool-design-36.webp";
