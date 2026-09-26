@@ -92,7 +92,8 @@ export const projectAlbums: Record<string, ProjectAlbum> = {
       "/projects/assets/alpine-ranch-9.webp",
       "/projects/assets/alpine-ranch-10.webp",
       "/projects/assets/alpine-ranch-11.webp",
-      "/projects/assets/alpine-ranch-12.webp"
+      "/projects/assets/alpine-ranch-12.webp",
+      "/projects/assets/alpine-ranch-13.webp"
     ]
   },
   "hospitality-pool": {
@@ -155,7 +156,8 @@ export const projectAlbums: Record<string, ProjectAlbum> = {
       "/projects/assets/nfl-010.webp",
       "/projects/assets/nfl-011.webp",
       "/projects/assets/nfl-012.webp",
-      "/projects/assets/nfl-013.webp"
+      "/projects/assets/nfl-013.webp",
+      "/projects/assets/nfl-014.webp"
     ]
   },
   "southcoast": {
@@ -216,7 +218,8 @@ export const projectAlbums: Record<string, ProjectAlbum> = {
       "/projects/assets/southcoast-52.webp",
       "/projects/assets/southcoast-53.webp",
       "/projects/assets/southcoast-22b.webp",
-      "/projects/assets/southcoast-cover-b.webp"
+      "/projects/assets/southcoast-cover-b.webp",
+      "/projects/assets/southcoast-54.webp"
     ]
   },
   "bigsur-civil": {
@@ -303,7 +306,8 @@ export const projectAlbums: Record<string, ProjectAlbum> = {
       "/projects/assets/development-civil-4.webp",
       "/projects/assets/development-entrance-1.webp",
       "/projects/assets/links-estate-2.webp",
-      "/projects/assets/links-cover.webp"
+      "/projects/assets/links-cover.webp",
+      "/projects/assets/development-civil-5.jpg"
     ]
   },
   "pacific-grove": {
@@ -335,7 +339,8 @@ export const projectAlbums: Record<string, ProjectAlbum> = {
     "images": [
       "/projects/assets/abaco-boathouse-cover.webp",
       "/projects/assets/abaco-luxe-boathouse-cover.webp",
-      "/projects/assets/abaco-luxe-boathouse-1.webp"
+      "/projects/assets/abaco-luxe-boathouse-1.webp",
+      "/projects/assets/abaco-luxe-boathouse-2.webp"
     ]
   },
   "coastal-restoration": {
@@ -385,7 +390,8 @@ export const projectAlbums: Record<string, ProjectAlbum> = {
       "/projects/assets/montana-9.webp",
       "/projects/assets/montana-10.webp",
       "/projects/assets/montana-11.webp",
-      "/projects/assets/montana-11b.webp"
+      "/projects/assets/montana-11b.webp",
+      "/projects/assets/montana-12.webp"
     ]
   },
   "carmel-valley-new": {
@@ -407,7 +413,8 @@ export const projectAlbums: Record<string, ProjectAlbum> = {
       "/projects/assets/carmel-2-2.webp",
       "/projects/assets/carmel-2-3.webp",
       "/projects/assets/carmel-2-4.webp",
-      "/projects/assets/carmel-2-5.webp"
+      "/projects/assets/carmel-2-5.webp",
+      "/projects/assets/carmel-2-6.webp"
     ]
   },
   "syracuse": {
@@ -498,7 +505,8 @@ export const projectAlbums: Record<string, ProjectAlbum> = {
       "/projects/assets/carmel1-16-before.webp",
       "/projects/assets/carmel1-17-after.webp",
       "/projects/assets/carmel1-18-after.webp",
-      "/projects/assets/carmel1-19-before.webp"
+      "/projects/assets/carmel1-19-before.webp",
+      "/projects/assets/carmel-3-26.webp"
     ]
   },
   "hillside-restoration": {
