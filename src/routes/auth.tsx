@@ -20,7 +20,6 @@ export const Route = createFileRoute("/auth")({
 
 function AuthPage() {
   const navigate = useNavigate();
-  const [mode, setMode] = useState<"signin" | "signup">("signin");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [busy, setBusy] = useState(false);
@@ -31,20 +30,10 @@ function AuthPage() {
     setBusy(true);
     setMessage(null);
     try {
-      if (mode === "signin") {
-        const { error } = await supabase.auth.signInWithPassword({ email, password });
-        if (error) throw error;
-        navigate({ to: "/studio/media" });
-      } else {
-        const { error } = await supabase.auth.signUp({
-          email,
-          password,
-          options: { emailRedirectTo: `${window.location.origin}/studio/media` },
-        });
-        if (error) throw error;
-        setMessage("Account created. If email confirmation is on, confirm it and then sign in.");
-        setMode("signin");
-      }
+      // Studio accounts are invite-only; there is no public sign-up.
+      const { error } = await supabase.auth.signInWithPassword({ email, password });
+      if (error) throw error;
+      navigate({ to: "/studio/media" });
     } catch (err) {
       setMessage(err instanceof Error ? err.message : "Something went wrong.");
     } finally {
@@ -92,19 +81,11 @@ function AuthPage() {
             disabled={busy}
             className="w-full border border-brass/50 py-3 text-xs uppercase tracking-[0.22em] transition-colors duration-500 hover:bg-brass hover:text-carbon disabled:opacity-50"
           >
-            {busy ? "Working…" : mode === "signin" ? "Sign In" : "Create Account"}
+            {busy ? "Working…" : "Sign In"}
           </button>
         </form>
 
         {message && <p className="mt-5 text-sm text-brass/90">{message}</p>}
-
-        <button
-          type="button"
-          onClick={() => setMode(mode === "signin" ? "signup" : "signin")}
-          className="mt-6 font-mono text-[0.65rem] uppercase tracking-[0.2em] text-bone/50 hover:text-brass"
-        >
-          {mode === "signin" ? "Need an account?" : "Have an account? Sign in"}
-        </button>
       </div>
     </main>
   );

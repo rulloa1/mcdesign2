@@ -55,18 +55,22 @@ export const submitContactInquiry = createServerFn({ method: "POST" })
       },
     });
 
-    const { error } = await supabasePublic.from("contact_inquiries").insert({
-      name: data.name,
-      email: data.email,
-      phone: data.phone || null,
-      project_type: data.projectType,
-      location: data.location || null,
-      budget: data.budget || null,
-      timeline: data.timeline || null,
-      message: data.message,
+    // Direct table inserts are revoked; this function also enforces rate limits.
+    const { error } = await supabasePublic.rpc("submit_contact_inquiry", {
+      _name: data.name,
+      _email: data.email,
+      _phone: data.phone,
+      _project_type: data.projectType,
+      _location: data.location,
+      _budget: data.budget,
+      _timeline: data.timeline,
+      _message: data.message,
     });
 
     if (error) {
+      if (error.message === "rate_limited") {
+        throw new Error("We've received several inquiries from you recently. Please try again in an hour.");
+      }
       console.error("Unable to save contact inquiry", { code: error.code });
       throw new Error("Your inquiry could not be sent. Please try again.");
     }

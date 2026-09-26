@@ -1,9 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
 
 import { supabase } from "@/integrations/supabase/client";
+import { compressImage } from "@/lib/compress-image";
 
 export const SITE_MEDIA_BUCKET = "site-media";
-const SIGNED_URL_TTL = 60 * 60 * 24 * 365 * 5;
 
 export type MediaMap = Record<string, string>;
 
@@ -43,12 +43,13 @@ async function logChange(entry: {
 }) {
   const { data } = await supabase.auth.getUser();
   const user = data.user;
-  if (!user) return;
-  await supabase.from("site_media_log").insert({
+  if (!user) throw new Error("Image saved, but you appear to be signed out so the change was not logged.");
+  const { error } = await supabase.from("site_media_log").insert({
     ...entry,
     actor_id: user.id,
     actor_email: user.email ?? null,
   });
+  if (error) throw new Error("Image saved, but the change could not be recorded in the audit log.");
 }
 
 export const siteMediaQuery = {
@@ -68,28 +69,30 @@ export function useSiteMedia() {
 }
 
 export async function uploadSiteMedia(slot: string, file: File) {
+  const image = await compressImage(file);
   const previous = await currentUrl(slot);
-  const ext = file.name.split(".").pop()?.toLowerCase() || "jpg";
-  const path = `${slot}/${Date.now()}.${ext}`;
+  const path = `${slot}/${Date.now()}.webp`;
 
   const { error: uploadError } = await supabase.storage
     .from(SITE_MEDIA_BUCKET)
-    .upload(path, file, { cacheControl: "31536000", upsert: true });
+    .upload(path, image, { cacheControl: "31536000", contentType: "image/webp" });
   if (uploadError) throw uploadError;
 
-  const { data: signed, error: signError } = await supabase.storage
-    .from(SITE_MEDIA_BUCKET)
-    .createSignedUrl(path, SIGNED_URL_TTL);
-  if (signError || !signed?.signedUrl) throw signError ?? new Error("Could not create image link");
+  // The bucket is public, so this link never expires (signed links did).
+  const url = supabase.storage.from(SITE_MEDIA_BUCKET).getPublicUrl(path).data.publicUrl;
 
   const { error: dbError } = await supabase
     .from("site_media")
-    .upsert({ slot, url: signed.signedUrl, updated_at: new Date().toISOString() }, { onConflict: "slot" });
-  if (dbError) throw dbError;
+    .upsert({ slot, url, updated_at: new Date().toISOString() }, { onConflict: "slot" });
+  if (dbError) {
+    // Don't leave an unreferenced file behind.
+    await supabase.storage.from(SITE_MEDIA_BUCKET).remove([path]);
+    throw dbError;
+  }
 
-  await logChange({ slot, action: "upload", previous_url: previous, new_url: signed.signedUrl });
+  await logChange({ slot, action: "upload", previous_url: previous, new_url: url });
 
-  return signed.signedUrl;
+  return url;
 }
 
 export async function resetSiteMedia(slot: string) {
@@ -99,18 +102,34 @@ export async function resetSiteMedia(slot: string) {
   await logChange({ slot, action: "reset", previous_url: previous, new_url: null });
 }
 
-/** Restore the image this slot had before the most recent change. */
+/**
+ * Undo the most recent change that hasn't already been undone. Each revert
+ * steps one change further back, rather than toggling between two images.
+ */
 export async function revertSiteMedia(slot: string) {
   const { data, error } = await supabase
     .from("site_media_log")
-    .select("previous_url")
+    .select("action,previous_url")
     .eq("slot", slot)
     .order("created_at", { ascending: false })
-    .limit(1)
-    .maybeSingle();
+    .limit(200);
   if (error) throw error;
 
-  const target = data?.previous_url ?? null;
+  let undone = 0;
+  const change = (data ?? []).find((entry) => {
+    if (entry.action === "revert") {
+      undone += 1;
+      return false;
+    }
+    if (undone > 0) {
+      undone -= 1;
+      return false;
+    }
+    return true;
+  });
+  if (!change) throw new Error("There are no earlier changes to revert.");
+
+  const target = change.previous_url;
   const current = await currentUrl(slot);
 
   if (!target) {

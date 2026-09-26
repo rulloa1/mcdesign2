@@ -115,7 +115,6 @@ export const projectAlbums: Record<string, ProjectAlbum> = {
       "/projects/assets/pool-design-13.webp",
       "/projects/assets/pool-design-14.webp",
       "/projects/assets/pool-design-15.webp",
-      "/projects/assets/pool-design-16.webp",
       "/projects/assets/pool-design-17.webp",
       "/projects/assets/pool-design-18.webp",
       "/projects/assets/pool-design-19.webp",
@@ -278,7 +277,6 @@ export const projectAlbums: Record<string, ProjectAlbum> = {
       "/projects/assets/carmel-knolls-5.webp",
       "/projects/assets/carmel-knolls-6.webp",
       "/projects/assets/carmel-knolls-7.webp",
-      "/projects/assets/carmel-knolls-8.webp",
       "/projects/assets/carmel-knolls-9.webp",
       "/projects/assets/carmel-knolls-10.webp"
     ]
@@ -337,7 +335,6 @@ export const projectAlbums: Record<string, ProjectAlbum> = {
   "abaco-boathouse": {
     "description": "On the pristine shores of the Abaco Islands, we constructed an 1,800 sq ft luxury boat house in just six months. Built to withstand the Caribbean climate, this waterfront structure features hurricane-resistant construction and premium marine-grade finishes. Custom mahogany millwork and covered dock access provide a touch of elegance, creating a functional and beautiful gateway to the open water.",
     "images": [
-      "/projects/assets/abaco-boathouse-cover.webp",
       "/projects/assets/abaco-luxe-boathouse-cover.webp",
       "/projects/assets/abaco-luxe-boathouse-1.webp",
       "/projects/assets/abaco-luxe-boathouse-2.webp"
