@@ -8,6 +8,13 @@
       "when": 1790393900172,
       "tag": "0000_tighten_project_order_read_policy",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1790487292760,
+      "tag": "0001_contact_inquiries_rpc_rate_limit",
+      "breakpoints": true
     }
   ]
 }
