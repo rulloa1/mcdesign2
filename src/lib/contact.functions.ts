@@ -56,7 +56,8 @@ export const submitContactInquiry = createServerFn({ method: "POST" })
     });
 
     // Direct table inserts are revoked; this function also enforces rate limits.
-    const { error } = await supabasePublic.rpc("submit_contact_inquiry", {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const { error } = await (supabasePublic.rpc as any)("submit_contact_inquiry", {
       _name: data.name,
       _email: data.email,
       _phone: data.phone,
