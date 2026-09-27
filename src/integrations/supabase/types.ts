@@ -164,19 +164,6 @@ export type Database = {
         }
         Returns: boolean
       }
-      submit_contact_inquiry: {
-        Args: {
-          _budget: string
-          _email: string
-          _location: string
-          _message: string
-          _name: string
-          _phone: string
-          _project_type: string
-          _timeline: string
-        }
-        Returns: undefined
-      }
     }
     Enums: {
       app_role: "admin" | "user"
