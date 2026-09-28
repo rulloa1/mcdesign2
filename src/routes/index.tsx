@@ -62,12 +62,12 @@ export const Route = createFileRoute("/")({
 });
 
 const gridProjects = [
-  { id: "miami-beach", span: "md:col-span-8", height: "h-[60vh] md:h-[80vh]", extra: "", meta: "Design-Build & Project Management • Miami Beach, FL", label: "S. Florida High Rise Luxe Condo" },
-  { id: "alpine-ranch", span: "md:col-span-4", height: "h-[50vh] md:h-[60vh]", extra: "md:mt-32", meta: "Design-Build Lead • Montana", label: "High Alpine Mtn. Ranch" },
-  { id: "southcoast", span: "md:col-span-5", height: "h-[50vh] md:h-[70vh]", extra: "", meta: "Complete Coastal Remodel • Big Sur, CA", label: "South Coast Renovation" },
-  { id: "hospitality-pool", span: "md:col-span-7", height: "h-[60vh] md:h-[90vh]", extra: "md:-mt-20", meta: "Construction Manager • SE Texas", label: "Ultra Luxe Private Club Resort Pool" },
-  { id: "bakers-bay", span: "md:col-span-6", height: "h-[50vh] md:h-[70vh]", extra: "", meta: "Discovery Land Company Rep • Bahamas", label: "Bakers Bay Resort" },
-  { id: "syracuse", span: "md:col-span-6", height: "h-[50vh] md:h-[70vh]", extra: "", meta: "Design-Build • Syracuse, UT", label: "Syracuse House" },
+  { id: "miami-beach", span: "md:col-span-8", height: "h-[52vh] md:h-[72vh]", meta: "Design-Build & Project Management • Miami Beach, FL", label: "S. Florida High Rise Luxe Condo" },
+  { id: "alpine-ranch", span: "md:col-span-4", height: "h-[52vh] md:h-[72vh]", meta: "Design-Build Lead • Montana", label: "High Alpine Mtn. Ranch" },
+  { id: "southcoast", span: "md:col-span-5", height: "h-[52vh] md:h-[72vh]", meta: "Complete Coastal Remodel • Big Sur, CA", label: "South Coast Renovation" },
+  { id: "hospitality-pool", span: "md:col-span-7", height: "h-[52vh] md:h-[72vh]", meta: "Construction Manager • SE Texas", label: "Ultra Luxe Private Club Resort Pool" },
+  { id: "bakers-bay", span: "md:col-span-6", height: "h-[52vh] md:h-[72vh]", meta: "Discovery Land Company Rep • Bahamas", label: "Bakers Bay Resort" },
+  { id: "syracuse", span: "md:col-span-6", height: "h-[52vh] md:h-[72vh]", meta: "Design-Build • Syracuse, UT", label: "Syracuse House" },
 ];
 
 const processSteps = [
@@ -235,7 +235,7 @@ function Index() {
                   key={g.id}
                   to="/projects/$projectId"
                   params={{ projectId: g.id }}
-                  className={`project-card relative block overflow-hidden ${g.span} ${g.extra}`}
+                  className={`project-card relative block min-w-0 overflow-hidden ${g.span}`}
                 >
                   <div
                     className={`relative overflow-hidden ${g.height}`}

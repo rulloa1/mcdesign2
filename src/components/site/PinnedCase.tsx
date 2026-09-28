@@ -35,14 +35,14 @@ export function PinnedCase({ id, subtitle, title, images, alts, captions, stats 
   const labels = ["01 / The Vision", "02 / The Execution", "03 / The Result"];
 
   return (
-    <section id={id} ref={wrapRef} className="relative h-[300vh] bg-carbon">
+    <section id={id} ref={wrapRef} className="relative h-[240vh] bg-carbon">
       <div className="sticky top-0 h-[100dvh] w-full overflow-hidden bg-carbon text-bone">
         {images.map((src, i) => (
           <img
             key={src}
             src={src}
             alt={alts[i]}
-            loading="lazy"
+            loading="eager"
             className="absolute inset-0 h-full w-full object-cover transition-all duration-1000 ease-out"
             style={{ opacity: step === i ? 1 : 0, transform: step === i ? "scale(1)" : "scale(1.08)" }}
           />
