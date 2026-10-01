@@ -330,7 +330,6 @@ export const projectAlbums: Record<string, ProjectAlbum> = {
     images: [
       "/projects/assets/development-civil-cover.webp",
       "/projects/assets/development-cover.webp",
-      "/projects/assets/development-site.webp",
       "/projects/assets/development-entrance-2.webp",
       "/projects/assets/development-1.webp",
       "/projects/assets/development-2.webp",
