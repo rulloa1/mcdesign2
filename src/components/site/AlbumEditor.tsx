@@ -101,24 +101,35 @@ export function AlbumEditor({ projectId, title, images, onDone }: Props) {
         {list.map((src, i) => (
           <div
             key={src}
-            draggable
-            onDragStart={() => setDragIndex(i)}
-            onDragEnd={() => setDragIndex(null)}
-            onDragOver={(e) => {
+            data-album-index={i}
+            onPointerDown={(e) => {
+              if ((e.target as HTMLElement).closest("button")) return;
               e.preventDefault();
-              if (dragIndex !== null && dragIndex !== i) {
-                move(dragIndex, i);
-                setDragIndex(i);
+              (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId);
+              setDragIndex(i);
+            }}
+            onPointerMove={(e) => {
+              if (dragIndex === null) return;
+              const el = document
+                .elementFromPoint(e.clientX, e.clientY)
+                ?.closest("[data-album-index]") as HTMLElement | null;
+              const over = el ? Number(el.dataset["albumIndex"]) : NaN;
+              if (!Number.isNaN(over) && over !== dragIndex) {
+                move(dragIndex, over);
+                setDragIndex(over);
               }
             }}
-            className={`group relative aspect-[4/3] cursor-grab overflow-hidden bg-brass/5 ${
-              dragIndex === i ? "opacity-40" : ""
+            onPointerUp={() => setDragIndex(null)}
+            onPointerCancel={() => setDragIndex(null)}
+            style={{ touchAction: "none" }}
+            className={`group relative aspect-[4/3] cursor-grab select-none overflow-hidden bg-brass/5 ${
+              dragIndex === i ? "scale-95 opacity-50 ring-2 ring-brass" : ""
             }`}
           >
             <img
               src={src}
               alt={`${title} — photo ${i + 1}`}
-              className="h-full w-full object-cover"
+              className="pointer-events-none h-full w-full object-cover"
               draggable={false}
             />
             <span className="absolute left-2 top-2 bg-carbon/80 px-2 py-0.5 font-mono text-[0.6rem] text-bone">
