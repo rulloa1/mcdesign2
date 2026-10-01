@@ -5,7 +5,11 @@ import { z } from "zod";
 import type { Database } from "@/integrations/supabase/types";
 
 export const contactInquirySchema = z.object({
-  name: z.string().trim().min(1, "Please enter your name.").max(100, "Name must be under 100 characters."),
+  name: z
+    .string()
+    .trim()
+    .min(1, "Please enter your name.")
+    .max(100, "Name must be under 100 characters."),
   email: z.string().trim().email("Please enter a valid email address.").max(255),
   phone: z.string().trim().max(40, "Phone number must be under 40 characters."),
   projectType: z.enum([

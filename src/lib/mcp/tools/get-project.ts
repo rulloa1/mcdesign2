@@ -9,7 +9,10 @@ export default defineTool({
   description:
     "Get the full published details of one portfolio project by id, including its narrative description and photo gallery paths.",
   inputSchema: {
-    id: z.string().min(1).describe("Project id, e.g. 'miami-beach' (use list_projects to discover ids)."),
+    id: z
+      .string()
+      .min(1)
+      .describe("Project id, e.g. 'miami-beach' (use list_projects to discover ids)."),
   },
   annotations: { readOnlyHint: true, idempotentHint: true, openWorldHint: false },
   handler: ({ id }) => {

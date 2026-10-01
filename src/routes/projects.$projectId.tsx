@@ -71,7 +71,8 @@ function ProjectPage() {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") setLightbox(null);
       if (e.key === "ArrowRight") setLightbox((i) => (i === null ? i : (i + 1) % images.length));
-      if (e.key === "ArrowLeft") setLightbox((i) => (i === null ? i : (i - 1 + images.length) % images.length));
+      if (e.key === "ArrowLeft")
+        setLightbox((i) => (i === null ? i : (i - 1 + images.length) % images.length));
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
@@ -104,7 +105,9 @@ function ProjectPage() {
             <p className="mt-4 text-lg font-light text-bone/70">
               {project.subtitle} • {project.location}
             </p>
-            <p className="mt-4 font-mono text-[0.65rem] uppercase tracking-[0.2em] text-brass/80">{project.specs}</p>
+            <p className="mt-4 font-mono text-[0.65rem] uppercase tracking-[0.2em] text-brass/80">
+              {project.specs}
+            </p>
           </div>
         </div>
       </header>
@@ -112,13 +115,18 @@ function ProjectPage() {
       <main className="mx-auto max-w-[1600px] px-6 py-20 md:px-12">
         <div className="grid gap-12 border-b border-carbon/10 pb-16 md:grid-cols-3">
           <div>
-            <p className="font-mono text-[0.6rem] uppercase tracking-[0.24em] text-brass-dark">Role</p>
+            <p className="font-mono text-[0.6rem] uppercase tracking-[0.24em] text-brass-dark">
+              Role
+            </p>
             <p className="mt-3 text-sm font-light leading-relaxed text-carbon/70">{project.role}</p>
           </div>
           <div className="md:col-span-2">
-            <p className="font-mono text-[0.6rem] uppercase tracking-[0.24em] text-brass-dark">Overview</p>
+            <p className="font-mono text-[0.6rem] uppercase tracking-[0.24em] text-brass-dark">
+              Overview
+            </p>
             <p className="mt-3 text-base font-light leading-relaxed text-carbon/70">
-              {album?.description || `${project.subtitle} in ${project.location}. ${project.specs}.`}
+              {album?.description ||
+                `${project.subtitle} in ${project.location}. ${project.specs}.`}
             </p>
           </div>
         </div>
@@ -149,11 +157,14 @@ function ProjectPage() {
               images={images}
               onDone={(saved) => {
                 setEditing(false);
-                if (saved) void queryClient.invalidateQueries({ queryKey: ["project-album", project.id] });
+                if (saved)
+                  void queryClient.invalidateQueries({ queryKey: ["project-album", project.id] });
               }}
             />
           ) : images.length === 0 ? (
-            <p className="text-sm font-light text-carbon/50">No photos have been added to this album yet.</p>
+            <p className="text-sm font-light text-carbon/50">
+              No photos have been added to this album yet.
+            </p>
           ) : (
             <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
               {images.map((src, i) => (

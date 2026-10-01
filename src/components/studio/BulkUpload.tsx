@@ -41,7 +41,9 @@ export function BulkUpload({ canEdit, onDone }: { canEdit: boolean; onDone: () =
         setItems((prev) => prev.map((i) => (i.id === item.id ? { ...i, status: "done" } : i)));
       } catch (err) {
         const message = err instanceof Error ? err.message : "Upload failed.";
-        setItems((prev) => prev.map((i) => (i.id === item.id ? { ...i, status: "error", error: message } : i)));
+        setItems((prev) =>
+          prev.map((i) => (i.id === item.id ? { ...i, status: "error", error: message } : i)),
+        );
       }
     }
     setBusy(false);
@@ -54,7 +56,9 @@ export function BulkUpload({ canEdit, onDone }: { canEdit: boolean; onDone: () =
   return (
     <section className="mb-16">
       <div className="mb-6 flex flex-wrap items-baseline justify-between gap-3">
-        <h2 className="font-mono text-[0.65rem] uppercase tracking-[0.24em] text-bone/40">Bulk Upload</h2>
+        <h2 className="font-mono text-[0.65rem] uppercase tracking-[0.24em] text-bone/40">
+          Bulk Upload
+        </h2>
         {items.length > 0 && (
           <p className="font-mono text-[0.6rem] uppercase tracking-[0.18em] text-bone/35">
             {matched} ready · {unmatched} need a slot
@@ -79,8 +83,9 @@ export function BulkUpload({ canEdit, onDone }: { canEdit: boolean; onDone: () =
       >
         <p className="font-serif text-lg">Drop images here, or click to choose files</p>
         <p className="mt-2 text-sm text-bone/50">
-          Filenames are matched to slots automatically (e.g. <span className="font-mono">miami-beach.webp</span> →
-          S. Florida Condo). Anything unmatched can be assigned below.
+          Filenames are matched to slots automatically (e.g.{" "}
+          <span className="font-mono">miami-beach.webp</span> → S. Florida Condo). Anything
+          unmatched can be assigned below.
         </p>
         <input
           type="file"
@@ -126,7 +131,9 @@ export function BulkUpload({ canEdit, onDone }: { canEdit: boolean; onDone: () =
                 value={item.slot}
                 disabled={!canEdit || busy || item.status === "done"}
                 onChange={(e) =>
-                  setItems((prev) => prev.map((i) => (i.id === item.id ? { ...i, slot: e.target.value } : i)))
+                  setItems((prev) =>
+                    prev.map((i) => (i.id === item.id ? { ...i, slot: e.target.value } : i)),
+                  )
                 }
                 className="max-w-[14rem] flex-none border border-bone/15 bg-carbon px-3 py-2 text-xs text-bone outline-none focus:border-brass"
               >

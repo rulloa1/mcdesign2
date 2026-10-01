@@ -7,7 +7,10 @@ const normalize = (value: string) =>
     .replace(/[^a-z0-9]+/g, " ")
     .trim();
 
-const tokens = (value: string) => normalize(value).split(" ").filter((t) => t.length > 2);
+const tokens = (value: string) =>
+  normalize(value)
+    .split(" ")
+    .filter((t) => t.length > 2);
 
 /**
  * Guess the media slot a filename belongs to by comparing its words against
@@ -20,7 +23,10 @@ export function matchSlotForFilename(filename: string, slots: MediaSlot[]): Medi
   let best: { slot: MediaSlot; score: number } | null = null;
 
   for (const slot of slots) {
-    const slotTokens = new Set([...tokens(slot.slot.replace(/^project:/, "")), ...tokens(slot.label)]);
+    const slotTokens = new Set([
+      ...tokens(slot.slot.replace(/^project:/, "")),
+      ...tokens(slot.label),
+    ]);
     if (!slotTokens.size) continue;
 
     let score = 0;

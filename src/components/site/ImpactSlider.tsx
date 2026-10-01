@@ -39,12 +39,16 @@ export function ImpactSlider() {
             </div>
             <div className="h-px w-full bg-bone/10" />
             <div>
-              <div className="mb-2 text-xs uppercase tracking-widest text-brass">Sq Ft Delivered</div>
+              <div className="mb-2 text-xs uppercase tracking-widest text-brass">
+                Sq Ft Delivered
+              </div>
               <div className="font-serif text-5xl">{sqft}M</div>
             </div>
             <div className="h-px w-full bg-bone/10" />
             <div>
-              <div className="mb-2 text-xs uppercase tracking-widest text-brass">Capital Managed</div>
+              <div className="mb-2 text-xs uppercase tracking-widest text-brass">
+                Capital Managed
+              </div>
               <div className="font-serif text-5xl">${capital}M</div>
             </div>
           </div>

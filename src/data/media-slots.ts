@@ -18,15 +18,60 @@ export const heroSlots: MediaSlot[] = [
 ];
 
 export const signatureSlots: MediaSlot[] = [
-  { slot: "case-pool-1", label: "Resort Pool — Vision", group: "Signature Sequences", fallback: houstonOaks },
-  { slot: "case-pool-2", label: "Resort Pool — Execution", group: "Signature Sequences", fallback: poolDetail },
-  { slot: "case-pool-3", label: "Resort Pool — Result", group: "Signature Sequences", fallback: poolFinished },
-  { slot: "case-alpine-1", label: "Alpine Ranch — Vision", group: "Signature Sequences", fallback: projects.find((p) => p.id === "alpine-ranch")!.cover },
-  { slot: "case-alpine-2", label: "Alpine Ranch — Execution", group: "Signature Sequences", fallback: alpine3 },
-  { slot: "case-alpine-3", label: "Alpine Ranch — Result", group: "Signature Sequences", fallback: alpine7 },
-  { slot: "case-miami-1", label: "S. Florida Condo — Vision", group: "Signature Sequences", fallback: projects.find((p) => p.id === "miami-beach")!.cover },
-  { slot: "case-miami-2", label: "S. Florida Condo — Execution", group: "Signature Sequences", fallback: miami10 },
-  { slot: "case-miami-3", label: "S. Florida Condo — Result", group: "Signature Sequences", fallback: miami27 },
+  {
+    slot: "case-pool-1",
+    label: "Resort Pool — Vision",
+    group: "Signature Sequences",
+    fallback: houstonOaks,
+  },
+  {
+    slot: "case-pool-2",
+    label: "Resort Pool — Execution",
+    group: "Signature Sequences",
+    fallback: poolDetail,
+  },
+  {
+    slot: "case-pool-3",
+    label: "Resort Pool — Result",
+    group: "Signature Sequences",
+    fallback: poolFinished,
+  },
+  {
+    slot: "case-alpine-1",
+    label: "Alpine Ranch — Vision",
+    group: "Signature Sequences",
+    fallback: projects.find((p) => p.id === "alpine-ranch")!.cover,
+  },
+  {
+    slot: "case-alpine-2",
+    label: "Alpine Ranch — Execution",
+    group: "Signature Sequences",
+    fallback: alpine3,
+  },
+  {
+    slot: "case-alpine-3",
+    label: "Alpine Ranch — Result",
+    group: "Signature Sequences",
+    fallback: alpine7,
+  },
+  {
+    slot: "case-miami-1",
+    label: "S. Florida Condo — Vision",
+    group: "Signature Sequences",
+    fallback: projects.find((p) => p.id === "miami-beach")!.cover,
+  },
+  {
+    slot: "case-miami-2",
+    label: "S. Florida Condo — Execution",
+    group: "Signature Sequences",
+    fallback: miami10,
+  },
+  {
+    slot: "case-miami-3",
+    label: "S. Florida Condo — Result",
+    group: "Signature Sequences",
+    fallback: miami27,
+  },
 ];
 
 export const projectSlots: MediaSlot[] = projects.map((p) => ({

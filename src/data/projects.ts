@@ -98,8 +98,7 @@ export const projects: Project[] = [
     subtitle: "High Rise Luxe Condo",
     categories: ["residential-construction", "owners-representation"],
     location: "S. Florida",
-    role:
-      "Design (Co-Design of Structure / Int. Design by Others), Project Management, Owner Representative, Craftsmen-Contractor / Contract Coordination, Property Management",
+    role: "Design (Co-Design of Structure / Int. Design by Others), Project Management, Owner Representative, Craftsmen-Contractor / Contract Coordination, Property Management",
     specs: "4,200 sqft • 5 months • 4 bed · 4 bath",
     cover: miamiBeach,
   },
@@ -109,8 +108,7 @@ export const projects: Project[] = [
     subtitle: "Ranch Luxe Retreat",
     categories: ["residential-construction", "owners-representation"],
     location: "Montana",
-    role:
-      "Owner Representation, Design Oversight, Contractor Procurement, Contract Negotiation, Project Management, Property Management",
+    role: "Owner Representation, Design Oversight, Contractor Procurement, Contract Negotiation, Project Management, Property Management",
     specs: "2,300 sqft • 24 months • 2 bed · 2 bath",
     cover: alpineRanch,
   },
@@ -140,8 +138,7 @@ export const projects: Project[] = [
     subtitle: "Complete Coastal Remodel",
     categories: ["design-build"],
     location: "Big Sur, CA",
-    role:
-      "Design (Structure & Int. Design), Builder, Project Manager, Owner Representative",
+    role: "Design (Structure & Int. Design), Builder, Project Manager, Owner Representative",
     specs: "3,800 sqft • 16 months",
     cover: southcoast,
   },

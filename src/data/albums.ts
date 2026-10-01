@@ -3,30 +3,28 @@ export type ProjectAlbum = { description: string; images: string[] };
 
 export const projectAlbums: Record<string, ProjectAlbum> = {
   "bakers-bay": {
-    "description": "",
-    "images": [
+    description: "",
+    images: [
       "/projects/assets/bakers-bay-cover.webp",
       "/projects/assets/bakers-bay-1.webp",
-      "/projects/assets/bakers-bay-2.webp"
-    ]
+      "/projects/assets/bakers-bay-2.webp",
+    ],
   },
   "yellowstone-club": {
-    "description": "",
-    "images": [
+    description: "",
+    images: [
       "/projects/assets/yellowstone-club-cover.webp",
-      "/projects/assets/alpine-ranch-1.webp"
-    ]
+      "/projects/assets/alpine-ranch-1.webp",
+    ],
   },
   "houston-oaks": {
-    "description": "",
-    "images": [
-      "/projects/assets/houston-oaks-cover.webp",
-      "/projects/assets/montana-4.webp"
-    ]
+    description: "",
+    images: ["/projects/assets/houston-oaks-cover.webp", "/projects/assets/montana-4.webp"],
   },
   "miami-beach": {
-    "description": "Over five months, a 4,200 sq ft high-rise condominium became a beachfront sanctuary of modern design. Existing stone floors set the palette, warmed by bespoke millwork — scalloped solid-wood paneling and built-ins bent by old-world technique from rare South American wood, acquired as a cancelled pandemic order that saved a mill's jobs and can no longer be sourced in this country. Hand-applied specialty wall finishes by world-class craftsmen and smart-home systems not yet available here completed the residence — delivered on time, on budget, and with no delays.",
-    "images": [
+    description:
+      "Over five months, a 4,200 sq ft high-rise condominium became a beachfront sanctuary of modern design. Existing stone floors set the palette, warmed by bespoke millwork — scalloped solid-wood paneling and built-ins bent by old-world technique from rare South American wood, acquired as a cancelled pandemic order that saved a mill's jobs and can no longer be sourced in this country. Hand-applied specialty wall finishes by world-class craftsmen and smart-home systems not yet available here completed the residence — delivered on time, on budget, and with no delays.",
+    images: [
       "/projects/assets/miami-beach-1.webp",
       "/projects/assets/miami-beach-2.webp",
       "/projects/assets/miami-beach-3.webp",
@@ -73,12 +71,13 @@ export const projectAlbums: Record<string, ProjectAlbum> = {
       "/projects/assets/miami-beach-44.webp",
       "/projects/assets/miami-beach-45.webp",
       "/projects/assets/miami-beach-46.webp",
-      "/projects/assets/miami-beach-47.webp"
-    ]
+      "/projects/assets/miami-beach-47.webp",
+    ],
   },
   "alpine-ranch": {
-    "description": "Nestled in the high-alpine region of Montana, this 2,300 sq ft luxury ranch was brought to life over 24 months. The experience blended modern mountain architecture with rustic charm, using exposed timber and custom stone masonry to complement the panoramic landscape. The residence features high-volume vaulted ceilings and floor-to-ceiling windows that dissolve the boundary between the interior and the breathtaking mountain views. A mix of radiant floor heating and a custom forced-air system maximize all efficiencies. A gourmet kitchen with natural stone countertops and custom millwork throughout ensure that comfort and elegance are felt in every corner. This home was designed and built to a new standard above all others.",
-    "images": [
+    description:
+      "Nestled in the high-alpine region of Montana, this 2,300 sq ft luxury ranch was brought to life over 24 months. The experience blended modern mountain architecture with rustic charm, using exposed timber and custom stone masonry to complement the panoramic landscape. The residence features high-volume vaulted ceilings and floor-to-ceiling windows that dissolve the boundary between the interior and the breathtaking mountain views. A mix of radiant floor heating and a custom forced-air system maximize all efficiencies. A gourmet kitchen with natural stone countertops and custom millwork throughout ensure that comfort and elegance are felt in every corner. This home was designed and built to a new standard above all others.",
+    images: [
       "/projects/assets/alpine-ranch-cover-enhanced.webp",
       "/projects/assets/alpine-ranch-cover.webp",
       "/projects/assets/alpine-ranch-1.webp",
@@ -93,12 +92,13 @@ export const projectAlbums: Record<string, ProjectAlbum> = {
       "/projects/assets/alpine-ranch-10.webp",
       "/projects/assets/alpine-ranch-11.webp",
       "/projects/assets/alpine-ranch-12.webp",
-      "/projects/assets/alpine-ranch-13.webp"
-    ]
+      "/projects/assets/alpine-ranch-13.webp",
+    ],
   },
   "hospitality-pool": {
-    "description": "We orchestrated the creation of an ultra-luxury private club amenity, a project that demanded the coordination of over 15 specialty trades. The centerpiece is a beautiful free-form pool with a swim-up bar, complemented by a 1,200 sq ft pool house with interior design inspired by 1950s New York smoking clubs. The project features imported travertine, custom stonework, and 10-foot high solid mahogany wood walls and doors. This 18-month project delivered a resort-style oasis complete with professional landscaping, fire pits, and an outdoor kitchen, setting a new standard for private club luxury.",
-    "images": [
+    description:
+      "We orchestrated the creation of an ultra-luxury private club amenity, a project that demanded the coordination of over 15 specialty trades. The centerpiece is a beautiful free-form pool with a swim-up bar, complemented by a 1,200 sq ft pool house with interior design inspired by 1950s New York smoking clubs. The project features imported travertine, custom stonework, and 10-foot high solid mahogany wood walls and doors. This 18-month project delivered a resort-style oasis complete with professional landscaping, fire pits, and an outdoor kitchen, setting a new standard for private club luxury.",
+    images: [
       "/projects/assets/hospitality-pool-cover.webp",
       "/projects/assets/hospitality-pool-1.webp",
       "/projects/assets/pool-design-1.webp",
@@ -138,12 +138,13 @@ export const projectAlbums: Record<string, ProjectAlbum> = {
       "/projects/assets/pool-design-32.webp",
       "/projects/assets/pool-design-34.webp",
       "/projects/assets/pool-design-35.webp",
-      "/projects/assets/pool-design-37.webp"
-    ]
+      "/projects/assets/pool-design-37.webp",
+    ],
   },
   "north-florida": {
-    "description": "We revitalized this 3,600 sq ft home with a 1,200 sq ft addition over a 10-month period. Our comprehensive approach included a new roof, impact windows, and updated electrical and plumbing systems. The interior was completely refreshed, and our estate management services ensured a seamless coordination of all trades. The result is a home that is not only more spacious and modern but also fortified and meticulously detailed.",
-    "images": [
+    description:
+      "We revitalized this 3,600 sq ft home with a 1,200 sq ft addition over a 10-month period. Our comprehensive approach included a new roof, impact windows, and updated electrical and plumbing systems. The interior was completely refreshed, and our estate management services ensured a seamless coordination of all trades. The result is a home that is not only more spacious and modern but also fortified and meticulously detailed.",
+    images: [
       "/projects/assets/nfl-002.webp",
       "/projects/assets/nfl-003.webp",
       "/projects/assets/nfl-004.webp",
@@ -156,12 +157,12 @@ export const projectAlbums: Record<string, ProjectAlbum> = {
       "/projects/assets/nfl-011.webp",
       "/projects/assets/nfl-012.webp",
       "/projects/assets/nfl-013.webp",
-      "/projects/assets/nfl-014.webp"
-    ]
+      "/projects/assets/nfl-014.webp",
+    ],
   },
-  "southcoast": {
-    "description": "",
-    "images": [
+  southcoast: {
+    description: "",
+    images: [
       "/projects/assets/southcoast-cover-enhanced.webp",
       "/projects/assets/southcoast-cover.webp",
       "/projects/assets/southcoast-2.webp",
@@ -218,12 +219,13 @@ export const projectAlbums: Record<string, ProjectAlbum> = {
       "/projects/assets/southcoast-53.webp",
       "/projects/assets/southcoast-22b.webp",
       "/projects/assets/southcoast-cover-b.webp",
-      "/projects/assets/southcoast-54.webp"
-    ]
+      "/projects/assets/southcoast-54.webp",
+    ],
   },
   "bigsur-civil": {
-    "description": "Over 11 months, we reshaped a 1.2-acre mountain site in Big Sur, a project that required both heavy machinery and a delicate touch. We moved over 3,000 cubic yards of earth, constructed 320 linear feet of retaining walls, and built a 900 sq ft custom garage and workshop. Our work focused on erosion control and drainage systems, all while preserving the property's stunning ocean views and protecting the natural landscape.",
-    "images": [
+    description:
+      "Over 11 months, we reshaped a 1.2-acre mountain site in Big Sur, a project that required both heavy machinery and a delicate touch. We moved over 3,000 cubic yards of earth, constructed 320 linear feet of retaining walls, and built a 900 sq ft custom garage and workshop. Our work focused on erosion control and drainage systems, all while preserving the property's stunning ocean views and protecting the natural landscape.",
+    images: [
       "/projects/assets/bigsur-civil-cover.webp",
       "/projects/assets/bigsur-cover.webp",
       "/projects/assets/bigsur-1.webp",
@@ -240,12 +242,13 @@ export const projectAlbums: Record<string, ProjectAlbum> = {
       "/projects/assets/bigsur-12.webp",
       "/projects/assets/bigsur-13.webp",
       "/projects/assets/bigsur-14.webp",
-      "/projects/assets/bigsur-15.webp"
-    ]
+      "/projects/assets/bigsur-15.webp",
+    ],
   },
   "civil-infrastructure": {
-    "description": "A multi-state portfolio of civil engineering and infrastructure work completed across California, Texas, New Mexico, Colorado and Montana from 2015 through 2024. The work spans site preparation, grading, drainage, access roads, utilities, erosion control and engineered retaining systems — totaling more than 50,000 cubic yards of earth moved and 2,500 linear feet of retaining walls.",
-    "images": [
+    description:
+      "A multi-state portfolio of civil engineering and infrastructure work completed across California, Texas, New Mexico, Colorado and Montana from 2015 through 2024. The work spans site preparation, grading, drainage, access roads, utilities, erosion control and engineered retaining systems — totaling more than 50,000 cubic yards of earth moved and 2,500 linear feet of retaining walls.",
+    images: [
       "/projects/assets/development-site.webp",
       "/projects/assets/development-1.webp",
       "/projects/assets/development-2.webp",
@@ -264,12 +267,13 @@ export const projectAlbums: Record<string, ProjectAlbum> = {
       "/projects/assets/civil-11.webp",
       "/projects/assets/civil-12.webp",
       "/projects/assets/civil-17.webp",
-      "/projects/assets/civil-18.webp"
-    ]
+      "/projects/assets/civil-18.webp",
+    ],
   },
   "carmel-knolls": {
-    "description": "This was more than a remodel; it was a complete transformation. Over 12 months, we took a 2,200 sq ft house and revitalized it from the ground up. The project included a new roofline, foundation repairs, 18 energy-efficient windows, and 1,400 sq ft of new composite decking. We also undertook extensive site work, including 200 linear feet of retaining walls and a complete landscape renovation, proving that with the right vision, any property can be reborn.",
-    "images": [
+    description:
+      "This was more than a remodel; it was a complete transformation. Over 12 months, we took a 2,200 sq ft house and revitalized it from the ground up. The project included a new roofline, foundation repairs, 18 energy-efficient windows, and 1,400 sq ft of new composite decking. We also undertook extensive site work, including 200 linear feet of retaining walls and a complete landscape renovation, proving that with the right vision, any property can be reborn.",
+    images: [
       "/projects/assets/carmel-knolls-1.webp",
       "/projects/assets/carmel-knolls-2.webp",
       "/projects/assets/carmel-knolls-3.webp",
@@ -278,12 +282,13 @@ export const projectAlbums: Record<string, ProjectAlbum> = {
       "/projects/assets/carmel-knolls-6.webp",
       "/projects/assets/carmel-knolls-7.webp",
       "/projects/assets/carmel-knolls-9.webp",
-      "/projects/assets/carmel-knolls-10.webp"
-    ]
+      "/projects/assets/carmel-knolls-10.webp",
+    ],
   },
   "development-civil": {
-    "description": "Over 36 months, we executed a 103-acre master-planned residential development, laying the groundwork for a new community. This comprehensive project included infrastructure, 3.2 miles of roads, and complete utility installation. We also created 2 miles of walking trails and community amenities, all while adhering to environmental compliance measures and coordinating with multiple municipal agencies. This project was about more than construction; it was about building a neighborhood.",
-    "images": [
+    description:
+      "Over 36 months, we executed a 103-acre master-planned residential development, laying the groundwork for a new community. This comprehensive project included infrastructure, 3.2 miles of roads, and complete utility installation. We also created 2 miles of walking trails and community amenities, all while adhering to environmental compliance measures and coordinating with multiple municipal agencies. This project was about more than construction; it was about building a neighborhood.",
+    images: [
       "/projects/assets/development-civil-cover.webp",
       "/projects/assets/development-cover.webp",
       "/projects/assets/development-site.webp",
@@ -305,12 +310,13 @@ export const projectAlbums: Record<string, ProjectAlbum> = {
       "/projects/assets/development-entrance-1.webp",
       "/projects/assets/links-estate-2.webp",
       "/projects/assets/links-cover.webp",
-      "/projects/assets/development-civil-5.jpg"
-    ]
+      "/projects/assets/development-civil-5.jpg",
+    ],
   },
   "pacific-grove": {
-    "description": "Building a new 2,600 sq ft home in a historic neighborhood required a delicate balance of tradition and modernity. Over 14 months, our design-build team navigated historic district guidelines to create a home that respects its context while offering contemporary comforts. The exterior features period-appropriate details like cedar shingle siding and covered porches, while the interior boasts an open floor plan and energy-efficient systems. This project is a bridge between past and present.",
-    "images": [
+    description:
+      "Building a new 2,600 sq ft home in a historic neighborhood required a delicate balance of tradition and modernity. Over 14 months, our design-build team navigated historic district guidelines to create a home that respects its context while offering contemporary comforts. The exterior features period-appropriate details like cedar shingle siding and covered porches, while the interior boasts an open floor plan and energy-efficient systems. This project is a bridge between past and present.",
+    images: [
       "/projects/assets/pg-1.webp",
       "/projects/assets/pg-2.webp",
       "/projects/assets/pg-3.webp",
@@ -322,27 +328,27 @@ export const projectAlbums: Record<string, ProjectAlbum> = {
       "/projects/assets/pg-9.webp",
       "/projects/assets/pg-10.webp",
       "/projects/assets/pg-2-before.webp",
-      "/projects/assets/pg-3-before.webp"
-    ]
+      "/projects/assets/pg-3-before.webp",
+    ],
   },
   "laguna-grande": {
-    "description": "We brought the timeless beauty of Spanish Colonial Revival architecture to a new 12,000 sq ft commercial complex. This 14-month design-build project features authentic details like hand-formed clay roof tiles, custom ironwork, and arched colonnades. Although modern stucco was used, it was carefully applied so corners and edges were softened to look more like original hand-applied plaster, for authenticity. We balanced traditional aesthetics with the demands of modern commercial spaces, creating a complex that is both beautiful and functional, a landmark in its coastal location.",
-    "images": [
-      "/projects/assets/laguna-grande-1.webp",
-      "/projects/assets/laguna-grande-2.webp"
-    ]
+    description:
+      "We brought the timeless beauty of Spanish Colonial Revival architecture to a new 12,000 sq ft commercial complex. This 14-month design-build project features authentic details like hand-formed clay roof tiles, custom ironwork, and arched colonnades. Although modern stucco was used, it was carefully applied so corners and edges were softened to look more like original hand-applied plaster, for authenticity. We balanced traditional aesthetics with the demands of modern commercial spaces, creating a complex that is both beautiful and functional, a landmark in its coastal location.",
+    images: ["/projects/assets/laguna-grande-1.webp", "/projects/assets/laguna-grande-2.webp"],
   },
   "abaco-boathouse": {
-    "description": "On the pristine shores of the Abaco Islands, we constructed an 1,800 sq ft luxury boat house in just six months. Built to withstand the Caribbean climate, this waterfront structure features hurricane-resistant construction and premium marine-grade finishes. Custom mahogany millwork and covered dock access provide a touch of elegance, creating a functional and beautiful gateway to the open water.",
-    "images": [
+    description:
+      "On the pristine shores of the Abaco Islands, we constructed an 1,800 sq ft luxury boat house in just six months. Built to withstand the Caribbean climate, this waterfront structure features hurricane-resistant construction and premium marine-grade finishes. Custom mahogany millwork and covered dock access provide a touch of elegance, creating a functional and beautiful gateway to the open water.",
+    images: [
       "/projects/assets/abaco-luxe-boathouse-cover.webp",
       "/projects/assets/abaco-luxe-boathouse-1.webp",
-      "/projects/assets/abaco-luxe-boathouse-2.webp"
-    ]
+      "/projects/assets/abaco-luxe-boathouse-2.webp",
+    ],
   },
   "coastal-restoration": {
-    "description": "Faced with a dramatically eroded coastal property, we undertook a nine-month restoration project to preserve this spectacular oceanfront site. We moved over 2,500 cubic yards of material, installed 180 linear feet of engineered retaining walls, and performed comprehensive foundation work. This project was a battle against the elements, a successful effort to stabilize and restore a piece of the California coastline for generations to come.",
-    "images": [
+    description:
+      "Faced with a dramatically eroded coastal property, we undertook a nine-month restoration project to preserve this spectacular oceanfront site. We moved over 2,500 cubic yards of material, installed 180 linear feet of engineered retaining walls, and performed comprehensive foundation work. This project was a battle against the elements, a successful effort to stabilize and restore a piece of the California coastline for generations to come.",
+    images: [
       "/projects/assets/coastal-restoration-1.webp",
       "/projects/assets/coastal-restoration-2.webp",
       "/projects/assets/coastal-restoration-3.webp",
@@ -360,24 +366,26 @@ export const projectAlbums: Record<string, ProjectAlbum> = {
       "/projects/assets/coastal-restoration-15.webp",
       "/projects/assets/coastal-restoration-15b.webp",
       "/projects/assets/coastal-restoration-15c.png",
-      "/projects/assets/coastal-restoration-15d.png"
-    ]
+      "/projects/assets/coastal-restoration-15d.png",
+    ],
   },
   "beachfront-estate": {
-    "description": "We developed a 2.5-acre beachfront estate, creating a 6,800 sq ft main residence that embodies luxury Caribbean living. This premier property features 180 feet of private beach frontage and is fortified with Category 5 hurricane-resistant construction. The estate is a self-sufficient oasis, with an infinity pool, guest cottage, dock facilities, solar power backup, and rainwater collection systems. This is more than a home; it is a legacy property on the shores of the Atlantic.",
-    "images": [
+    description:
+      "We developed a 2.5-acre beachfront estate, creating a 6,800 sq ft main residence that embodies luxury Caribbean living. This premier property features 180 feet of private beach frontage and is fortified with Category 5 hurricane-resistant construction. The estate is a self-sufficient oasis, with an infinity pool, guest cottage, dock facilities, solar power backup, and rainwater collection systems. This is more than a home; it is a legacy property on the shores of the Atlantic.",
+    images: [
       "/projects/assets/beachfront-1.webp",
       "/projects/assets/beachfront-2.webp",
       "/projects/assets/beachfront-3.webp",
       "/projects/assets/beachfront-4.webp",
       "/projects/assets/beachfront-5.webp",
       "/projects/assets/beachfront-6.webp",
-      "/projects/assets/beachfront-7.webp"
-    ]
+      "/projects/assets/beachfront-7.webp",
+    ],
   },
   "montana-condo": {
-    "description": "In just eight months, this new 2,800 sq ft condo was completed as a sophisticated mountain retreat. The new build focused on creating a sanctuary of modern comfort, featuring spa-inspired bathrooms with heated floors and contemporary finishes throughout. The palette centers on Calacatta marble, warm wood accents, and refined brass fixtures — with fine marbles installed as full slabs for floor-to-ceiling wall finishes. The result is a space that perfectly balances modern living with the tranquility of a mountain setting.",
-    "images": [
+    description:
+      "In just eight months, this new 2,800 sq ft condo was completed as a sophisticated mountain retreat. The new build focused on creating a sanctuary of modern comfort, featuring spa-inspired bathrooms with heated floors and contemporary finishes throughout. The palette centers on Calacatta marble, warm wood accents, and refined brass fixtures — with fine marbles installed as full slabs for floor-to-ceiling wall finishes. The result is a space that perfectly balances modern living with the tranquility of a mountain setting.",
+    images: [
       "/projects/assets/montana-1.webp",
       "/projects/assets/montana-2.webp",
       "/projects/assets/montana-3.webp",
@@ -390,35 +398,38 @@ export const projectAlbums: Record<string, ProjectAlbum> = {
       "/projects/assets/montana-10.webp",
       "/projects/assets/montana-11.webp",
       "/projects/assets/montana-11b.webp",
-      "/projects/assets/montana-12.webp"
-    ]
+      "/projects/assets/montana-12.webp",
+    ],
   },
   "carmel-valley-new": {
-    "description": "A custom residence set on a Carmel Valley hilltop, designed and built to take in the full sweep of the surrounding ridgelines. The work spanned civil site development, gated entry, terraced landscape and the residence itself — 4,800 sq ft delivered over 20 months as a single design-build effort.",
-    "images": [
+    description:
+      "A custom residence set on a Carmel Valley hilltop, designed and built to take in the full sweep of the surrounding ridgelines. The work spanned civil site development, gated entry, terraced landscape and the residence itself — 4,800 sq ft delivered over 20 months as a single design-build effort.",
+    images: [
       "/projects/assets/carmel-valley-new-cover.webp",
       "/projects/assets/carmel-valley-new-1.webp",
       "/projects/assets/carmel-valley-new-3.webp",
       "/projects/assets/carmel-valley-new-4.webp",
       "/projects/assets/carmel-valley-1.webp",
-      "/projects/assets/carmel-valley-2.webp"
-    ]
+      "/projects/assets/carmel-valley-2.webp",
+    ],
   },
   "carmel-forest": {
-    "description": "A custom addition in the pines of Carmel by the Sea, built to open the home from forest canopy to ocean view. Detailed carriage-style doors, a wrought-iron balcony and hand-set paver drive keep the new work indistinguishable from the original village architecture.",
-    "images": [
+    description:
+      "A custom addition in the pines of Carmel by the Sea, built to open the home from forest canopy to ocean view. Detailed carriage-style doors, a wrought-iron balcony and hand-set paver drive keep the new work indistinguishable from the original village architecture.",
+    images: [
       "/projects/assets/carmel-valley-new-2.webp",
       "/projects/assets/carmel-2-1.webp",
       "/projects/assets/carmel-2-2.webp",
       "/projects/assets/carmel-2-3.webp",
       "/projects/assets/carmel-2-4.webp",
       "/projects/assets/carmel-2-5.webp",
-      "/projects/assets/carmel-2-6.webp"
-    ]
+      "/projects/assets/carmel-2-6.webp",
+    ],
   },
-  "syracuse": {
-    "description": "This 6,200 sq ft craftsman-style estate is a testament to our integrated design-build approach. Over 18 months, we orchestrated the creation of not just a home, but a complete two-acre landscape. The project's exterior is defined by over 400 tons of decorative stone, professional hardscaping, and dramatic low-voltage evening lighting. The design embraced drought-tolerant native plantings and elegant water features, creating a seamless transition between the built and natural environments. The separate 6-car garage and workshop built for antique restoration, and the two-horse stall barn with storage, rounded out this perfect home, estate, and equestrian property.",
-    "images": [
+  syracuse: {
+    description:
+      "This 6,200 sq ft craftsman-style estate is a testament to our integrated design-build approach. Over 18 months, we orchestrated the creation of not just a home, but a complete two-acre landscape. The project's exterior is defined by over 400 tons of decorative stone, professional hardscaping, and dramatic low-voltage evening lighting. The design embraced drought-tolerant native plantings and elegant water features, creating a seamless transition between the built and natural environments. The separate 6-car garage and workshop built for antique restoration, and the two-horse stall barn with storage, rounded out this perfect home, estate, and equestrian property.",
+    images: [
       "/projects/assets/syracuse-cover.webp",
       "/projects/assets/syracuse-1.webp",
       "/projects/assets/syracuse-2.webp",
@@ -475,12 +486,12 @@ export const projectAlbums: Record<string, ProjectAlbum> = {
       "/projects/assets/syracuse-24c.jpg",
       "/projects/assets/syracuse-28b.jpg",
       "/projects/assets/syracuse-29b.jpg",
-      "/projects/assets/syracuse-30c.jpg"
-    ]
+      "/projects/assets/syracuse-30c.jpg",
+    ],
   },
   "carmel-remodel-23": {
-    "description": "",
-    "images": [
+    description: "",
+    images: [
       "/projects/assets/carmel-3-1.webp",
       "/projects/assets/carmel-3-2.webp",
       "/projects/assets/carmel-3-3.webp",
@@ -510,12 +521,13 @@ export const projectAlbums: Record<string, ProjectAlbum> = {
       "/projects/assets/carmel1-17-after.webp",
       "/projects/assets/carmel1-18-after.webp",
       "/projects/assets/carmel1-19-before.webp",
-      "/projects/assets/carmel-3-26.webp"
-    ]
+      "/projects/assets/carmel-3-26.webp",
+    ],
   },
   "hillside-restoration": {
-    "description": "In just four months, we executed a critical environmental cleanup on a 1.5-acre hillside. We removed over 80 tons of debris, including abandoned vehicles and construction waste. We implemented erosion control measures, restored the native plant life with over 200 new specimens, and improved drainage systems. This project was about more than just cleaning up; it was about healing a piece of the natural landscape.",
-    "images": [
+    description:
+      "In just four months, we executed a critical environmental cleanup on a 1.5-acre hillside. We removed over 80 tons of debris, including abandoned vehicles and construction waste. We implemented erosion control measures, restored the native plant life with over 200 new specimens, and improved drainage systems. This project was about more than just cleaning up; it was about healing a piece of the natural landscape.",
+    images: [
       "/projects/assets/hillside-restoration-cover.webp",
       "/projects/assets/cleanup-1.webp",
       "/projects/assets/cleanup-2.webp",
@@ -530,9 +542,9 @@ export const projectAlbums: Record<string, ProjectAlbum> = {
       "/projects/assets/cleanup-11.webp",
       "/projects/assets/cleanup-12.webp",
       "/projects/assets/cleanup-13.webp",
-      "/projects/assets/cleanup-15.webp"
-    ]
-  }
+      "/projects/assets/cleanup-15.webp",
+    ],
+  },
 };
 
 export const getAlbum = (id: string): ProjectAlbum | undefined => projectAlbums[id];

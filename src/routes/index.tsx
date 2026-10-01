@@ -62,19 +62,71 @@ export const Route = createFileRoute("/")({
 });
 
 const gridProjects = [
-  { id: "miami-beach", span: "md:col-span-8", height: "h-[52vh] md:h-[72vh]", meta: "Design-Build & Project Management • Miami Beach, FL", label: "S. Florida High Rise Luxe Condo" },
-  { id: "alpine-ranch", span: "md:col-span-4", height: "h-[52vh] md:h-[72vh]", meta: "Design-Build Lead • Montana", label: "High Alpine Mtn. Ranch" },
-  { id: "southcoast", span: "md:col-span-5", height: "h-[52vh] md:h-[72vh]", meta: "Complete Coastal Remodel • Big Sur, CA", label: "South Coast Renovation" },
-  { id: "hospitality-pool", span: "md:col-span-7", height: "h-[52vh] md:h-[72vh]", meta: "Construction Manager • SE Texas", label: "Ultra Luxe Private Club Resort Pool" },
-  { id: "bakers-bay", span: "md:col-span-6", height: "h-[52vh] md:h-[72vh]", meta: "Discovery Land Company Rep • Bahamas", label: "Bakers Bay Resort" },
-  { id: "syracuse", span: "md:col-span-6", height: "h-[52vh] md:h-[72vh]", meta: "Design-Build • Syracuse, UT", label: "Syracuse House" },
+  {
+    id: "miami-beach",
+    span: "md:col-span-8",
+    height: "h-[52vh] md:h-[72vh]",
+    meta: "Design-Build & Project Management • Miami Beach, FL",
+    label: "S. Florida High Rise Luxe Condo",
+  },
+  {
+    id: "alpine-ranch",
+    span: "md:col-span-4",
+    height: "h-[52vh] md:h-[72vh]",
+    meta: "Design-Build Lead • Montana",
+    label: "High Alpine Mtn. Ranch",
+  },
+  {
+    id: "southcoast",
+    span: "md:col-span-5",
+    height: "h-[52vh] md:h-[72vh]",
+    meta: "Complete Coastal Remodel • Big Sur, CA",
+    label: "South Coast Renovation",
+  },
+  {
+    id: "hospitality-pool",
+    span: "md:col-span-7",
+    height: "h-[52vh] md:h-[72vh]",
+    meta: "Construction Manager • SE Texas",
+    label: "Ultra Luxe Private Club Resort Pool",
+  },
+  {
+    id: "bakers-bay",
+    span: "md:col-span-6",
+    height: "h-[52vh] md:h-[72vh]",
+    meta: "Discovery Land Company Rep • Bahamas",
+    label: "Bakers Bay Resort",
+  },
+  {
+    id: "syracuse",
+    span: "md:col-span-6",
+    height: "h-[52vh] md:h-[72vh]",
+    meta: "Design-Build • Syracuse, UT",
+    label: "Syracuse House",
+  },
 ];
 
 const processSteps = [
-  { n: "01", title: "Strategize", body: "Aligning capital vision with structural reality before a single dollar is deployed." },
-  { n: "02", title: "Assemble", body: "Curating tier-one architectural, engineering, and contracting talent specific to the asset." },
-  { n: "03", title: "Orchestrate", body: "Rigorous milestone management, value engineering, and risk mitigation." },
-  { n: "04", title: "Deliver", body: "Handover of a market-defining asset, on budget, to precise specifications." },
+  {
+    n: "01",
+    title: "Strategize",
+    body: "Aligning capital vision with structural reality before a single dollar is deployed.",
+  },
+  {
+    n: "02",
+    title: "Assemble",
+    body: "Curating tier-one architectural, engineering, and contracting talent specific to the asset.",
+  },
+  {
+    n: "03",
+    title: "Orchestrate",
+    body: "Rigorous milestone management, value engineering, and risk mitigation.",
+  },
+  {
+    n: "04",
+    title: "Deliver",
+    body: "Handover of a market-defining asset, on budget, to precise specifications.",
+  },
 ];
 
 const testimonials = [
@@ -150,7 +202,8 @@ function Index() {
             </h1>
             <div className="my-6 h-px w-40 bg-brass md:my-8" />
             <p className="max-w-xl text-base font-light leading-relaxed text-bone/80 sm:text-lg md:text-xl lg:text-2xl">
-              Construction leadership across 20+ years and $500M+ in delivered architectural landmarks.
+              Construction leadership across 20+ years and $500M+ in delivered architectural
+              landmarks.
             </p>
           </div>
 
@@ -166,7 +219,10 @@ function Index() {
         <section id="about" className="bg-carbon px-6 py-32 text-bone md:px-20">
           <div className="mx-auto flex max-w-7xl flex-col items-center gap-16 md:flex-row">
             <div className="md:w-2/5">
-              <div className="border border-brass/20 p-2" style={{ background: "rgb(201 169 97 / 0.04)" }}>
+              <div
+                className="border border-brass/20 p-2"
+                style={{ background: "rgb(201 169 97 / 0.04)" }}
+              >
                 <div className="relative overflow-hidden">
                   <img
                     src={media("about-portrait", profile)}
@@ -187,19 +243,21 @@ function Index() {
               <h2 className="mb-8 font-serif text-4xl md:text-5xl">Michael Chandler</h2>
               <div className="space-y-6 text-lg font-light leading-relaxed text-bone/70">
                 <p>
-                  With over 20 years of executive construction leadership, Michael Chandler has managed and delivered
-                  more than $500 million in ultra-luxury residential, hospitality, and civil projects across six global
-                  regions — from California's coastline to the Caribbean.
+                  With over 20 years of executive construction leadership, Michael Chandler has
+                  managed and delivered more than $500 million in ultra-luxury residential,
+                  hospitality, and civil projects across six global regions — from California's
+                  coastline to the Caribbean.
                 </p>
                 <p>
-                  As Owner of MC Design Build, Michael brings a rare combination of architectural sensitivity and
-                  rigorous project management to every engagement. His portfolio spans Discovery Land Company
-                  developments, private island estates, alpine retreats, and complex coastal restorations.
+                  As Owner of MC Design Build, Michael brings a rare combination of architectural
+                  sensitivity and rigorous project management to every engagement. His portfolio
+                  spans Discovery Land Company developments, private island estates, alpine
+                  retreats, and complex coastal restorations.
                 </p>
                 <p>
-                  Known for his old-world craftsmanship standards and modern execution methodology, Michael personally
-                  curates every trade partner, material selection, and milestone — ensuring on-time, on-budget delivery
-                  without compromising design intent.
+                  Known for his old-world craftsmanship standards and modern execution methodology,
+                  Michael personally curates every trade partner, material selection, and milestone
+                  — ensuring on-time, on-budget delivery without compromising design intent.
                 </p>
               </div>
               <div className="mt-10 flex flex-wrap gap-8">
@@ -210,7 +268,9 @@ function Index() {
                 ].map((s) => (
                   <div key={s.l}>
                     <div className="font-serif text-3xl text-brass">{s.v}</div>
-                    <div className="mt-1 font-mono text-xs uppercase tracking-widest text-bone/40">{s.l}</div>
+                    <div className="mt-1 font-mono text-xs uppercase tracking-widest text-bone/40">
+                      {s.l}
+                    </div>
                   </div>
                 ))}
               </div>
@@ -248,7 +308,9 @@ function Index() {
                       className="project-img"
                     />
                     <div className="project-overlay" />
-                    <span className="view-case-study text-sm uppercase tracking-[0.1em] text-bone">View Album</span>
+                    <span className="view-case-study text-sm uppercase tracking-[0.1em] text-bone">
+                      View Album
+                    </span>
                   </div>
                   <div className="mt-4">
                     <h3 className="font-serif text-2xl">{g.label}</h3>
@@ -350,8 +412,8 @@ function Index() {
           <div className="dot-grid pointer-events-none absolute inset-0 text-carbon opacity-5" />
           <div className="relative z-10 mx-auto max-w-5xl text-center">
             <p className="mb-16 font-serif text-3xl leading-tight text-carbon md:text-6xl">
-              "Great architecture is not just built; it is rigorously orchestrated. We don't construct buildings; we
-              construct the reality of a vision."
+              "Great architecture is not just built; it is rigorously orchestrated. We don't
+              construct buildings; we construct the reality of a vision."
             </p>
             <div className="flex flex-col items-center justify-center">
               <svg width="200" height="80" viewBox="0 0 200 80" className="mb-4" aria-hidden="true">
@@ -375,7 +437,9 @@ function Index() {
             <div className="mb-6 inline-flex items-center rounded-full border border-brass/20 bg-brass/5 px-3 py-1 font-mono text-[0.6rem] uppercase tracking-[0.22em] text-brass/80">
               Methodology
             </div>
-            <h2 className="mb-24 font-serif text-4xl md:text-5xl">The Architecture of Execution.</h2>
+            <h2 className="mb-24 font-serif text-4xl md:text-5xl">
+              The Architecture of Execution.
+            </h2>
 
             <div className="mb-12 h-0.5 w-full bg-bone/10">
               <div className="h-full w-1/2 bg-brass" />
@@ -383,7 +447,10 @@ function Index() {
 
             <div className="grid grid-cols-1 gap-12 md:grid-cols-4">
               {processSteps.map((s) => (
-                <div key={s.n} className="opacity-70 transition-opacity duration-500 hover:opacity-100">
+                <div
+                  key={s.n}
+                  className="opacity-70 transition-opacity duration-500 hover:opacity-100"
+                >
                   <div className="mb-6 font-mono text-sm text-brass">{s.n}</div>
                   <h3 className="mb-4 font-serif text-2xl">{s.title}</h3>
                   <p className="text-sm font-light leading-relaxed text-bone/60">{s.body}</p>
@@ -404,7 +471,9 @@ function Index() {
             <div className="divide-y divide-carbon/10">
               {testimonials.map((t) => (
                 <blockquote key={t.source} className="py-14">
-                  <p className="mb-8 font-serif text-2xl italic leading-relaxed text-carbon md:text-3xl">{t.quote}</p>
+                  <p className="mb-8 font-serif text-2xl italic leading-relaxed text-carbon md:text-3xl">
+                    {t.quote}
+                  </p>
                   <footer className="font-mono text-[0.65rem] uppercase tracking-[0.22em] text-carbon/50">
                     {t.source}
                   </footer>
@@ -415,7 +484,10 @@ function Index() {
         </section>
 
         {/* Contact */}
-        <section id="contact" className="relative overflow-hidden bg-carbon px-6 py-40 text-center text-bone md:px-20">
+        <section
+          id="contact"
+          className="relative overflow-hidden bg-carbon px-6 py-40 text-center text-bone md:px-20"
+        >
           <div className="dot-grid pointer-events-none absolute inset-0 text-bone opacity-5" />
           <div className="relative z-10 mx-auto max-w-3xl">
             <h2 className="mb-8 font-serif text-4xl md:text-6xl">

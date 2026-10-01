@@ -22,7 +22,10 @@ export const albumOverrideQuery = (projectId: string) => ({
 export async function saveAlbum(projectId: string, images: string[]) {
   const { error } = await supabase
     .from("project_albums")
-    .upsert({ project_id: projectId, images, updated_at: new Date().toISOString() }, { onConflict: "project_id" });
+    .upsert(
+      { project_id: projectId, images, updated_at: new Date().toISOString() },
+      { onConflict: "project_id" },
+    );
   if (error) throw error;
 }
 

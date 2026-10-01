@@ -26,7 +26,10 @@ const A = "/projects/assets";
 const architecture = `${A}/alpine-ranch-cover.webp`;
 
 const interiors = [
-  { src: `${A}/alpine-ranch-5.webp`, alt: "Timber great room with stone fireplace at a high alpine ranch" },
+  {
+    src: `${A}/alpine-ranch-5.webp`,
+    alt: "Timber great room with stone fireplace at a high alpine ranch",
+  },
   { src: `${A}/alpine-ranch-8.webp`, alt: "Custom kitchen with timber beams and stone detailing" },
   { src: `${A}/miami-beach-20.webp`, alt: "High-rise living room opening to an ocean view" },
 ];
@@ -58,14 +61,23 @@ const pools = [
 ];
 
 const concepts = [
-  { src: `${A}/carmel-valley-new-4.webp`, alt: "Aerial study of a hillside estate and its site plan" },
+  {
+    src: `${A}/carmel-valley-new-4.webp`,
+    alt: "Aerial study of a hillside estate and its site plan",
+  },
   { src: `${A}/nfl-013.webp`, alt: "Aerial concept view of an estate with pool and grounds" },
 ];
 
 const furniture = [
-  { src: `${A}/miami-beach-27.webp`, alt: "Bespoke millwork and sculpted paneling in rare South American wood" },
+  {
+    src: `${A}/miami-beach-27.webp`,
+    alt: "Bespoke millwork and sculpted paneling in rare South American wood",
+  },
   { src: `${A}/syracuse-24.webp`, alt: "Custom built-in library shelving and desk" },
-  { src: `${A}/montana-11.webp`, alt: "Built-in custom wood bathroom shelving with marble backsplash" },
+  {
+    src: `${A}/montana-11.webp`,
+    alt: "Built-in custom wood bathroom shelving with marble backsplash",
+  },
 ];
 
 function Tile({
@@ -99,7 +111,9 @@ function Tile({
 
 function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
-    <h2 className="mb-4 font-serif text-xl uppercase tracking-[0.4em] text-brass md:text-2xl">{children}</h2>
+    <h2 className="mb-4 font-serif text-xl uppercase tracking-[0.4em] text-brass md:text-2xl">
+      {children}
+    </h2>
   );
 }
 
@@ -111,10 +125,12 @@ function DesignPage() {
       <section className="px-6 pt-36 pb-14 md:pt-44">
         <div className="mx-auto max-w-6xl">
           <p className="text-[0.65rem] uppercase tracking-[0.35em] text-bone/50">MC Design Build</p>
-          <h1 className="mt-4 font-serif text-5xl uppercase tracking-[0.3em] text-bone md:text-7xl">Design</h1>
+          <h1 className="mt-4 font-serif text-5xl uppercase tracking-[0.3em] text-bone md:text-7xl">
+            Design
+          </h1>
           <p className="mt-6 max-w-xl text-sm leading-relaxed text-bone/65 md:text-base">
-            Architecture, interiors, and the craft in between — from first concept sketches to finished custom
-            furniture.
+            Architecture, interiors, and the craft in between — from first concept sketches to
+            finished custom furniture.
           </p>
         </div>
       </section>

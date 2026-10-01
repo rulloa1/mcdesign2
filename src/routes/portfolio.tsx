@@ -58,8 +58,8 @@ function Portfolio() {
           </div>
           <h1 className="font-serif text-4xl md:text-6xl">Twenty-Three Projects.</h1>
           <p className="mt-6 max-w-2xl text-lg font-light leading-relaxed text-bone/60">
-            Ultra-luxury residential, hospitality, owner's representation, and civil engineering — delivered across six
-            global regions.
+            Ultra-luxury residential, hospitality, owner's representation, and civil engineering —
+            delivered across six global regions.
           </p>
         </div>
       </header>
@@ -90,8 +90,16 @@ function Portfolio() {
               params={{ projectId: p.id }}
               className="project-card group relative block"
             >
-              <div className="relative h-[42vh] overflow-hidden" style={{ backgroundColor: "rgb(201 169 97 / 0.06)" }}>
-                <img src={media(projectSlotKey(p.id), p.cover)} alt={p.title} loading="lazy" className="project-img" />
+              <div
+                className="relative h-[42vh] overflow-hidden"
+                style={{ backgroundColor: "rgb(201 169 97 / 0.06)" }}
+              >
+                <img
+                  src={media(projectSlotKey(p.id), p.cover)}
+                  alt={p.title}
+                  loading="lazy"
+                  className="project-img"
+                />
                 <div className="project-overlay" />
               </div>
               <div className="mt-4">
@@ -99,7 +107,9 @@ function Portfolio() {
                 <p className="mt-1 text-sm text-carbon/60">
                   {p.subtitle} • {p.location}
                 </p>
-                <p className="mt-3 font-mono text-[0.65rem] uppercase tracking-[0.18em] text-brass-dark">{p.specs}</p>
+                <p className="mt-3 font-mono text-[0.65rem] uppercase tracking-[0.18em] text-brass-dark">
+                  {p.specs}
+                </p>
                 <p className="mt-3 text-sm font-light leading-relaxed text-carbon/50">{p.role}</p>
                 <p className="mt-4 font-mono text-[0.6rem] uppercase tracking-[0.22em] text-brass-dark">
                   View Album →
@@ -120,7 +130,9 @@ function Portfolio() {
       </main>
 
       <footer className="bg-carbon px-6 py-16 text-center text-bone/40 md:px-20">
-        <p className="font-mono text-xs tracking-widest uppercase">MC Design Build — Michael Chandler</p>
+        <p className="font-mono text-xs tracking-widest uppercase">
+          MC Design Build — Michael Chandler
+        </p>
       </footer>
     </div>
   );

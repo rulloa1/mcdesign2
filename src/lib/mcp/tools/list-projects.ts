@@ -24,7 +24,10 @@ export default defineTool({
       .string()
       .optional()
       .describe(`Optional category filter. One of: ${categoryIds.join(", ")}`),
-    search: z.string().optional().describe("Optional free-text match on title, subtitle or location."),
+    search: z
+      .string()
+      .optional()
+      .describe("Optional free-text match on title, subtitle or location."),
   },
   annotations: { readOnlyHint: true, idempotentHint: true, openWorldHint: false },
   handler: ({ category, search }) => {

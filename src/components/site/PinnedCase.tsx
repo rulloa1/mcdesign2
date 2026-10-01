@@ -10,7 +10,15 @@ export type PinnedCaseProps = {
   stats: [{ value: string; label: string }, { value: string; label: string }];
 };
 
-export function PinnedCase({ id, subtitle, title, images, alts, captions, stats }: PinnedCaseProps) {
+export function PinnedCase({
+  id,
+  subtitle,
+  title,
+  images,
+  alts,
+  captions,
+  stats,
+}: PinnedCaseProps) {
   const wrapRef = useRef<HTMLDivElement>(null);
   const [step, setStep] = useState(0);
 
@@ -44,7 +52,10 @@ export function PinnedCase({ id, subtitle, title, images, alts, captions, stats 
             alt={alts[i]}
             loading="eager"
             className="absolute inset-0 h-full w-full object-cover object-center transition-all duration-1000 ease-out"
-            style={{ opacity: step === i ? 1 : 0, transform: step === i ? "scale(1)" : "scale(1.04)" }}
+            style={{
+              opacity: step === i ? 1 : 0,
+              transform: step === i ? "scale(1)" : "scale(1.04)",
+            }}
           />
         ))}
 
@@ -73,8 +84,12 @@ export function PinnedCase({ id, subtitle, title, images, alts, captions, stats 
                 <div className="flex items-end gap-8">
                   {stats.map((s) => (
                     <div key={s.label}>
-                      <div className="font-serif text-5xl leading-none text-brass md:text-6xl">{s.value}</div>
-                      <div className="mt-2 text-xs uppercase tracking-[0.2em] text-bone/60">{s.label}</div>
+                      <div className="font-serif text-5xl leading-none text-brass md:text-6xl">
+                        {s.value}
+                      </div>
+                      <div className="mt-2 text-xs uppercase tracking-[0.2em] text-bone/60">
+                        {s.label}
+                      </div>
                     </div>
                   ))}
                 </div>

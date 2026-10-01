@@ -93,7 +93,9 @@ export function AlbumEditor({ projectId, title, images, onDone }: Props) {
         />
       </div>
 
-      <p className="mb-4 text-sm font-light text-carbon/50">Drag photos to reorder. The first photo appears first.</p>
+      <p className="mb-4 text-sm font-light text-carbon/50">
+        Drag photos to reorder. The first photo appears first.
+      </p>
 
       <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
         {list.map((src, i) => (
@@ -113,16 +115,38 @@ export function AlbumEditor({ projectId, title, images, onDone }: Props) {
               dragIndex === i ? "opacity-40" : ""
             }`}
           >
-            <img src={src} alt={`${title} — photo ${i + 1}`} className="h-full w-full object-cover" draggable={false} />
-            <span className="absolute left-2 top-2 bg-carbon/80 px-2 py-0.5 font-mono text-[0.6rem] text-bone">{i + 1}</span>
+            <img
+              src={src}
+              alt={`${title} — photo ${i + 1}`}
+              className="h-full w-full object-cover"
+              draggable={false}
+            />
+            <span className="absolute left-2 top-2 bg-carbon/80 px-2 py-0.5 font-mono text-[0.6rem] text-bone">
+              {i + 1}
+            </span>
             <div className="absolute bottom-2 right-2 flex gap-1">
-              <button type="button" aria-label="Move earlier" onClick={() => move(i, i - 1)} className="bg-carbon/80 px-2 py-1 text-xs text-bone">←</button>
-              <button type="button" aria-label="Move later" onClick={() => move(i, i + 1)} className="bg-carbon/80 px-2 py-1 text-xs text-bone">→</button>
+              <button
+                type="button"
+                aria-label="Move earlier"
+                onClick={() => move(i, i - 1)}
+                className="bg-carbon/80 px-2 py-1 text-xs text-bone"
+              >
+                ←
+              </button>
+              <button
+                type="button"
+                aria-label="Move later"
+                onClick={() => move(i, i + 1)}
+                className="bg-carbon/80 px-2 py-1 text-xs text-bone"
+              >
+                →
+              </button>
               <button
                 type="button"
                 aria-label="Delete photo"
                 onClick={() => {
-                  if (confirm("Remove this photo from the album?")) setList((l) => l.filter((_, j) => j !== i));
+                  if (confirm("Remove this photo from the album?"))
+                    setList((l) => l.filter((_, j) => j !== i));
                 }}
                 className="bg-destructive px-2 py-1 text-xs text-destructive-foreground"
               >
