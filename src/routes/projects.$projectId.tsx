@@ -60,7 +60,7 @@ function ProjectPage() {
   const media = useSiteMedia();
   const album = projectAlbums[project.id];
   const { data: override } = useQuery(albumOverrideQuery(project.id));
-  const images = override ?? album?.images ?? [];
+  const images: string[] = override ?? album?.images ?? [];
   const isAdmin = useIsAdmin();
   const queryClient = useQueryClient();
   const [editing, setEditing] = useState(false);
