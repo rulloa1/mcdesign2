@@ -2,8 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 
 import { Nav } from "@/components/site/Nav";
 import { projects } from "@/data/projects";
-import { projectAlbums } from "@/data/albums";
-import { enhancedOriginals } from "@/data/enhanced";
+import { enhancedByProject } from "@/data/enhanced";
 import { BeforeAfter } from "@/components/site/BeforeAfter";
 
 export const Route = createFileRoute("/studio/before-after")({
@@ -25,12 +24,8 @@ const enhancedPath = (src: string) =>
   src.replace(/^\/projects\/assets\/(.+)\.\w+$/, "/projects/assets/enh/$1.webp");
 
 function BeforeAfterGallery() {
-  const done = new Set(enhancedOriginals);
   const groups = projects
-    .map((p) => ({
-      project: p,
-      images: (projectAlbums[p.id]?.images ?? []).filter((src) => done.has(src)),
-    }))
+    .map((p) => ({ project: p, images: enhancedByProject[p.id] ?? [] }))
     .filter((g) => g.images.length);
   const total = groups.reduce((n, g) => n + g.images.length, 0);
 
