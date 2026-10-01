@@ -22,6 +22,13 @@
       "when": 1790823538151,
       "tag": "0002_project_albums",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1790839419301,
+      "tag": "0003_first_user_becomes_admin",
+      "breakpoints": true
     }
   ]
 }
