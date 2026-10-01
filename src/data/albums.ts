@@ -263,10 +263,7 @@ export const projectAlbums: Record<string, ProjectAlbum> = {
     description:
       "A multi-state portfolio of civil engineering and infrastructure work completed across California, Texas, New Mexico, Colorado and Montana from 2015 through 2024. The work spans site preparation, grading, drainage, access roads, utilities, erosion control and engineered retaining systems — totaling more than 50,000 cubic yards of earth moved and 2,500 linear feet of retaining walls.",
     images: [
-      "/projects/assets/development-2.webp",
-      "/projects/assets/development-3.webp",
       "/projects/assets/civil-18.webp",
-      "/projects/assets/development-1.webp",
       "/projects/assets/civil-cover-u.webp",
       "/projects/assets/civil-19-u.webp",
       "/projects/assets/civil-21-u.webp",
@@ -281,19 +278,11 @@ export const projectAlbums: Record<string, ProjectAlbum> = {
       "/projects/assets/civil-12.webp",
       "/projects/assets/civil-9.webp",
       "/projects/assets/civil-11.webp",
-      "/projects/assets/coastal-restoration-3.webp",
       "/projects/assets/civil-3-u.webp",
       "/projects/assets/civil-1-u.webp",
       "/projects/assets/civil-5-u.webp",
-      "/projects/assets/coastal-restoration-6.webp",
       "/projects/assets/civil-6-u.webp",
-      "/projects/assets/coastal-restoration-10.webp",
       "/projects/assets/civil-7-u.webp",
-      "/projects/assets/bigsur-3.webp",
-      "/projects/assets/bigsur-12.webp",
-      "/projects/assets/bigsur-8.webp",
-      "/projects/assets/bigsur-5.webp",
-      "/projects/assets/coastal-restoration-14.webp",
     ],
   },
   "carmel-knolls": {
@@ -331,14 +320,12 @@ export const projectAlbums: Record<string, ProjectAlbum> = {
     description:
       "Over 36 months, we executed a 103-acre master-planned residential development, laying the groundwork for a new community. This comprehensive project included infrastructure, 3.2 miles of roads, and complete utility installation. We also created 2 miles of walking trails and community amenities, all while adhering to environmental compliance measures and coordinating with multiple municipal agencies. This project was about more than construction; it was about building a neighborhood.",
     images: [
-      "/projects/assets/links-estate-2.webp",
       "/projects/assets/development-entrance-1.webp",
       "/projects/assets/development-entrance-2.webp",
       "/projects/assets/development-7.webp",
       "/projects/assets/development-10.webp",
       "/projects/assets/development-8.webp",
       "/projects/assets/development-9.webp",
-      "/projects/assets/links-cover.webp",
       "/projects/assets/development-13.webp",
       "/projects/assets/development-6.webp",
       "/projects/assets/development-5.webp",
@@ -388,14 +375,6 @@ export const projectAlbums: Record<string, ProjectAlbum> = {
     images: [
       "/projects/assets/laguna-grande-1.webp",
       "/projects/assets/laguna-grande-2.webp",
-    ],
-  },
-  "abaco-boathouse": {
-    description:
-      "On the pristine shores of the Abaco Islands, we constructed an 1,800 sq ft luxury boat house in just six months. Built to withstand the Caribbean climate, this waterfront structure features hurricane-resistant construction and premium marine-grade finishes. Custom mahogany millwork and covered dock access provide a touch of elegance, creating a functional and beautiful gateway to the open water.",
-    images: [
-      "/projects/assets/abaco-luxe-boathouse-2.webp",
-      "/projects/assets/abaco-luxe-boathouse-cover.webp",
       "/projects/assets/laguna-cover-u.webp",
       "/projects/assets/laguna-5-u.webp",
       "/projects/assets/laguna-6-u.webp",
@@ -404,6 +383,14 @@ export const projectAlbums: Record<string, ProjectAlbum> = {
       "/projects/assets/laguna-1-u.webp",
       "/projects/assets/laguna-grande-3-u.webp",
       "/projects/assets/laguna-4-u.webp",
+    ],
+  },
+  "abaco-boathouse": {
+    description:
+      "On the pristine shores of the Abaco Islands, we constructed an 1,800 sq ft luxury boat house in just six months. Built to withstand the Caribbean climate, this waterfront structure features hurricane-resistant construction and premium marine-grade finishes. Custom mahogany millwork and covered dock access provide a touch of elegance, creating a functional and beautiful gateway to the open water.",
+    images: [
+      "/projects/assets/abaco-luxe-boathouse-2.webp",
+      "/projects/assets/abaco-luxe-boathouse-cover.webp",
       "/projects/assets/abaco-luxe-boathouse-1.webp",
     ],
   },
@@ -513,7 +500,6 @@ export const projectAlbums: Record<string, ProjectAlbum> = {
       "/projects/assets/carmel-2-3.webp",
       "/projects/assets/carmel-2-4.webp",
       "/projects/assets/carmel-2-5.webp",
-      "/projects/assets/carmel-valley-new-2.webp",
     ],
   },
   syracuse: {
