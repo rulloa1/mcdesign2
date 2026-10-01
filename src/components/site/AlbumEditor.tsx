@@ -113,7 +113,7 @@ export function AlbumEditor({ projectId, title, images, onDone }: Props) {
               const el = document
                 .elementFromPoint(e.clientX, e.clientY)
                 ?.closest("[data-album-index]") as HTMLElement | null;
-              const over = el ? Number(el.dataset.albumIndex) : NaN;
+              const over = el ? Number(el.dataset["albumIndex"]) : NaN;
               if (!Number.isNaN(over) && over !== dragIndex) {
                 move(dragIndex, over);
                 setDragIndex(over);
