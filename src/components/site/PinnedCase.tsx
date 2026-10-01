@@ -43,7 +43,7 @@ export function PinnedCase({ id, subtitle, title, images, alts, captions, stats 
             src={src}
             alt={alts[i]}
             loading="eager"
-            className="absolute inset-0 h-full w-full object-cover transition-all duration-1000 ease-out"
+            className="absolute inset-0 h-full w-full object-contain object-center transition-all duration-1000 ease-out"
             style={{ opacity: step === i ? 1 : 0, transform: step === i ? "scale(1)" : "scale(1.08)" }}
           />
         ))}
