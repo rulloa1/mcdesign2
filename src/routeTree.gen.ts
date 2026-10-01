@@ -18,6 +18,7 @@ import { Route as PortfolioRouteImport } from './routes/portfolio'
 import { Route as ResumeRouteImport } from './routes/resume'
 import { Route as Char91DotwellKnownChar93OauthProtectedResourceRouteImport } from './routes/[.well-known]/oauth-protected-resource'
 import { Route as ProjectsProjectIdRouteImport } from './routes/projects.$projectId'
+import { Route as StudioBeforeAfterRouteImport } from './routes/studio.before-after'
 import { Route as StudioMediaRouteImport } from './routes/studio.media'
 
 const IndexRoute = IndexRouteImport.update({
@@ -66,6 +67,11 @@ const ProjectsProjectIdRoute = ProjectsProjectIdRouteImport.update({
   path: '/projects/$projectId',
   getParentRoute: () => rootRouteImport,
 } as any)
+const StudioBeforeAfterRoute = StudioBeforeAfterRouteImport.update({
+  id: '/studio/before-after',
+  path: '/studio/before-after',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const StudioMediaRoute = StudioMediaRouteImport.update({
   id: '/studio/media',
   path: '/studio/media',
@@ -82,6 +88,7 @@ export interface FileRoutesByFullPath {
   '/resume': typeof ResumeRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/projects/$projectId': typeof ProjectsProjectIdRoute
+  '/studio/before-after': typeof StudioBeforeAfterRoute
   '/studio/media': typeof StudioMediaRoute
 }
 export interface FileRoutesByTo {
@@ -94,6 +101,7 @@ export interface FileRoutesByTo {
   '/resume': typeof ResumeRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/projects/$projectId': typeof ProjectsProjectIdRoute
+  '/studio/before-after': typeof StudioBeforeAfterRoute
   '/studio/media': typeof StudioMediaRoute
 }
 export interface FileRoutesById {
@@ -107,6 +115,7 @@ export interface FileRoutesById {
   '/resume': typeof ResumeRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/projects/$projectId': typeof ProjectsProjectIdRoute
+  '/studio/before-after': typeof StudioBeforeAfterRoute
   '/studio/media': typeof StudioMediaRoute
 }
 export interface FileRouteTypes {
@@ -121,6 +130,7 @@ export interface FileRouteTypes {
     | '/resume'
     | '/.well-known/oauth-protected-resource'
     | '/projects/$projectId'
+    | '/studio/before-after'
     | '/studio/media'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -133,6 +143,7 @@ export interface FileRouteTypes {
     | '/resume'
     | '/.well-known/oauth-protected-resource'
     | '/projects/$projectId'
+    | '/studio/before-after'
     | '/studio/media'
   id:
     | '__root__'
@@ -145,6 +156,7 @@ export interface FileRouteTypes {
     | '/resume'
     | '/.well-known/oauth-protected-resource'
     | '/projects/$projectId'
+    | '/studio/before-after'
     | '/studio/media'
   fileRoutesById: FileRoutesById
 }
@@ -158,6 +170,7 @@ export interface RootRouteChildren {
   ResumeRoute: typeof ResumeRoute
   Char91DotwellKnownChar93OauthProtectedResourceRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   ProjectsProjectIdRoute: typeof ProjectsProjectIdRoute
+  StudioBeforeAfterRoute: typeof StudioBeforeAfterRoute
   StudioMediaRoute: typeof StudioMediaRoute
 }
 
@@ -226,6 +239,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProjectsProjectIdRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/studio/before-after': {
+      id: '/studio/before-after'
+      path: '/studio/before-after'
+      fullPath: '/studio/before-after'
+      preLoaderRoute: typeof StudioBeforeAfterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/studio/media': {
       id: '/studio/media'
       path: '/studio/media'
@@ -247,6 +267,7 @@ const rootRouteChildren: RootRouteChildren = {
   Char91DotwellKnownChar93OauthProtectedResourceRoute:
     Char91DotwellKnownChar93OauthProtectedResourceRoute,
   ProjectsProjectIdRoute: ProjectsProjectIdRoute,
+  StudioBeforeAfterRoute: StudioBeforeAfterRoute,
   StudioMediaRoute: StudioMediaRoute,
 }
 export const routeTree = rootRouteImport
