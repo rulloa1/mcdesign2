@@ -6,6 +6,9 @@ import { projects, categoryLabels } from "@/data/projects";
 import { projectAlbums } from "@/data/albums";
 import { projectSlotKey } from "@/data/media-slots";
 import { useSiteMedia } from "@/lib/site-media";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { AlbumEditor } from "@/components/site/AlbumEditor";
+import { albumOverrideQuery, useIsAdmin } from "@/lib/project-albums";
 
 export const Route = createFileRoute("/projects/$projectId")({
   loader: ({ params }) => {
@@ -56,7 +59,11 @@ function ProjectPage() {
   const { project } = Route.useLoaderData();
   const media = useSiteMedia();
   const album = projectAlbums[project.id];
-  const images = album?.images ?? [];
+  const { data: override } = useQuery(albumOverrideQuery(project.id));
+  const images: string[] = override ?? album?.images ?? [];
+  const isAdmin = useIsAdmin();
+  const queryClient = useQueryClient();
+  const [editing, setEditing] = useState(false);
   const [lightbox, setLightbox] = useState<number | null>(null);
 
   useEffect(() => {
@@ -119,12 +126,33 @@ function ProjectPage() {
         <section className="pt-16">
           <div className="mb-10 flex items-baseline justify-between">
             <h2 className="font-serif text-3xl">Album</h2>
-            <p className="font-mono text-[0.6rem] uppercase tracking-[0.24em] text-carbon/40">
-              {images.length} {images.length === 1 ? "Photo" : "Photos"}
-            </p>
+            <div className="flex items-center gap-6">
+              <p className="font-mono text-[0.6rem] uppercase tracking-[0.24em] text-carbon/40">
+                {images.length} {images.length === 1 ? "Photo" : "Photos"}
+              </p>
+              {isAdmin && !editing ? (
+                <button
+                  type="button"
+                  onClick={() => setEditing(true)}
+                  className="border border-carbon/25 px-5 py-2 text-[0.65rem] uppercase tracking-[0.22em] transition-colors hover:bg-carbon hover:text-bone"
+                >
+                  Edit Album
+                </button>
+              ) : null}
+            </div>
           </div>
 
-          {images.length === 0 ? (
+          {editing ? (
+            <AlbumEditor
+              projectId={project.id}
+              title={project.title}
+              images={images}
+              onDone={(saved) => {
+                setEditing(false);
+                if (saved) void queryClient.invalidateQueries({ queryKey: ["project-album", project.id] });
+              }}
+            />
+          ) : images.length === 0 ? (
             <p className="text-sm font-light text-carbon/50">No photos have been added to this album yet.</p>
           ) : (
             <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
