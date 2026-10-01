@@ -22,7 +22,7 @@ export function AlbumEditor({ projectId, title, images, onDone }: Props) {
     setList((l) => {
       const next = [...l];
       const [item] = next.splice(from, 1);
-      next.splice(to, 0, item);
+      next.splice(to, 0, item!);
       return next;
     });
   };
@@ -34,7 +34,7 @@ export function AlbumEditor({ projectId, title, images, onDone }: Props) {
     try {
       for (let i = 0; i < imgs.length; i++) {
         setBusy(`Uploading ${i + 1} of ${imgs.length}…`);
-        const url = await uploadAlbumPhoto(projectId, imgs[i]);
+        const url = await uploadAlbumPhoto(projectId, imgs[i]!);
         setList((l) => [...l, url]);
       }
     } catch (e) {
