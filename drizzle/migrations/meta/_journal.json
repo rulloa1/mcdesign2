@@ -15,6 +15,13 @@
       "when": 1790487292760,
       "tag": "0001_contact_inquiries_rpc_rate_limit",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1790823538151,
+      "tag": "0002_project_albums",
+      "breakpoints": true
     }
   ]
 }
