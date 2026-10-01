@@ -359,7 +359,8 @@ export const projectAlbums: Record<string, ProjectAlbum> = {
       "/projects/assets/coastal-restoration-14.webp",
       "/projects/assets/coastal-restoration-15.webp",
       "/projects/assets/coastal-restoration-15b.webp",
-      "/projects/assets/coastal-restoration-15c.png"
+      "/projects/assets/coastal-restoration-15c.png",
+      "/projects/assets/coastal-restoration-15d.png"
     ]
   },
   "beachfront-estate": {
