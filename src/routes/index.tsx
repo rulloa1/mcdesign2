@@ -50,51 +50,6 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-const gridProjects = [
-  {
-    id: "miami-beach",
-    span: "md:col-span-8",
-    height: "h-[52vh] md:h-[72vh]",
-    meta: "Design-Build & Project Management • Miami Beach, FL",
-    label: "S. Florida High Rise Luxe Condo",
-  },
-  {
-    id: "alpine-ranch",
-    span: "md:col-span-4",
-    height: "h-[52vh] md:h-[72vh]",
-    meta: "Design-Build Lead • Montana",
-    label: "High Alpine Mtn. Ranch",
-  },
-  {
-    id: "southcoast",
-    span: "md:col-span-5",
-    height: "h-[52vh] md:h-[72vh]",
-    meta: "Complete Coastal Remodel • Big Sur, CA",
-    label: "South Coast Renovation",
-  },
-  {
-    id: "hospitality-pool",
-    span: "md:col-span-7",
-    height: "h-[52vh] md:h-[72vh]",
-    meta: "Construction Manager • SE Texas",
-    label: "Ultra Luxe Private Club Resort Pool",
-  },
-  {
-    id: "carmel-knolls",
-    span: "md:col-span-6",
-    height: "h-[52vh] md:h-[72vh]",
-    meta: "Design-Build • Carmel, CA",
-    label: "Carmel Knolls",
-  },
-  {
-    id: "syracuse",
-    span: "md:col-span-6",
-    height: "h-[52vh] md:h-[72vh]",
-    meta: "Design-Build • Syracuse, UT",
-    label: "Syracuse House",
-  },
-];
-
 const processSteps = [
   {
     n: "01",
