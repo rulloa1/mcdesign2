@@ -12,7 +12,7 @@ import profileAsset from "@/assets/mike-headshot.jpg.asset.json";
 const profile = profileAsset.url;
 import heroImage from "@/assets/southcoast-cover.webp";
 import houstonOaks from "@/assets/houston-oaks-cover.webp";
-import poolDetail from "@/assets/hospitality-pool-1.webp";
+const poolDetail = "/projects/assets/pool-design-31.webp";
 import poolFinished from "@/assets/pool-design-36.webp";
 import alpineCover from "@/assets/alpine-ranch-cover.webp";
 import alpine3 from "@/assets/alpine-ranch-3.webp";
