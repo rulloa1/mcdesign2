@@ -91,11 +91,11 @@ const gridProjects = [
     label: "Ultra Luxe Private Club Resort Pool",
   },
   {
-    id: "bakers-bay",
+    id: "carmel-knolls",
     span: "md:col-span-6",
     height: "h-[52vh] md:h-[72vh]",
-    meta: "Discovery Land Company Rep • Bahamas",
-    label: "Bakers Bay Resort",
+    meta: "Design-Build • Carmel, CA",
+    label: "Carmel Knolls",
   },
   {
     id: "syracuse",
