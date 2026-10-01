@@ -1,0 +1,22 @@
+-- Grant the admin role to the very first user who signs up.
+-- Only fires while user_roles has no admin yet, so later signups stay regular users.
+CREATE OR REPLACE FUNCTION public.grant_first_admin()
+RETURNS trigger
+LANGUAGE plpgsql
+SECURITY DEFINER
+SET search_path = public
+AS $$
+BEGIN
+  IF NOT EXISTS (SELECT 1 FROM public.user_roles WHERE role = 'admin') THEN
+    INSERT INTO public.user_roles (user_id, role) VALUES (NEW.id, 'admin');
+  END IF;
+  RETURN NEW;
+END;
+$$;
+
+REVOKE ALL ON FUNCTION public.grant_first_admin() FROM PUBLIC, anon, authenticated;
+
+DROP TRIGGER IF EXISTS on_auth_user_created_grant_admin ON auth.users;
+CREATE TRIGGER on_auth_user_created_grant_admin
+  AFTER INSERT ON auth.users
+  FOR EACH ROW EXECUTE FUNCTION public.grant_first_admin();
