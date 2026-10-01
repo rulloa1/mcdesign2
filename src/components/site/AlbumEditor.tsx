@@ -1,6 +1,9 @@
 import { useRef, useState } from "react";
 
+import { useServerFn } from "@tanstack/react-start";
+
 import { saveAlbum, uploadAlbumPhoto } from "@/lib/project-albums";
+import { enhancePhoto } from "@/lib/photo-enhance.functions";
 
 type Props = {
   projectId: string;
@@ -16,6 +19,26 @@ export function AlbumEditor({ projectId, title, images, onDone }: Props) {
   const [error, setError] = useState<string | null>(null);
   const [dropActive, setDropActive] = useState(false);
   const fileInput = useRef<HTMLInputElement>(null);
+  const enhanceFn = useServerFn(enhancePhoto);
+  const [working, setWorking] = useState<string | null>(null);
+
+  const enhance = async (src: string, mode: "enhance" | "straighten") => {
+    setWorking(src);
+    setError(null);
+    try {
+      const { b64 } = await enhanceFn({
+        data: { url: new URL(src, window.location.origin).href, mode },
+      });
+      const bytes = Uint8Array.from(atob(b64), (c) => c.charCodeAt(0));
+      const file = new File([bytes], "enhanced.png", { type: "image/png" });
+      const url = await uploadAlbumPhoto(projectId, file);
+      setList((l) => l.map((u) => (u === src ? url : u)));
+    } catch (e) {
+      setError(e instanceof Error ? e.message : "Enhancement failed.");
+    } finally {
+      setWorking(null);
+    }
+  };
 
   const move = (from: number, to: number) => {
     if (to < 0 || to >= list.length || from === to) return;
@@ -135,6 +158,29 @@ export function AlbumEditor({ projectId, title, images, onDone }: Props) {
             <span className="absolute left-2 top-2 bg-carbon/80 px-2 py-0.5 font-mono text-[0.6rem] text-bone">
               {i + 1}
             </span>
+            {working === src ? (
+              <div className="absolute inset-0 flex items-center justify-center bg-carbon/60 font-mono text-[0.6rem] uppercase tracking-[0.2em] text-bone">
+                Enhancing…
+              </div>
+            ) : null}
+            <div className="absolute right-2 top-2 flex gap-1">
+              <button
+                type="button"
+                disabled={!!working}
+                onClick={() => void enhance(src, "enhance")}
+                className="bg-brass px-2 py-1 text-[0.6rem] uppercase tracking-wider text-carbon disabled:opacity-50"
+              >
+                ✦ Enhance
+              </button>
+              <button
+                type="button"
+                disabled={!!working}
+                onClick={() => void enhance(src, "straighten")}
+                className="bg-carbon/80 px-2 py-1 text-[0.6rem] uppercase tracking-wider text-bone disabled:opacity-50"
+              >
+                Straighten
+              </button>
+            </div>
             <div className="absolute bottom-2 right-2 flex gap-1">
               <button
                 type="button"
@@ -173,7 +219,7 @@ export function AlbumEditor({ projectId, title, images, onDone }: Props) {
       <div className="mt-10 flex gap-4">
         <button
           type="button"
-          disabled={!!busy}
+          disabled={!!busy || !!working}
           onClick={save}
           className="border border-carbon bg-carbon px-8 py-3 text-xs uppercase tracking-[0.22em] text-bone disabled:opacity-50"
         >
