@@ -2,13 +2,24 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 
 import { Nav } from "@/components/site/Nav";
 import { Marquee } from "@/components/site/Marquee";
-import { ProjectScrollShowcase } from "@/components/site/ProjectScrollShowcase";
+import { PinnedCase } from "@/components/site/PinnedCase";
 import { ImpactSlider } from "@/components/site/ImpactSlider";
+import { projects } from "@/data/projects";
+import { projectSlotKey } from "@/data/media-slots";
 import { useSiteMedia } from "@/lib/site-media";
 
 import profileAsset from "@/assets/mike-headshot.jpg.asset.json";
 const profile = profileAsset.url;
 import heroImage from "@/assets/southcoast-cover.webp";
+import houstonOaks from "@/assets/houston-oaks-cover.webp";
+const poolDetail = "/projects/assets/pool-design-31-real.webp";
+import poolFinished from "@/assets/pool-design-36.webp";
+import alpineCover from "@/assets/alpine-ranch-cover.webp";
+import alpine3 from "@/assets/alpine-ranch-3.webp";
+import alpine7 from "@/assets/alpine-ranch-7.webp";
+import miamiCover from "@/assets/miami-beach-cover-enhanced.webp";
+import miami10 from "@/assets/miami-beach-10.webp";
+import miami27 from "@/assets/miami-beach-27.webp";
 
 const TITLE = "Michael Chandler — Luxury Construction Executive";
 const DESCRIPTION =
@@ -49,6 +60,51 @@ export const Route = createFileRoute("/")({
   }),
   component: Index,
 });
+
+const gridProjects = [
+  {
+    id: "miami-beach",
+    span: "md:col-span-8",
+    height: "h-[52vh] md:h-[72vh]",
+    meta: "Design-Build & Project Management • Miami Beach, FL",
+    label: "S. Florida High Rise Luxe Condo",
+  },
+  {
+    id: "alpine-ranch",
+    span: "md:col-span-4",
+    height: "h-[52vh] md:h-[72vh]",
+    meta: "Design-Build Lead • Montana",
+    label: "High Alpine Mtn. Ranch",
+  },
+  {
+    id: "southcoast",
+    span: "md:col-span-5",
+    height: "h-[52vh] md:h-[72vh]",
+    meta: "Complete Coastal Remodel • Big Sur, CA",
+    label: "South Coast Renovation",
+  },
+  {
+    id: "hospitality-pool",
+    span: "md:col-span-7",
+    height: "h-[52vh] md:h-[72vh]",
+    meta: "Construction Manager • SE Texas",
+    label: "Ultra Luxe Private Club Resort Pool",
+  },
+  {
+    id: "carmel-knolls",
+    span: "md:col-span-6",
+    height: "h-[52vh] md:h-[72vh]",
+    meta: "Design-Build • Carmel, CA",
+    label: "Carmel Knolls",
+  },
+  {
+    id: "syracuse",
+    span: "md:col-span-6",
+    height: "h-[52vh] md:h-[72vh]",
+    meta: "Design-Build • Syracuse, UT",
+    label: "Syracuse House",
+  },
+];
 
 const processSteps = [
   {
@@ -222,8 +278,134 @@ function Index() {
           </div>
         </section>
 
-        {/* All 19 projects — scroll-driven showcase */}
-        <ProjectScrollShowcase />
+        {/* Selected Works */}
+        <section id="works" className="mx-auto max-w-[1600px] px-6 py-32 md:px-12">
+          <div className="mb-20">
+            <div className="mb-6 inline-flex items-center rounded-full border border-carbon/12 bg-carbon/5 px-3 py-1 font-mono text-[0.6rem] uppercase tracking-[0.22em] text-carbon/60">
+              Selected Works
+            </div>
+            <h2 className="font-serif text-4xl md:text-6xl">A Legacy of Scale.</h2>
+          </div>
+
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-12 md:gap-12">
+            {gridProjects.map((g) => {
+              const project = projects.find((p) => p.id === g.id)!;
+              return (
+                <Link
+                  key={g.id}
+                  to="/projects/$projectId"
+                  params={{ projectId: g.id }}
+                  className={`project-card relative block min-w-0 overflow-hidden ${g.span}`}
+                >
+                  <div
+                    className={`relative overflow-hidden ${g.height}`}
+                    style={{ backgroundColor: "rgb(201 169 97 / 0.06)" }}
+                  >
+                    <img
+                      src={media(projectSlotKey(g.id), project.cover)}
+                      alt={g.label}
+                      loading="lazy"
+                      className="project-img"
+                    />
+                    <div className="project-overlay" />
+                    <span className="view-case-study text-sm uppercase tracking-[0.1em] text-bone">
+                      View Album
+                    </span>
+                  </div>
+                  <div className="mt-4">
+                    <h3 className="font-serif text-2xl">{g.label}</h3>
+                    <p className="mt-1 text-sm text-carbon/60">{g.meta}</p>
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
+
+          <div className="mt-20 text-center">
+            <Link
+              to="/portfolio"
+              className="group inline-flex items-center gap-5 border border-carbon/25 py-3 pr-3 pl-9 text-xs uppercase tracking-[0.22em] transition-all duration-700 hover:bg-carbon hover:text-bone"
+            >
+              <span>View All {projects.length} Projects</span>
+              <span className="flex h-10 w-10 items-center justify-center rounded-full border border-carbon/20 transition-all duration-700 group-hover:border-bone/20 group-hover:bg-bone/10">
+                <Arrow />
+              </span>
+            </Link>
+          </div>
+        </section>
+
+        {/* Signature projects — pinned sequences */}
+        <PinnedCase
+          id="featured-case"
+          subtitle="Signature Project — SE Texas"
+          title="Ultra Luxe Private Club Resort Pool"
+          images={[
+            media("case-pool-1", houstonOaks),
+            media("case-pool-2", poolDetail),
+            media("case-pool-3", poolFinished),
+          ]}
+          alts={[
+            "Ultra Luxe Pool — Daylight Overview",
+            "Ultra Luxe Pool — Resort Detail",
+            "Ultra Luxe Pool — Finished Detail",
+          ]}
+          captions={[
+            "Delivering a world-class aquatic resort experience for one of Texas's most exclusive private clubs — engineered from the ground up.",
+            "18 months of precision civil engineering, coordinating specialty aquatic, structural, and landscape contractors across a complex site.",
+          ]}
+          stats={[
+            { value: "189,000", label: "Gallons Capacity" },
+            { value: "8", label: "Million Budget" },
+          ]}
+        />
+
+        <PinnedCase
+          id="featured-case-2"
+          subtitle="Signature Project — Montana"
+          title="High Alpine Ranch Luxe Retreat"
+          images={[
+            media("case-alpine-1", alpineCover),
+            media("case-alpine-2", alpine3),
+            media("case-alpine-3", alpine7),
+          ]}
+          alts={[
+            "Alpine Ranch — Mountain Vista",
+            "Alpine Ranch — Craftsmanship Detail",
+            "Alpine Ranch — Finished Retreat",
+          ]}
+          captions={[
+            "A secluded Montana mountain ranch engineered for ultimate luxury — where custom bronze windows from Italy meet panoramic alpine vistas.",
+            "24 months of high-alpine craftsmanship — exposed timber, custom stone masonry, and radiant systems in one of Montana's most remote settings.",
+          ]}
+          stats={[
+            { value: "2,300", label: "Sq Ft" },
+            { value: "24", label: "Months Build" },
+          ]}
+        />
+
+        <PinnedCase
+          id="featured-case-3"
+          subtitle="Signature Project — S. Florida"
+          title="S. Florida High Rise Luxe Condo"
+          images={[
+            media("case-miami-1", miamiCover),
+            media("case-miami-2", miami10),
+            media("case-miami-3", miami27),
+          ]}
+          alts={[
+            "Miami Beach — Beachfront Panorama",
+            "Miami Beach — Interior Execution",
+            "Miami Beach — Finished Sanctuary",
+          ]}
+          captions={[
+            "Transforming 4,200 sq ft of raw South Florida high-rise into a beachfront sanctuary — delivered on schedule during the height of the pandemic.",
+            "Italian marble, hotel-grade bespoke millwork, and integrated smart home systems — zero delays, zero excuses.",
+          ]}
+          stats={[
+            { value: "4,200", label: "Sq Ft" },
+            { value: "4", label: "Months Delivered" },
+          ]}
+        />
 
         {/* Philosophy */}
         <section id="philosophy" className="relative overflow-hidden bg-bone px-6 py-40 md:px-20">

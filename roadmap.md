@@ -1,4 +1,3 @@
 # Roadmap
-
-- [x] Rebuild homepage as scroll-driven showcase of all 19 projects (pinned full-screen panels, one per project)
-- [x] Verify scroll experience + all photos load (Playwright, desktop + mobile)
+- [x] Remove duplicate album photos
+- [x] Order each album like a walk-through tour
