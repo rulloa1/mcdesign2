@@ -24,7 +24,7 @@ export function Hero({ poster }: { poster: string }) {
       return;
     }
     const io = new IntersectionObserver(([e]) => {
-      if (e.isIntersecting && !document.hidden) v.play().catch(() => setVideoOk(false));
+      if (e?.isIntersecting && !document.hidden) v.play().catch(() => setVideoOk(false));
       else v.pause();
     });
     io.observe(v);

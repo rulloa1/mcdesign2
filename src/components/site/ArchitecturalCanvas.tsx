@@ -66,7 +66,7 @@ export function ArchitecturalCanvas() {
     start();
     const ro = new ResizeObserver(() => { resize(); start(); });
     ro.observe(canvas);
-    const io = new IntersectionObserver(([e]) => { visible = e.isIntersecting; if (visible) start(); });
+    const io = new IntersectionObserver(([e]) => { visible = !!e?.isIntersecting; if (visible) start(); });
     io.observe(canvas);
     const onVis = () => { if (!document.hidden) start(); };
     document.addEventListener("visibilitychange", onVis);
