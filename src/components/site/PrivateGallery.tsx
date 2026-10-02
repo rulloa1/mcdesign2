@@ -14,7 +14,7 @@ type Item = {
   url: string;
 };
 
-const galleryQuery = (projectId: string) => ({
+export const galleryQuery = (projectId: string) => ({
   queryKey: ["private-gallery", projectId] as const,
   queryFn: async (): Promise<Item[]> => {
     const { data, error } = await supabase
