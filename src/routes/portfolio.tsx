@@ -1,8 +1,6 @@
-import { useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 
 import { Nav } from "@/components/site/Nav";
-import { categoryLabels, type Category } from "@/data/projects";
 import { useOrderedProjects } from "@/lib/project-order";
 import { projectSlotKey } from "@/data/media-slots";
 import { useSiteMedia } from "@/lib/site-media";
@@ -29,23 +27,10 @@ export const Route = createFileRoute("/portfolio")({
   component: Portfolio,
 });
 
-const filters: (Category | "all")[] = [
-  "all",
-  "owners-representation",
-  "residential-construction",
-  "design-build",
-  "hospitality",
-  "civil",
-  "development",
-  "commercial",
-  "estate-management",
-];
-
 function Portfolio() {
-  const [active, setActive] = useState<Category | "all">("all");
   const media = useSiteMedia();
   const ordered = useOrderedProjects();
-  const shown = active === "all" ? ordered : ordered.filter((p) => p.categories.includes(active));
+  const shown = ordered;
 
   return (
     <div className="relative z-10 bg-bone">
