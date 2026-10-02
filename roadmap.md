@@ -15,4 +15,4 @@
 - [x] MC logo incorporated into the 3D blueprint
 - [x] Selected Works: replace circular wheel with a layout matching the site
 - [x] Improve blueprint graphics detail
-- [ ] Improve quality of Selected Works photo (Syracuse cover)
+- [x] Improve quality of Selected Works photo (Syracuse cover)
