@@ -171,19 +171,23 @@ function Index() {
           <div className="relative mx-auto grid max-w-[1600px] gap-4 px-6 md:grid-cols-6 md:gap-5 md:px-12">
             {gridProjects.map((g, i) => {
               const project = projects.find((p) => p.id === g.id)!;
-              const big = i < 2;
+              const n = gridProjects.length;
+              const rem = (n - 2) % 3;
+              const tail = n - rem;
+              const big = i < 2 || (rem === 2 && i >= tail);
+              const full = rem === 1 && i === n - 1;
               return (
                 <Link
                   key={g.id}
                   to="/projects/$projectId"
                   params={{ projectId: g.id }}
-                  className={`group relative block overflow-hidden bg-carbon ${big ? "md:col-span-3" : "md:col-span-2"}`}
+                  className={`group relative block overflow-hidden bg-carbon ${full ? "md:col-span-6" : big ? "md:col-span-3" : "md:col-span-2"}`}
                 >
                   <img
                     src={media(projectSlotKey(g.id), project.cover)}
                     alt={g.label}
                     loading="lazy"
-                    className={`w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.04] ${big ? "aspect-[4/3]" : "aspect-[4/5]"}`}
+                    className={`w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.04] ${full ? "aspect-[4/3] md:aspect-[21/9]" : big ? "aspect-[4/3]" : "aspect-[4/5]"}`}
                   />
                   <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-carbon/85 via-carbon/10 to-transparent" />
                   <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 p-5 md:p-7">
