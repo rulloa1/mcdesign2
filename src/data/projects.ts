@@ -2,7 +2,7 @@ import miamiBeachAsset from "@/assets/miami-beach-sunset-pool.png.asset.json";
 const miamiBeach = miamiBeachAsset.url;
 import alpineRanchAsset from "@/assets/alpine-ranch-cover-pro.png.asset.json";
 const alpineRanch = alpineRanchAsset.url;
-import hospitalityPool from "@/assets/hospitality-pool-cover.webp";
+import hospitalityPool from "@/assets/hospitality-pool-cover-hq.jpg";
 import northFloridaAsset from "@/assets/north-florida-vero-cover.png.asset.json";
 const northFlorida = northFloridaAsset.url;
 import southcoastAsset from "@/assets/southcoast-cover-pro.png.asset.json";
