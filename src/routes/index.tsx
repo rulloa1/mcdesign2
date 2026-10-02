@@ -381,7 +381,7 @@ function Index() {
         <section id="services" className="bg-carbon px-6 py-32 text-bone md:px-20">
           <div className="mx-auto max-w-7xl">
             <div className="mb-6 inline-flex items-center rounded-full border border-brass/20 bg-brass/5 px-3 py-1 font-mono text-[0.6rem] uppercase tracking-[0.22em] text-brass/80">
-              What We Do
+              WHAT I DO
             </div>
             <h2 className="mb-24 font-serif text-4xl md:text-5xl">
               One Team. Every Discipline.
