@@ -16,15 +16,6 @@ import { useSiteMedia } from "@/lib/site-media";
 import profileAsset from "@/assets/mike-headshot.jpg.asset.json";
 const profile = profileAsset.url;
 import heroImage from "@/assets/southcoast-cover.webp";
-import houstonOaks from "@/assets/houston-oaks-cover.webp";
-const poolDetail = "/projects/assets/pool-design-31-real.webp";
-import poolFinished from "@/assets/pool-design-36.webp";
-import alpineCover from "@/assets/alpine-ranch-cover.webp";
-import alpine3 from "@/assets/alpine-ranch-3.webp";
-import alpine7 from "@/assets/alpine-ranch-7.webp";
-import miamiCover from "@/assets/miami-beach-cover-enhanced.webp";
-import miami10 from "@/assets/miami-beach-10.webp";
-import miami27 from "@/assets/miami-beach-27.webp";
 
 const TITLE = "Michael Chandler — Luxury Construction Executive";
 const DESCRIPTION =
@@ -287,9 +278,9 @@ function Index() {
           subtitle="Signature Project — SE Texas"
           title="Ultra Luxe Private Club Resort Pool"
           images={[
-            media("case-pool-1", houstonOaks),
-            media("case-pool-2", poolDetail),
-            media("case-pool-3", poolFinished),
+            media("case-pool-1-v2", "/projects/assets/enh/pool-design-1.webp"),
+            media("case-pool-2-v2", "/projects/assets/enh/pool-design-26.webp"),
+            media("case-pool-3-v2", "/projects/assets/enh/pool-design-22.webp"),
           ]}
           alts={[
             "Ultra Luxe Pool — Daylight Overview",
@@ -311,9 +302,9 @@ function Index() {
           subtitle="Signature Project — Montana"
           title="High Alpine Ranch Luxe Retreat"
           images={[
-            media("case-alpine-1", alpineCover),
-            media("case-alpine-2", alpine3),
-            media("case-alpine-3", alpine7),
+            media("case-alpine-1-v2", "/projects/assets/alpine-ranch-cover-enhanced.webp"),
+            media("case-alpine-2-v2", "/projects/assets/enh/alpine-ranch-5.webp"),
+            media("case-alpine-3-v2", "/projects/assets/enh/alpine-ranch-9.webp"),
           ]}
           alts={[
             "Alpine Ranch — Mountain Vista",
@@ -335,9 +326,9 @@ function Index() {
           subtitle="Signature Project — S. Florida"
           title="S. Florida High Rise Luxe Condo"
           images={[
-            media("case-miami-1", miamiCover),
-            media("case-miami-2", miami10),
-            media("case-miami-3", miami27),
+            media("case-miami-1-v2", "/projects/assets/enh/miami-beach-sunset-pool-sharp-u.webp"),
+            media("case-miami-2-v2", "/projects/assets/enh/miami-beach-20.webp"),
+            media("case-miami-3-v2", "/projects/assets/enh/miami-beach-18.webp"),
           ]}
           alts={[
             "Miami Beach — Beachfront Panorama",

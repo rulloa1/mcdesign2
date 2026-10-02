@@ -110,15 +110,22 @@ function buildGroups(mobile: boolean) {
   // MC logo title block (drafting stamp) at the front-right of the plan
   const logo: Seg = [];
   {
-    const y = 0.02, x0 = W - 8.6, x1 = W - 1.2, z0 = D - 4.6, z1 = D - 1.2;
+    const y = 0.02, x0 = W - 9.4, x1 = W - 1.0, z0 = D - 4.6, z1 = D - 1.2;
     logo.push(...rect(y, x0, x1, z0, z1), ...rect(y, x0 + 0.25, x1 - 0.25, z0 + 0.25, z1 - 0.25));
     const h = 2.2, zt = z0 + 0.6, zb = zt + h; // letter top/bottom (z grows toward viewer)
     // M
     const mx = x0 + 1.0, mw = 2.6;
     logo.push(mx, y, zb, mx, y, zt, mx, y, zt, mx + mw / 2, y, zb - 0.7, mx + mw / 2, y, zb - 0.7, mx + mw, y, zt, mx + mw, y, zt, mx + mw, y, zb);
     logo.push(mx - 0.3, y, zb, mx + 0.3, y, zb, mx + mw - 0.3, y, zb, mx + mw + 0.3, y, zb); // serifs
-    // C
-    logo.push(...arc(x0 + 5.6, zt + h / 2, h / 2, Math.PI * 0.28, Math.PI * 1.72, y, 16));
+    // divider (double rule) between the letters
+    const dx = mx + mw + 0.75;
+    logo.push(dx, y, zt - 0.4, dx, y, zb + 0.4, dx + 0.12, y, zt - 0.4, dx + 0.12, y, zb + 0.4);
+    // C with terminals and construction circle
+    const cx = dx + 1.9, cz = zt + h / 2, r = h / 2;
+    logo.push(...arc(cx, cz, r, Math.PI * 0.3, Math.PI * 1.7, y, 20));
+    logo.push(...arc(cx + 0.15, cz, r * 0.78, Math.PI * 0.3, Math.PI * 1.7, y, 16));
+    const tx = cx + r * Math.cos(Math.PI * 0.3);
+    logo.push(tx, y, cz - r * Math.sin(Math.PI * 0.3), tx, y, cz - r * 0.35, tx, y, cz + r * Math.sin(Math.PI * 0.3), tx, y, cz + r * 0.35);
   }
 
   // depth detail: slab edge thickness, column casings, ghosted back facade, ground shadow lines

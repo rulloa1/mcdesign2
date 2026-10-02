@@ -16,3 +16,4 @@
 - [x] Selected Works: replace circular wheel with a layout matching the site
 - [x] Improve blueprint graphics detail
 - [x] Improve quality of Selected Works photo (Syracuse cover)
+- [x] Signature Projects: choose better photos for the 3 showcase image sets

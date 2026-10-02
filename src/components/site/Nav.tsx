@@ -1,3 +1,4 @@
+import logoMono from "@/assets/mc-logo-mono.png.asset.json";
 import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
 
@@ -42,8 +43,8 @@ export function Nav() {
           }`}
           style={{ transition: "background-color 0.7s cubic-bezier(0.32,0.72,0,1)" }}
         >
-          <Link to="/" className="font-serif text-lg uppercase tracking-widest text-bone">
-            MC
+          <Link to="/" aria-label="Michael Chandler — home" className="block">
+            <img src={logoMono.url} alt="MC" className="h-7 w-auto" />
           </Link>
 
           <div className="hidden gap-7 text-[0.7rem] uppercase tracking-[0.22em] text-bone/70 md:flex">
