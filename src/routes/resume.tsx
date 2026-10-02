@@ -140,113 +140,84 @@ const experience: Role[] = [
     period: "2018 – 2020",
     bullets: [
       {
-        label: "High-Stakes Development",
-        text: "Led project management and construction oversight for multimillion-dollar mixed-use developments including luxury condo towers, spa facilities, and restaurants in North America's premier private ski and golf community.",
+        label: "Resort Development",
+        text: "Led construction oversight for multimillion-dollar luxury condominium towers, spa facilities, and restaurants in North America's premier private ski and golf community.",
       },
       {
-        label: "Stakeholder Management",
-        text: "Managed owner representation and stakeholder communication to align project goals with exacting client expectations in an ultra-exclusive resort environment.",
+        label: "Owner Representation",
+        text: "Managed stakeholder communication to align project goals with the exacting expectations of an ultra-exclusive membership.",
       },
       {
         label: "Compliance & Entitlements",
-        text: "Oversaw permit and entitlement processes, ensuring compliance with complex mountain resort regulations and environmental requirements.",
-      },
-      {
-        label: "Team Development",
-        text: "Developed and implemented team-building strategies to enhance collaboration and project efficiency across specialized construction disciplines.",
+        text: "Ran permit and entitlement processes under complex mountain-resort and environmental regulations.",
       },
     ],
   },
   {
     company: "Discovery Land Company / Starfish Company",
-    title: "Project Manager",
-    location: "Bakers Bay Resort, Abaco Islands, Bahamas",
+    title: "Project Manager — Bakers Bay Resort",
+    location: "Great Guana Cay, Abaco Islands, Bahamas",
     period: "2015 – 2018",
     bullets: [
       {
-        label: "Resort Portfolio Leadership",
-        text: "Directed project management and construction oversight for Bakers Bay Resort, encompassing Owner, Resort, and Private products including Beach Club Restaurant, Beach Club Spa Building, and Market by the Pier.",
+        label: "Resort Portfolio",
+        text: "Directed construction of Owner, Resort, and Private products, including the Beach Club Restaurant, Beach Club Spa, Market by the Pier, and multiple ultra-luxury single-family residences.",
       },
       {
-        label: "Logistics Mastery",
-        text: "Facilitated complex logistics and procurement processes for remote island construction, streamlining operations and enhancing efficiency despite challenging supply chain constraints and limited local infrastructure.",
-      },
-      {
-        label: "Quality Assurance",
-        text: "Oversaw multiple single-family residential projects, ensuring high-quality construction and client satisfaction in the ultra-luxury market segment.",
+        label: "Island Logistics",
+        text: "Ran procurement and logistics for remote-island construction with limited local infrastructure, keeping materials and crews moving on schedule.",
       },
       {
         label: "Cross-Cultural Leadership",
-        text: "Implemented best practices in team building and architectural design, leveraging fluency in Spanish for effective communication with an international workforce.",
+        text: "Used native-level Spanish to lead and communicate with an international workforce.",
       },
     ],
   },
   {
-    company: "Private Owner / Developer",
-    title: "Owner's Rep / Project Manager",
+    company: "Private Owner / Developer — Private Island Estate",
+    title: "Owner's Representative / Project Manager",
     location: "Abaco Islands, Bahamas",
     period: "2015 – 2018",
-    note: "Large Estate Development, Private Island",
     bullets: [
       {
         label: "Executive Representation",
-        text: "Represented a private client as Owner's Rep on a $125M+ estate development, managing design, development consulting, and land development processes with focus on logistics for personnel and materials.",
+        text: "Represented the owner on a $125M+ estate development, managing design, development consulting, and land development, with project budgets from $500K to $125M.",
       },
       {
         label: "Workforce Development",
-        text: "Cultivated relationships with government officials to secure skilled workforce from multiple regions; implemented comprehensive training programs for local Bahamians to enhance construction skills and create sustainable employment.",
-      },
-      {
-        label: "Budget & Operations Management",
-        text: "Oversaw project budgets ranging from $500K to $125M, ensuring efficient operations, cost control, and value optimization throughout the development lifecycle.",
-      },
-      {
-        label: "International Logistics",
-        text: "Coordinated complex supply chain operations for remote island construction, establishing vendor relationships and transportation networks.",
+        text: "Worked with government officials to secure skilled labor from multiple regions and launched training programs that built construction skills and lasting jobs for local Bahamians.",
       },
     ],
   },
   {
     company: "Architectural Design & Construction Consultant",
-    title: "Private Owner / Developer",
-    location: "Great Guana Cay and Great Abaco Island, Bahamas",
+    title: "Private Owners / Developers",
+    location: "Great Guana Cay & Great Abaco Island, Bahamas",
     period: "2013 – 2018",
     bullets: [
       {
         label: "Design & Constructability",
-        text: "Delivered architectural and constructability consulting for private developers in the Abaco Islands, ensuring design intent translated effectively to field execution.",
+        text: "Provided architectural and constructability consulting so design intent translated cleanly to field execution.",
       },
       {
-        label: "Logistical Strategy",
-        text: "Developed comprehensive logistical strategies to optimize project workflows and resource allocation in a challenging remote island environment.",
-      },
-      {
-        label: "Regulatory Compliance",
-        text: "Ensured compliance with local regulations for permits and entitlements, navigating international building codes and environmental requirements.",
-      },
-      {
-        label: "Collaborative Leadership",
-        text: "Collaborated with multidisciplinary teams to enhance project outcomes and maintain rigorous quality standards.",
+        label: "Logistics & Compliance",
+        text: "Developed logistics strategies for remote-island sites and managed local permitting, codes, and environmental requirements.",
       },
     ],
   },
   {
-    company: "Big D Construction / Signature Homes & Hospitality Division",
+    company: "Big D Construction — Signature Homes & Hospitality Division",
     title: "Construction Consultant / Sr. Project Manager",
-    location: "Multiple US States",
+    location: "Multi-State (concurrent engagement)",
     period: "2014 – 2016",
     bullets: [
       {
-        label: "Luxury Portfolio Leadership",
-        text: "Directed multimillion-dollar luxury home projects across multiple US states, managing budgets ranging from $12.5MM to $25MM and a private resort project valued at $74MM.",
+        label: "Luxury Portfolio",
+        text: "Directed luxury home projects across multiple U.S. states with budgets of $12.5MM–$25MM, plus a $74MM private resort project.",
       },
       {
         label: "Process Optimization",
-        text: "Enhanced project efficiency through strategic logistics and procurement management, reducing costs while maintaining luxury market standards.",
-      },
-      {
-        label: "Team Excellence",
-        text: "Cultivated collaborative team environments to maximize strengths and performance, developing leadership bench strength across geographically dispersed projects.",
+        text: "Reduced costs through strategic logistics and procurement management while holding luxury-market standards.",
       },
     ],
   },
@@ -258,15 +229,15 @@ const experience: Role[] = [
     bullets: [
       {
         label: "Design-Build Leadership",
-        text: "Directed construction management and partial design for multimillion-dollar projects, including two private resorts valued at $76MM, demonstrating a unique ability to integrate design and construction disciplines.",
+        text: "Directed construction management and partial design for two private resorts valued at $76MM.",
       },
       {
-        label: "Signature Projects",
-        text: "Designed and built a large Texas equestrian ranch, overseeing a $24MM budget with comprehensive architectural and construction oversight.",
+        label: "Signature Project",
+        text: "Designed and built a large Texas equestrian ranch on a $24MM budget, with full architectural and construction oversight.",
       },
       {
         label: "Client Representation",
-        text: "Acted as owner representative for private estate projects, managing values between $7.5MM and $28MM while serving as trusted advisor to high-net-worth clients.",
+        text: "Served as owner's representative and trusted advisor to high-net-worth clients on private estates valued at $7.5MM–$28MM.",
       },
     ],
   },
