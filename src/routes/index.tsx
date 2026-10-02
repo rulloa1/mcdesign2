@@ -245,21 +245,21 @@ function Index() {
               <h2 className="mb-8 font-serif text-4xl md:text-5xl">Michael Chandler</h2>
               <div className="space-y-6 text-lg font-light leading-relaxed text-bone/70">
                 <p>
-                  With over 20 years of executive construction leadership, Michael Chandler has
-                  managed and delivered more than $500 million in ultra-luxury residential,
-                  hospitality, and civil projects across six global regions — from California's
-                  coastline to the Caribbean.
+                  With over 20 years of executive construction leadership, I have managed and
+                  delivered more than $500 million in ultra-luxury residential, hospitality, and
+                  civil projects across six global regions — from California's coastline to the
+                  Caribbean.
                 </p>
                 <p>
-                  As Owner of MC Design, Michael brings a rare combination of architectural
-                  sensitivity and rigorous project management to every engagement. His portfolio
-                  spans Discovery Land Company developments, private island estates, alpine
-                  retreats, and complex coastal restorations.
+                  As Owner of MC Design, I bring a rare combination of architectural sensitivity
+                  and rigorous project management to every engagement. My portfolio spans
+                  Discovery Land Company developments, private island estates, alpine retreats,
+                  and complex coastal restorations.
                 </p>
                 <p>
-                  Known for his old-world craftsmanship standards and modern execution methodology,
-                  Michael personally curates every trade partner, material selection, and milestone
-                  — ensuring on-time, on-budget delivery without compromising design intent.
+                  Known for old-world craftsmanship standards and modern execution methodology,
+                  I personally curate every trade partner, material selection, and milestone —
+                  ensuring on-time, on-budget delivery without compromising design intent.
                 </p>
               </div>
               <div className="mt-10 flex flex-wrap gap-8">
@@ -358,8 +358,8 @@ function Index() {
           <div className="dot-grid pointer-events-none absolute inset-0 text-carbon opacity-5" />
           <div className="relative z-10 mx-auto max-w-5xl text-center">
             <p className="mb-16 font-serif text-3xl leading-tight text-carbon md:text-6xl">
-              "Great architecture is not just built; it is rigorously orchestrated. We don't
-              construct buildings; we construct the reality of a vision."
+              "Great architecture is not just built; it is rigorously orchestrated. I don't
+              construct buildings; I construct the reality of a vision."
             </p>
             <div className="flex flex-col items-center justify-center">
               <svg width="200" height="80" viewBox="0 0 200 80" className="mb-4" aria-hidden="true">
