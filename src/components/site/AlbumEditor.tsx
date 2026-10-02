@@ -40,6 +40,39 @@ export function AlbumEditor({ projectId, title, images, onDone }: Props) {
     }
   };
 
+  const rotate = async (src: string) => {
+    setWorking(src);
+    setError(null);
+    try {
+      const img = await new Promise<HTMLImageElement>((resolve, reject) => {
+        const el = new Image();
+        el.crossOrigin = "anonymous";
+        el.onload = () => resolve(el);
+        el.onerror = () => reject(new Error("Could not load the photo."));
+        el.src = src;
+      });
+      const canvas = document.createElement("canvas");
+      canvas.width = img.naturalHeight;
+      canvas.height = img.naturalWidth;
+      const ctx = canvas.getContext("2d");
+      if (!ctx) throw new Error("Rotation is not supported in this browser.");
+      ctx.translate(canvas.width / 2, canvas.height / 2);
+      ctx.rotate(Math.PI / 2);
+      ctx.drawImage(img, -img.naturalWidth / 2, -img.naturalHeight / 2);
+      const blob = await new Promise<Blob | null>((r) =>
+        canvas.toBlob(r, "image/jpeg", 0.92),
+      );
+      if (!blob) throw new Error("Could not rotate the photo.");
+      const file = new File([blob], "rotated.jpg", { type: "image/jpeg" });
+      const url = await uploadAlbumPhoto(projectId, file);
+      setList((l) => l.map((u) => (u === src ? url : u)));
+    } catch (e) {
+      setError(e instanceof Error ? e.message : "Rotation failed.");
+    } finally {
+      setWorking(null);
+    }
+  };
+
   const move = (from: number, to: number) => {
     if (to < 0 || to >= list.length || from === to) return;
     setList((l) => {
@@ -179,6 +212,14 @@ export function AlbumEditor({ projectId, title, images, onDone }: Props) {
                 className="bg-carbon/80 px-2 py-1 text-[0.6rem] uppercase tracking-wider text-bone disabled:opacity-50"
               >
                 Straighten
+              </button>
+              <button
+                type="button"
+                disabled={!!working}
+                onClick={() => void rotate(src)}
+                className="bg-carbon/80 px-2 py-1 text-[0.6rem] uppercase tracking-wider text-bone disabled:opacity-50"
+              >
+                ⟳ Rotate
               </button>
             </div>
             <div className="absolute bottom-2 right-2 flex gap-1">
