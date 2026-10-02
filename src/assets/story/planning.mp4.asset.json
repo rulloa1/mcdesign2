@@ -1,9 +1,11 @@
 {
   "version": 1,
-  "asset_id": "0f57e69f-2f7d-4a2b-9239-1073c7735f58",
+  "asset_id": "1cdcde47-a909-45cc-bfe6-966fbbbbdeb0",
   "project_id": "3daa6fa1-2672-4e2b-a550-e2d5f8a6253b",
-  "url": "/__l5e/assets-v1/0f57e69f-2f7d-4a2b-9239-1073c7735f58/planning.mp4",
+  "url": "/__l5e/assets-v1/1cdcde47-a909-45cc-bfe6-966fbbbbdeb0/planning.mp4",
+  "r2_key": "a/v1/3daa6fa1-2672-4e2b-a550-e2d5f8a6253b/1cdcde47-a909-45cc-bfe6-966fbbbbdeb0/planning.mp4",
   "original_filename": "planning.mp4",
-  "size": 5033108,
-  "created_at": "2026-10-02T15:50:26Z"
+  "size": 1353037,
+  "content_type": "video/mp4",
+  "created_at": "2026-10-02T15:51:43Z"
 }

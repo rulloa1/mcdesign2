@@ -1,9 +1,11 @@
 {
   "version": 1,
-  "asset_id": "f34fa3f1-6174-4832-8dac-1593d4f7e72a",
+  "asset_id": "ad1c87ac-0a08-4153-97a3-5e5dbd3aa211",
   "project_id": "3daa6fa1-2672-4e2b-a550-e2d5f8a6253b",
-  "url": "/__l5e/assets-v1/f34fa3f1-6174-4832-8dac-1593d4f7e72a/oversight.mp4",
+  "url": "/__l5e/assets-v1/ad1c87ac-0a08-4153-97a3-5e5dbd3aa211/oversight.mp4",
+  "r2_key": "a/v1/3daa6fa1-2672-4e2b-a550-e2d5f8a6253b/ad1c87ac-0a08-4153-97a3-5e5dbd3aa211/oversight.mp4",
   "original_filename": "oversight.mp4",
-  "size": 2620071,
-  "created_at": "2026-10-02T15:50:44Z"
+  "size": 790806,
+  "content_type": "video/mp4",
+  "created_at": "2026-10-02T15:52:07Z"
 }
