@@ -2,6 +2,7 @@ import { lazy, Suspense, useRef } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 
 import { Nav } from "@/components/site/Nav";
+import { RevealText } from "@/components/ui/reveal-text";
 import { useOrderedProjects } from "@/lib/project-order";
 import { projectSlotKey } from "@/data/media-slots";
 import { useSiteMedia } from "@/lib/site-media";
@@ -46,7 +47,8 @@ function Portfolio() {
             Full Portfolio
           </div>
           <h1 className="font-serif text-6xl leading-[1.1] tracking-tight text-bone md:text-8xl">
-            Nineteen Projects<span className="text-brass">.</span>
+            <RevealText text="Nineteen Projects" letterImages={shown.map((p) => p.cover)} />
+            <span className="text-brass">.</span>
           </h1>
           <div className="flex flex-col items-center gap-6">
             <div className="h-px w-12 bg-brass/30" />
