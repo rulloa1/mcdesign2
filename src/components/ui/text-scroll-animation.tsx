@@ -1,5 +1,5 @@
 import { motion, useReducedMotion, useScroll, useTransform, type MotionValue } from "framer-motion";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 
 function Char({ char, offset, spread, progress }: { char: string; offset: number; spread: number; progress: MotionValue<number> }) {
@@ -18,17 +18,24 @@ export function ScrollText({ text, as = "h2", className }: { text: string; as?: 
   const ref = useRef<HTMLHeadingElement | null>(null);
   const reduce = useReducedMotion();
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "center 55%"] });
+  const [vw, setVw] = useState(1280);
+  useEffect(() => {
+    const on = () => setVw(window.innerWidth);
+    on();
+    window.addEventListener("resize", on);
+    return () => window.removeEventListener("resize", on);
+  }, []);
   const Tag = as;
   if (reduce) return <Tag className={className}>{text}</Tag>;
 
   const chars = text.split("");
   const center = Math.floor(chars.length / 2);
-  const spread = Math.min(40, 700 / chars.length);
+  const spread = Math.min(vw < 768 ? 8 : 40, (vw < 768 ? 120 : 700) / chars.length);
   const words = text.split(" ");
   let idx = 0;
 
   return (
-    <Tag ref={ref} aria-label={text} className={cn(className)} style={{ perspective: "500px" }}>
+    <Tag ref={ref} aria-label={text} className={cn("overflow-x-clip", className)} style={{ perspective: "500px" }}>
       {words.map((w, wi) => {
         const node = (
           <span key={wi} aria-hidden className="inline-block whitespace-nowrap">
