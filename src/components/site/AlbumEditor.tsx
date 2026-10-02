@@ -193,7 +193,7 @@ export function AlbumEditor({ projectId, title, images, onDone }: Props) {
             </span>
             {working === src ? (
               <div className="absolute inset-0 flex items-center justify-center bg-carbon/60 font-mono text-[0.6rem] uppercase tracking-[0.2em] text-bone">
-                Enhancing…
+                Working…
               </div>
             ) : null}
             <div className="absolute right-2 top-2 flex gap-1">
