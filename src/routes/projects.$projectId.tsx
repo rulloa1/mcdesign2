@@ -64,6 +64,7 @@ function ProjectPage() {
   const { data: override } = useQuery(albumOverrideQuery(project.id));
   const images: string[] = override ?? album?.images ?? [];
   const isAdmin = useIsAdmin();
+  const { data: galleryItems = [] } = useQuery(galleryQuery(project.id));
   const queryClient = useQueryClient();
   const [editing, setEditing] = useState(false);
   const [lightbox, setLightbox] = useState<number | null>(null);
