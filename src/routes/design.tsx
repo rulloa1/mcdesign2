@@ -1,7 +1,10 @@
+import { lazy, Suspense, useRef } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 
 import { BeforeAfter } from "@/components/site/BeforeAfter";
 import { Nav } from "@/components/site/Nav";
+
+const ArchitecturalCanvas = lazy(() => import("@/components/site/ArchitecturalCanvas"));
 
 const TITLE = "Design — Architecture, Interiors & Concepts | MC Design Build";
 const DESCRIPTION =
@@ -118,12 +121,17 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
 }
 
 function DesignPage() {
+  const headerRef = useRef<HTMLElement>(null);
+
   return (
     <main className="min-h-screen bg-carbon text-bone">
       <Nav />
 
-      <section className="px-6 pt-36 pb-14 md:pt-44">
-        <div className="mx-auto max-w-6xl">
+      <section ref={headerRef} className="relative overflow-hidden px-6 pt-36 pb-14 md:pt-44">
+        <Suspense fallback={null}>
+          <ArchitecturalCanvas hostRef={headerRef} />
+        </Suspense>
+        <div className="relative z-10 mx-auto max-w-6xl">
           <p className="text-[0.65rem] uppercase tracking-[0.35em] text-bone/50">MC Design Build</p>
           <h1 className="mt-4 font-serif text-5xl uppercase tracking-[0.3em] text-bone md:text-7xl">
             Design

@@ -1,9 +1,12 @@
+import { lazy, Suspense, useRef } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 
 import { Nav } from "@/components/site/Nav";
 import { useOrderedProjects } from "@/lib/project-order";
 import { projectSlotKey } from "@/data/media-slots";
 import { useSiteMedia } from "@/lib/site-media";
+
+const ArchitecturalCanvas = lazy(() => import("@/components/site/ArchitecturalCanvas"));
 
 export const Route = createFileRoute("/portfolio")({
   head: () => ({
@@ -31,13 +34,17 @@ function Portfolio() {
   const media = useSiteMedia();
   const ordered = useOrderedProjects();
   const shown = ordered;
+  const headerRef = useRef<HTMLElement>(null);
 
   return (
     <div className="relative z-10 bg-bone">
       <Nav />
 
-      <header className="bg-carbon px-6 pt-40 pb-24 text-bone md:px-20">
-        <div className="mx-auto max-w-[1600px]">
+      <header ref={headerRef} className="relative overflow-hidden bg-carbon px-6 pt-40 pb-24 text-bone md:px-20">
+        <Suspense fallback={null}>
+          <ArchitecturalCanvas hostRef={headerRef} />
+        </Suspense>
+        <div className="relative z-10 mx-auto max-w-[1600px]">
           <div className="mb-6 inline-flex items-center rounded-full border border-brass/20 bg-brass/5 px-3 py-1 font-mono text-[0.6rem] uppercase tracking-[0.22em] text-brass/80">
             Full Portfolio
           </div>

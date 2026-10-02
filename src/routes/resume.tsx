@@ -1,6 +1,9 @@
+import { lazy, Suspense, useRef } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 
 import { Nav } from "@/components/site/Nav";
+
+const ArchitecturalCanvas = lazy(() => import("@/components/site/ArchitecturalCanvas"));
 
 export const Route = createFileRoute("/resume")({
   head: () => ({
@@ -333,6 +336,8 @@ function RoleBlock({ role }: { role: Role }) {
 }
 
 function ResumePage() {
+  const headerRef = useRef<HTMLElement>(null);
+
   return (
     <div className="relative z-10 min-h-[100dvh] bg-carbon text-bone">
       <div className="print:hidden">
@@ -340,8 +345,11 @@ function ResumePage() {
       </div>
       <main className="px-6 pb-24 pt-32 md:pt-40">
         <div className="mx-auto max-w-3xl">
-          <header className="mb-16">
-            <div className="mb-4 flex flex-wrap items-center justify-between gap-4">
+          <header ref={headerRef} className="relative mb-16 overflow-hidden border-b border-bone/10 pb-12">
+            <Suspense fallback={null}>
+              <ArchitecturalCanvas hostRef={headerRef} />
+            </Suspense>
+            <div className="relative z-10 mb-4 flex flex-wrap items-center justify-between gap-4">
               <p className="font-mono text-[0.6rem] uppercase tracking-[0.28em] text-brass">
                 MC Design Build
               </p>
@@ -353,12 +361,12 @@ function ResumePage() {
                 Print / Save PDF
               </button>
             </div>
-            <h1 className="font-serif text-4xl leading-tight md:text-5xl">Michael Chandler</h1>
-            <p className="mt-3 font-mono text-xs uppercase tracking-[0.2em] text-bone/50">
+            <h1 className="relative z-10 font-serif text-4xl leading-tight md:text-5xl">Michael Chandler</h1>
+            <p className="relative z-10 mt-3 font-mono text-xs uppercase tracking-[0.2em] text-bone/50">
               Design & Construction Executive · Hospitality & Resort Projects · Owner's
               Representative
             </p>
-            <p className="mt-2 text-sm text-bone/60">
+            <p className="relative z-10 mt-2 text-sm text-bone/60">
               Spring, TX · mike.rcccon@yahoo.com · (435) 237-7373 ·{" "}
               <a
                 href="https://www.linkedin.com/in/michael-chandler-3858a63a"
@@ -369,7 +377,7 @@ function ResumePage() {
                 linkedin.com/in/michael-chandler-3858a63a
               </a>
             </p>
-            <p className="mt-6 text-sm leading-relaxed text-bone/70">
+            <p className="relative z-10 mt-6 text-sm leading-relaxed text-bone/70">
               Design and construction executive with 37+ years of experience delivering luxury
               hospitality, resort, and ultra-high-end residential projects. Managed more than $500M
               in construction value, with individual project budgets from $500K to $125M across 12
