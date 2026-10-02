@@ -39,7 +39,7 @@ export function Hero({ poster }: { poster: string }) {
     <section
       ref={heroRef}
       id="hero"
-      className="relative z-10 isolate flex min-h-[82svh] flex-col justify-center overflow-hidden bg-carbon px-6 pb-20 pt-28 md:px-20"
+      className="relative z-10 isolate flex min-h-[82svh] flex-col justify-center overflow-hidden bg-carbon px-6 pb-12 pt-24 md:px-20 md:pb-20 md:pt-28"
     >
       <img
         src={poster}
@@ -78,13 +78,13 @@ export function Hero({ poster }: { poster: string }) {
 
       <div className="relative mx-auto w-full max-w-[1400px]">
         <div className="hero-fade max-w-4xl">
-          <p className="mb-4 font-mono text-xs uppercase tracking-[0.35em] text-brass md:text-sm">
+          <p className="mb-2 font-mono text-[10px] uppercase tracking-[0.15em] text-brass md:mb-4 md:text-sm md:tracking-[0.35em]">
             Construction • Operations • Leadership
           </p>
-          <p className="mb-6 text-lg font-light text-bone/80 md:text-xl">
+          <p className="mb-3 text-sm font-light text-bone/80 md:mb-6 md:text-xl">
             Michael Chandler — Design &amp; Construction Executive
           </p>
-          <h1 className="hero-headline mb-8 font-serif text-[clamp(2.25rem,6vw,4.75rem)] leading-[1.05] tracking-tight">
+          <h1 className="hero-headline mb-6 font-serif text-[1.75rem] leading-[1.1] tracking-tight md:mb-8 md:text-[clamp(2.25rem,6vw,4.75rem)] md:leading-[1.05]">
             Strategic leadership.
             <br />
             <span className="relative inline-block pb-3" style={{ WebkitTextFillColor: "initial" }}>
@@ -92,10 +92,10 @@ export function Hero({ poster }: { poster: string }) {
               <span aria-hidden="true" className="hero-underline absolute bottom-0 left-0 h-[2px] w-full" />
             </span>
           </h1>
-          <p className="mb-10 max-w-xl text-base font-light leading-relaxed text-bone/80 md:text-lg">
+          <p className="hidden max-w-xl text-sm font-light leading-relaxed text-bone/80 md:mb-10 md:block md:text-lg">
             Explore my background in construction operations, project delivery, and team leadership.
           </p>
-          <div className="flex flex-wrap items-center gap-4">
+          <div className="flex flex-wrap items-center gap-3 md:gap-4">
             <a href={heroConfig.experienceHref} className="hero-btn group bg-brass text-carbon">
               Explore Experience <span className="hero-arrow" aria-hidden="true">→</span>
             </a>
@@ -104,7 +104,7 @@ export function Hero({ poster }: { poster: string }) {
             </Link>
             <Link
               to={heroConfig.contactTo}
-              className="group ml-2 text-sm uppercase tracking-widest text-bone/80 underline-offset-8 hover:text-brass hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brass"
+              className="group mt-1 text-sm uppercase tracking-widest text-bone/80 underline-offset-8 hover:text-brass hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brass md:mt-0"
             >
               Get in Touch <span className="hero-arrow" aria-hidden="true">→</span>
             </Link>
