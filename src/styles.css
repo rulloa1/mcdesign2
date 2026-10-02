@@ -299,3 +299,24 @@ body::before {
 .hero-arrow{display:inline-block;transition:transform .3s;}
 .group:hover .hero-arrow{transform:translateX(4px);}
 @media (prefers-reduced-motion:reduce){.hero-underline,.hero-fade{animation:none}}
+
+/* Hero blueprint overlay */
+.blueprint { fill: none; stroke-linecap: square; }
+.blueprint .bp-grid { stroke: color-mix(in oklab, var(--bone, #f2ede4) 7%, transparent); stroke-width: 0.6; }
+.blueprint .bp-ivory { stroke: color-mix(in oklab, var(--bone, #f2ede4) 34%, transparent); stroke-width: 1; }
+.blueprint .bp-gold { stroke: color-mix(in oklab, #D4AF37 45%, transparent); stroke-width: 0.9; }
+.blueprint .bp-strong { stroke-width: 1.6; }
+.bp-draw { stroke-dasharray: 1; stroke-dashoffset: 1; animation: bp-draw 1.6s cubic-bezier(0.65, 0, 0.35, 1) forwards; }
+.bp-axis { stroke: #D4AF37; stroke-width: 1.2; stroke-dasharray: 0.12 1; stroke-dashoffset: 0.12; opacity: 0.55; animation: bp-axis 14s linear 7s infinite; }
+.bp-axis-2 { animation-delay: 14s; }
+.blueprint[data-paused="true"] .bp-draw, .blueprint[data-paused="true"] .bp-axis { animation-play-state: paused; }
+@keyframes bp-draw { to { stroke-dashoffset: 0; } }
+@keyframes bp-axis { 0% { stroke-dashoffset: 0.12; } 18%, 100% { stroke-dashoffset: -1; } }
+@media (max-width: 767px) {
+  .blueprint { opacity: 0.55; }
+  .blueprint .bp-detail { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .bp-draw { animation: none; stroke-dashoffset: 0; }
+  .bp-axis { display: none; }
+}
