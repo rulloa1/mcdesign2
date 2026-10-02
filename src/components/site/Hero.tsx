@@ -26,12 +26,19 @@ export function Hero({ poster }: { poster: string }) {
       return;
     }
     v.playbackRate = 0.55;
+    const onPlay = () => {
+      v.playbackRate = 0.55;
+    };
+    v.addEventListener("play", onPlay);
     const io = new IntersectionObserver(([e]) => {
-      if (e?.isIntersecting && !document.hidden) v.play().catch(() => setVideoOk(false));
+      if (e?.isIntersecting && !document.hidden) v.play().catch(() => {});
       else v.pause();
     });
     io.observe(v);
-    return () => io.disconnect();
+    return () => {
+      v.removeEventListener("play", onPlay);
+      io.disconnect();
+    };
   }, []);
 
   const showVideo = heroConfig.videoSrc && videoOk;
