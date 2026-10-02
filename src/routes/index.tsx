@@ -160,11 +160,13 @@ function Index() {
 
 
         {/* Selected Works */}
-        <section id="works" className="relative overflow-hidden py-32">
+        <section id="works" ref={worksRef} className="relative py-32 [overflow:clip]">
           <div aria-hidden="true" className="pointer-events-none absolute inset-0">
-            <Suspense fallback={null}>
-              <BlueprintOverlay scroll tone="light" />
-            </Suspense>
+            <div className="sticky top-0 h-screen w-full">
+              <Suspense fallback={null}>
+                <BlueprintOverlay scroll tone="light" hostRef={worksRef} />
+              </Suspense>
+            </div>
           </div>
           <div className="relative mx-auto mb-12 max-w-[1600px] px-6 md:px-12">
             <div className="mb-6 inline-flex items-center rounded-full border border-carbon/12 bg-carbon/5 px-3 py-1 font-mono text-[0.6rem] uppercase tracking-[0.22em] text-carbon/60">
