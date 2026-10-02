@@ -78,8 +78,8 @@ export function Hero({ poster }: { poster: string }) {
           <h1 className="hero-headline mb-8 font-serif text-[clamp(2.5rem,8vw,6.5rem)] leading-[1.05] tracking-tight">
             Strategic leadership.
             <br />
-            <span className="hero-headline relative inline-block pb-3">
-              Disciplined execution.
+            <span className="relative inline-block pb-3" style={{ WebkitTextFillColor: "initial" }}>
+              <span className="hero-headline">Disciplined execution.</span>
               <span aria-hidden="true" className="hero-underline absolute bottom-0 left-0 h-[2px] w-full" />
             </span>
           </h1>
