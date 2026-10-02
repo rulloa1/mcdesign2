@@ -245,22 +245,10 @@ const experience: Role[] = [
 
 const earlierCareer: { role: string; org: string; period: string; text: string }[] = [
   {
-    role: "Co-Founder / COO",
-    org: "St. Pauline Primate Trust & Preserve",
-    period: "1999 – 2012",
-    text: "Founded and directed a primate rescue organization, oversaw the rescue of 53 primates, and developed specialized behavioral rehabilitation programs.",
-  },
-  {
-    role: "Founder / CEO",
-    org: "At Your Service / Coachman Ltd Corp.",
-    period: "1996 – 2004",
-    text: "Launched an exclusive transportation concierge service and secured contracts with Pebble Beach Resorts and top national agencies.",
-  },
-  {
     role: "Designer / Construction Consultant",
     org: "The Pebble Beach Company",
     period: "1993 – 1996",
-    text: "Consulted on design, remodel, and construction for one of America's most iconic resort properties.",
+    text: "Design, remodel, and construction consulting for one of America's most iconic resort properties.",
   },
   {
     role: "Construction & Operations Consultant",
@@ -283,24 +271,20 @@ const earlierCareer: { role: string; org: string; period: string; text: string }
 ];
 
 const impact: { value: string; label: string }[] = [
-  { value: "$500M+", label: "Total Construction Value Managed" },
-  { value: "$500K – $125M", label: "Project Portfolio Range" },
-  { value: "12 States · 4 Countries", label: "Geographic Reach" },
   { value: "37+ Years", label: "Industry Experience" },
+  { value: "$500M+", label: "Construction Value Managed" },
+  { value: "$500K – $125M", label: "Project Range" },
+  { value: "12 States · 4 Countries", label: "Geographic Reach" },
 ];
 
 const certifications = [
   {
     label: "Procore Certified",
-    text: "Construction Management Software Platform (Financial Management & Core Tools)",
+    text: "Financial Management & Core Tools",
   },
   {
-    label: "Fluent Spanish",
-    text: "Native-level proficiency for international project communication",
-  },
-  {
-    label: "Geographic Expertise",
-    text: "Completed projects across 12 US states, Mexico, Bahamas, and Costa Rica",
+    label: "Languages",
+    text: "English; Spanish (native-level fluency, used daily on international job sites)",
   },
 ];
 
