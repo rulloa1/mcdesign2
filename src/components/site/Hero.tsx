@@ -1,7 +1,7 @@
 import { lazy, Suspense, useEffect, useRef, useState } from "react";
 import { ClientOnly, Link } from "@tanstack/react-router";
 
-const ArchitecturalCanvas = lazy(() => import("./ArchitecturalCanvas"));
+const BlueprintOverlay = lazy(() => import("./BlueprintOverlay"));
 import { coverVideos } from "@/data/cover-videos";
 
 /** Central hero configuration — swap media and destinations here. */
@@ -78,7 +78,7 @@ export function Hero({ poster }: { poster: string }) {
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">
         <ClientOnly fallback={null}>
           <Suspense fallback={null}>
-            <ArchitecturalCanvas hostRef={heroRef} />
+            <BlueprintOverlay hostRef={heroRef} />
           </Suspense>
         </ClientOnly>
       </div>
