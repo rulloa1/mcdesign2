@@ -355,19 +355,27 @@ function ResumePage() {
             </div>
             <h1 className="font-serif text-4xl leading-tight md:text-5xl">Michael Chandler</h1>
             <p className="mt-3 font-mono text-xs uppercase tracking-[0.2em] text-bone/50">
-              VP of Operations · Construction Executive
+              Design & Construction Executive · Hospitality & Resort Projects · Owner's
+              Representative
             </p>
             <p className="mt-2 text-sm text-bone/60">
-              Spring, TX · mike.rcccon@yahoo.com · (435) 237-7373
+              Spring, TX · mike.rcccon@yahoo.com · (435) 237-7373 ·{" "}
+              <a
+                href="https://www.linkedin.com/in/michael-chandler-3858a63a"
+                target="_blank"
+                rel="noreferrer"
+                className="underline decoration-brass/50 underline-offset-4 transition-colors hover:text-brass"
+              >
+                linkedin.com/in/michael-chandler-3858a63a
+              </a>
             </p>
             <p className="mt-6 text-sm leading-relaxed text-bone/70">
-              Strategic construction leader with 37+ years of experience steering
-              multimillion-dollar developments from conception to handover. Expert in navigating the
-              "triple threat" of modern construction: labor shortages, technological integration
-              (Procore Certified), and complex international logistics. Proven track record as an
-              Owner's Representative, managing portfolios exceeding $500M across 12 US states and 4
-              countries. Native-level fluency in Spanish with a unique ability to bridge high-level
-              architectural design with rigorous P&L stewardship and field execution.
+              Design and construction executive with 37+ years of experience delivering luxury
+              hospitality, resort, and ultra-high-end residential projects. Managed more than $500M
+              in construction value, with individual project budgets from $500K to $125M across 12
+              states and 4 countries. Procore Certified, with native-level Spanish and a track
+              record of bridging architectural design, P&L stewardship, and field execution for
+              owners, developers, and private clubs.
             </p>
           </header>
 
