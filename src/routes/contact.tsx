@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { lazy, Suspense, useRef, useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
 
@@ -9,6 +9,8 @@ import {
   submitContactInquiry,
   type ContactInquiryInput,
 } from "@/lib/contact.functions";
+
+const ArchitecturalCanvas = lazy(() => import("@/components/site/ArchitecturalCanvas"));
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -54,6 +56,7 @@ function ContactPage() {
   const [form, setForm] = useState<ContactInquiryInput>(emptyForm);
   const [errors, setErrors] = useState<FormErrors>({});
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const headerRef = useRef<HTMLElement>(null);
 
   const update = <K extends keyof ContactInquiryInput>(key: K, value: ContactInquiryInput[K]) => {
     setForm((current) => ({ ...current, [key]: value }));
@@ -89,8 +92,11 @@ function ContactPage() {
   return (
     <div className="relative z-10 min-h-screen bg-bone text-carbon">
       <Nav />
-      <header className="bg-carbon px-6 pb-20 pt-40 text-bone md:px-20 md:pb-28 md:pt-48">
-        <div className="mx-auto max-w-[1400px]">
+      <header ref={headerRef} className="relative overflow-hidden bg-carbon px-6 pb-20 pt-40 text-bone md:px-20 md:pb-28 md:pt-48">
+        <Suspense fallback={null}>
+          <ArchitecturalCanvas hostRef={headerRef} />
+        </Suspense>
+        <div className="relative z-10 mx-auto max-w-[1400px]">
           <p className="font-mono text-[0.65rem] uppercase tracking-[0.24em] text-brass">
             Begin a conversation
           </p>

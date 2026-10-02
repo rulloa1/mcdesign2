@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { lazy, Suspense, useEffect, useRef, useState } from "react";
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 
 import { Nav } from "@/components/site/Nav";
@@ -11,6 +11,8 @@ import { AlbumEditor } from "@/components/site/AlbumEditor";
 import { PrivateGallery, galleryQuery } from "@/components/site/PrivateGallery";
 import { albumOverrideQuery, useIsAdmin } from "@/lib/project-albums";
 import { coverVideos } from "@/data/cover-videos";
+
+const ArchitecturalCanvas = lazy(() => import("@/components/site/ArchitecturalCanvas"));
 
 export const Route = createFileRoute("/projects/$projectId")({
   loader: ({ params }) => {
@@ -68,6 +70,7 @@ function ProjectPage() {
   const queryClient = useQueryClient();
   const [editing, setEditing] = useState(false);
   const [lightbox, setLightbox] = useState<number | null>(null);
+  const headerRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     if (lightbox === null) return;
@@ -85,7 +88,7 @@ function ProjectPage() {
     <div className="relative z-10 bg-bone">
       <Nav />
 
-      <header className="relative h-[70vh] overflow-hidden bg-carbon">
+      <header ref={headerRef} className="relative h-[70vh] overflow-hidden bg-carbon">
         {coverVideos[project.id] ? (
           <video
             src={coverVideos[project.id]}
@@ -104,7 +107,10 @@ function ProjectPage() {
           />
         )}
         <div className="absolute inset-0 bg-gradient-to-t from-carbon via-carbon/40 to-transparent" />
-        <div className="absolute bottom-0 left-0 w-full px-6 pb-16 md:px-20">
+        <Suspense fallback={null}>
+          <ArchitecturalCanvas hostRef={headerRef} />
+        </Suspense>
+        <div className="absolute bottom-0 left-0 z-10 w-full px-6 pb-16 md:px-20">
           <div className="mx-auto max-w-[1600px] text-bone">
             <div className="mb-5 flex flex-wrap gap-2">
               {project.categories.map((c) => (
