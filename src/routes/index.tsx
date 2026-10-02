@@ -155,6 +155,65 @@ function Index() {
 
         <Marquee />
 
+
+        {/* Selected Works */}
+        <section id="works" className="relative mx-auto max-w-[1600px] px-6 py-32 md:px-12">
+          <Suspense fallback={null}>
+            <ArchitecturalCanvas />
+          </Suspense>
+          <div className="relative mb-20">
+            <div className="mb-6 inline-flex items-center rounded-full border border-carbon/12 bg-carbon/5 px-3 py-1 font-mono text-[0.6rem] uppercase tracking-[0.22em] text-carbon/60">
+              Selected Works
+            </div>
+            <h2 className="font-serif text-4xl md:text-6xl">A Legacy of Scale.</h2>
+          </div>
+
+          <div className="relative grid grid-cols-1 gap-6 md:grid-cols-12 md:gap-12">
+            {gridProjects.map((g) => {
+              const project = projects.find((p) => p.id === g.id)!;
+              return (
+                <Link
+                  key={g.id}
+                  to="/projects/$projectId"
+                  params={{ projectId: g.id }}
+                  className={`project-card relative block min-w-0 overflow-hidden ${g.span}`}
+                >
+                  <div
+                    className={`relative overflow-hidden ${g.height}`}
+                    style={{ backgroundColor: "rgb(201 169 97 / 0.06)" }}
+                  >
+                    <img
+                      src={media(projectSlotKey(g.id), project.cover)}
+                      alt={g.label}
+                      loading="lazy"
+                      className="project-img"
+                    />
+                    <div className="project-overlay" />
+                    <span className="view-case-study text-sm uppercase tracking-[0.1em] text-bone">
+                      View Album
+                    </span>
+                  </div>
+                  <div className="mt-4">
+                    <h3 className="font-serif text-2xl">{g.label}</h3>
+                    <p className="mt-1 text-sm text-carbon/60">{g.meta}</p>
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
+
+          <div className="relative mt-20 text-center">
+            <Link
+              to="/portfolio"
+              className="group inline-flex items-center gap-5 border border-carbon/25 py-3 pr-3 pl-9 text-xs uppercase tracking-[0.22em] transition-all duration-700 hover:bg-carbon hover:text-bone"
+            >
+              <span>View All {projects.length} Projects</span>
+              <span className="flex h-10 w-10 items-center justify-center rounded-full border border-carbon/20 transition-all duration-700 group-hover:border-bone/20 group-hover:bg-bone/10">
+                <Arrow />
+              </span>
+            </Link>
+          </div>
+        </section>
         {/* About */}
         <section id="about" className="relative overflow-hidden bg-carbon px-6 py-32 text-bone md:px-20">
           <Suspense fallback={null}>
@@ -218,65 +277,6 @@ function Index() {
                 ))}
               </div>
             </div>
-          </div>
-        </section>
-
-        {/* Selected Works */}
-        <section id="works" className="relative mx-auto max-w-[1600px] px-6 py-32 md:px-12">
-          <Suspense fallback={null}>
-            <ArchitecturalCanvas />
-          </Suspense>
-          <div className="relative mb-20">
-            <div className="mb-6 inline-flex items-center rounded-full border border-carbon/12 bg-carbon/5 px-3 py-1 font-mono text-[0.6rem] uppercase tracking-[0.22em] text-carbon/60">
-              Selected Works
-            </div>
-            <h2 className="font-serif text-4xl md:text-6xl">A Legacy of Scale.</h2>
-          </div>
-
-          <div className="relative grid grid-cols-1 gap-6 md:grid-cols-12 md:gap-12">
-            {gridProjects.map((g) => {
-              const project = projects.find((p) => p.id === g.id)!;
-              return (
-                <Link
-                  key={g.id}
-                  to="/projects/$projectId"
-                  params={{ projectId: g.id }}
-                  className={`project-card relative block min-w-0 overflow-hidden ${g.span}`}
-                >
-                  <div
-                    className={`relative overflow-hidden ${g.height}`}
-                    style={{ backgroundColor: "rgb(201 169 97 / 0.06)" }}
-                  >
-                    <img
-                      src={media(projectSlotKey(g.id), project.cover)}
-                      alt={g.label}
-                      loading="lazy"
-                      className="project-img"
-                    />
-                    <div className="project-overlay" />
-                    <span className="view-case-study text-sm uppercase tracking-[0.1em] text-bone">
-                      View Album
-                    </span>
-                  </div>
-                  <div className="mt-4">
-                    <h3 className="font-serif text-2xl">{g.label}</h3>
-                    <p className="mt-1 text-sm text-carbon/60">{g.meta}</p>
-                  </div>
-                </Link>
-              );
-            })}
-          </div>
-
-          <div className="relative mt-20 text-center">
-            <Link
-              to="/portfolio"
-              className="group inline-flex items-center gap-5 border border-carbon/25 py-3 pr-3 pl-9 text-xs uppercase tracking-[0.22em] transition-all duration-700 hover:bg-carbon hover:text-bone"
-            >
-              <span>View All {projects.length} Projects</span>
-              <span className="flex h-10 w-10 items-center justify-center rounded-full border border-carbon/20 transition-all duration-700 group-hover:border-bone/20 group-hover:bg-bone/10">
-                <Arrow />
-              </span>
-            </Link>
           </div>
         </section>
 
