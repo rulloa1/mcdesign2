@@ -12,7 +12,7 @@ import { PrivateGallery, galleryQuery } from "@/components/site/PrivateGallery";
 import { albumOverrideQuery, useIsAdmin } from "@/lib/project-albums";
 import { coverVideos } from "@/data/cover-videos";
 
-const ArchitecturalCanvas = lazy(() => import("@/components/site/ArchitecturalCanvas"));
+
 
 export const Route = createFileRoute("/projects/$projectId")({
   loader: ({ params }) => {
@@ -108,7 +108,7 @@ function ProjectPage() {
         )}
         <div className="absolute inset-0 bg-gradient-to-t from-carbon via-carbon/40 to-transparent" />
         <Suspense fallback={null}>
-          <ArchitecturalCanvas hostRef={headerRef} />
+          <BlueprintOverlay hostRef={headerRef} />
         </Suspense>
         <div className="absolute bottom-0 left-0 z-10 w-full px-6 pb-16 md:px-20">
           <div className="mx-auto max-w-[1600px] text-bone">

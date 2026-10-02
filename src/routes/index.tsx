@@ -8,7 +8,7 @@ import { Testimonial } from "@/components/ui/design-testimonial";
 import CircularSplitRoll from "@/components/ui/circular-split-roll";
 
 const BlueprintOverlay = lazy(() => import("@/components/site/BlueprintOverlay"));
-const ArchitecturalCanvas = lazy(() => import("@/components/site/ArchitecturalCanvas"));
+
 import { PinnedCase } from "@/components/site/PinnedCase";
 import { projects } from "@/data/projects";
 import { projectSlotKey } from "@/data/media-slots";
@@ -213,7 +213,7 @@ function Index() {
         {/* About */}
         <section id="about" className="relative overflow-hidden bg-carbon px-6 py-32 text-bone md:px-20">
           <Suspense fallback={null}>
-            <ArchitecturalCanvas />
+            <BlueprintOverlay scroll />
           </Suspense>
           <div className="relative z-10 mx-auto flex max-w-7xl flex-col items-center gap-16 md:flex-row">
             <div className="md:w-2/5">
@@ -460,7 +460,7 @@ function Index() {
         >
           <div className="dot-grid pointer-events-none absolute inset-0 text-bone opacity-5" />
           <Suspense fallback={null}>
-            <ArchitecturalCanvas />
+            <BlueprintOverlay />
           </Suspense>
           <div className="relative z-10 mx-auto max-w-3xl">
             <h2 className="mb-8 font-serif text-4xl md:text-6xl">

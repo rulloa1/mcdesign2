@@ -4,8 +4,9 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { BeforeAfter } from "@/components/site/BeforeAfter";
 import { Nav } from "@/components/site/Nav";
 
-const ArchitecturalCanvas = lazy(() => import("@/components/site/ArchitecturalCanvas"));
 
+
+const BlueprintOverlay = lazy(() => import("@/components/site/BlueprintOverlay"));
 const TITLE = "Design — Architecture, Interiors & Concepts | MC Design Build";
 const DESCRIPTION =
   "Architecture, interiors, reimagined renovations, development, pools and landscape, concepts, and custom furniture designed and delivered by Michael Chandler.";
@@ -129,7 +130,7 @@ function DesignPage() {
 
       <section ref={headerRef} className="relative overflow-hidden px-6 pt-36 pb-14 md:pt-44">
         <Suspense fallback={null}>
-          <ArchitecturalCanvas hostRef={headerRef} />
+          <BlueprintOverlay hostRef={headerRef} />
         </Suspense>
         <div className="relative z-10 mx-auto max-w-6xl">
           <p className="text-[0.65rem] uppercase tracking-[0.35em] text-bone/50">MC Design Build</p>

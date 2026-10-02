@@ -6,7 +6,7 @@ import { useOrderedProjects } from "@/lib/project-order";
 import { projectSlotKey } from "@/data/media-slots";
 import { useSiteMedia } from "@/lib/site-media";
 
-const ArchitecturalCanvas = lazy(() => import("@/components/site/ArchitecturalCanvas"));
+
 
 export const Route = createFileRoute("/portfolio")({
   head: () => ({
@@ -42,7 +42,7 @@ function Portfolio() {
 
       <header ref={headerRef} className="relative overflow-hidden bg-carbon px-6 pt-40 pb-24 text-bone md:px-20">
         <Suspense fallback={null}>
-          <ArchitecturalCanvas hostRef={headerRef} />
+          <BlueprintOverlay hostRef={headerRef} />
         </Suspense>
         <div className="relative z-10 mx-auto max-w-[1600px]">
           <div className="mb-6 inline-flex items-center rounded-full border border-brass/20 bg-brass/5 px-3 py-1 font-mono text-[0.6rem] uppercase tracking-[0.22em] text-brass/80">
