@@ -7,3 +7,4 @@
 - [ ] Publish the site
 - [ ] Portfolio filter buttons changed from original — investigate and restore (portfolio.tsx:68)
 - [ ] New resume PDF uploaded — compare with /resume page and update if needed
+- [ ] Set uploaded sunset deck photo as Hillside Restoration cover (hillside-cleanup-cover_-_Copy.jpg)
