@@ -272,6 +272,30 @@ function Index() {
           </div>
         </section>
 
+        {/* Philosophy */}
+        <section id="philosophy" className="relative overflow-hidden bg-bone px-6 py-40 md:px-20">
+          <div className="dot-grid pointer-events-none absolute inset-0 text-carbon opacity-5" />
+          <div className="relative z-10 mx-auto max-w-5xl text-center">
+            <p className="mb-16 font-serif text-3xl leading-tight text-carbon md:text-6xl">
+              "Great architecture is not just built; it is rigorously orchestrated. We don't
+              construct buildings; we construct the reality of a vision."
+            </p>
+            <div className="flex flex-col items-center justify-center">
+              <svg width="200" height="80" viewBox="0 0 200 80" className="mb-4" aria-hidden="true">
+                <path
+                  fill="none"
+                  stroke="var(--brass)"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M10,60 C30,20 50,70 70,30 C80,10 100,50 120,40 C140,30 160,60 180,20"
+                />
+              </svg>
+              <p className="text-sm uppercase tracking-[0.2em] text-carbon/60">Michael Chandler</p>
+            </div>
+          </div>
+        </section>
+
         {/* Signature projects — pinned sequences */}
         <PinnedCase
           id="featured-case"
