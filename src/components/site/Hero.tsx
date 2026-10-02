@@ -2,7 +2,6 @@ import { lazy, Suspense, useEffect, useRef, useState } from "react";
 import { ClientOnly, Link } from "@tanstack/react-router";
 
 import { coverVideos } from "@/data/cover-videos";
-import logoFull from "@/assets/mc-logo-full.png.asset.json";
 
 /** Central hero configuration — swap media and destinations here. */
 export const heroConfig = {
@@ -79,7 +78,6 @@ export function Hero({ poster }: { poster: string }) {
 
       <div className="relative mx-auto w-full max-w-[1400px]">
         <div className="hero-fade max-w-4xl">
-          <img src={logoFull.url} alt="Michael Chandler — Design | Build | Elevate" className="mb-6 h-auto w-40 md:mb-10 md:w-64" />
           <p className="mb-2 font-mono text-[10px] uppercase tracking-[0.15em] text-brass md:mb-4 md:text-sm md:tracking-[0.35em]">
             Construction • Operations • Leadership
           </p>
