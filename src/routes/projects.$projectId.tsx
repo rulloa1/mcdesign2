@@ -9,6 +9,7 @@ import { useSiteMedia } from "@/lib/site-media";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { AlbumEditor } from "@/components/site/AlbumEditor";
 import { albumOverrideQuery, useIsAdmin } from "@/lib/project-albums";
+import { coverVideos } from "@/data/cover-videos";
 
 export const Route = createFileRoute("/projects/$projectId")({
   loader: ({ params }) => {
