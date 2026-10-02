@@ -325,3 +325,27 @@ body::before {
 .bp-light .bp-grid { stroke: color-mix(in oklab, var(--carbon, #111) 6%, transparent); }
 .bp-light .bp-ivory { stroke: color-mix(in oklab, var(--carbon, #111) 28%, transparent); }
 .bp-light .bp-gold { stroke: color-mix(in oklab, #9a7a2a 60%, transparent); }
+
+/* ===== Blueprint Journey (html.journey) — dark, see-through sections; Simple View removes the class ===== */
+html.journey { background: #050505; }
+html.journey body { background: transparent; color: var(--bone); }
+html.journey :is(main, section, header, footer, div).bg-bone,
+html.journey :is(main, section, header, footer).bg-carbon,
+html.journey section.bg-background,
+html.journey #works,
+html.journey #hero {
+  background-color: color-mix(in oklab, #050505 55%, transparent) !important;
+}
+html.journey #hero { background-color: transparent !important; }
+html.journey #hero > img, html.journey #hero > video { opacity: 0.22; }
+html.journey :is(.bg-bone, #works, .bg-background) :is([class*="text-carbon"], .text-foreground),
+html.journey :is(.bg-bone, #works, .bg-background).text-carbon,
+html.journey :is(.bg-bone, #works, .bg-background) :is(h1, h2, h3, h4, p, li, dt, dd, label, blockquote) {
+  color: color-mix(in oklab, var(--bone) 88%, transparent);
+}
+html.journey :is(.bg-bone, #works, .bg-background) [class*="border-carbon"] { border-color: color-mix(in oklab, var(--bone) 14%, transparent); }
+html.journey :is(.bg-bone, #works, .bg-background) [class*="bg-carbon/"] { background-color: color-mix(in oklab, var(--bone) 6%, transparent); }
+html.journey :is(.bg-bone, #works, .bg-background) :is(input, textarea, select) { color: var(--bone); background-color: color-mix(in oklab, #050505 60%, transparent); }
+html.journey .marquee-container { background-color: color-mix(in oklab, #050505 70%, transparent) !important; }
+html.journey #hero > div.bg-gradient-to-t { display: none; }
+html.journey #hero > div.bg-gradient-to-r { opacity: 0.75; }

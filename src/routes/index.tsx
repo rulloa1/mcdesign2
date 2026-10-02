@@ -7,7 +7,6 @@ import { Hero } from "@/components/site/Hero";
 import { Testimonial } from "@/components/ui/design-testimonial";
 import CircularSplitRoll from "@/components/ui/circular-split-roll";
 
-const BlueprintOverlay = lazy(() => import("@/components/site/BlueprintOverlay"));
 
 import { PinnedCase } from "@/components/site/PinnedCase";
 import { projects } from "@/data/projects";
@@ -162,13 +161,6 @@ function Index() {
 
         {/* Selected Works */}
         <section id="works" ref={worksRef} className="relative py-32 [overflow:clip]">
-          <div aria-hidden="true" className="pointer-events-none absolute inset-0">
-            <div className="sticky top-0 h-screen w-full">
-              <Suspense fallback={null}>
-                <BlueprintOverlay scroll tone="light" hostRef={worksRef} />
-              </Suspense>
-            </div>
-          </div>
           <div className="relative mx-auto mb-12 max-w-[1600px] px-6 md:px-12">
             <div className="mb-6 inline-flex items-center rounded-full border border-carbon/12 bg-carbon/5 px-3 py-1 font-mono text-[0.6rem] uppercase tracking-[0.22em] text-carbon/60">
               Selected Works
@@ -176,27 +168,43 @@ function Index() {
             <h2 className="font-serif text-4xl md:text-6xl">A Legacy of Scale.</h2>
           </div>
 
-          <CircularSplitRoll
-            className="font-serif"
-            background="transparent"
-            titleColor="var(--carbon)"
-            radius={340}
-            focusPhase={0}
-            cardSize={260}
-            sectionHeight={60}
-            textSideScale={0.68}
-            textSideOpacity={0.18}
-            items={gridProjects.map((g) => {
+          <div className="relative mx-auto grid max-w-[1600px] gap-4 px-6 md:grid-cols-6 md:gap-5 md:px-12">
+            {gridProjects.map((g, i) => {
               const project = projects.find((p) => p.id === g.id)!;
-              return {
-                id: g.id,
-                title: g.label,
-                image: media(projectSlotKey(g.id), project.cover),
-                alt: g.label,
-                href: `/projects/${g.id}`,
-              };
+              const n = gridProjects.length;
+              const rem = (n - 2) % 3;
+              const tail = n - rem;
+              const big = i < 2 || (rem === 2 && i >= tail);
+              const full = rem === 1 && i === n - 1;
+              return (
+                <Link
+                  key={g.id}
+                  to="/projects/$projectId"
+                  params={{ projectId: g.id }}
+                  className={`group relative block overflow-hidden bg-carbon ${full ? "md:col-span-6" : big ? "md:col-span-3" : "md:col-span-2"}`}
+                >
+                  <img
+                    src={media(projectSlotKey(g.id), project.cover)}
+                    alt={g.label}
+                    loading="lazy"
+                    className={`w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.04] ${full ? "aspect-[4/3] md:aspect-[21/9]" : big ? "aspect-[4/3]" : "aspect-[4/5]"}`}
+                  />
+                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-carbon/85 via-carbon/10 to-transparent" />
+                  <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 p-5 md:p-7">
+                    <div>
+                      <p className="mb-2 font-mono text-[0.6rem] uppercase tracking-[0.3em] text-brass">
+                        {String(i + 1).padStart(2, "0")} / {project.location}
+                      </p>
+                      <h3 className="font-serif text-2xl leading-tight text-bone md:text-3xl">{g.label}</h3>
+                    </div>
+                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-bone/30 text-bone transition-colors duration-500 group-hover:border-brass group-hover:text-brass">
+                      <Arrow />
+                    </span>
+                  </div>
+                </Link>
+              );
             })}
-          />
+          </div>
 
           <div className="relative mt-20 text-center">
             <Link
@@ -212,9 +220,6 @@ function Index() {
         </section>
         {/* About */}
         <section id="about" className="relative overflow-hidden bg-carbon px-6 py-32 text-bone md:px-20">
-          <Suspense fallback={null}>
-            <BlueprintOverlay scroll align="left" />
-          </Suspense>
           <div className="relative z-10 mx-auto flex max-w-7xl flex-col items-center gap-16 md:flex-row">
             <div className="md:w-2/5">
               <div
@@ -459,9 +464,6 @@ function Index() {
           className="relative overflow-hidden bg-carbon px-6 py-40 text-center text-bone md:px-20"
         >
           <div className="dot-grid pointer-events-none absolute inset-0 text-bone opacity-5" />
-          <Suspense fallback={null}>
-            <BlueprintOverlay />
-          </Suspense>
           <div className="relative z-10 mx-auto max-w-3xl">
             <h2 className="mb-8 font-serif text-4xl md:text-6xl">
               For project inquiries, speaking engagements, and board consultations.

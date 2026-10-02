@@ -5,7 +5,6 @@ import { Nav } from "@/components/site/Nav";
 import { useOrderedProjects } from "@/lib/project-order";
 import { projectSlotKey } from "@/data/media-slots";
 import { useSiteMedia } from "@/lib/site-media";
-const BlueprintOverlay = lazy(() => import("@/components/site/BlueprintOverlay"));
 
 
 
@@ -42,9 +41,6 @@ function Portfolio() {
       <Nav />
 
       <header ref={headerRef} className="relative overflow-hidden bg-carbon px-6 pt-40 pb-24 text-bone md:px-20">
-        <Suspense fallback={null}>
-          <BlueprintOverlay hostRef={headerRef} />
-        </Suspense>
         <div className="relative z-10 mx-auto max-w-[1600px]">
           <div className="mb-6 inline-flex items-center rounded-full border border-brass/20 bg-brass/5 px-3 py-1 font-mono text-[0.6rem] uppercase tracking-[0.22em] text-brass/80">
             Full Portfolio

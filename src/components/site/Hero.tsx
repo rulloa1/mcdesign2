@@ -1,7 +1,6 @@
 import { lazy, Suspense, useEffect, useRef, useState } from "react";
 import { ClientOnly, Link } from "@tanstack/react-router";
 
-const BlueprintOverlay = lazy(() => import("./BlueprintOverlay"));
 import { coverVideos } from "@/data/cover-videos";
 
 /** Central hero configuration — swap media and destinations here. */
@@ -75,13 +74,6 @@ export function Hero({ poster }: { poster: string }) {
       ) : null}
       <div aria-hidden="true" className="absolute inset-0 -z-10 bg-gradient-to-r from-carbon via-carbon/75 to-carbon/25" />
       <div aria-hidden="true" className="absolute inset-0 -z-10 bg-gradient-to-t from-carbon via-transparent to-carbon/60" />
-      <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">
-        <ClientOnly fallback={null}>
-          <Suspense fallback={null}>
-            <BlueprintOverlay hostRef={heroRef} />
-          </Suspense>
-        </ClientOnly>
-      </div>
       <div aria-hidden="true" className="hero-noise pointer-events-none absolute inset-0 -z-10" />
 
       <div className="relative mx-auto w-full max-w-[1400px]">

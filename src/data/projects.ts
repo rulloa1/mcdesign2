@@ -19,7 +19,7 @@ import beachfront from "@/assets/beachfront-cover.webp";
 import montanaCondo from "@/assets/montana-condo-cover.webp";
 import carmelValleyNew from "@/assets/carmel-valley-new-cover.webp";
 import carmelForest from "@/assets/carmel-forest-cover.webp";
-import syracuse from "@/assets/syracuse-cover.webp";
+import syracuse from "@/assets/syracuse-cover-hq.jpg";
 import hillside from "@/assets/hillside-restoration-cover.webp";
 
 const infrastructureCover = "/projects/assets/development-site.webp";
