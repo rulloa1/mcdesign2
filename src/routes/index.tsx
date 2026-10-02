@@ -189,7 +189,7 @@ function Index() {
                   <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 p-5 md:p-7">
                     <div>
                       <p className="mb-2 font-mono text-[0.6rem] uppercase tracking-[0.3em] text-brass">
-                        {String(i + 1).padStart(2, "0")} / {project.location ?? "Project"}
+                        {String(i + 1).padStart(2, "0")} / {project.location}
                       </p>
                       <h3 className="font-serif text-2xl leading-tight text-bone md:text-3xl">{g.label}</h3>
                     </div>
