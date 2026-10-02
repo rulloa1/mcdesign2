@@ -1,3 +1,12 @@
+export type PinnedCaseProps = {
+  id: string;
+  subtitle: string;
+  title: string;
+  images: [string, string, string];
+  alts: [string, string, string];
+  captions: [string, string];
+  stats: [{ value: string; label: string }, { value: string; label: string }];
+};
 
 export function PinnedCase({ id, subtitle, title, images, alts, captions, stats }: PinnedCaseProps) {
   const labels = ["01 / The Vision", "02 / The Execution", "03 / The Result"];
