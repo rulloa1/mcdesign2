@@ -3,7 +3,6 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { Nav } from "@/components/site/Nav";
 import { Marquee } from "@/components/site/Marquee";
 import { PinnedCase } from "@/components/site/PinnedCase";
-import { ImpactSlider } from "@/components/site/ImpactSlider";
 import { projects } from "@/data/projects";
 import { projectSlotKey } from "@/data/media-slots";
 import { useSiteMedia } from "@/lib/site-media";
@@ -106,28 +105,6 @@ const gridProjects = [
   },
 ];
 
-const processSteps = [
-  {
-    n: "01",
-    title: "Strategize",
-    body: "Aligning capital vision with structural reality before a single dollar is deployed.",
-  },
-  {
-    n: "02",
-    title: "Assemble",
-    body: "Curating tier-one architectural, engineering, and contracting talent specific to the asset.",
-  },
-  {
-    n: "03",
-    title: "Orchestrate",
-    body: "Rigorous milestone management, value engineering, and risk mitigation.",
-  },
-  {
-    n: "04",
-    title: "Deliver",
-    body: "Handover of a market-defining asset, on budget, to precise specifications.",
-  },
-];
 
 const testimonials = [
   {
@@ -431,14 +408,14 @@ function Index() {
           </div>
         </section>
 
-        {/* Process */}
-        <section id="process" className="bg-carbon px-6 py-32 text-bone md:px-20">
+        {/* Services */}
+        <section id="services" className="bg-carbon px-6 py-32 text-bone md:px-20">
           <div className="mx-auto max-w-7xl">
             <div className="mb-6 inline-flex items-center rounded-full border border-brass/20 bg-brass/5 px-3 py-1 font-mono text-[0.6rem] uppercase tracking-[0.22em] text-brass/80">
-              Methodology
+              What We Do
             </div>
             <h2 className="mb-24 font-serif text-4xl md:text-5xl">
-              The Architecture of Execution.
+              One Team. Every Discipline.
             </h2>
 
             <div className="mb-12 h-0.5 w-full bg-bone/10">
@@ -446,12 +423,29 @@ function Index() {
             </div>
 
             <div className="grid grid-cols-1 gap-12 md:grid-cols-4">
-              {processSteps.map((s) => (
+              {[
+                {
+                  title: "Owner's Representation",
+                  body: "Acting as the owner's advocate from site selection through closeout — protecting budget, schedule, and vision at every decision point.",
+                },
+                {
+                  title: "Design-Build",
+                  body: "Architecture and construction under one roof. A single point of accountability from first sketch to final walkthrough.",
+                },
+                {
+                  title: "Development",
+                  body: "Civil, commercial, and residential development — from raw land and entitlements to finished, revenue-producing assets.",
+                },
+                {
+                  title: "Estate Management",
+                  body: "Long-term stewardship of legacy properties: capital planning, staff leadership, and meticulous care of every detail.",
+                },
+              ].map((s) => (
                 <div
-                  key={s.n}
+                  key={s.title}
                   className="opacity-70 transition-opacity duration-500 hover:opacity-100"
                 >
-                  <div className="mb-6 font-mono text-sm text-brass">{s.n}</div>
+                  <div className="mb-6 h-px w-10 bg-brass" />
                   <h3 className="mb-4 font-serif text-2xl">{s.title}</h3>
                   <p className="text-sm font-light leading-relaxed text-bone/60">{s.body}</p>
                 </div>
@@ -460,7 +454,29 @@ function Index() {
           </div>
         </section>
 
-        <ImpactSlider />
+        {/* Career Numbers */}
+        <section className="border-t border-carbon/10 bg-bone px-6 py-32 md:px-20">
+          <div className="mx-auto max-w-7xl">
+            <div className="mb-16 inline-flex items-center rounded-full border border-carbon/12 bg-carbon/5 px-3 py-1 font-mono text-[0.6rem] uppercase tracking-[0.22em] text-carbon/60">
+              By the Numbers
+            </div>
+            <div className="grid grid-cols-2 gap-12 md:grid-cols-4">
+              {[
+                { value: "25+", label: "Years in the Industry" },
+                { value: "55+", label: "Projects Led" },
+                { value: "3M+", label: "Sq Ft Delivered" },
+                { value: "$1B+", label: "Capital Managed" },
+              ].map((s) => (
+                <div key={s.label}>
+                  <div className="font-serif text-5xl text-carbon md:text-6xl">{s.value}</div>
+                  <div className="mt-4 font-mono text-[0.65rem] uppercase tracking-[0.22em] text-carbon/50">
+                    {s.label}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
 
         {/* Testimonials */}
         <section className="bg-bone px-6 py-32 md:px-20">

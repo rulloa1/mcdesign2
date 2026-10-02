@@ -1,8 +1,6 @@
-import { useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 
 import { Nav } from "@/components/site/Nav";
-import { categoryLabels, type Category } from "@/data/projects";
 import { useOrderedProjects } from "@/lib/project-order";
 import { projectSlotKey } from "@/data/media-slots";
 import { useSiteMedia } from "@/lib/site-media";
@@ -29,23 +27,10 @@ export const Route = createFileRoute("/portfolio")({
   component: Portfolio,
 });
 
-const filters: (Category | "all")[] = [
-  "all",
-  "owners-representation",
-  "residential-construction",
-  "design-build",
-  "hospitality",
-  "civil",
-  "development",
-  "commercial",
-  "estate-management",
-];
-
 function Portfolio() {
-  const [active, setActive] = useState<Category | "all">("all");
   const media = useSiteMedia();
   const ordered = useOrderedProjects();
-  const shown = active === "all" ? ordered : ordered.filter((p) => p.categories.includes(active));
+  const shown = ordered;
 
   return (
     <div className="relative z-10 bg-bone">
@@ -65,23 +50,6 @@ function Portfolio() {
       </header>
 
       <main className="mx-auto max-w-[1600px] px-6 py-20 md:px-12">
-        <div className="mb-16 flex flex-wrap gap-3">
-          {filters.map((f) => (
-            <button
-              key={f}
-              type="button"
-              onClick={() => setActive(f)}
-              className={`border px-5 py-2 text-[0.65rem] uppercase tracking-[0.22em] transition-all duration-500 ${
-                active === f
-                  ? "border-carbon bg-carbon text-bone"
-                  : "border-carbon/20 text-carbon/60 hover:border-carbon/50"
-              }`}
-            >
-              {categoryLabels[f]}
-            </button>
-          ))}
-        </div>
-
         <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3">
           {shown.map((p) => (
             <Link

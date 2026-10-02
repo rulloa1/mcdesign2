@@ -29,18 +29,25 @@ export const Route = createFileRoute("/resume")({
 
 const competencies: { label: string; items: string }[] = [
   {
-    label: "Strategic Leadership",
-    items: "P&L Management, Multi-Year CapEx Planning, Owner Representation",
+    label: "Design & Construction Leadership",
+    items: "Renovation & New-Build Delivery, Design Management, Constructability Review, Owner Representation",
   },
   {
-    label: "Operational Excellence",
-    items: "Global Procurement, Supply Chain Resilience, Joint Venture (JV) Leadership",
+    label: "Capital Planning & Budgeting",
+    items: "Multi-Year CapEx Planning, Construction Budgeting & Cost Control, Value Engineering, P&L Management",
   },
   {
-    label: "Technical Integration",
-    items: "Procore Analytics, BIM-Integrated Workflows, Risk Mitigation",
+    label: "Portfolio & Team Leadership",
+    items: "Multi-Site Oversight, Mentoring PMs & Superintendents, Executive & Ownership Reporting",
   },
-  { label: "Sector Expertise", items: "Ultra-High-End Residential, Luxury Resorts & Hospitality" },
+  {
+    label: "Procurement & Logistics",
+    items: "Global Procurement, Supply Chain Resilience, Remote-Site Logistics; Procore (Certified), BIM Workflows",
+  },
+  {
+    label: "Hospitality Expertise",
+    items: "Luxury Hotels & Resorts, Private Clubs, Spa and Food & Beverage Facilities, Ultra-High-End Residential",
+  },
 ];
 
 type Role = {
@@ -54,11 +61,28 @@ type Role = {
 
 const experience: Role[] = [
   {
-    company: "Dunrite Construction Group",
-    title: "VP of Operations (Contract)",
+    company: "The Mangrove Group (Private Consulting)",
+    title: "CEO & Head of Operations (Contract)",
     location: "San Antonio, FL",
-    period: "May 2026 – August 2026",
-    bullets: [],
+    period: "May 2026 – Aug 2026",
+    bullets: [
+      {
+        label: "Executive Leadership",
+        text: "Led company operations on a contract basis, reporting directly to ownership and setting priorities across the active construction portfolio.",
+      },
+      {
+        label: "Portfolio Oversight",
+        text: "Held project teams accountable for budget, schedule, and quality through consistent cost reporting and executive-level project reviews.",
+      },
+      {
+        label: "Process Improvement",
+        text: "Standardized procurement, scheduling, and project reporting workflows to give ownership clearer cost visibility and faster decisions.",
+      },
+      {
+        label: "Team Development",
+        text: "Led and mentored project managers, superintendents, and field staff, tightening accountability between office and field.",
+      },
+    ],
   },
   {
     company: "NewQuest Properties",
@@ -68,20 +92,20 @@ const experience: Role[] = [
     note: "The Clubs at Houston Oaks & The Links at Houston Oaks",
     bullets: [
       {
+        label: "Renovation & New Build",
+        text: "Oversaw design and construction of club renovations and new facilities, applying architectural expertise to protect design intent, finish quality, and member experience.",
+      },
+      {
         label: "Capital Stewardship",
-        text: "Orchestrated construction phases for a $67MM portfolio, ensuring 100% adherence to rigorous multi-year budget and timeline requirements through strategic value engineering and proactive risk mitigation.",
+        text: "Directed construction phases of a $67MM private club portfolio, holding to multi-year budget and schedule requirements through value engineering and proactive risk mitigation.",
       },
       {
-        label: "Stakeholder Synergy",
-        text: "Served as the primary executive liaison, bridging the gap between architectural vision and field execution for high-net-worth developers and institutional stakeholders.",
+        label: "Ownership Liaison",
+        text: "Served as primary executive liaison between the design team, the field, high-net-worth developers, and institutional stakeholders.",
       },
       {
-        label: "Operational Strategy",
-        text: "Implemented localized procurement frameworks that reduced material lead times by 15%, mitigating supply chain volatility during post-pandemic market disruptions.",
-      },
-      {
-        label: "Design Leadership",
-        text: "Oversaw design and construction phases for renovations and new facilities, leveraging architectural expertise to deliver high-quality developments.",
+        label: "Procurement Strategy",
+        text: "Built localized procurement frameworks that cut material lead times by 15% during post-pandemic supply chain disruption.",
       },
     ],
   },
@@ -93,19 +117,19 @@ const experience: Role[] = [
     bullets: [
       {
         label: "Portfolio Management",
-        text: "Directed a $75M construction pipeline encompassing five large private residential estates across 12 US states and international territories (Bahamas, Mexico), delivering all projects within ±2% of budget.",
+        text: "Directed a $75M pipeline of five large private residential estates in the U.S. and abroad (Bahamas, Mexico), delivering every project within ±2% of budget.",
       },
       {
         label: "Regulatory Navigation",
-        text: "Standardized permitting and entitlement workflows across diverse international jurisdictions, accelerating project start dates by an average of 4 weeks and ensuring seamless compliance.",
+        text: "Standardized permitting and entitlement workflows across international jurisdictions, pulling project starts forward by an average of 4 weeks.",
       },
       {
         label: "Full-Cycle Oversight",
-        text: "Managed all phases of construction from permitting to final inspections, maintaining rigorous quality standards across geographically dispersed operations.",
+        text: "Managed every phase from permitting to final inspection, holding a consistent quality standard across geographically dispersed sites.",
       },
       {
         label: "Team Leadership",
-        text: "Cultivated collaborative team environments, promoting communication and project alignment across culturally diverse workforces.",
+        text: "Aligned multilingual, culturally diverse project teams around shared schedules and quality expectations.",
       },
     ],
   },
@@ -116,113 +140,84 @@ const experience: Role[] = [
     period: "2018 – 2020",
     bullets: [
       {
-        label: "High-Stakes Development",
-        text: "Led project management and construction oversight for multimillion-dollar mixed-use developments including luxury condo towers, spa facilities, and restaurants in North America's premier private ski and golf community.",
+        label: "Resort Development",
+        text: "Led construction oversight for multimillion-dollar luxury condominium towers, spa facilities, and restaurants in North America's premier private ski and golf community.",
       },
       {
-        label: "Stakeholder Management",
-        text: "Managed owner representation and stakeholder communication to align project goals with exacting client expectations in an ultra-exclusive resort environment.",
+        label: "Owner Representation",
+        text: "Managed stakeholder communication to align project goals with the exacting expectations of an ultra-exclusive membership.",
       },
       {
         label: "Compliance & Entitlements",
-        text: "Oversaw permit and entitlement processes, ensuring compliance with complex mountain resort regulations and environmental requirements.",
-      },
-      {
-        label: "Team Development",
-        text: "Developed and implemented team-building strategies to enhance collaboration and project efficiency across specialized construction disciplines.",
+        text: "Ran permit and entitlement processes under complex mountain-resort and environmental regulations.",
       },
     ],
   },
   {
     company: "Discovery Land Company / Starfish Company",
-    title: "Project Manager",
-    location: "Bakers Bay Resort, Abaco Islands, Bahamas",
+    title: "Project Manager — Bakers Bay Resort",
+    location: "Great Guana Cay, Abaco Islands, Bahamas",
     period: "2015 – 2018",
     bullets: [
       {
-        label: "Resort Portfolio Leadership",
-        text: "Directed project management and construction oversight for Bakers Bay Resort, encompassing Owner, Resort, and Private products including Beach Club Restaurant, Beach Club Spa Building, and Market by the Pier.",
+        label: "Resort Portfolio",
+        text: "Directed construction of Owner, Resort, and Private products, including the Beach Club Restaurant, Beach Club Spa, Market by the Pier, and multiple ultra-luxury single-family residences.",
       },
       {
-        label: "Logistics Mastery",
-        text: "Facilitated complex logistics and procurement processes for remote island construction, streamlining operations and enhancing efficiency despite challenging supply chain constraints and limited local infrastructure.",
-      },
-      {
-        label: "Quality Assurance",
-        text: "Oversaw multiple single-family residential projects, ensuring high-quality construction and client satisfaction in the ultra-luxury market segment.",
+        label: "Island Logistics",
+        text: "Ran procurement and logistics for remote-island construction with limited local infrastructure, keeping materials and crews moving on schedule.",
       },
       {
         label: "Cross-Cultural Leadership",
-        text: "Implemented best practices in team building and architectural design, leveraging fluency in Spanish for effective communication with an international workforce.",
+        text: "Used native-level Spanish to lead and communicate with an international workforce.",
       },
     ],
   },
   {
-    company: "Private Owner / Developer",
-    title: "Owner's Rep / Project Manager",
+    company: "Private Owner / Developer — Private Island Estate",
+    title: "Owner's Representative / Project Manager",
     location: "Abaco Islands, Bahamas",
     period: "2015 – 2018",
-    note: "Large Estate Development, Private Island",
     bullets: [
       {
         label: "Executive Representation",
-        text: "Represented a private client as Owner's Rep on a $125M+ estate development, managing design, development consulting, and land development processes with focus on logistics for personnel and materials.",
+        text: "Represented the owner on a $125M+ estate development, managing design, development consulting, and land development, with project budgets from $500K to $125M.",
       },
       {
         label: "Workforce Development",
-        text: "Cultivated relationships with government officials to secure skilled workforce from multiple regions; implemented comprehensive training programs for local Bahamians to enhance construction skills and create sustainable employment.",
-      },
-      {
-        label: "Budget & Operations Management",
-        text: "Oversaw project budgets ranging from $500K to $125M, ensuring efficient operations, cost control, and value optimization throughout the development lifecycle.",
-      },
-      {
-        label: "International Logistics",
-        text: "Coordinated complex supply chain operations for remote island construction, establishing vendor relationships and transportation networks.",
+        text: "Worked with government officials to secure skilled labor from multiple regions and launched training programs that built construction skills and lasting jobs for local Bahamians.",
       },
     ],
   },
   {
     company: "Architectural Design & Construction Consultant",
-    title: "Private Owner / Developer",
-    location: "Great Guana Cay and Great Abaco Island, Bahamas",
+    title: "Private Owners / Developers",
+    location: "Great Guana Cay & Great Abaco Island, Bahamas",
     period: "2013 – 2018",
     bullets: [
       {
         label: "Design & Constructability",
-        text: "Delivered architectural and constructability consulting for private developers in the Abaco Islands, ensuring design intent translated effectively to field execution.",
+        text: "Provided architectural and constructability consulting so design intent translated cleanly to field execution.",
       },
       {
-        label: "Logistical Strategy",
-        text: "Developed comprehensive logistical strategies to optimize project workflows and resource allocation in a challenging remote island environment.",
-      },
-      {
-        label: "Regulatory Compliance",
-        text: "Ensured compliance with local regulations for permits and entitlements, navigating international building codes and environmental requirements.",
-      },
-      {
-        label: "Collaborative Leadership",
-        text: "Collaborated with multidisciplinary teams to enhance project outcomes and maintain rigorous quality standards.",
+        label: "Logistics & Compliance",
+        text: "Developed logistics strategies for remote-island sites and managed local permitting, codes, and environmental requirements.",
       },
     ],
   },
   {
-    company: "Big D Construction / Signature Homes & Hospitality Division",
+    company: "Big D Construction — Signature Homes & Hospitality Division",
     title: "Construction Consultant / Sr. Project Manager",
-    location: "Multiple US States",
+    location: "Multi-State (concurrent engagement)",
     period: "2014 – 2016",
     bullets: [
       {
-        label: "Luxury Portfolio Leadership",
-        text: "Directed multimillion-dollar luxury home projects across multiple US states, managing budgets ranging from $12.5MM to $25MM and a private resort project valued at $74MM.",
+        label: "Luxury Portfolio",
+        text: "Directed luxury home projects across multiple U.S. states with budgets of $12.5MM–$25MM, plus a $74MM private resort project.",
       },
       {
         label: "Process Optimization",
-        text: "Enhanced project efficiency through strategic logistics and procurement management, reducing costs while maintaining luxury market standards.",
-      },
-      {
-        label: "Team Excellence",
-        text: "Cultivated collaborative team environments to maximize strengths and performance, developing leadership bench strength across geographically dispersed projects.",
+        text: "Reduced costs through strategic logistics and procurement management while holding luxury-market standards.",
       },
     ],
   },
@@ -234,15 +229,15 @@ const experience: Role[] = [
     bullets: [
       {
         label: "Design-Build Leadership",
-        text: "Directed construction management and partial design for multimillion-dollar projects, including two private resorts valued at $76MM, demonstrating a unique ability to integrate design and construction disciplines.",
+        text: "Directed construction management and partial design for two private resorts valued at $76MM.",
       },
       {
-        label: "Signature Projects",
-        text: "Designed and built a large Texas equestrian ranch, overseeing a $24MM budget with comprehensive architectural and construction oversight.",
+        label: "Signature Project",
+        text: "Designed and built a large Texas equestrian ranch on a $24MM budget, with full architectural and construction oversight.",
       },
       {
         label: "Client Representation",
-        text: "Acted as owner representative for private estate projects, managing values between $7.5MM and $28MM while serving as trusted advisor to high-net-worth clients.",
+        text: "Served as owner's representative and trusted advisor to high-net-worth clients on private estates valued at $7.5MM–$28MM.",
       },
     ],
   },
@@ -250,22 +245,10 @@ const experience: Role[] = [
 
 const earlierCareer: { role: string; org: string; period: string; text: string }[] = [
   {
-    role: "Co-Founder / COO",
-    org: "St. Pauline Primate Trust & Preserve",
-    period: "1999 – 2012",
-    text: "Founded and directed a primate rescue organization, oversaw the rescue of 53 primates, and developed specialized behavioral rehabilitation programs.",
-  },
-  {
-    role: "Founder / CEO",
-    org: "At Your Service / Coachman Ltd Corp.",
-    period: "1996 – 2004",
-    text: "Launched an exclusive transportation concierge service and secured contracts with Pebble Beach Resorts and top national agencies.",
-  },
-  {
     role: "Designer / Construction Consultant",
     org: "The Pebble Beach Company",
     period: "1993 – 1996",
-    text: "Consulted on design, remodel, and construction for one of America's most iconic resort properties.",
+    text: "Design, remodel, and construction consulting for one of America's most iconic resort properties.",
   },
   {
     role: "Construction & Operations Consultant",
@@ -288,24 +271,20 @@ const earlierCareer: { role: string; org: string; period: string; text: string }
 ];
 
 const impact: { value: string; label: string }[] = [
-  { value: "$500M+", label: "Total Construction Value Managed" },
-  { value: "$500K – $125M", label: "Project Portfolio Range" },
-  { value: "12 States · 4 Countries", label: "Geographic Reach" },
   { value: "37+ Years", label: "Industry Experience" },
+  { value: "$500M+", label: "Construction Value Managed" },
+  { value: "$500K – $125M", label: "Project Range" },
+  { value: "12 States · 4 Countries", label: "Geographic Reach" },
 ];
 
 const certifications = [
   {
     label: "Procore Certified",
-    text: "Construction Management Software Platform (Financial Management & Core Tools)",
+    text: "Financial Management & Core Tools",
   },
   {
-    label: "Fluent Spanish",
-    text: "Native-level proficiency for international project communication",
-  },
-  {
-    label: "Geographic Expertise",
-    text: "Completed projects across 12 US states, Mexico, Bahamas, and Costa Rica",
+    label: "Languages",
+    text: "English; Spanish (native-level fluency, used daily on international job sites)",
   },
 ];
 
@@ -376,19 +355,27 @@ function ResumePage() {
             </div>
             <h1 className="font-serif text-4xl leading-tight md:text-5xl">Michael Chandler</h1>
             <p className="mt-3 font-mono text-xs uppercase tracking-[0.2em] text-bone/50">
-              VP of Operations · Construction Executive
+              Design & Construction Executive · Hospitality & Resort Projects · Owner's
+              Representative
             </p>
             <p className="mt-2 text-sm text-bone/60">
-              Spring, TX · mike.rcccon@yahoo.com · (435) 237-7373
+              Spring, TX · mike.rcccon@yahoo.com · (435) 237-7373 ·{" "}
+              <a
+                href="https://www.linkedin.com/in/michael-chandler-3858a63a"
+                target="_blank"
+                rel="noreferrer"
+                className="underline decoration-brass/50 underline-offset-4 transition-colors hover:text-brass"
+              >
+                linkedin.com/in/michael-chandler-3858a63a
+              </a>
             </p>
             <p className="mt-6 text-sm leading-relaxed text-bone/70">
-              Strategic construction leader with 37+ years of experience steering
-              multimillion-dollar developments from conception to handover. Expert in navigating the
-              "triple threat" of modern construction: labor shortages, technological integration
-              (Procore Certified), and complex international logistics. Proven track record as an
-              Owner's Representative, managing portfolios exceeding $500M across 12 US states and 4
-              countries. Native-level fluency in Spanish with a unique ability to bridge high-level
-              architectural design with rigorous P&L stewardship and field execution.
+              Design and construction executive with 37+ years of experience delivering luxury
+              hospitality, resort, and ultra-high-end residential projects. Managed more than $500M
+              in construction value, with individual project budgets from $500K to $125M across 12
+              states and 4 countries. Procore Certified, with native-level Spanish and a track
+              record of bridging architectural design, P&L stewardship, and field execution for
+              owners, developers, and private clubs.
             </p>
           </header>
 
