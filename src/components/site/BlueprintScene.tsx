@@ -110,7 +110,7 @@ function buildGroups(mobile: boolean) {
   // MC logo title block (drafting stamp) at the front-right of the plan
   const logo: Seg = [];
   {
-    const y = 0.02, x0 = W - 8.6, x1 = W - 1.2, z0 = D - 4.6, z1 = D - 1.2;
+    const y = 0.02, x0 = W - 9.4, x1 = W - 1.0, z0 = D - 4.6, z1 = D - 1.2;
     logo.push(...rect(y, x0, x1, z0, z1), ...rect(y, x0 + 0.25, x1 - 0.25, z0 + 0.25, z1 - 0.25));
     const h = 2.2, zt = z0 + 0.6, zb = zt + h; // letter top/bottom (z grows toward viewer)
     // M
