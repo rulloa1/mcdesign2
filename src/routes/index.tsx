@@ -156,8 +156,11 @@ function Index() {
         <Marquee />
 
         {/* About */}
-        <section id="about" className="bg-carbon px-6 py-32 text-bone md:px-20">
-          <div className="mx-auto flex max-w-7xl flex-col items-center gap-16 md:flex-row">
+        <section id="about" className="relative overflow-hidden bg-carbon px-6 py-32 text-bone md:px-20">
+          <Suspense fallback={null}>
+            <ArchitecturalCanvas />
+          </Suspense>
+          <div className="relative z-10 mx-auto flex max-w-7xl flex-col items-center gap-16 md:flex-row">
             <div className="md:w-2/5">
               <div
                 className="border border-brass/20 p-2"
@@ -471,6 +474,9 @@ function Index() {
           className="relative overflow-hidden bg-carbon px-6 py-40 text-center text-bone md:px-20"
         >
           <div className="dot-grid pointer-events-none absolute inset-0 text-bone opacity-5" />
+          <Suspense fallback={null}>
+            <ArchitecturalCanvas />
+          </Suspense>
           <div className="relative z-10 mx-auto max-w-3xl">
             <h2 className="mb-8 font-serif text-4xl md:text-6xl">
               For project inquiries, speaking engagements, and board consultations.
