@@ -4,9 +4,10 @@ import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { supabase } from "@/integrations/supabase/client";
 
 export const Route = createFileRoute("/auth")({
-  validateSearch: (s: Record<string, unknown>) => ({
-    redirect: typeof s.redirect === "string" && s.redirect.startsWith("/") && !s.redirect.startsWith("//") ? s.redirect : undefined,
-  }),
+  validateSearch: (s: Record<string, unknown>): { redirect?: string } => {
+    const r = s["redirect"];
+    return typeof r === "string" && r.startsWith("/") && !r.startsWith("//") ? { redirect: r } : {};
+  },
   head: () => ({
     meta: [
       { title: "Studio Sign In — MC Design Build" },
