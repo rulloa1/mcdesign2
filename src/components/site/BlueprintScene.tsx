@@ -41,8 +41,8 @@ function buildGroups(mobile: boolean) {
   for (const x of [-9, -1, 8]) for (const dz of [0, 0.2, 0.4]) plan.push(x - 1.6, 0.012, -D + dz, x + 1.6, 0.012, -D + dz);
   for (const z of [-4.5, 4.5]) for (const dx of [0, 0.2, 0.4]) plan.push(-W + dx, 0.012, z - 1.4, -W + dx, 0.012, z + 1.4);
   // stair: treads + arrow
-  for (let i = 0; i <= 10; i++) plan.push(7, 0.01, 2.6 + i * 0.45, 10.5, 0.01, 2.6 + i * 0.45);
-  plan.push(7, 0.01, 2.6, 7, 0.01, 7.1, 10.5, 0.01, 2.6, 10.5, 0.01, 7.1, 8.75, 0.01, 7, 8.75, 0.01, 3, 8.75, 0.01, 3, 8.3, 0.01, 3.6, 8.75, 0.01, 3, 9.2, 0.01, 3.6);
+  for (let i = 0; i <= 10; i++) plan.push(7, 0.01, -7.1 + i * 0.45, 10.5, 0.01, -7.1 + i * 0.45);
+  plan.push(7, 0.01, -7.1, 7, 0.01, -2.6, 10.5, 0.01, -7.1, 10.5, 0.01, -2.6, 8.75, 0.01, -2.7, 8.75, 0.01, -6.7, 8.75, 0.01, -6.7, 8.3, 0.01, -6.1, 8.75, 0.01, -6.7, 9.2, 0.01, -6.1);
   // grid bubbles on axes
   for (const x of B.colsX) plan.push(x, 0.01, -D - 3.2, x, 0.01, -D - 5, ...arc(x, -D - 5.8, 0.8, 0, Math.PI * 2, 0.01, 16));
   for (const z of B.colsZ) plan.push(-W - 1, 0.01, z, -W - 2.8, 0.01, z, ...arc(-W - 3.6, z, 0.8, 0, Math.PI * 2, 0.01, 16));
@@ -121,7 +121,23 @@ function buildGroups(mobile: boolean) {
     logo.push(...arc(x0 + 5.6, zt + h / 2, h / 2, Math.PI * 0.28, Math.PI * 1.72, y, 16));
   }
 
-  return { plan, foundation, columns, slabs, facade, systems, roof, logo };
+  // depth detail: slab edge thickness, column casings, ghosted back facade, ground shadow lines
+  const depth: Seg = [];
+  for (let f = 1; f <= B.floors; f++) {
+    const y = f * H;
+    for (const [x, z] of [[-W, -D], [W, -D], [W, D], [-W, D]] as const) depth.push(x, y, z, x, y - 0.3, z);
+    for (const x of B.colsX) for (const z of B.colsZ) depth.push(...rect(y - 0.3, x - 0.25, x + 0.25, z - 0.25, z + 0.25));
+  }
+  for (const x of B.colsX) for (const z of B.colsZ) depth.push(...rect(0.02, x - 0.25, x + 0.25, z - 0.25, z + 0.25));
+  if (!mobile) for (let f = 0; f < B.floors; f++) {
+    const y0 = f * H + 0.9, y1 = (f + 1) * H - 0.6;
+    for (let x = -W + 2; x < W; x += 4) depth.push(x, y0, -D, x, y1, -D);
+    depth.push(-W, y0, -D, W, y0, -D, -W, y1, -D, W, y1, -D);
+    for (let z = -D + 2; z < D; z += 4) depth.push(-W, y0, z, -W, y1, z);
+  }
+  for (let i = 1; i <= 6; i++) depth.push(-W + i * 1.2, 0, D + 0.6, -W + i * 1.2 + 6, 0, D + 6);
+
+  return { plan, foundation, columns, slabs, facade, systems, roof, logo, depth };
 }
 
 function gridSeg(): Seg {
@@ -141,7 +157,7 @@ function Lines({ seg, color, opacity, win, prog, intro = 0 }: { seg: Seg; color:
     g.setAttribute("position", new THREE.Float32BufferAttribute(seg, 3));
     return g;
   }, [seg]);
-  const mat = useMemo(() => new THREE.LineBasicMaterial({ color, transparent: true, opacity, depthWrite: false }), [color, opacity]);
+  const mat = useMemo(() => new THREE.LineBasicMaterial({ color, transparent: true, opacity, depthWrite: false, fog: true }), [color, opacity]);
   useEffect(() => () => { geo.dispose(); mat.dispose(); }, [geo, mat]);
   const count = seg.length / 3;
   useFrame(() => {
@@ -239,7 +255,8 @@ export default function BlueprintScene({ onFail }: { onFail: () => void }) {
       dpr={[1, mobile ? 1.5 : 2]}
       gl={{ antialias: true, alpha: true, powerPreference: "low-power" }}
       camera={{ fov: 40, near: 0.1, far: 300, position: [0, 40, 0.01] }}
-      onCreated={({ gl, invalidate }) => {
+      onCreated={({ gl, invalidate, scene }) => {
+        scene.fog = new THREE.Fog(0x050505, 30, 85);
         invalidateRef.current = invalidate;
         gl.setClearColor(0x000000, 0);
         gl.domElement.addEventListener("webglcontextlost", (e) => { e.preventDefault(); onFail(); });
@@ -255,6 +272,7 @@ export default function BlueprintScene({ onFail }: { onFail: () => void }) {
       <Lines seg={groups.columns} color={ivory} opacity={O.structure + 0.1} win={R["columns"]} prog={prog} />
       <Lines seg={groups.slabs} color={ivory} opacity={O.structure} win={R["slabs"]} prog={prog} />
       {groups.facade.length ? <Lines seg={groups.facade} color={ivory} opacity={O.structure * 0.6} win={R["facade"]} prog={prog} /> : null}
+      <Lines seg={groups.depth} color={ivory} opacity={O.structure * 0.45} win={R["slabs"]} prog={prog} />
       <Lines seg={groups.systems} color={gold} opacity={O.gold} win={R["systems"]} prog={prog} />
       <Lines seg={groups.roof} color={gold} opacity={O.gold * 0.8} win={R["roof"]} prog={prog} />
     </Canvas>
