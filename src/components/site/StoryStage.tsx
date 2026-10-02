@@ -66,7 +66,7 @@ function StickyStory() {
   const seek = (i: number) => {
     const v = videoRefs.current[i];
     if (!v || v.readyState < 1 || v.seeking || !Number.isFinite(v.duration)) return;
-    const t = targets.current[i] * Math.max(0, v.duration - 0.05);
+    const t = (targets.current[i] ?? 0) * Math.max(0, v.duration - 0.05);
     if (Math.abs(v.currentTime - t) > 0.02) v.currentTime = t;
   };
 

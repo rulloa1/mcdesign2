@@ -20,7 +20,7 @@ function NavItem({ item, onClick, className }: { item: Item; onClick?: () => voi
     );
   }
   return (
-    <Link to="/" hash={item.hash} onClick={onClick} className={className}>
+    <Link to="/" hash={item.hash ?? ""} onClick={onClick} className={className}>
       {item.label}
     </Link>
   );
