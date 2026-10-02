@@ -302,9 +302,9 @@ body::before {
 
 /* Hero blueprint overlay */
 .blueprint { fill: none; stroke-linecap: square; }
-.blueprint .bp-grid { stroke: color-mix(in oklab, var(--bone, #f2ede4) 7%, transparent); stroke-width: 0.6; }
-.blueprint .bp-ivory { stroke: color-mix(in oklab, var(--bone, #f2ede4) 34%, transparent); stroke-width: 1; }
-.blueprint .bp-gold { stroke: color-mix(in oklab, #D4AF37 45%, transparent); stroke-width: 0.9; }
+.blueprint .bp-grid { stroke: color-mix(in oklab, var(--bone, #f2ede4) 9%, transparent); stroke-width: 0.6; }
+.blueprint .bp-ivory { stroke: color-mix(in oklab, var(--bone, #f2ede4) 50%, transparent); stroke-width: 1; }
+.blueprint .bp-gold { stroke: color-mix(in oklab, #D4AF37 70%, transparent); stroke-width: 0.9; }
 .blueprint .bp-strong { stroke-width: 1.6; }
 .bp-draw { stroke-dasharray: 1; stroke-dashoffset: 1; animation: bp-draw 1.6s cubic-bezier(0.65, 0, 0.35, 1) forwards; }
 .bp-axis { stroke: #D4AF37; stroke-width: 1.2; stroke-dasharray: 0.12 1; stroke-dashoffset: 0.12; opacity: 0.55; animation: bp-axis 14s linear 7s infinite; }

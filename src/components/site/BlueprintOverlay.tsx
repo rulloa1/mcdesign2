@@ -121,6 +121,7 @@ export default function BlueprintOverlay({ hostRef }: { hostRef?: RefObject<HTML
       </defs>
       <rect width="1600" height="900" fill="url(#bp-grid)" mask="url(#bp-mask)" />
 
+      <g transform="translate(330 95) scale(0.78)">
       <g className="bp-ivory">
         {footprint.map((d, i) => L(d, 0, i, "bp-strong"))}
         {walls.map((d, i) => L(d, 1, i))}
@@ -134,6 +135,7 @@ export default function BlueprintOverlay({ hostRef }: { hostRef?: RefObject<HTML
         </g>
         <path d="M1140 120 V780" pathLength={1} className="bp-axis" />
         <path d="M860 430 H1540" pathLength={1} className="bp-axis bp-axis-2" />
+      </g>
       </g>
     </svg>
   );
