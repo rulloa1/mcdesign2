@@ -255,7 +255,8 @@ export default function BlueprintScene({ onFail }: { onFail: () => void }) {
       dpr={[1, mobile ? 1.5 : 2]}
       gl={{ antialias: true, alpha: true, powerPreference: "low-power" }}
       camera={{ fov: 40, near: 0.1, far: 300, position: [0, 40, 0.01] }}
-      onCreated={({ gl, invalidate }) => {
+      onCreated={({ gl, invalidate, scene }) => {
+        scene.fog = new THREE.Fog(0x050505, 30, 85);
         invalidateRef.current = invalidate;
         gl.setClearColor(0x000000, 0);
         gl.domElement.addEventListener("webglcontextlost", (e) => { e.preventDefault(); onFail(); });
@@ -263,7 +264,6 @@ export default function BlueprintScene({ onFail }: { onFail: () => void }) {
       }}
       style={{ position: "absolute", inset: 0 }}
     >
-      <fog attach="fog" args={["#050505", 30, 85]} />
       <Rig prog={prog} target={target} reduced={reduced} />
       <Lines seg={grid} color={gridColor} opacity={O.grid} prog={prog} />
       <Lines seg={groups.plan} color={ivory} opacity={O.plan} win={R["plan"]} prog={prog} intro={reduced ? 1 : 3200} />
