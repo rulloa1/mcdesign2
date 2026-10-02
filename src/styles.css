@@ -149,25 +149,31 @@
 
 @theme inline {
   --color-carbon: var(--carbon);
+  --color-graphite: var(--graphite);
+  --color-slate: var(--slate);
+  --color-iron: var(--iron);
   --color-brass: var(--brass);
   --color-brass-dark: var(--brass-dark);
   --color-bone: var(--bone);
   --font-serif: "Playfair Display", serif;
-  --font-sans: "Plus Jakarta Sans", sans-serif;
+  --font-sans: "Inter", sans-serif;
   --font-mono: "JetBrains Mono", monospace;
 }
 
 :root {
-  --carbon: oklch(0.155 0 0);
-  --brass: oklch(0.723 0.076 85);
+  --carbon: #050505;
+  --graphite: #101112;
+  --slate: #1b1c1d;
+  --iron: #252525;
+  --brass: #d4af37;
   --brass-dark: oklch(0.549 0.068 84);
-  --bone: oklch(0.955 0.008 85);
+  --bone: #f3eee4;
   --background: var(--bone);
   --foreground: var(--carbon);
 }
 
 html {
-  scroll-behavior: smooth;
+  scroll-padding-top: 6rem;
   overflow-x: clip;
 }
 
@@ -299,3 +305,13 @@ body::before {
 .hero-arrow{display:inline-block;transition:transform .3s;}
 .group:hover .hero-arrow{transform:translateX(4px);}
 @media (prefers-reduced-motion:reduce){.hero-underline,.hero-fade{animation:none}}
+
+/* Scroll story */
+.story-scrim{background:linear-gradient(90deg,color-mix(in oklab,var(--carbon) 88%,transparent) 0%,color-mix(in oklab,var(--carbon) 55%,transparent) 45%,color-mix(in oklab,var(--carbon) 15%,transparent) 100%),linear-gradient(0deg,color-mix(in oklab,var(--carbon) 85%,transparent) 0%,transparent 40%);}
+.story-btn{display:inline-flex;align-items:center;padding:.95rem 1.7rem;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;border:1px solid color-mix(in oklab,var(--bone) 35%,transparent);color:var(--bone);transition:background-color .3s,color .3s,border-color .3s;}
+.story-btn:hover{border-color:var(--brass);color:var(--brass);}
+.story-btn-primary{background:var(--brass);border-color:var(--brass);color:var(--carbon);}
+.story-btn-primary:hover{background:transparent;color:var(--brass);}
+.story-btn:focus-visible,.story-skip:focus-visible{outline:2px solid var(--brass);outline-offset:4px;}
+.story-skip{font-family:var(--font-mono);font-size:.62rem;letter-spacing:.24em;text-transform:uppercase;color:color-mix(in oklab,var(--bone) 75%,transparent);border-bottom:1px solid color-mix(in oklab,var(--brass) 60%,transparent);padding-bottom:.2rem;}
+.story-skip:hover{color:var(--brass);}
