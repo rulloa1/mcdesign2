@@ -251,7 +251,7 @@ function Index() {
                   coastline to the Caribbean.
                 </p>
                 <p>
-                  As Owner of MC Design Build, Michael brings a rare combination of architectural
+                  As Owner of MC Design, Michael brings a rare combination of architectural
                   sensitivity and rigorous project management to every engagement. His portfolio
                   spans Discovery Land Company developments, private island estates, alpine
                   retreats, and complex coastal restorations.
