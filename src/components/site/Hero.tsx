@@ -1,11 +1,11 @@
 import { lazy, Suspense, useEffect, useRef, useState } from "react";
 import { ClientOnly, Link } from "@tanstack/react-router";
 
-import { coverVideos } from "@/data/cover-videos";
+import heroVideo from "@/assets/videos/southcoast-hero-sm.mp4.asset.json";
 
 /** Central hero configuration — swap media and destinations here. */
 export const heroConfig = {
-  videoSrc: coverVideos["southcoast"] as string | undefined,
+  videoSrc: heroVideo.url as string | undefined, // 1.8 MB phone-friendly cut of the South Coast cover video
   videoPosition: "center",
   experienceHref: "#works",
   resumeTo: "/resume" as const,
