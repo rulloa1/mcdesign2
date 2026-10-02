@@ -345,29 +345,6 @@ function Index() {
           ]}
         />
 
-        {/* Philosophy */}
-        <section id="philosophy" className="relative overflow-hidden bg-bone px-6 py-40 md:px-20">
-          <div className="dot-grid pointer-events-none absolute inset-0 text-carbon opacity-5" />
-          <div className="relative z-10 mx-auto max-w-5xl text-center">
-            <p className="mb-16 font-serif text-3xl leading-tight text-carbon md:text-6xl">
-              "Great architecture is not just built; it is rigorously orchestrated. We don't
-              construct buildings; we construct the reality of a vision."
-            </p>
-            <div className="flex flex-col items-center justify-center">
-              <svg width="200" height="80" viewBox="0 0 200 80" className="mb-4" aria-hidden="true">
-                <path
-                  fill="none"
-                  stroke="var(--brass)"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M10,60 C30,20 50,70 70,30 C80,10 100,50 120,40 C140,30 160,60 180,20"
-                />
-              </svg>
-              <p className="text-sm uppercase tracking-[0.2em] text-carbon/60">Michael Chandler</p>
-            </div>
-          </div>
-        </section>
 
         {/* Services */}
         <section id="services" className="bg-carbon px-6 py-32 text-bone md:px-20">
@@ -415,29 +392,6 @@ function Index() {
           </div>
         </section>
 
-        {/* Career Numbers */}
-        <section className="border-t border-carbon/10 bg-bone px-6 py-32 md:px-20">
-          <div className="mx-auto max-w-7xl">
-            <div className="mb-16 inline-flex items-center rounded-full border border-carbon/12 bg-carbon/5 px-3 py-1 font-mono text-[0.6rem] uppercase tracking-[0.22em] text-carbon/60">
-              By the Numbers
-            </div>
-            <div className="grid grid-cols-2 gap-12 md:grid-cols-4">
-              {[
-                { value: "25+", label: "Years in the Industry" },
-                { value: "55+", label: "Projects Led" },
-                { value: "3M+", label: "Sq Ft Delivered" },
-                { value: "$1B+", label: "Capital Managed" },
-              ].map((s) => (
-                <div key={s.label}>
-                  <div className="font-serif text-5xl text-carbon md:text-6xl">{s.value}</div>
-                  <div className="mt-4 font-mono text-[0.65rem] uppercase tracking-[0.22em] text-carbon/50">
-                    {s.label}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
 
         {/* Testimonials */}
         <section className="overflow-hidden bg-bone px-6 py-32 md:px-20">
