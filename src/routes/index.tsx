@@ -1,8 +1,11 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { lazy, Suspense } from "react";
 
 import { Nav } from "@/components/site/Nav";
 import { Marquee } from "@/components/site/Marquee";
 import { Hero } from "@/components/site/Hero";
+
+const ArchitecturalCanvas = lazy(() => import("@/components/site/ArchitecturalCanvas"));
 import { PinnedCase } from "@/components/site/PinnedCase";
 import { projects } from "@/data/projects";
 import { projectSlotKey } from "@/data/media-slots";
