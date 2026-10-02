@@ -43,6 +43,20 @@
       "when": 1790952349398,
       "tag": "0005_project_gallery_public_read",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1790968262211,
+      "tag": "0006_migration",
+      "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "7",
+      "when": 1790968277916,
+      "tag": "0007_migration",
+      "breakpoints": true
     }
   ]
 }
