@@ -5,6 +5,7 @@ import { Nav } from "@/components/site/Nav";
 import { Marquee } from "@/components/site/Marquee";
 import { Hero } from "@/components/site/Hero";
 import { Testimonial } from "@/components/ui/design-testimonial";
+import CircularSplitRoll from "@/components/ui/circular-split-roll";
 
 const ArchitecturalCanvas = lazy(() => import("@/components/site/ArchitecturalCanvas"));
 import { PinnedCase } from "@/components/site/PinnedCase";
@@ -158,50 +159,38 @@ function Index() {
 
 
         {/* Selected Works */}
-        <section id="works" className="relative mx-auto max-w-[1600px] px-6 py-32 md:px-12">
+        <section id="works" className="relative py-32">
           <Suspense fallback={null}>
             <ArchitecturalCanvas />
           </Suspense>
-          <div className="relative mb-20">
+          <div className="relative mx-auto mb-12 max-w-[1600px] px-6 md:px-12">
             <div className="mb-6 inline-flex items-center rounded-full border border-carbon/12 bg-carbon/5 px-3 py-1 font-mono text-[0.6rem] uppercase tracking-[0.22em] text-carbon/60">
               Selected Works
             </div>
             <h2 className="font-serif text-4xl md:text-6xl">A Legacy of Scale.</h2>
           </div>
 
-          <div className="relative grid grid-cols-1 gap-6 md:grid-cols-12 md:gap-12">
-            {gridProjects.map((g) => {
+          <CircularSplitRoll
+            className="font-serif"
+            background="transparent"
+            titleColor="var(--carbon)"
+            radius={340}
+            focusPhase={0}
+            cardSize={260}
+            sectionHeight={60}
+            textSideScale={0.68}
+            textSideOpacity={0.18}
+            items={gridProjects.map((g) => {
               const project = projects.find((p) => p.id === g.id)!;
-              return (
-                <Link
-                  key={g.id}
-                  to="/projects/$projectId"
-                  params={{ projectId: g.id }}
-                  className={`project-card relative block min-w-0 overflow-hidden ${g.span}`}
-                >
-                  <div
-                    className={`relative overflow-hidden ${g.height}`}
-                    style={{ backgroundColor: "rgb(201 169 97 / 0.06)" }}
-                  >
-                    <img
-                      src={media(projectSlotKey(g.id), project.cover)}
-                      alt={g.label}
-                      loading="lazy"
-                      className="project-img"
-                    />
-                    <div className="project-overlay" />
-                    <span className="view-case-study text-sm uppercase tracking-[0.1em] text-bone">
-                      View Album
-                    </span>
-                  </div>
-                  <div className="mt-4">
-                    <h3 className="font-serif text-2xl">{g.label}</h3>
-                    <p className="mt-1 text-sm text-carbon/60">{g.meta}</p>
-                  </div>
-                </Link>
-              );
+              return {
+                id: g.id,
+                title: g.label,
+                image: media(projectSlotKey(g.id), project.cover),
+                alt: g.label,
+                href: `/projects/${g.id}`,
+              };
             })}
-          </div>
+          />
 
           <div className="relative mt-20 text-center">
             <Link
