@@ -11,3 +11,4 @@
 - [x] Apply handwritten edits from scanned Project Portfolio Details pages (descriptions, roles, stats) to projects.ts/albums.ts
 - [x] Selected Works: scroll-driven blueprint drawing (replaces constellation there)
 - [ ] 3D scroll-driven blueprint journey across whole site (brief uploaded) — awaiting scope confirmation
+- [ ] Signature Projects (featured-case showcases) look wrong — fix

@@ -34,7 +34,6 @@ export const Route = createFileRoute("/contact")({
   component: ContactPage,
 });
 
-const BlueprintOverlay = lazy(() => import("@/components/site/BlueprintOverlay"));
 const emptyForm: ContactInquiryInput = {
   name: "",
   email: "",
@@ -94,9 +93,6 @@ function ContactPage() {
     <div className="relative z-10 min-h-screen bg-bone text-carbon">
       <Nav />
       <header ref={headerRef} className="relative overflow-hidden bg-carbon px-6 pb-20 pt-40 text-bone md:px-20 md:pb-28 md:pt-48">
-        <Suspense fallback={null}>
-          <BlueprintOverlay hostRef={headerRef} />
-        </Suspense>
         <div className="relative z-10 mx-auto max-w-[1400px]">
           <p className="font-mono text-[0.65rem] uppercase tracking-[0.24em] text-brass">
             Begin a conversation

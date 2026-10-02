@@ -6,7 +6,6 @@ import { Nav } from "@/components/site/Nav";
 
 
 
-const BlueprintOverlay = lazy(() => import("@/components/site/BlueprintOverlay"));
 const TITLE = "Design — Architecture, Interiors & Concepts | MC Design Build";
 const DESCRIPTION =
   "Architecture, interiors, reimagined renovations, development, pools and landscape, concepts, and custom furniture designed and delivered by Michael Chandler.";
@@ -129,9 +128,6 @@ function DesignPage() {
       <Nav />
 
       <section ref={headerRef} className="relative overflow-hidden px-6 pt-36 pb-14 md:pt-44">
-        <Suspense fallback={null}>
-          <BlueprintOverlay hostRef={headerRef} />
-        </Suspense>
         <div className="relative z-10 mx-auto max-w-6xl">
           <p className="text-[0.65rem] uppercase tracking-[0.35em] text-bone/50">MC Design Build</p>
           <h1 className="mt-4 font-serif text-5xl uppercase tracking-[0.3em] text-bone md:text-7xl">

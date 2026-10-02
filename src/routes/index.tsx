@@ -7,7 +7,6 @@ import { Hero } from "@/components/site/Hero";
 import { Testimonial } from "@/components/ui/design-testimonial";
 import CircularSplitRoll from "@/components/ui/circular-split-roll";
 
-const BlueprintOverlay = lazy(() => import("@/components/site/BlueprintOverlay"));
 
 import { PinnedCase } from "@/components/site/PinnedCase";
 import { projects } from "@/data/projects";
@@ -162,13 +161,6 @@ function Index() {
 
         {/* Selected Works */}
         <section id="works" ref={worksRef} className="relative py-32 [overflow:clip]">
-          <div aria-hidden="true" className="pointer-events-none absolute inset-0">
-            <div className="sticky top-0 h-screen w-full">
-              <Suspense fallback={null}>
-                <BlueprintOverlay scroll tone="light" hostRef={worksRef} />
-              </Suspense>
-            </div>
-          </div>
           <div className="relative mx-auto mb-12 max-w-[1600px] px-6 md:px-12">
             <div className="mb-6 inline-flex items-center rounded-full border border-carbon/12 bg-carbon/5 px-3 py-1 font-mono text-[0.6rem] uppercase tracking-[0.22em] text-carbon/60">
               Selected Works
@@ -212,9 +204,6 @@ function Index() {
         </section>
         {/* About */}
         <section id="about" className="relative overflow-hidden bg-carbon px-6 py-32 text-bone md:px-20">
-          <Suspense fallback={null}>
-            <BlueprintOverlay scroll align="left" />
-          </Suspense>
           <div className="relative z-10 mx-auto flex max-w-7xl flex-col items-center gap-16 md:flex-row">
             <div className="md:w-2/5">
               <div
@@ -459,9 +448,6 @@ function Index() {
           className="relative overflow-hidden bg-carbon px-6 py-40 text-center text-bone md:px-20"
         >
           <div className="dot-grid pointer-events-none absolute inset-0 text-bone opacity-5" />
-          <Suspense fallback={null}>
-            <BlueprintOverlay />
-          </Suspense>
           <div className="relative z-10 mx-auto max-w-3xl">
             <h2 className="mb-8 font-serif text-4xl md:text-6xl">
               For project inquiries, speaking engagements, and board consultations.

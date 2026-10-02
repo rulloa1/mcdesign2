@@ -30,7 +30,6 @@ export const Route = createFileRoute("/resume")({
   component: ResumePage,
 });
 
-const BlueprintOverlay = lazy(() => import("@/components/site/BlueprintOverlay"));
 const competencies: { label: string; items: string }[] = [
   {
     label: "Design & Construction Leadership",
@@ -347,9 +346,6 @@ function ResumePage() {
       <main className="px-6 pb-24 pt-32 md:pt-40">
         <div className="mx-auto max-w-3xl">
           <header ref={headerRef} className="relative mb-16 overflow-hidden border-b border-bone/10 pb-12">
-            <Suspense fallback={null}>
-              <BlueprintOverlay hostRef={headerRef} />
-            </Suspense>
             <div className="relative z-10 mb-4 flex flex-wrap items-center justify-between gap-4">
               <p className="font-mono text-[0.6rem] uppercase tracking-[0.28em] text-brass">
                 MC Design Build
