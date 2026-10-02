@@ -442,12 +442,11 @@ export const projectAlbums: Record<string, ProjectAlbum> = {
       "A custom residence set on a Carmel Valley hilltop, designed and built to take in the full sweep of the surrounding ridgelines. The work spanned civil site development, gated entry, terraced landscape and the residence itself — 4,800 sq ft delivered over 20 months as a single design-build effort.",
     images: [
       "/projects/assets/enh/carmel-valley-new-cover.webp",
-      "/projects/assets/enh/carmel-valley-new-3.webp",
       "/projects/assets/enh/carmel-valley-new-1.webp",
       "/projects/assets/enh/carmel-valley-2.webp",
       "/projects/assets/enh/carmel-valley-1.webp",
       "/projects/assets/enh/carmel-valley-cover-u.webp",
-      "/projects/assets/enh/carmel-valley-new-4.webp",
+      "/projects/assets/enh/carmel-valley-4-u.webp",
       "/projects/assets/enh/carmel-valley-3-u.webp",
     ],
   },
