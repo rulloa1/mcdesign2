@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useRef } from "react";
 
 import { Nav } from "@/components/site/Nav";
 import { Marquee } from "@/components/site/Marquee";
@@ -148,6 +148,7 @@ const Arrow = () => (
 
 function Index() {
   const media = useSiteMedia();
+  const worksRef = useRef<HTMLElement>(null);
 
   return (
     <div className="relative z-10">
