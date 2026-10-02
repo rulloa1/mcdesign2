@@ -245,21 +245,21 @@ function Index() {
               <h2 className="mb-8 font-serif text-4xl md:text-5xl">Michael Chandler</h2>
               <div className="space-y-6 text-lg font-light leading-relaxed text-bone/70">
                 <p>
-                  With over 20 years of executive construction leadership, Michael Chandler has
-                  managed and delivered more than $500 million in ultra-luxury residential,
-                  hospitality, and civil projects across six global regions — from California's
-                  coastline to the Caribbean.
+                  With over 20 years of executive construction leadership, I have managed and
+                  delivered more than $500 million in ultra-luxury residential, hospitality, and
+                  civil projects across six global regions — from California's coastline to the
+                  Caribbean.
                 </p>
                 <p>
-                  As Owner of MC Design, Michael brings a rare combination of architectural
-                  sensitivity and rigorous project management to every engagement. His portfolio
-                  spans Discovery Land Company developments, private island estates, alpine
-                  retreats, and complex coastal restorations.
+                  As Owner of MC Design, I bring a rare combination of architectural sensitivity and
+                  rigorous project management to every engagement. My portfolio spans Discovery Land
+                  Company developments, private island estates, alpine retreats, and complex coastal
+                  restorations.
                 </p>
                 <p>
-                  Known for his old-world craftsmanship standards and modern execution methodology,
-                  Michael personally curates every trade partner, material selection, and milestone
-                  — ensuring on-time, on-budget delivery without compromising design intent.
+                  Known for old-world craftsmanship standards and a modern execution methodology, I
+                  personally curate every trade partner, material selection, and milestone —
+                  ensuring on-time, on-budget delivery without compromising design intent.
                 </p>
               </div>
               <div className="mt-10 flex flex-wrap gap-8">
