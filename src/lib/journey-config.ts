@@ -10,7 +10,7 @@ export const journeyConfig = {
     gold: "#D4AF37",
     grid: "#EDE6D6",
   },
-  opacity: { structure: 0.42, plan: 0.55, gold: 0.7, grid: 0.07 },
+  opacity: { structure: 0.5, plan: 0.62, gold: 0.75, grid: 0.09 },
   building: {
     width: 24, // x
     depth: 16, // z

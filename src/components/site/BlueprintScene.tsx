@@ -33,6 +33,22 @@ function buildGroups(mobile: boolean) {
   plan.push(...arc(-4, -2, 3.2, Math.PI / 2, Math.PI, 0.01), -4, 0.01, -2, -7.2, 0.01, -2);
   plan.push(...arc(4, -1, 3.2, 0, Math.PI / 2, 0.01), 4, 0.01, -1, 4, 0.01, 2.2);
   plan.push(...arc(-7, 0, 1.6, 0, Math.PI / 2, 0.01));
+  // interior wall thickness (second line of each wall)
+  plan.push(-3.7, 0.01, -D, -3.7, 0.01, -2, -3.7, 0.01, 1.2, -3.7, 0.01, D);
+  plan.push(4.3, 0.01, -D, 4.3, 0.01, -1, 4.3, 0.01, 2.2, 4.3, 0.01, D);
+  plan.push(-W, 0.01, 0.3, -7, 0.01, 0.3, -5.4, 0.01, 0.3, 2, 0.01, 0.3, 6, 0.01, 0.3, W, 0.01, 0.3);
+  // window openings on the exterior (triple-line glazing)
+  for (const x of [-9, -1, 8]) for (const dz of [0, 0.2, 0.4]) plan.push(x - 1.6, 0.012, -D + dz, x + 1.6, 0.012, -D + dz);
+  for (const z of [-4.5, 4.5]) for (const dx of [0, 0.2, 0.4]) plan.push(-W + dx, 0.012, z - 1.4, -W + dx, 0.012, z + 1.4);
+  // stair: treads + arrow
+  for (let i = 0; i <= 10; i++) plan.push(7, 0.01, 2.6 + i * 0.45, 10.5, 0.01, 2.6 + i * 0.45);
+  plan.push(7, 0.01, 2.6, 7, 0.01, 7.1, 10.5, 0.01, 2.6, 10.5, 0.01, 7.1, 8.75, 0.01, 7, 8.75, 0.01, 3, 8.75, 0.01, 3, 8.3, 0.01, 3.6, 8.75, 0.01, 3, 9.2, 0.01, 3.6);
+  // grid bubbles on axes
+  for (const x of B.colsX) plan.push(x, 0.01, -D - 3.2, x, 0.01, -D - 5, ...arc(x, -D - 5.8, 0.8, 0, Math.PI * 2, 0.01, 16));
+  for (const z of B.colsZ) plan.push(-W - 1, 0.01, z, -W - 2.8, 0.01, z, ...arc(-W - 3.6, z, 0.8, 0, Math.PI * 2, 0.01, 16));
+  // section cut markers
+  plan.push(-W - 2, 0.01, -3, W + 4, 0.01, -3);
+  plan.push(...arc(W + 4.8, -3, 0.8, 0, Math.PI * 2, 0.01, 16), W + 4, 0.01, -3, W + 5.6, 0.01, -3);
   // dimension ticks
   plan.push(-W, 0.01, -D - 2, W, 0.01, -D - 2);
   for (const x of B.colsX) plan.push(x, 0.01, -D - 2.5, x, 0.01, -D - 1.5);
@@ -43,6 +59,9 @@ function buildGroups(mobile: boolean) {
   const foundation: Seg = [...rect(fd, -W - 0.6, W + 0.6, -D - 0.6, D + 0.6), ...rect(0, -W - 0.6, W + 0.6, -D - 0.6, D + 0.6)];
   for (const [x, z] of [[-W - 0.6, -D - 0.6], [W + 0.6, -D - 0.6], [W + 0.6, D + 0.6], [-W - 0.6, D + 0.6]] as const)
     foundation.push(x, fd, z, x, 0, z);
+
+  for (let x = -W; x <= W; x += 1.5) foundation.push(x - 0.6, fd, -D - 0.6, x + 0.6, 0, -D - 0.6, x - 0.6, fd, D + 0.6, x + 0.6, 0, D + 0.6);
+  for (const x of B.colsX) for (const z of B.colsZ) foundation.push(...rect(fd, x - 0.9, x + 0.9, z - 0.9, z + 0.9));
 
   // columns, ordered floor by floor so the frame grows upward
   const columns: Seg = [];
@@ -63,6 +82,8 @@ function buildGroups(mobile: boolean) {
       const y0 = f * H + 0.9;
       const y1 = (f + 1) * H - 0.6;
       for (let x = -W + 2; x < W; x += 2) facade.push(x, y0, D, x, y1, D);
+      const ym = y0 + (y1 - y0) * 0.72;
+      facade.push(-W, ym, D, W, ym, D, -W, y0 - 0.15, D + 0.25, W, y0 - 0.15, D + 0.25);
       facade.push(-W, y0, D, W, y0, D, -W, y1, D, W, y1, D);
       for (let z = -D + 2; z < D; z += 2) facade.push(W, y0, z, W, y1, z);
       facade.push(W, y0, -D, W, y0, D, W, y1, -D, W, y1, D);
