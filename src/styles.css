@@ -346,6 +346,10 @@ html.journey :is(.bg-bone, #works, .bg-background) :is(h1, h2, h3, h4, p, li, dt
 html.journey :is(.bg-bone, #works, .bg-background) [class*="border-carbon"] { border-color: color-mix(in oklab, var(--bone) 14%, transparent); }
 html.journey :is(.bg-bone, #works, .bg-background) [class*="bg-carbon/"] { background-color: color-mix(in oklab, var(--bone) 6%, transparent); }
 html.journey :is(.bg-bone, #works, .bg-background) :is(input, textarea, select) { color: var(--bone); background-color: color-mix(in oklab, #050505 60%, transparent); }
+/* Brass mono micro-labels (portfolio card locations / view-album links):
+   gold in the dark journey view, deeper gold in Simple View so it stays legible on cream. */
+.mono-loc { color: var(--brass-dark); }
+html.journey .mono-loc { color: var(--brass); }
 html.journey .marquee-container { background-color: color-mix(in oklab, #050505 70%, transparent) !important; }
 html.journey #hero > div.bg-gradient-to-t { display: none; }
 html.journey #hero > div.bg-gradient-to-r { opacity: 0.75; }
