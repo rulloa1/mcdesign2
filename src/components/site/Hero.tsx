@@ -39,7 +39,7 @@ export function Hero({ poster }: { poster: string }) {
     <section
       ref={heroRef}
       id="hero"
-      className="relative z-10 isolate flex min-h-[100svh] flex-col justify-center overflow-hidden bg-carbon px-6 pb-24 pt-28 md:px-20"
+      className="relative z-10 isolate flex min-h-[82svh] flex-col justify-center overflow-hidden bg-carbon px-6 pb-20 pt-28 md:px-20"
     >
       <img
         src={poster}
@@ -84,7 +84,7 @@ export function Hero({ poster }: { poster: string }) {
           <p className="mb-6 text-lg font-light text-bone/80 md:text-xl">
             Michael Chandler — Design &amp; Construction Executive
           </p>
-          <h1 className="hero-headline mb-8 font-serif text-[clamp(2.5rem,8vw,6.5rem)] leading-[1.05] tracking-tight">
+          <h1 className="hero-headline mb-8 font-serif text-[clamp(2.25rem,6vw,4.75rem)] leading-[1.05] tracking-tight">
             Strategic leadership.
             <br />
             <span className="relative inline-block pb-3" style={{ WebkitTextFillColor: "initial" }}>
