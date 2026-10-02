@@ -30,7 +30,7 @@ export function ScrollText({ text, as = "h2", className }: { text: string; as?: 
 
   const chars = text.split("");
   const center = Math.floor(chars.length / 2);
-  const spread = Math.min(vw < 768 ? 8 : 40, (vw < 768 ? 120 : 700) / chars.length);
+  const spread = vw < 768 ? 0 : Math.min(40, 700 / chars.length);
   const words = text.split(" ");
   let idx = 0;
 
