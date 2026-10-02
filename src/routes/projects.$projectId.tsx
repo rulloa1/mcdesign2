@@ -11,6 +11,7 @@ import { AlbumEditor } from "@/components/site/AlbumEditor";
 import { PrivateGallery, galleryQuery } from "@/components/site/PrivateGallery";
 import { albumOverrideQuery, useIsAdmin } from "@/lib/project-albums";
 import { coverVideos } from "@/data/cover-videos";
+const BlueprintOverlay = lazy(() => import("@/components/site/BlueprintOverlay"));
 
 
 

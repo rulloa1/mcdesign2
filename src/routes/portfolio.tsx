@@ -5,6 +5,7 @@ import { Nav } from "@/components/site/Nav";
 import { useOrderedProjects } from "@/lib/project-order";
 import { projectSlotKey } from "@/data/media-slots";
 import { useSiteMedia } from "@/lib/site-media";
+const BlueprintOverlay = lazy(() => import("@/components/site/BlueprintOverlay"));
 
 
 
