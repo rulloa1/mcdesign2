@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 
 import { Nav } from "@/components/site/Nav";
 import { Marquee } from "@/components/site/Marquee";
+import { Hero } from "@/components/site/Hero";
 import { PinnedCase } from "@/components/site/PinnedCase";
 import { projects } from "@/data/projects";
 import { projectSlotKey } from "@/data/media-slots";
@@ -147,48 +148,7 @@ function Index() {
       <Nav />
 
       <main>
-        {/* Hero */}
-        <section
-          id="hero"
-          className="relative z-10 flex min-h-[100dvh] flex-col justify-center overflow-hidden bg-carbon px-6 pt-20 md:px-20"
-        >
-          <img
-            src={media("hero", heroImage)}
-            alt=""
-            aria-hidden="true"
-            fetchPriority="high"
-            decoding="async"
-            className="absolute inset-0 h-full w-full scale-105 object-cover object-center"
-            style={{ filter: "grayscale(35%) contrast(1.05) brightness(0.7)" }}
-          />
-          <div
-            aria-hidden="true"
-            className="absolute inset-0 bg-gradient-to-r from-carbon via-carbon/75 to-carbon/25"
-          />
-          <div
-            aria-hidden="true"
-            className="absolute inset-0 bg-gradient-to-t from-carbon via-transparent to-carbon/60"
-          />
-
-          <div className="relative z-20 max-w-5xl">
-            <p className="mb-4 font-mono text-xs uppercase tracking-[0.35em] text-brass md:mb-6 md:text-sm md:tracking-[0.4em]">
-              Michael Chandler
-            </p>
-            <h1 className="hero-headline mb-6 font-serif text-5xl leading-[1.05] tracking-tight sm:text-6xl md:mb-8 md:text-7xl lg:text-8xl">
-              Building What Others Can't.
-            </h1>
-            <div className="my-6 h-px w-40 bg-brass md:my-8" />
-            <p className="max-w-xl text-base font-light leading-relaxed text-bone/80 sm:text-lg md:text-xl lg:text-2xl">
-              Construction leadership across 20+ years and $500M+ in delivered architectural
-              landmarks.
-            </p>
-          </div>
-
-          <div className="absolute bottom-12 left-1/2 z-20 flex -translate-x-1/2 flex-col items-center gap-4">
-            <span className="font-mono text-xs uppercase tracking-widest text-brass">Scroll</span>
-            <div className="scroll-line" />
-          </div>
-        </section>
+        <Hero poster={media("hero", heroImage)} />
 
         <Marquee />
 
