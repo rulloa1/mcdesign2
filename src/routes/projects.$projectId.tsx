@@ -83,11 +83,23 @@ function ProjectPage() {
       <Nav />
 
       <header className="relative h-[70vh] overflow-hidden bg-carbon">
-        <img
-          src={media(projectSlotKey(project.id), project.cover)}
-          alt={project.title}
-          className="absolute inset-0 h-full w-full object-cover opacity-60"
-        />
+        {coverVideos[project.id] ? (
+          <video
+            src={coverVideos[project.id]}
+            poster={media(projectSlotKey(project.id), project.cover)}
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="absolute inset-0 h-full w-full object-cover opacity-60"
+          />
+        ) : (
+          <img
+            src={media(projectSlotKey(project.id), project.cover)}
+            alt={project.title}
+            className="absolute inset-0 h-full w-full object-cover opacity-60"
+          />
+        )}
         <div className="absolute inset-0 bg-gradient-to-t from-carbon via-carbon/40 to-transparent" />
         <div className="absolute bottom-0 left-0 w-full px-6 pb-16 md:px-20">
           <div className="mx-auto max-w-[1600px] text-bone">
