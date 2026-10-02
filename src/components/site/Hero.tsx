@@ -81,7 +81,7 @@ export function Hero({ poster }: { poster: string }) {
           <p className="mb-2 font-mono text-[10px] uppercase tracking-[0.15em] text-brass md:mb-4 md:text-sm md:tracking-[0.35em]">
             Construction • Operations • Leadership
           </p>
-          <p className="mb-3 text-sm font-light text-bone/80 md:mb-6 md:text-xl">
+          <p className="mb-3 text-xs font-light text-bone/80 md:mb-6 md:text-xl">
             Michael Chandler — Design &amp; Construction Executive
           </p>
           <h1 className="hero-headline mb-6 font-serif text-[1.75rem] leading-[1.1] tracking-tight md:mb-8 md:text-[clamp(2.25rem,6vw,4.75rem)] md:leading-[1.05]">
