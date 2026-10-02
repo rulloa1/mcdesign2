@@ -443,7 +443,6 @@ export const projectAlbums: Record<string, ProjectAlbum> = {
     images: [
       "/projects/assets/enh/carmel-valley-new-cover.webp",
       "/projects/assets/enh/carmel-valley-new-1.webp",
-      "/projects/assets/enh/carmel-valley-new-2.webp",
       "/projects/assets/enh/carmel-valley-2.webp",
       "/projects/assets/enh/carmel-valley-1.webp",
       "/projects/assets/enh/carmel-valley-cover-u.webp",
