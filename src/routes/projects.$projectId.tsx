@@ -8,6 +8,7 @@ import { projectSlotKey } from "@/data/media-slots";
 import { useSiteMedia } from "@/lib/site-media";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { AlbumEditor } from "@/components/site/AlbumEditor";
+import { PrivateGallery } from "@/components/site/PrivateGallery";
 import { albumOverrideQuery, useIsAdmin } from "@/lib/project-albums";
 import { coverVideos } from "@/data/cover-videos";
 
@@ -198,6 +199,8 @@ function ProjectPage() {
             </div>
           )}
         </section>
+
+        {isAdmin ? <PrivateGallery projectId={project.id} /> : null}
 
         <div className="mt-24 flex flex-wrap justify-center gap-4">
           <Link
