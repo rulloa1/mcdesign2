@@ -86,7 +86,21 @@ function buildGroups(mobile: boolean) {
     roof.push(x, top, z, x, top + 1.2, z);
   roof.push(-W, top + 0.4, -D, W, top + 0.4, -D, W, top + 0.4, D, -W, top + 0.4, D); // parapet
 
-  return { plan, foundation, columns, slabs, facade, systems, roof };
+  // MC logo title block (drafting stamp) at the front-right of the plan
+  const logo: Seg = [];
+  {
+    const y = 0.02, x0 = W - 8.6, x1 = W - 1.2, z0 = D - 4.6, z1 = D - 1.2;
+    logo.push(...rect(y, x0, x1, z0, z1), ...rect(y, x0 + 0.25, x1 - 0.25, z0 + 0.25, z1 - 0.25));
+    const h = 2.2, zt = z0 + 0.6, zb = zt + h; // letter top/bottom (z grows toward viewer)
+    // M
+    const mx = x0 + 1.0, mw = 2.6;
+    logo.push(mx, y, zb, mx, y, zt, mx, y, zt, mx + mw / 2, y, zb - 0.7, mx + mw / 2, y, zb - 0.7, mx + mw, y, zt, mx + mw, y, zt, mx + mw, y, zb);
+    logo.push(mx - 0.3, y, zb, mx + 0.3, y, zb, mx + mw - 0.3, y, zb, mx + mw + 0.3, y, zb); // serifs
+    // C
+    logo.push(...arc(x0 + 5.6, zt + h / 2, h / 2, Math.PI * 0.28, Math.PI * 1.72, y, 16));
+  }
+
+  return { plan, foundation, columns, slabs, facade, systems, roof, logo };
 }
 
 function gridSeg(): Seg {
@@ -207,6 +221,7 @@ export default function BlueprintScene({ onFail }: { onFail: () => void }) {
       <Rig prog={prog} target={target} reduced={reduced} />
       <Lines seg={grid} color={gridColor} opacity={O.grid} prog={prog} />
       <Lines seg={groups.plan} color={ivory} opacity={O.plan} win={R["plan"]} prog={prog} intro={reduced ? 1 : 3200} />
+      <Lines seg={groups.logo} color={gold} opacity={0.85} win={[0.04, 0.16]} prog={prog} intro={reduced ? 1 : 4200} />
       <Lines seg={groups.foundation} color={ivory} opacity={O.structure} win={R["foundation"]} prog={prog} />
       <Lines seg={groups.columns} color={ivory} opacity={O.structure + 0.1} win={R["columns"]} prog={prog} />
       <Lines seg={groups.slabs} color={ivory} opacity={O.structure} win={R["slabs"]} prog={prog} />

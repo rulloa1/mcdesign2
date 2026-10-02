@@ -12,3 +12,4 @@
 - [x] Selected Works: scroll-driven blueprint drawing (replaces constellation there)
 - [x] 3D scroll-driven blueprint journey across whole site (brief uploaded) — awaiting scope confirmation
 - [x] Signature Projects (featured-case showcases) look wrong — fix
+- [ ] MC logo incorporated into the 3D blueprint
