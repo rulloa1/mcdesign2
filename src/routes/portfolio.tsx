@@ -115,7 +115,7 @@ function PortfolioCard({
   project: Project;
   index: number;
   total: number;
-  media: (slot: string, fallback?: string) => string;
+  media: (slot: string, fallback: string) => string;
   reduceMotion: boolean | null;
 }) {
   const delay = reduceMotion ? 0 : (index % 3) * 0.12;
