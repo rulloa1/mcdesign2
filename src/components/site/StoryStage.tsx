@@ -13,6 +13,13 @@ function actOpacity(i: number, x: number) {
   return clamp((0.68 - d) / 0.3);
 }
 
+/** Text fades faster than media so two headlines never overlap at a boundary. */
+function textOpacity(i: number, x: number) {
+  if (i === 0 && x < 0.5) return 1;
+  if (i === N - 1 && x > N - 0.5) return 1;
+  return clamp((0.46 - Math.abs(x - (i + 0.5))) / 0.16);
+}
+
 function Actions() {
   return (
     <div className="mt-10 flex flex-wrap gap-4">
@@ -81,9 +88,10 @@ function StickyStory() {
         if (layer) layer.style.opacity = String(o);
         const text = textRefs.current[i];
         if (text) {
-          text.style.opacity = String(o);
+          const t = textOpacity(i, x);
+          text.style.opacity = String(t);
           const dir = x < i + 0.5 ? 1 : -1;
-          text.style.transform = `translate3d(0, ${(1 - o) * 28 * dir}px, 0)`;
+          text.style.transform = `translate3d(0, ${(1 - t) * 28 * dir}px, 0)`;
         }
         targets.current[i] = clamp(x - i);
         if (o > 0) seek(i);
@@ -188,7 +196,7 @@ function FlowStory({ allowVideo }: { allowVideo: boolean }) {
   return (
     <section aria-label="Leadership story" className="bg-carbon">
       {acts.map((act, i) => (
-        <div key={act.key} className="relative flex min-h-[78svh] items-end overflow-hidden px-6 pt-28 pb-16 md:px-20">
+        <div key={act.key} className="relative flex min-h-[68svh] items-end overflow-hidden px-6 pt-28 pb-16 md:px-20">
           <img src={act.poster} alt={act.alt} className="absolute inset-0 h-full w-full object-cover" loading={i === 0 ? "eager" : "lazy"} />
           {allowVideo ? (
             <video
