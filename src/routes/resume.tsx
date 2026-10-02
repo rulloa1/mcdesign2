@@ -29,18 +29,25 @@ export const Route = createFileRoute("/resume")({
 
 const competencies: { label: string; items: string }[] = [
   {
-    label: "Strategic Leadership",
-    items: "P&L Management, Multi-Year CapEx Planning, Owner Representation",
+    label: "Design & Construction Leadership",
+    items: "Renovation & New-Build Delivery, Design Management, Constructability Review, Owner Representation",
   },
   {
-    label: "Operational Excellence",
-    items: "Global Procurement, Supply Chain Resilience, Joint Venture (JV) Leadership",
+    label: "Capital Planning & Budgeting",
+    items: "Multi-Year CapEx Planning, Construction Budgeting & Cost Control, Value Engineering, P&L Management",
   },
   {
-    label: "Technical Integration",
-    items: "Procore Analytics, BIM-Integrated Workflows, Risk Mitigation",
+    label: "Portfolio & Team Leadership",
+    items: "Multi-Site Oversight, Mentoring PMs & Superintendents, Executive & Ownership Reporting",
   },
-  { label: "Sector Expertise", items: "Ultra-High-End Residential, Luxury Resorts & Hospitality" },
+  {
+    label: "Procurement & Logistics",
+    items: "Global Procurement, Supply Chain Resilience, Remote-Site Logistics; Procore (Certified), BIM Workflows",
+  },
+  {
+    label: "Hospitality Expertise",
+    items: "Luxury Hotels & Resorts, Private Clubs, Spa and Food & Beverage Facilities, Ultra-High-End Residential",
+  },
 ];
 
 type Role = {
@@ -54,11 +61,28 @@ type Role = {
 
 const experience: Role[] = [
   {
-    company: "Dunrite Construction Group",
-    title: "VP of Operations (Contract)",
+    company: "The Mangrove Group (Private Consulting)",
+    title: "CEO & Head of Operations (Contract)",
     location: "San Antonio, FL",
-    period: "May 2026 – August 2026",
-    bullets: [],
+    period: "May 2026 – Aug 2026",
+    bullets: [
+      {
+        label: "Executive Leadership",
+        text: "Led company operations on a contract basis, reporting directly to ownership and setting priorities across the active construction portfolio.",
+      },
+      {
+        label: "Portfolio Oversight",
+        text: "Held project teams accountable for budget, schedule, and quality through consistent cost reporting and executive-level project reviews.",
+      },
+      {
+        label: "Process Improvement",
+        text: "Standardized procurement, scheduling, and project reporting workflows to give ownership clearer cost visibility and faster decisions.",
+      },
+      {
+        label: "Team Development",
+        text: "Led and mentored project managers, superintendents, and field staff, tightening accountability between office and field.",
+      },
+    ],
   },
   {
     company: "NewQuest Properties",
@@ -68,20 +92,20 @@ const experience: Role[] = [
     note: "The Clubs at Houston Oaks & The Links at Houston Oaks",
     bullets: [
       {
+        label: "Renovation & New Build",
+        text: "Oversaw design and construction of club renovations and new facilities, applying architectural expertise to protect design intent, finish quality, and member experience.",
+      },
+      {
         label: "Capital Stewardship",
-        text: "Orchestrated construction phases for a $67MM portfolio, ensuring 100% adherence to rigorous multi-year budget and timeline requirements through strategic value engineering and proactive risk mitigation.",
+        text: "Directed construction phases of a $67MM private club portfolio, holding to multi-year budget and schedule requirements through value engineering and proactive risk mitigation.",
       },
       {
-        label: "Stakeholder Synergy",
-        text: "Served as the primary executive liaison, bridging the gap between architectural vision and field execution for high-net-worth developers and institutional stakeholders.",
+        label: "Ownership Liaison",
+        text: "Served as primary executive liaison between the design team, the field, high-net-worth developers, and institutional stakeholders.",
       },
       {
-        label: "Operational Strategy",
-        text: "Implemented localized procurement frameworks that reduced material lead times by 15%, mitigating supply chain volatility during post-pandemic market disruptions.",
-      },
-      {
-        label: "Design Leadership",
-        text: "Oversaw design and construction phases for renovations and new facilities, leveraging architectural expertise to deliver high-quality developments.",
+        label: "Procurement Strategy",
+        text: "Built localized procurement frameworks that cut material lead times by 15% during post-pandemic supply chain disruption.",
       },
     ],
   },
@@ -93,19 +117,19 @@ const experience: Role[] = [
     bullets: [
       {
         label: "Portfolio Management",
-        text: "Directed a $75M construction pipeline encompassing five large private residential estates across 12 US states and international territories (Bahamas, Mexico), delivering all projects within ±2% of budget.",
+        text: "Directed a $75M pipeline of five large private residential estates in the U.S. and abroad (Bahamas, Mexico), delivering every project within ±2% of budget.",
       },
       {
         label: "Regulatory Navigation",
-        text: "Standardized permitting and entitlement workflows across diverse international jurisdictions, accelerating project start dates by an average of 4 weeks and ensuring seamless compliance.",
+        text: "Standardized permitting and entitlement workflows across international jurisdictions, pulling project starts forward by an average of 4 weeks.",
       },
       {
         label: "Full-Cycle Oversight",
-        text: "Managed all phases of construction from permitting to final inspections, maintaining rigorous quality standards across geographically dispersed operations.",
+        text: "Managed every phase from permitting to final inspection, holding a consistent quality standard across geographically dispersed sites.",
       },
       {
         label: "Team Leadership",
-        text: "Cultivated collaborative team environments, promoting communication and project alignment across culturally diverse workforces.",
+        text: "Aligned multilingual, culturally diverse project teams around shared schedules and quality expectations.",
       },
     ],
   },
