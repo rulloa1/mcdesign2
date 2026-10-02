@@ -77,6 +77,39 @@ export type Database = {
         }
         Relationships: []
       }
+      project_gallery: {
+        Row: {
+          caption: string
+          created_at: string
+          created_by: string
+          id: string
+          kind: string
+          project_id: string
+          storage_path: string
+          taken_on: string | null
+        }
+        Insert: {
+          caption?: string
+          created_at?: string
+          created_by?: string
+          id?: string
+          kind?: string
+          project_id: string
+          storage_path: string
+          taken_on?: string | null
+        }
+        Update: {
+          caption?: string
+          created_at?: string
+          created_by?: string
+          id?: string
+          kind?: string
+          project_id?: string
+          storage_path?: string
+          taken_on?: string | null
+        }
+        Relationships: []
+      }
       project_order: {
         Row: {
           position: number
