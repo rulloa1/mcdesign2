@@ -219,8 +219,11 @@ function Index() {
         </section>
 
         {/* Selected Works */}
-        <section id="works" className="mx-auto max-w-[1600px] px-6 py-32 md:px-12">
-          <div className="mb-20">
+        <section id="works" className="relative mx-auto max-w-[1600px] px-6 py-32 md:px-12">
+          <Suspense fallback={null}>
+            <ArchitecturalCanvas />
+          </Suspense>
+          <div className="relative mb-20">
             <div className="mb-6 inline-flex items-center rounded-full border border-carbon/12 bg-carbon/5 px-3 py-1 font-mono text-[0.6rem] uppercase tracking-[0.22em] text-carbon/60">
               Selected Works
             </div>
