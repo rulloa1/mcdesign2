@@ -9,4 +9,4 @@
 - [ ] New resume PDF uploaded — compare with /resume page and update if needed
 - [ ] Set uploaded sunset deck photo as Hillside Restoration cover (hillside-cleanup-cover_-_Copy.jpg)
 - [x] Apply handwritten edits from scanned Project Portfolio Details pages (descriptions, roles, stats) to projects.ts/albums.ts
-- [ ] Selected Works: scroll-driven blueprint drawing (replaces constellation there)
+- [x] Selected Works: scroll-driven blueprint drawing (replaces constellation there)
