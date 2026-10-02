@@ -1,8 +1,11 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { lazy, Suspense } from "react";
 
 import { Nav } from "@/components/site/Nav";
 import { Marquee } from "@/components/site/Marquee";
 import { Hero } from "@/components/site/Hero";
+
+const ArchitecturalCanvas = lazy(() => import("@/components/site/ArchitecturalCanvas"));
 import { PinnedCase } from "@/components/site/PinnedCase";
 import { projects } from "@/data/projects";
 import { projectSlotKey } from "@/data/media-slots";
@@ -216,15 +219,18 @@ function Index() {
         </section>
 
         {/* Selected Works */}
-        <section id="works" className="mx-auto max-w-[1600px] px-6 py-32 md:px-12">
-          <div className="mb-20">
+        <section id="works" className="relative mx-auto max-w-[1600px] px-6 py-32 md:px-12">
+          <Suspense fallback={null}>
+            <ArchitecturalCanvas />
+          </Suspense>
+          <div className="relative mb-20">
             <div className="mb-6 inline-flex items-center rounded-full border border-carbon/12 bg-carbon/5 px-3 py-1 font-mono text-[0.6rem] uppercase tracking-[0.22em] text-carbon/60">
               Selected Works
             </div>
             <h2 className="font-serif text-4xl md:text-6xl">A Legacy of Scale.</h2>
           </div>
 
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-12 md:gap-12">
+          <div className="relative grid grid-cols-1 gap-6 md:grid-cols-12 md:gap-12">
             {gridProjects.map((g) => {
               const project = projects.find((p) => p.id === g.id)!;
               return (
@@ -258,7 +264,7 @@ function Index() {
             })}
           </div>
 
-          <div className="mt-20 text-center">
+          <div className="relative mt-20 text-center">
             <Link
               to="/portfolio"
               className="group inline-flex items-center gap-5 border border-carbon/25 py-3 pr-3 pl-9 text-xs uppercase tracking-[0.22em] transition-all duration-700 hover:bg-carbon hover:text-bone"
