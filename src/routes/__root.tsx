@@ -120,7 +120,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 // Adds ?debug error display so a visitor can screenshot what failed.
 const BOOT_GUARD = `(function(){try{var d=document.documentElement;d.className+=' mc-boot';
 if(/[?&]debug/.test(location.search)){var errs=[];function show(m){errs.push(m);var b=document.getElementById('mc-debug');if(!b){b=document.createElement('pre');b.id='mc-debug';b.style.cssText='position:fixed;left:0;right:0;bottom:0;z-index:2147483647;max-height:50vh;overflow:auto;margin:0;padding:10px;background:#300;color:#fff;font:12px/1.4 monospace;white-space:pre-wrap';(document.body||d).appendChild(b);}b.textContent='DEBUG ('+navigator.userAgent+')\\n'+errs.join('\\n');}
-window.addEventListener('error',function(e){show('Error: '+(e.message||e)+' @ '+(e.filename||'')+':'+(e.lineno||''));},true);
+window.addEventListener('error',function(e){var t=e.target;show(e.message?('Error: '+e.message+' @ '+(e.filename||'')+':'+(e.lineno||'')):('Failed to load: '+(t&&(t.src||t.href||t.currentSrc)||t&&t.tagName)));},true);
 window.addEventListener('unhandledrejection',function(e){show('Rejection: '+(e.reason&&(e.reason.stack||e.reason.message)||e.reason));});
 setTimeout(function(){show(d.className.indexOf('mc-ready')>-1?'App started OK':'App did NOT start after 6s');},6000);}}catch(e){}})();`;
 
