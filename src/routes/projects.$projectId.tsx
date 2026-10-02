@@ -201,6 +201,51 @@ function ProjectPage() {
           )}
         </section>
 
+        {galleryItems.length > 0 ? (
+          <section className="pt-16">
+            <div className="mb-10 flex items-baseline justify-between">
+              <h2 className="font-serif text-3xl">Gallery</h2>
+              <p className="font-mono text-[0.6rem] uppercase tracking-[0.24em] text-carbon/40">
+                {galleryItems.length} {galleryItems.length === 1 ? "Item" : "Items"}
+              </p>
+            </div>
+            <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
+              {galleryItems.map((item) => (
+                <figure key={item.id} className="group">
+                  <div className="relative aspect-[4/3] overflow-hidden bg-brass/5">
+                    {item.kind === "video" ? (
+                      <video
+                        src={item.url}
+                        controls
+                        playsInline
+                        preload="metadata"
+                        className="h-full w-full object-cover"
+                      />
+                    ) : (
+                      <img
+                        src={item.url}
+                        alt={item.caption || project.title}
+                        loading="lazy"
+                        className="h-full w-full object-cover transition-transform duration-[1200ms] group-hover:scale-[1.06]"
+                      />
+                    )}
+                  </div>
+                  {item.caption || item.taken_on ? (
+                    <figcaption className="mt-2 flex items-baseline justify-between gap-3">
+                      <span className="text-xs font-light text-carbon/70">{item.caption}</span>
+                      {item.taken_on ? (
+                        <span className="shrink-0 font-mono text-[0.55rem] uppercase tracking-[0.18em] text-carbon/40">
+                          {item.taken_on}
+                        </span>
+                      ) : null}
+                    </figcaption>
+                  ) : null}
+                </figure>
+              ))}
+            </div>
+          </section>
+        ) : null}
+
         {isAdmin ? <PrivateGallery projectId={project.id} /> : null}
 
         <div className="mt-24 flex flex-wrap justify-center gap-4">
