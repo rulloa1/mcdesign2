@@ -213,7 +213,7 @@ function Index() {
         {/* About */}
         <section id="about" className="relative overflow-hidden bg-carbon px-6 py-32 text-bone md:px-20">
           <Suspense fallback={null}>
-            <BlueprintOverlay scroll />
+            <BlueprintOverlay scroll align="left" />
           </Suspense>
           <div className="relative z-10 mx-auto flex max-w-7xl flex-col items-center gap-16 md:flex-row">
             <div className="md:w-2/5">
