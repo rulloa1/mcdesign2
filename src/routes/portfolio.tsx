@@ -41,14 +41,19 @@ function Portfolio() {
       <Nav />
 
       <header ref={headerRef} className="relative overflow-hidden bg-carbon px-6 pt-40 pb-24 text-bone md:px-20">
-        <div className="relative z-10 mx-auto max-w-[1600px]">
-          <div className="mb-6 inline-flex items-center rounded-full border border-brass/20 bg-brass/5 px-3 py-1 font-mono text-[0.6rem] uppercase tracking-[0.22em] text-brass/80">
+        <div className="relative z-10 mx-auto flex max-w-3xl flex-col items-center gap-8 text-center">
+          <div className="inline-flex items-center rounded-full border border-brass/40 px-4 py-1.5 font-mono text-[10px] font-medium uppercase tracking-[0.25em] text-brass">
             Full Portfolio
           </div>
-          <h1 className="font-serif text-4xl md:text-6xl">Nineteen Projects.</h1>
-          <p className="mt-6 max-w-2xl text-lg font-light leading-relaxed text-bone/60">
-            A small cross-section of projects  which have the McDesign & Construction influence.
-          </p>
+          <h1 className="font-serif text-6xl leading-[1.1] tracking-tight text-bone md:text-8xl">
+            Nineteen Projects<span className="text-brass">.</span>
+          </h1>
+          <div className="flex flex-col items-center gap-6">
+            <div className="h-px w-12 bg-brass/30" />
+            <p className="max-w-md text-sm font-light leading-relaxed tracking-wide text-bone/60 md:text-base">
+              A small cross-section of projects  which have the McDesign &amp; Construction influence.
+            </p>
+          </div>
         </div>
       </header>
 
