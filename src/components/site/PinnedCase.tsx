@@ -1,3 +1,4 @@
+import { ScrollText } from "@/components/ui/text-scroll-animation";
 import { motion, useReducedMotion } from "framer-motion";
 
 export type PinnedCaseProps = {
@@ -29,7 +30,7 @@ export function PinnedCase({ id, subtitle, title, images, alts, captions, stats 
     <section id={id} className="relative bg-carbon px-6 py-24 text-bone md:px-20 md:py-32">
       <div className="mx-auto max-w-[1400px]">
         <motion.p {...reveal(0, 20)} className="mb-4 font-mono text-[0.65rem] uppercase tracking-[0.3em] text-brass">{subtitle}</motion.p>
-        <motion.h2 {...reveal(0.1)} className="mb-10 max-w-4xl font-serif text-4xl leading-[1.05] md:mb-14 md:text-7xl">{title}</motion.h2>
+        <ScrollText text={title} className="mb-10 max-w-4xl font-serif text-4xl leading-[1.05] md:mb-14 md:text-7xl" />
 
         <div className="grid gap-3 md:grid-cols-3 md:gap-4">
           <motion.figure {...reveal(0, 60)} className="overflow-hidden md:col-span-2 md:row-span-2">

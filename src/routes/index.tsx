@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { lazy, Suspense, useRef } from "react";
 
+import { ScrollText } from "@/components/ui/text-scroll-animation";
 import { Nav } from "@/components/site/Nav";
 import { Marquee } from "@/components/site/Marquee";
 import { Hero } from "@/components/site/Hero";
@@ -156,7 +157,7 @@ function Index() {
             <div className="mb-6 inline-flex items-center rounded-full border border-carbon/12 bg-carbon/5 px-3 py-1 font-mono text-[0.6rem] uppercase tracking-[0.22em] text-carbon/60">
               Selected Works
             </div>
-            <h2 className="font-serif text-4xl md:text-6xl">A Legacy of Scale.</h2>
+            <ScrollText text="A Legacy of Scale." className="font-serif text-4xl md:text-6xl" />
           </div>
 
           <div className="relative mx-auto grid max-w-[1600px] gap-4 px-6 md:grid-cols-6 md:gap-5 md:px-12">
@@ -376,9 +377,7 @@ function Index() {
             <div className="mb-6 inline-flex items-center rounded-full border border-brass/20 bg-brass/5 px-3 py-1 font-mono text-[0.6rem] uppercase tracking-[0.22em] text-brass/80">
               WHAT I DO
             </div>
-            <h2 className="mb-24 font-serif text-4xl md:text-5xl">
-              One Team. Every Discipline.
-            </h2>
+            <ScrollText text="One Team. Every Discipline." className="mb-24 font-serif text-4xl md:text-5xl" />
 
             <div className="mb-12 h-0.5 w-full bg-bone/10">
               <div className="h-full w-1/2 bg-brass" />
@@ -434,9 +433,7 @@ function Index() {
         >
           <div className="dot-grid pointer-events-none absolute inset-0 text-bone opacity-5" />
           <div className="relative z-10 mx-auto max-w-3xl">
-            <h2 className="mb-8 font-serif text-4xl md:text-6xl">
-              For project inquiries, speaking engagements, and board consultations.
-            </h2>
+            <ScrollText text="For project inquiries, speaking engagements, and board consultations." className="mb-8 font-serif text-4xl md:text-6xl" />
 
             <Link
               to="/contact"
