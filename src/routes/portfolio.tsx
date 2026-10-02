@@ -41,7 +41,7 @@ function Portfolio() {
   // Distribute the projects into three columns (column-major) so the middle
   // column can sit lower — the staggered editorial rhythm from the chosen grid.
   const columns: Array<Array<{ project: Project; index: number }>> = [[], [], []];
-  shown.forEach((project, index) => columns[index % 3].push({ project, index }));
+  shown.forEach((project, index) => columns[index % 3]!.push({ project, index }));
 
   return (
     <div className="relative z-10 bg-bone">
