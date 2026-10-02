@@ -138,12 +138,12 @@ function StickyStory() {
         <div className="story-scrim pointer-events-none absolute inset-0" />
 
         <div className="relative z-10 flex h-full items-center px-6 md:px-20">
-          <div className="relative w-full max-w-3xl">
+          <div className="grid w-full max-w-3xl items-center">
             {acts.map((act, i) => (
               <div
                 key={act.key}
                 ref={(n) => { textRefs.current[i] = n; }}
-                className={`${i === 0 ? "relative" : "absolute inset-x-0 top-1/2 -translate-y-1/2"}`}
+                className="col-start-1 row-start-1"
                 style={{ opacity: i === 0 ? 1 : 0, pointerEvents: i === active ? "auto" : "none" }}
                 aria-hidden={i !== active}
                 inert={i !== active}
