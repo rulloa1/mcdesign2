@@ -1,39 +1,27 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { lazy, Suspense } from "react";
 
 import { Nav } from "@/components/site/Nav";
-import { Marquee } from "@/components/site/Marquee";
-import { Hero } from "@/components/site/Hero";
-
-const ArchitecturalCanvas = lazy(() => import("@/components/site/ArchitecturalCanvas"));
-import { PinnedCase } from "@/components/site/PinnedCase";
+import { StoryStage } from "@/components/site/StoryStage";
 import { projects } from "@/data/projects";
 import { projectSlotKey } from "@/data/media-slots";
 import { useSiteMedia } from "@/lib/site-media";
-
+import { competencies, experience, earlierCareer, impact, certifications } from "@/data/resume";
 import profileAsset from "@/assets/mike-headshot.jpg.asset.json";
-const profile = profileAsset.url;
-import heroImage from "@/assets/southcoast-cover.webp";
-import houstonOaks from "@/assets/houston-oaks-cover.webp";
-const poolDetail = "/projects/assets/pool-design-31-real.webp";
-import poolFinished from "@/assets/pool-design-36.webp";
-import alpineCover from "@/assets/alpine-ranch-cover.webp";
-import alpine3 from "@/assets/alpine-ranch-3.webp";
-import alpine7 from "@/assets/alpine-ranch-7.webp";
-import miamiCover from "@/assets/miami-beach-cover-enhanced.webp";
-import miami10 from "@/assets/miami-beach-10.webp";
-import miami27 from "@/assets/miami-beach-27.webp";
 
-const TITLE = "Michael Chandler — Luxury Construction Executive";
+const TITLE = "Michael Chandler — Design & Construction Executive";
 const DESCRIPTION =
-  "Ultra-luxury residential, hospitality, and civil construction led by Michael Chandler — 20+ years and $500M+ delivered across six global regions.";
+  "Michael Chandler — design and construction executive with 37+ years delivering luxury hospitality, resort, and ultra-high-end residential projects.";
+
+const EMAIL = "mike.rcccon@yahoo.com";
+const PHONE = "(435) 237-7373";
+const LINKEDIN = "https://www.linkedin.com/in/michael-chandler-3858a63a";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: TITLE },
       { name: "description", content: DESCRIPTION },
-      { name: "theme-color", content: "#0E0E0E" },
+      { name: "theme-color", content: "#050505" },
       { property: "og:title", content: TITLE },
       { property: "og:description", content: DESCRIPTION },
       { property: "og:type", content: "website" },
@@ -46,17 +34,11 @@ export const Route = createFileRoute("/")({
           "@context": "https://schema.org",
           "@type": "Person",
           name: "Michael Chandler",
-          jobTitle: "Owner, Strategic Construction Executive",
-          email: "mike.rcccon@yahoo.com",
+          jobTitle: "Design & Construction Executive",
+          email: EMAIL,
+          url: "https://mcdesign.bio",
+          sameAs: [LINKEDIN],
           address: { "@type": "PostalAddress", addressLocality: "Spring", addressRegion: "TX" },
-          knowsAbout: [
-            "Ultra-luxury residential construction",
-            "Design-build project management",
-            "Civil engineering",
-            "Owner's representation",
-            "Hospitality construction",
-            "Discovery Land Company developments",
-          ],
         }),
       },
     ],
@@ -64,215 +46,107 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-const gridProjects = [
-  {
-    id: "miami-beach",
-    span: "md:col-span-8",
-    height: "h-[52vh] md:h-[72vh]",
-    meta: "Design-Build & Project Management • Miami Beach, FL",
-    label: "S. Florida High Rise Luxe Condo",
-  },
-  {
-    id: "alpine-ranch",
-    span: "md:col-span-4",
-    height: "h-[52vh] md:h-[72vh]",
-    meta: "Design-Build Lead • Montana",
-    label: "High Alpine Mtn. Ranch",
-  },
-  {
-    id: "southcoast",
-    span: "md:col-span-5",
-    height: "h-[52vh] md:h-[72vh]",
-    meta: "Complete Coastal Remodel • Big Sur, CA",
-    label: "South Coast Renovation",
-  },
-  {
-    id: "hospitality-pool",
-    span: "md:col-span-7",
-    height: "h-[52vh] md:h-[72vh]",
-    meta: "Construction Manager • SE Texas",
-    label: "Ultra Luxe Private Club Resort Pool",
-  },
-  {
-    id: "carmel-knolls",
-    span: "md:col-span-6",
-    height: "h-[52vh] md:h-[72vh]",
-    meta: "Design-Build • Carmel, CA",
-    label: "Carmel Knolls",
-  },
-  {
-    id: "syracuse",
-    span: "md:col-span-6",
-    height: "h-[52vh] md:h-[72vh]",
-    meta: "Design-Build • Syracuse, UT",
-    label: "Syracuse House",
-  },
+const featured = ["miami-beach", "alpine-ranch", "southcoast", "hospitality-pool", "carmel-knolls", "syracuse"];
+
+const approach = [
+  { title: "Planning", body: "Define scope, budget, and schedule before work begins, so every decision has a reference point." },
+  { title: "Coordination", body: "Keep design teams, trades, and ownership working from the same information." },
+  { title: "Ownership", body: "Take responsibility for outcomes — budget, schedule, quality, and safety." },
+  { title: "Communication", body: "Report plainly to owners and stakeholders, early and often." },
+  { title: "Operational review", body: "Review progress against plan, surface obstacles, and resolve them before they grow." },
 ];
 
-
-const testimonials = [
-  {
-    quote:
-      "He brings an architectural sensitivity to raw construction management. Rare to find someone who protects the design intent while fiercely guarding the budget.",
-    source: "— Principal Architect, SOM",
-  },
-  {
-    quote:
-      "The only executive I trust with a nine-figure development. The risk mitigation and foresight are unparalleled in the industry.",
-    source: "— Managing Director, Real Estate Trust",
-  },
-  {
-    quote:
-      "An absolute force. Driven, precise, and possesses a commanding authority that makes complex, multi-stakeholder projects move without friction.",
-    source: "— City Planning Commissioner",
-  },
-];
-
-const Arrow = () => (
-  <svg
-    width="13"
-    height="13"
-    viewBox="0 0 13 13"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="1.5"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  >
-    <path d="M1.5 11.5L11.5 1.5M11.5 1.5H4.5M11.5 1.5V8.5" />
-  </svg>
-);
+function Eyebrow({ children }: { children: string }) {
+  return <p className="mb-5 font-mono text-[0.62rem] uppercase tracking-[0.28em] text-brass">{children}</p>;
+}
 
 function Index() {
   const media = useSiteMedia();
+  const year = new Date().getFullYear();
 
   return (
-    <div className="relative z-10">
+    <div className="relative z-10 bg-carbon text-bone">
       <Nav />
-
       <main>
-        <Hero poster={media("hero", heroImage)} />
+        <StoryStage />
 
-        <Marquee />
-
-
-        {/* Selected Works */}
-        <section id="works" className="relative mx-auto max-w-[1600px] px-6 py-32 md:px-12">
-          <Suspense fallback={null}>
-            <ArchitecturalCanvas />
-          </Suspense>
-          <div className="relative mb-20">
-            <div className="mb-6 inline-flex items-center rounded-full border border-carbon/12 bg-carbon/5 px-3 py-1 font-mono text-[0.6rem] uppercase tracking-[0.22em] text-carbon/60">
-              Selected Works
-            </div>
-            <h2 className="font-serif text-4xl md:text-6xl">A Legacy of Scale.</h2>
-          </div>
-
-          <div className="relative grid grid-cols-1 gap-6 md:grid-cols-12 md:gap-12">
-            {gridProjects.map((g) => {
-              const project = projects.find((p) => p.id === g.id)!;
-              return (
-                <Link
-                  key={g.id}
-                  to="/projects/$projectId"
-                  params={{ projectId: g.id }}
-                  className={`project-card relative block min-w-0 overflow-hidden ${g.span}`}
-                >
-                  <div
-                    className={`relative overflow-hidden ${g.height}`}
-                    style={{ backgroundColor: "rgb(201 169 97 / 0.06)" }}
-                  >
-                    <img
-                      src={media(projectSlotKey(g.id), project.cover)}
-                      alt={g.label}
-                      loading="lazy"
-                      className="project-img"
-                    />
-                    <div className="project-overlay" />
-                    <span className="view-case-study text-sm uppercase tracking-[0.1em] text-bone">
-                      View Album
-                    </span>
-                  </div>
-                  <div className="mt-4">
-                    <h3 className="font-serif text-2xl">{g.label}</h3>
-                    <p className="mt-1 text-sm text-carbon/60">{g.meta}</p>
-                  </div>
-                </Link>
-              );
-            })}
-          </div>
-
-          <div className="relative mt-20 text-center">
-            <Link
-              to="/portfolio"
-              className="group inline-flex items-center gap-5 border border-carbon/25 py-3 pr-3 pl-9 text-xs uppercase tracking-[0.22em] transition-all duration-700 hover:bg-carbon hover:text-bone"
-            >
-              <span>View All {projects.length} Projects</span>
-              <span className="flex h-10 w-10 items-center justify-center rounded-full border border-carbon/20 transition-all duration-700 group-hover:border-bone/20 group-hover:bg-bone/10">
-                <Arrow />
-              </span>
-            </Link>
-          </div>
-        </section>
-        {/* About */}
-        <section id="about" className="relative overflow-hidden bg-carbon px-6 py-32 text-bone md:px-20">
-          <Suspense fallback={null}>
-            <ArchitecturalCanvas />
-          </Suspense>
-          <div className="relative z-10 mx-auto flex max-w-7xl flex-col items-center gap-16 md:flex-row">
+        {/* 1. Executive Profile */}
+        <section id="profile" className="bg-graphite px-6 py-28 md:px-20">
+          <div className="mx-auto flex max-w-6xl flex-col gap-14 md:flex-row md:items-center">
             <div className="md:w-2/5">
-              <div
-                className="border border-brass/20 p-2"
-                style={{ background: "rgb(201 169 97 / 0.04)" }}
-              >
-                <div className="relative overflow-hidden">
-                  <img
-                    src={media("about-portrait", profile)}
-                    alt="Michael Chandler — Owner, MC Design Build"
-                    loading="lazy"
-                    className="w-full object-cover"
-                    style={{ aspectRatio: "3 / 4", filter: "grayscale(15%)" }}
-                  />
-                  <div className="pointer-events-none absolute inset-0 border border-bone/5" />
-                </div>
-              </div>
+              <img
+                src={media("about-portrait", profileAsset.url)}
+                alt="Michael Chandler"
+                loading="lazy"
+                className="w-full border border-bone/10 object-cover"
+                style={{ aspectRatio: "3 / 4" }}
+              />
             </div>
-
             <div className="md:w-3/5">
-              <div className="mb-5 inline-flex items-center rounded-full border border-brass/20 bg-brass/5 px-3 py-1 font-mono text-[0.6rem] uppercase tracking-[0.22em] text-brass/80">
-                About the Owner
-              </div>
-              <h2 className="mb-8 font-serif text-4xl md:text-5xl">Michael Chandler</h2>
-              <div className="space-y-6 text-lg font-light leading-relaxed text-bone/70">
+              <Eyebrow>Executive Profile</Eyebrow>
+              <h2 className="font-serif text-4xl leading-tight md:text-5xl">Michael Chandler</h2>
+              <p className="mt-3 font-mono text-xs uppercase tracking-[0.2em] text-bone/55">
+                Design & Construction Executive · Hospitality & Resort Projects · Owner's Representative
+              </p>
+              <div className="mt-8 space-y-5 text-lg font-light leading-relaxed text-bone/70">
                 <p>
-                  With over 20 years of executive construction leadership, I have managed and
-                  delivered more than $500 million in ultra-luxury residential, hospitality, and
-                  civil projects across six global regions — from California's coastline to the
-                  Caribbean.
+                  Design and construction executive with 37+ years of experience delivering luxury
+                  hospitality, resort, and ultra-high-end residential projects. Managed more than $500M
+                  in construction value, with individual project budgets from $500K to $125M across 12
+                  states and 4 countries. Procore Certified, with native-level Spanish and a track
+                  record of bridging architectural design, P&L stewardship, and field execution for
+                  owners, developers, and private clubs.
                 </p>
                 <p>
                   As Owner of MC Design, I bring a rare combination of architectural sensitivity
-                  and rigorous project management to every engagement. My portfolio spans
-                  Discovery Land Company developments, private island estates, alpine retreats,
-                  and complex coastal restorations.
-                </p>
-                <p>
-                  Known for old-world craftsmanship standards and modern execution methodology,
-                  I personally curate every trade partner, material selection, and milestone —
-                  ensuring on-time, on-budget delivery without compromising design intent.
+                  and rigorous project management to every engagement.
                 </p>
               </div>
-              <div className="mt-10 flex flex-wrap gap-8">
-                {[
-                  { v: "21+", l: "Signature Projects" },
-                  { v: "$500M+", l: "Capital Managed" },
-                  { v: "6", l: "Global Regions" },
-                ].map((s) => (
-                  <div key={s.l}>
-                    <div className="font-serif text-3xl text-brass">{s.v}</div>
-                    <div className="mt-1 font-mono text-xs uppercase tracking-widest text-bone/40">
-                      {s.l}
-                    </div>
+              <p className="mt-8 border-l-2 border-brass pl-4 text-sm text-bone/65">
+                Open to executive operations leadership opportunities, including VP of Operations roles.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* 2. Professional Experience */}
+        <section id="experience" className="bg-carbon px-6 py-28 md:px-20">
+          <div className="mx-auto max-w-6xl">
+            <Eyebrow>Professional Experience</Eyebrow>
+            <h2 className="mb-16 font-serif text-4xl md:text-5xl">Where I've led.</h2>
+            <div className="space-y-12">
+              {experience.map((r) => (
+                <article key={`${r.company}-${r.period}`} className="grid gap-4 border-t border-bone/10 pt-8 md:grid-cols-[1fr_2fr] md:gap-12">
+                  <div>
+                    <p className="font-mono text-[0.65rem] uppercase tracking-[0.2em] text-bone/45">{r.period}</p>
+                    <h3 className="mt-2 font-serif text-2xl">{r.company}</h3>
+                    <p className="mt-1 text-sm text-brass">{r.title}</p>
+                    {r.location ? <p className="mt-1 text-sm text-bone/45">{r.location}</p> : null}
+                    {r.note ? <p className="mt-2 font-serif text-sm italic text-bone/50">{r.note}</p> : null}
+                  </div>
+                  {r.bullets.length ? (
+                    <ul className="space-y-3">
+                      {r.bullets.map((b) => (
+                        <li key={b.label ?? b.text} className="text-[0.95rem] leading-relaxed text-bone/65">
+                          {b.label ? <span className="text-bone/90">{b.label}: </span> : null}
+                          {b.text}
+                        </li>
+                      ))}
+                    </ul>
+                  ) : (
+                    <p className="text-sm italic text-bone/45">Details available upon request.</p>
+                  )}
+                </article>
+              ))}
+            </div>
+            <div className="mt-16 border-t border-bone/10 pt-8">
+              <h3 className="mb-6 font-mono text-[0.62rem] uppercase tracking-[0.28em] text-bone/50">Earlier Career</h3>
+              <div className="grid gap-6 md:grid-cols-2">
+                {earlierCareer.map((e) => (
+                  <div key={e.org}>
+                    <p className="text-bone/90">{e.role} · <span className="text-brass">{e.org}</span></p>
+                    <p className="font-mono text-[0.6rem] uppercase tracking-[0.2em] text-bone/40">{e.period}</p>
+                    <p className="mt-1 text-sm text-bone/60">{e.text}</p>
                   </div>
                 ))}
               </div>
@@ -280,238 +154,120 @@ function Index() {
           </div>
         </section>
 
-        {/* Signature projects — pinned sequences */}
-        <PinnedCase
-          id="featured-case"
-          subtitle="Signature Project — SE Texas"
-          title="Ultra Luxe Private Club Resort Pool"
-          images={[
-            media("case-pool-1", houstonOaks),
-            media("case-pool-2", poolDetail),
-            media("case-pool-3", poolFinished),
-          ]}
-          alts={[
-            "Ultra Luxe Pool — Daylight Overview",
-            "Ultra Luxe Pool — Resort Detail",
-            "Ultra Luxe Pool — Finished Detail",
-          ]}
-          captions={[
-            "Delivering a world-class aquatic resort experience for one of Texas's most exclusive private clubs — engineered from the ground up.",
-            "18 months of precision civil engineering, coordinating specialty aquatic, structural, and landscape contractors across a complex site.",
-          ]}
-          stats={[
-            { value: "189,000", label: "Gallons Capacity" },
-            { value: "8", label: "Million Budget" },
-          ]}
-        />
-
-        <PinnedCase
-          id="featured-case-2"
-          subtitle="Signature Project — Montana"
-          title="High Alpine Ranch Luxe Retreat"
-          images={[
-            media("case-alpine-1", alpineCover),
-            media("case-alpine-2", alpine3),
-            media("case-alpine-3", alpine7),
-          ]}
-          alts={[
-            "Alpine Ranch — Mountain Vista",
-            "Alpine Ranch — Craftsmanship Detail",
-            "Alpine Ranch — Finished Retreat",
-          ]}
-          captions={[
-            "A secluded Montana mountain ranch engineered for ultimate luxury — where custom bronze windows from Italy meet panoramic alpine vistas.",
-            "24 months of high-alpine craftsmanship — exposed timber, custom stone masonry, and radiant systems in one of Montana's most remote settings.",
-          ]}
-          stats={[
-            { value: "2,300", label: "Sq Ft" },
-            { value: "24", label: "Months Build" },
-          ]}
-        />
-
-        <PinnedCase
-          id="featured-case-3"
-          subtitle="Signature Project — S. Florida"
-          title="S. Florida High Rise Luxe Condo"
-          images={[
-            media("case-miami-1", miamiCover),
-            media("case-miami-2", miami10),
-            media("case-miami-3", miami27),
-          ]}
-          alts={[
-            "Miami Beach — Beachfront Panorama",
-            "Miami Beach — Interior Execution",
-            "Miami Beach — Finished Sanctuary",
-          ]}
-          captions={[
-            "Transforming 4,200 sq ft of raw South Florida high-rise into a beachfront sanctuary — delivered on schedule during the height of the pandemic.",
-            "Italian marble, hotel-grade bespoke millwork, and integrated smart home systems — zero delays, zero excuses.",
-          ]}
-          stats={[
-            { value: "4,200", label: "Sq Ft" },
-            { value: "4", label: "Months Delivered" },
-          ]}
-        />
-
-        {/* Philosophy */}
-        <section id="philosophy" className="relative overflow-hidden bg-bone px-6 py-40 md:px-20">
-          <div className="dot-grid pointer-events-none absolute inset-0 text-carbon opacity-5" />
-          <div className="relative z-10 mx-auto max-w-5xl text-center">
-            <p className="mb-16 font-serif text-3xl leading-tight text-carbon md:text-6xl">
-              "Great architecture is not just built; it is rigorously orchestrated. I don't
-              construct buildings; I construct the reality of a vision."
-            </p>
-            <div className="flex flex-col items-center justify-center">
-              <svg width="200" height="80" viewBox="0 0 200 80" className="mb-4" aria-hidden="true">
-                <path
-                  fill="none"
-                  stroke="var(--brass)"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M10,60 C30,20 50,70 70,30 C80,10 100,50 120,40 C140,30 160,60 180,20"
-                />
-              </svg>
-              <p className="text-sm uppercase tracking-[0.2em] text-carbon/60">Michael Chandler</p>
+        {/* 3. Selected Projects */}
+        <section id="projects" className="bg-slate px-6 py-28 md:px-20">
+          <div className="mx-auto max-w-6xl">
+            <Eyebrow>Selected Projects</Eyebrow>
+            <h2 className="mb-16 font-serif text-4xl md:text-5xl">A legacy of scale.</h2>
+            <div className="grid gap-x-8 gap-y-14 md:grid-cols-2">
+              {featured.map((id) => {
+                const p = projects.find((x) => x.id === id);
+                if (!p) return null;
+                return (
+                  <Link key={id} to="/projects/$projectId" params={{ projectId: id }} className="group block focus-visible:outline-2 focus-visible:outline-brass">
+                    <div className="overflow-hidden bg-iron">
+                      <img src={media(projectSlotKey(id), p.cover)} alt={p.title} loading="lazy" className="aspect-[4/3] w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]" />
+                    </div>
+                    <h3 className="mt-5 font-serif text-2xl group-hover:text-brass">{p.title}</h3>
+                    <p className="mt-1 text-sm text-bone/50">{p.location}</p>
+                    <p className="mt-3 text-sm text-bone/70"><span className="text-bone/90">Role: </span>{p.role}</p>
+                    {p.specs ? <p className="mt-1 text-sm text-bone/55">{p.specs}</p> : null}
+                    <span className="mt-4 inline-block font-mono text-[0.6rem] uppercase tracking-[0.22em] text-brass">View album →</span>
+                  </Link>
+                );
+              })}
+            </div>
+            <div className="mt-16">
+              <Link to="/portfolio" className="story-btn">View all {projects.length} projects</Link>
             </div>
           </div>
         </section>
 
-        {/* Services */}
-        <section id="services" className="bg-carbon px-6 py-32 text-bone md:px-20">
-          <div className="mx-auto max-w-7xl">
-            <div className="mb-6 inline-flex items-center rounded-full border border-brass/20 bg-brass/5 px-3 py-1 font-mono text-[0.6rem] uppercase tracking-[0.22em] text-brass/80">
-              WHAT I DO
-            </div>
-            <h2 className="mb-24 font-serif text-4xl md:text-5xl">
-              One Team. Every Discipline.
-            </h2>
-
-            <div className="mb-12 h-0.5 w-full bg-bone/10">
-              <div className="h-full w-1/2 bg-brass" />
-            </div>
-
-            <div className="grid grid-cols-1 gap-12 md:grid-cols-4">
-              {[
-                {
-                  title: "Owner's Representation",
-                  body: "Acting as the owner's advocate from site selection through closeout — protecting budget, schedule, and vision at every decision point.",
-                },
-                {
-                  title: "Design-Build",
-                  body: "Architecture and construction under one roof. A single point of accountability from first sketch to final walkthrough.",
-                },
-                {
-                  title: "Development",
-                  body: "Civil, commercial, and residential development — from raw land and entitlements to finished, revenue-producing assets.",
-                },
-                {
-                  title: "Estate Management",
-                  body: "Long-term stewardship of legacy properties: capital planning, staff leadership, and meticulous care of every detail.",
-                },
-              ].map((s) => (
-                <div
-                  key={s.title}
-                  className="opacity-70 transition-opacity duration-500 hover:opacity-100"
-                >
-                  <div className="mb-6 h-px w-10 bg-brass" />
-                  <h3 className="mb-4 font-serif text-2xl">{s.title}</h3>
-                  <p className="text-sm font-light leading-relaxed text-bone/60">{s.body}</p>
+        {/* 4. Leadership Approach */}
+        <section id="approach" className="bg-carbon px-6 py-28 md:px-20">
+          <div className="mx-auto max-w-6xl">
+            <Eyebrow>Leadership Approach</Eyebrow>
+            <h2 className="mb-14 font-serif text-4xl md:text-5xl">How I run the work.</h2>
+            <div className="grid gap-10 md:grid-cols-5">
+              {approach.map((a) => (
+                <div key={a.title}>
+                  <div className="mb-5 h-px w-10 bg-brass" />
+                  <h3 className="mb-3 font-serif text-xl">{a.title}</h3>
+                  <p className="text-sm leading-relaxed text-bone/60">{a.body}</p>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* Career Numbers */}
-        <section className="border-t border-carbon/10 bg-bone px-6 py-32 md:px-20">
-          <div className="mx-auto max-w-7xl">
-            <div className="mb-16 inline-flex items-center rounded-full border border-carbon/12 bg-carbon/5 px-3 py-1 font-mono text-[0.6rem] uppercase tracking-[0.22em] text-carbon/60">
-              By the Numbers
+        {/* 5. Qualifications */}
+        <section id="qualifications" className="bg-graphite px-6 py-28 md:px-20">
+          <div className="mx-auto max-w-6xl">
+            <Eyebrow>Qualifications</Eyebrow>
+            <h2 className="mb-14 font-serif text-4xl md:text-5xl">Skills, education & certifications.</h2>
+            <dl className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+              {competencies.map((c) => (
+                <div key={c.label} className="border border-bone/10 bg-slate p-6">
+                  <dt className="mb-2 font-mono text-[0.6rem] uppercase tracking-[0.22em] text-brass">{c.label}</dt>
+                  <dd className="text-sm leading-relaxed text-bone/70">{c.items}</dd>
+                </div>
+              ))}
+            </dl>
+            <div className="mt-12 grid gap-10 md:grid-cols-3">
+              <div>
+                <h3 className="mb-3 font-mono text-[0.62rem] uppercase tracking-[0.28em] text-bone/50">Education</h3>
+                <p className="font-serif text-lg">Architecture Studies — University of Texas</p>
+                <p className="text-sm text-bone/50">1985</p>
+              </div>
+              <div className="md:col-span-2">
+                <h3 className="mb-3 font-mono text-[0.62rem] uppercase tracking-[0.28em] text-bone/50">Certifications & Languages</h3>
+                {certifications.map((c) => (
+                  <p key={c.label} className="text-sm text-bone/70"><span className="text-bone/90">{c.label}: </span>{c.text}</p>
+                ))}
+              </div>
             </div>
-            <div className="grid grid-cols-2 gap-12 md:grid-cols-4">
-              {[
-                { value: "25+", label: "Years in the Industry" },
-                { value: "55+", label: "Projects Led" },
-                { value: "3M+", label: "Sq Ft Delivered" },
-                { value: "$1B+", label: "Capital Managed" },
-              ].map((s) => (
-                <div key={s.label}>
-                  <div className="font-serif text-5xl text-carbon md:text-6xl">{s.value}</div>
-                  <div className="mt-4 font-mono text-[0.65rem] uppercase tracking-[0.22em] text-carbon/50">
-                    {s.label}
-                  </div>
+            <div className="mt-12 grid grid-cols-2 gap-4 lg:grid-cols-4">
+              {impact.map((m) => (
+                <div key={m.label} className="border border-bone/10 p-5">
+                  <p className="font-serif text-xl text-brass md:text-2xl">{m.value}</p>
+                  <p className="mt-2 font-mono text-[0.55rem] uppercase tracking-[0.18em] text-bone/50">{m.label}</p>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* Testimonials */}
-        <section className="bg-bone px-6 py-32 md:px-20">
-          <div className="mx-auto max-w-5xl">
-            <div className="mb-16 inline-flex items-center rounded-full border border-carbon/12 bg-carbon/5 px-3 py-1 font-mono text-[0.6rem] uppercase tracking-[0.22em] text-carbon/60">
-              Client Perspectives
+        {/* 6. Resume & Contact */}
+        <section id="contact" className="bg-carbon px-6 py-28 text-center md:px-20">
+          <div className="mx-auto max-w-3xl">
+            <Eyebrow>Resume & Contact</Eyebrow>
+            <h2 className="font-serif text-4xl md:text-6xl">Let’s discuss what’s next.</h2>
+            <div className="mt-10 flex flex-wrap justify-center gap-4">
+              <Link to="/resume" className="story-btn story-btn-primary">View Resume</Link>
+              <a href={`mailto:${EMAIL}`} className="story-btn">Email Me</a>
+              <Link to="/contact" className="story-btn">Contact Form</Link>
             </div>
-            <div className="divide-y divide-carbon/10">
-              {testimonials.map((t) => (
-                <blockquote key={t.source} className="py-14">
-                  <p className="mb-8 font-serif text-2xl italic leading-relaxed text-carbon md:text-3xl">
-                    {t.quote}
-                  </p>
-                  <footer className="font-mono text-[0.65rem] uppercase tracking-[0.22em] text-carbon/50">
-                    {t.source}
-                  </footer>
-                </blockquote>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Contact */}
-        <section
-          id="contact"
-          className="relative overflow-hidden bg-carbon px-6 py-40 text-center text-bone md:px-20"
-        >
-          <div className="dot-grid pointer-events-none absolute inset-0 text-bone opacity-5" />
-          <Suspense fallback={null}>
-            <ArchitecturalCanvas />
-          </Suspense>
-          <div className="relative z-10 mx-auto max-w-3xl">
-            <h2 className="mb-8 font-serif text-4xl md:text-6xl">
-              For project inquiries, speaking engagements, and board consultations.
-            </h2>
-
-            <Link
-              to="/contact"
-              className="group mt-8 inline-flex items-center gap-5 border border-brass/40 py-3 pr-3 pl-9 text-xs uppercase tracking-[0.22em] transition-all duration-700 hover:bg-brass hover:text-carbon"
-            >
-              <span>Begin a Conversation</span>
-              <span className="flex h-10 w-10 items-center justify-center rounded-full border border-brass/30 transition-all duration-700 group-hover:border-carbon/20 group-hover:bg-carbon/10">
-                <Arrow />
-              </span>
-            </Link>
-
-            <div className="mt-20 flex flex-wrap justify-center gap-12 font-mono text-sm text-bone/60">
-              <a
-                href="https://www.linkedin.com/in/michael-chandler-mc-design-build"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="transition-colors hover:text-brass"
-              >
-                LinkedIn
-              </a>
-              <a href="mailto:mike.rcccon@yahoo.com" className="transition-colors hover:text-brass">
-                Email
-              </a>
+            <div className="mt-12 flex flex-wrap justify-center gap-x-10 gap-y-3 font-mono text-sm text-bone/60">
+              <a href={`mailto:${EMAIL}`} className="hover:text-brass">{EMAIL}</a>
+              <a href="tel:+14352377373" className="hover:text-brass">{PHONE}</a>
+              <a href={LINKEDIN} target="_blank" rel="noopener noreferrer" className="hover:text-brass">LinkedIn</a>
               <span>Spring, TX</span>
-              <Link to="/studio/media" className="transition-colors hover:text-brass">
-                Media Studio
-              </Link>
             </div>
           </div>
         </section>
       </main>
+
+      {/* 7. Footer */}
+      <footer className="border-t border-bone/10 bg-carbon px-6 py-10 md:px-20">
+        <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 font-mono text-[0.65rem] uppercase tracking-[0.2em] text-bone/45">
+          <span>mcdesign.bio · © {year} Michael Chandler</span>
+          <div className="flex gap-6">
+            <Link to="/portfolio" className="hover:text-brass">Portfolio</Link>
+            <Link to="/design" className="hover:text-brass">Design</Link>
+            <a href="#top" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0 }); }} className="hover:text-brass">Back to top ↑</a>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
