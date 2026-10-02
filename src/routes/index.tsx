@@ -174,7 +174,8 @@ function Index() {
             className="font-serif"
             background="transparent"
             titleColor="var(--carbon)"
-            radius={420}
+            radius={340}
+            focusPhase={0}
             cardSize={260}
             sectionHeight={60}
             textSideScale={0.68}
