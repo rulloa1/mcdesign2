@@ -214,6 +214,71 @@ function Index() {
             </Link>
           </div>
         </section>
+        {/* About */}
+        <section id="about" className="relative overflow-hidden bg-carbon px-6 py-32 text-bone md:px-20">
+          <Suspense fallback={null}>
+            <ArchitecturalCanvas />
+          </Suspense>
+          <div className="relative z-10 mx-auto flex max-w-7xl flex-col items-center gap-16 md:flex-row">
+            <div className="md:w-2/5">
+              <div
+                className="border border-brass/20 p-2"
+                style={{ background: "rgb(201 169 97 / 0.04)" }}
+              >
+                <div className="relative overflow-hidden">
+                  <img
+                    src={media("about-portrait", profile)}
+                    alt="Michael Chandler — Owner, MC Design Build"
+                    loading="lazy"
+                    className="w-full object-cover"
+                    style={{ aspectRatio: "3 / 4", filter: "grayscale(15%)" }}
+                  />
+                  <div className="pointer-events-none absolute inset-0 border border-bone/5" />
+                </div>
+              </div>
+            </div>
+
+            <div className="md:w-3/5">
+              <div className="mb-5 inline-flex items-center rounded-full border border-brass/20 bg-brass/5 px-3 py-1 font-mono text-[0.6rem] uppercase tracking-[0.22em] text-brass/80">
+                About the Owner
+              </div>
+              <h2 className="mb-8 font-serif text-4xl md:text-5xl">Michael Chandler</h2>
+              <div className="space-y-6 text-lg font-light leading-relaxed text-bone/70">
+                <p>
+                  With over 20 years of executive construction leadership, Michael Chandler has
+                  managed and delivered more than $500 million in ultra-luxury residential,
+                  hospitality, and civil projects across six global regions — from California's
+                  coastline to the Caribbean.
+                </p>
+                <p>
+                  As Owner of MC Design Build, Michael brings a rare combination of architectural
+                  sensitivity and rigorous project management to every engagement. His portfolio
+                  spans Discovery Land Company developments, private island estates, alpine
+                  retreats, and complex coastal restorations.
+                </p>
+                <p>
+                  Known for his old-world craftsmanship standards and modern execution methodology,
+                  Michael personally curates every trade partner, material selection, and milestone
+                  — ensuring on-time, on-budget delivery without compromising design intent.
+                </p>
+              </div>
+              <div className="mt-10 flex flex-wrap gap-8">
+                {[
+                  { v: "21+", l: "Signature Projects" },
+                  { v: "$500M+", l: "Capital Managed" },
+                  { v: "6", l: "Global Regions" },
+                ].map((s) => (
+                  <div key={s.l}>
+                    <div className="font-serif text-3xl text-brass">{s.v}</div>
+                    <div className="mt-1 font-mono text-xs uppercase tracking-widest text-bone/40">
+                      {s.l}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
 
         {/* Signature projects — pinned sequences */}
         <PinnedCase
@@ -289,71 +354,6 @@ function Index() {
         />
 
         {/* Philosophy */}
-        {/* About */}
-        <section id="about" className="relative overflow-hidden bg-carbon px-6 py-32 text-bone md:px-20">
-          <Suspense fallback={null}>
-            <ArchitecturalCanvas />
-          </Suspense>
-          <div className="relative z-10 mx-auto flex max-w-7xl flex-col items-center gap-16 md:flex-row">
-            <div className="md:w-2/5">
-              <div
-                className="border border-brass/20 p-2"
-                style={{ background: "rgb(201 169 97 / 0.04)" }}
-              >
-                <div className="relative overflow-hidden">
-                  <img
-                    src={media("about-portrait", profile)}
-                    alt="Michael Chandler — Owner, MC Design Build"
-                    loading="lazy"
-                    className="w-full object-cover"
-                    style={{ aspectRatio: "3 / 4", filter: "grayscale(15%)" }}
-                  />
-                  <div className="pointer-events-none absolute inset-0 border border-bone/5" />
-                </div>
-              </div>
-            </div>
-
-            <div className="md:w-3/5">
-              <div className="mb-5 inline-flex items-center rounded-full border border-brass/20 bg-brass/5 px-3 py-1 font-mono text-[0.6rem] uppercase tracking-[0.22em] text-brass/80">
-                About the Owner
-              </div>
-              <h2 className="mb-8 font-serif text-4xl md:text-5xl">Michael Chandler</h2>
-              <div className="space-y-6 text-lg font-light leading-relaxed text-bone/70">
-                <p>
-                  With over 20 years of executive construction leadership, Michael Chandler has
-                  managed and delivered more than $500 million in ultra-luxury residential,
-                  hospitality, and civil projects across six global regions — from California's
-                  coastline to the Caribbean.
-                </p>
-                <p>
-                  As Owner of MC Design Build, Michael brings a rare combination of architectural
-                  sensitivity and rigorous project management to every engagement. His portfolio
-                  spans Discovery Land Company developments, private island estates, alpine
-                  retreats, and complex coastal restorations.
-                </p>
-                <p>
-                  Known for his old-world craftsmanship standards and modern execution methodology,
-                  Michael personally curates every trade partner, material selection, and milestone
-                  — ensuring on-time, on-budget delivery without compromising design intent.
-                </p>
-              </div>
-              <div className="mt-10 flex flex-wrap gap-8">
-                {[
-                  { v: "21+", l: "Signature Projects" },
-                  { v: "$500M+", l: "Capital Managed" },
-                  { v: "6", l: "Global Regions" },
-                ].map((s) => (
-                  <div key={s.l}>
-                    <div className="font-serif text-3xl text-brass">{s.v}</div>
-                    <div className="mt-1 font-mono text-xs uppercase tracking-widest text-bone/40">
-                      {s.l}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
         <section id="philosophy" className="relative overflow-hidden bg-bone px-6 py-40 md:px-20">
           <div className="dot-grid pointer-events-none absolute inset-0 text-carbon opacity-5" />
           <div className="relative z-10 mx-auto max-w-5xl text-center">
