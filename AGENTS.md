@@ -8,3 +8,4 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+- MCP endpoint requires OAuth sign-in (Lovable Cloud auth as issuer); consent page lives at /.lovable/oauth/consent — why: assistant tools must never be callable anonymously.
