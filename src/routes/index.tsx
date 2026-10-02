@@ -3,7 +3,6 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { Nav } from "@/components/site/Nav";
 import { Marquee } from "@/components/site/Marquee";
 import { PinnedCase } from "@/components/site/PinnedCase";
-import { ImpactSlider } from "@/components/site/ImpactSlider";
 import { projects } from "@/data/projects";
 import { projectSlotKey } from "@/data/media-slots";
 import { useSiteMedia } from "@/lib/site-media";
@@ -106,28 +105,6 @@ const gridProjects = [
   },
 ];
 
-const processSteps = [
-  {
-    n: "01",
-    title: "Strategize",
-    body: "Aligning capital vision with structural reality before a single dollar is deployed.",
-  },
-  {
-    n: "02",
-    title: "Assemble",
-    body: "Curating tier-one architectural, engineering, and contracting talent specific to the asset.",
-  },
-  {
-    n: "03",
-    title: "Orchestrate",
-    body: "Rigorous milestone management, value engineering, and risk mitigation.",
-  },
-  {
-    n: "04",
-    title: "Deliver",
-    body: "Handover of a market-defining asset, on budget, to precise specifications.",
-  },
-];
 
 const testimonials = [
   {
