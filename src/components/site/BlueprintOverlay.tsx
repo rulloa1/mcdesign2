@@ -4,7 +4,15 @@ import { useEffect, useRef, type RefObject } from "react";
  * Decorative animated architectural drawing for the hero.
  * SVG + CSS stroke-dashoffset; drawn once in stages, then held.
  */
-export default function BlueprintOverlay({ hostRef }: { hostRef?: RefObject<HTMLElement | null> }) {
+export default function BlueprintOverlay({
+  hostRef,
+  scroll = false,
+  tone = "dark",
+}: {
+  hostRef?: RefObject<HTMLElement | null>;
+  scroll?: boolean;
+  tone?: "dark" | "light";
+}) {
   const svgRef = useRef<SVGSVGElement>(null);
 
   useEffect(() => {
@@ -23,6 +31,36 @@ export default function BlueprintOverlay({ hostRef }: { hostRef?: RefObject<HTML
     });
     io.observe(host);
     document.addEventListener("visibilitychange", sync);
+
+    if (scroll) {
+      const reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
+      const paths = Array.from(svg.querySelectorAll<SVGPathElement>(".bp-draw"));
+      const n = paths.length;
+      let raf = 0;
+      const update = () => {
+        raf = 0;
+        const r = host.getBoundingClientRect();
+        const vh = window.innerHeight;
+        // 0 when section top hits viewport bottom, 1 when section is ~70% scrolled
+        const p = reduce.matches ? 1 : Math.min(1, Math.max(0, (vh - r.top) / (r.height * 0.7 + vh * 0.3)));
+        const t = p * (n + 2);
+        for (let i = 0; i < n; i++) {
+          const k = Math.min(1, Math.max(0, t - i * 1));
+          paths[i]!.style.strokeDashoffset = String(1 - k);
+        }
+      };
+      const onScroll = () => { if (!raf) raf = requestAnimationFrame(update); };
+      update();
+      window.addEventListener("scroll", onScroll, { passive: true });
+      window.addEventListener("resize", onScroll);
+      return () => {
+        io.disconnect();
+        document.removeEventListener("visibilitychange", sync);
+        window.removeEventListener("scroll", onScroll);
+        window.removeEventListener("resize", onScroll);
+        cancelAnimationFrame(raf);
+      };
+    }
 
     // Tiny whole-drawing parallax on fine pointers only
     const fine = window.matchMedia("(hover: hover) and (pointer: fine)");
@@ -54,7 +92,7 @@ export default function BlueprintOverlay({ hostRef }: { hostRef?: RefObject<HTML
       host.removeEventListener("pointerleave", onLeave);
       cancelAnimationFrame(raf);
     };
-  }, [hostRef]);
+  }, [hostRef, scroll]);
 
   const L = (d: string, stage: number, i: number, cls = "") => (
     <path
@@ -105,7 +143,7 @@ export default function BlueprintOverlay({ hostRef }: { hostRef?: RefObject<HTML
       data-paused="false"
       viewBox="0 0 1600 900"
       preserveAspectRatio="xMaxYMid slice"
-      className="blueprint pointer-events-none absolute inset-0 h-full w-full"
+      className={`blueprint pointer-events-none absolute inset-0 h-full w-full ${scroll ? "bp-scroll" : ""} ${tone === "light" ? "bp-light" : ""}`}
     >
       <defs>
         <pattern id="bp-grid" width="40" height="40" patternUnits="userSpaceOnUse">
