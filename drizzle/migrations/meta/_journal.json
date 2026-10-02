@@ -36,6 +36,13 @@
       "when": 1790952216963,
       "tag": "0004_project_gallery",
       "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1790952349398,
+      "tag": "0005_project_gallery_public_read",
+      "breakpoints": true
     }
   ]
 }
