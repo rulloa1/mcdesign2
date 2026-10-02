@@ -559,6 +559,7 @@ export const projectAlbums: Record<string, ProjectAlbum> = {
     description:
       "In just four months, we executed a critical environmental cleanup on a 1.5-acre hillside. We removed over 80 tons of debris, including abandoned vehicles and construction waste. We implemented erosion control measures, restored the native plant life with over 200 new specimens, and improved drainage systems. This project was about more than just cleaning up; it was about healing a piece of the natural landscape.",
     images: [
+      "/projects/assets/hillside-sunset-deck.webp",
       "/projects/assets/enh/hillside-cleanup-15-u.webp",
       "/projects/assets/enh/hillside-cleanup-cover-u.webp",
       "/projects/assets/enh/hillside-7-u.webp",
