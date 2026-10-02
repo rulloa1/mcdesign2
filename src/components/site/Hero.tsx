@@ -25,6 +25,7 @@ export function Hero({ poster }: { poster: string }) {
       setVideoOk(false);
       return;
     }
+    v.playbackRate = 0.55;
     const io = new IntersectionObserver(([e]) => {
       if (e?.isIntersecting && !document.hidden) v.play().catch(() => setVideoOk(false));
       else v.pause();
