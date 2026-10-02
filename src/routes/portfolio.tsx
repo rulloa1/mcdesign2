@@ -53,7 +53,7 @@ function Portfolio() {
           <div className="flex flex-col items-center gap-6">
             <div className="h-px w-12 bg-brass/30" />
             <p className="max-w-md text-sm font-light leading-relaxed tracking-wide text-bone/60 md:text-base">
-              A small cross-section of projects  which have the McDesign &amp; Construction influence.
+              A small Cross-Section of 38 years of Excellence!
             </p>
           </div>
         </div>
