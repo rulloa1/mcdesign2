@@ -1,3 +1,5 @@
+import { motion, useReducedMotion } from "framer-motion";
+
 export type PinnedCaseProps = {
   id: string;
   subtitle: string;
@@ -8,34 +10,47 @@ export type PinnedCaseProps = {
   stats: [{ value: string; label: string }, { value: string; label: string }];
 };
 
+const ease = [0.22, 1, 0.36, 1] as const;
+
 export function PinnedCase({ id, subtitle, title, images, alts, captions, stats }: PinnedCaseProps) {
   const labels = ["01 / The Vision", "02 / The Execution", "03 / The Result"];
+  const reduce = useReducedMotion();
+  const reveal = (delay = 0, y = 40) =>
+    reduce
+      ? {}
+      : {
+          initial: { opacity: 0, y },
+          whileInView: { opacity: 1, y: 0 },
+          viewport: { once: true, amount: 0.3 },
+          transition: { duration: 0.9, ease, delay },
+        };
+
   return (
     <section id={id} className="relative bg-carbon px-6 py-24 text-bone md:px-20 md:py-32">
       <div className="mx-auto max-w-[1400px]">
-        <p className="mb-4 font-mono text-[0.65rem] uppercase tracking-[0.3em] text-brass">{subtitle}</p>
-        <h2 className="mb-10 max-w-4xl font-serif text-4xl leading-[1.05] md:mb-14 md:text-7xl">{title}</h2>
+        <motion.p {...reveal(0, 20)} className="mb-4 font-mono text-[0.65rem] uppercase tracking-[0.3em] text-brass">{subtitle}</motion.p>
+        <motion.h2 {...reveal(0.1)} className="mb-10 max-w-4xl font-serif text-4xl leading-[1.05] md:mb-14 md:text-7xl">{title}</motion.h2>
 
         <div className="grid gap-3 md:grid-cols-3 md:gap-4">
-          <figure className="overflow-hidden md:col-span-2 md:row-span-2">
+          <motion.figure {...reveal(0, 60)} className="overflow-hidden md:col-span-2 md:row-span-2">
             <img src={images[0]} alt={alts[0]} loading="lazy" className="aspect-[4/3] h-full w-full object-cover md:aspect-auto" />
-          </figure>
-          <figure className="overflow-hidden">
+          </motion.figure>
+          <motion.figure {...reveal(0.15, 60)} className="overflow-hidden">
             <img src={images[1]} alt={alts[1]} loading="lazy" className="aspect-[4/3] h-full w-full object-cover" />
-          </figure>
-          <figure className="overflow-hidden">
+          </motion.figure>
+          <motion.figure {...reveal(0.3, 60)} className="overflow-hidden">
             <img src={images[2]} alt={alts[2]} loading="lazy" className="aspect-[4/3] h-full w-full object-cover" />
-          </figure>
+          </motion.figure>
         </div>
 
         <div className="mt-10 grid gap-10 border-t border-bone/10 pt-10 md:mt-14 md:grid-cols-3 md:gap-12">
           {captions.map((c, i) => (
-            <div key={labels[i]}>
+            <motion.div key={labels[i]} {...reveal(i * 0.15)}>
               <p className="mb-3 font-mono text-xs text-brass">{labels[i]}</p>
               <p className="font-serif text-xl leading-snug text-bone/90 md:text-2xl">{c}</p>
-            </div>
+            </motion.div>
           ))}
-          <div>
+          <motion.div {...reveal(0.3)}>
             <p className="mb-3 font-mono text-xs text-brass">{labels[2]}</p>
             <div className="flex items-end gap-8">
               {stats.map((s) => (
@@ -45,7 +60,7 @@ export function PinnedCase({ id, subtitle, title, images, alts, captions, stats 
                 </div>
               ))}
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>
