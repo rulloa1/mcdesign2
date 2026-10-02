@@ -230,7 +230,7 @@ function Index() {
             <h2 className="font-serif text-4xl md:text-6xl">A Legacy of Scale.</h2>
           </div>
 
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-12 md:gap-12">
+          <div className="relative grid grid-cols-1 gap-6 md:grid-cols-12 md:gap-12">
             {gridProjects.map((g) => {
               const project = projects.find((p) => p.id === g.id)!;
               return (
@@ -264,7 +264,7 @@ function Index() {
             })}
           </div>
 
-          <div className="mt-20 text-center">
+          <div className="relative mt-20 text-center">
             <Link
               to="/portfolio"
               className="group inline-flex items-center gap-5 border border-carbon/25 py-3 pr-3 pl-9 text-xs uppercase tracking-[0.22em] transition-all duration-700 hover:bg-carbon hover:text-bone"
