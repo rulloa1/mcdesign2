@@ -157,7 +157,15 @@ function Lines({ seg, color, opacity, win, prog, intro = 0 }: { seg: Seg; color:
     const n = Math.floor((count / 2) * t) * 2;
     geo.setDrawRange(0, n);
   });
-  return <lineSegments geometry={geo} material={mat} />;
+  // Added imperatively: dev tooling injects data-* props into JSX intrinsics, which R3F can't apply.
+  const scene = useThree((st) => st.scene);
+  useEffect(() => {
+    const obj = new THREE.LineSegments(geo, mat);
+    scene.add(obj);
+    invalidate();
+    return () => { scene.remove(obj); };
+  }, [scene, geo, mat, invalidate]);
+  return null;
 }
 
 function Rig({ prog, target, reduced }: { prog: React.MutableRefObject<number>; target: React.MutableRefObject<number>; reduced: boolean }) {
