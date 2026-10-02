@@ -168,27 +168,39 @@ function Index() {
             <h2 className="font-serif text-4xl md:text-6xl">A Legacy of Scale.</h2>
           </div>
 
-          <CircularSplitRoll
-            className="font-serif"
-            background="transparent"
-            titleColor="var(--carbon)"
-            radius={340}
-            focusPhase={0}
-            cardSize={260}
-            sectionHeight={60}
-            textSideScale={0.68}
-            textSideOpacity={0.18}
-            items={gridProjects.map((g) => {
+          <div className="relative mx-auto grid max-w-[1600px] gap-4 px-6 md:grid-cols-6 md:gap-5 md:px-12">
+            {gridProjects.map((g, i) => {
               const project = projects.find((p) => p.id === g.id)!;
-              return {
-                id: g.id,
-                title: g.label,
-                image: media(projectSlotKey(g.id), project.cover),
-                alt: g.label,
-                href: `/projects/${g.id}`,
-              };
+              const big = i < 2;
+              return (
+                <Link
+                  key={g.id}
+                  to="/projects/$projectId"
+                  params={{ projectId: g.id }}
+                  className={`group relative block overflow-hidden bg-carbon ${big ? "md:col-span-3" : "md:col-span-2"}`}
+                >
+                  <img
+                    src={media(projectSlotKey(g.id), project.cover)}
+                    alt={g.label}
+                    loading="lazy"
+                    className={`w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.04] ${big ? "aspect-[4/3]" : "aspect-[4/5]"}`}
+                  />
+                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-carbon/85 via-carbon/10 to-transparent" />
+                  <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 p-5 md:p-7">
+                    <div>
+                      <p className="mb-2 font-mono text-[0.6rem] uppercase tracking-[0.3em] text-brass">
+                        {String(i + 1).padStart(2, "0")} / {project.location ?? "Project"}
+                      </p>
+                      <h3 className="font-serif text-2xl leading-tight text-bone md:text-3xl">{g.label}</h3>
+                    </div>
+                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-bone/30 text-bone transition-colors duration-500 group-hover:border-brass group-hover:text-brass">
+                      <Arrow />
+                    </span>
+                  </div>
+                </Link>
+              );
             })}
-          />
+          </div>
 
           <div className="relative mt-20 text-center">
             <Link
