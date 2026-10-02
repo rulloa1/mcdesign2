@@ -21,7 +21,9 @@ export function BlueprintJourney() {
 
   useEffect(() => {
     setSimple(localStorage.getItem(journeyConfig.storageKey) === "1");
-    setWebgl(hasWebGL());
+    // Phones get the lightweight flat blueprint: the live 3D scene can crash mobile GPUs (blank screen).
+    const phone = window.matchMedia("(pointer: coarse)").matches || window.innerWidth < 900;
+    setWebgl(!phone && hasWebGL());
     setReady(true);
   }, []);
 
