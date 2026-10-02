@@ -1204,3 +1204,8 @@ But that is **web glassmorphism / frosted-glass approximation**, not official Ap
 ---
 
 **End of appendices.** Install commands above are reality anchors. The Apple Liquid Glass skeleton is a labeled approximation, not an Apple-issued package. For canonical docs per design system, consult the system's official docs (links in Section 2 plus Appendix B).
+
+## Session Rules (from calibration)
+- After any layout/spacing change, screenshot each page section at several scroll positions on desktop and mobile before calling it done.
+- On redesigns, diff every section against the original reference site before adding any new UI element.
+- Never create new standalone pages (even hidden/admin ones) without asking first.
