@@ -32,6 +32,7 @@ export function Testimonial({ items }: { items: TestimonialItem[] }) {
   }, [goNext, activeIndex]);
 
   const current = items[activeIndex];
+  if (!current) return null;
   const ease = [0.22, 1, 0.36, 1] as const;
 
   const NavBtn = ({ dir }: { dir: "prev" | "next" }) => (
