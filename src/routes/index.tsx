@@ -4,6 +4,7 @@ import { lazy, Suspense } from "react";
 import { Nav } from "@/components/site/Nav";
 import { Marquee } from "@/components/site/Marquee";
 import { Hero } from "@/components/site/Hero";
+import { Testimonial } from "@/components/ui/design-testimonial";
 
 const ArchitecturalCanvas = lazy(() => import("@/components/site/ArchitecturalCanvas"));
 import { PinnedCase } from "@/components/site/PinnedCase";
@@ -448,23 +449,12 @@ function Index() {
         </section>
 
         {/* Testimonials */}
-        <section className="bg-bone px-6 py-32 md:px-20">
+        <section className="overflow-hidden bg-bone px-6 py-32 md:px-20">
           <div className="mx-auto max-w-5xl">
-            <div className="mb-16 inline-flex items-center rounded-full border border-carbon/12 bg-carbon/5 px-3 py-1 font-mono text-[0.6rem] uppercase tracking-[0.22em] text-carbon/60">
+            <div className="mb-16 inline-flex items-center rounded-full border border-carbon/12 bg-carbon/5 px-3 py-1 font-mono text-[0.6rem] uppercase tracking-[0.22em] text-carbon/60 md:hidden">
               Client Perspectives
             </div>
-            <div className="divide-y divide-carbon/10">
-              {testimonials.map((t) => (
-                <blockquote key={t.source} className="py-14">
-                  <p className="mb-8 font-serif text-2xl italic leading-relaxed text-carbon md:text-3xl">
-                    {t.quote}
-                  </p>
-                  <footer className="font-mono text-[0.65rem] uppercase tracking-[0.22em] text-carbon/50">
-                    {t.source}
-                  </footer>
-                </blockquote>
-              ))}
-            </div>
+            <Testimonial items={testimonials} />
           </div>
         </section>
 
