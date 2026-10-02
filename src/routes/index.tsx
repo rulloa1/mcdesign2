@@ -408,7 +408,7 @@ function Index() {
                 >
                   <div className="mb-6 h-px w-10 bg-brass" />
                   <h3 className="mb-4 font-serif text-2xl">{s.title}</h3>
-                  <p className="text-sm font-light leading-relaxed text-bone/60">{s.body}</p>
+                  <p className="text-sm leading-relaxed text-bone/75">{s.body}</p>
                 </div>
               ))}
             </div>
