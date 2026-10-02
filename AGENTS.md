@@ -9,3 +9,4 @@
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
 - MCP endpoint requires OAuth sign-in (Lovable Cloud auth as issuer); consent page lives at /.lovable/oauth/consent — why: assistant tools must never be callable anonymously.
+- Site-wide 3D blueprint backdrop is one persistent R3F scene mounted in __root (BlueprintJourney); tune it via src/lib/journey-config.ts, and theme it via the html.journey CSS class so Simple View can restore the original look — why: one scene/loop, no per-page duplicates.
