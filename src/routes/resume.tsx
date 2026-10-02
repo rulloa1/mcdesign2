@@ -3,7 +3,7 @@ import { createFileRoute } from "@tanstack/react-router";
 
 import { Nav } from "@/components/site/Nav";
 
-const ArchitecturalCanvas = lazy(() => import("@/components/site/ArchitecturalCanvas"));
+
 
 export const Route = createFileRoute("/resume")({
   head: () => ({
@@ -30,6 +30,7 @@ export const Route = createFileRoute("/resume")({
   component: ResumePage,
 });
 
+const BlueprintOverlay = lazy(() => import("@/components/site/BlueprintOverlay"));
 const competencies: { label: string; items: string }[] = [
   {
     label: "Design & Construction Leadership",
@@ -347,7 +348,7 @@ function ResumePage() {
         <div className="mx-auto max-w-3xl">
           <header ref={headerRef} className="relative mb-16 overflow-hidden border-b border-bone/10 pb-12">
             <Suspense fallback={null}>
-              <ArchitecturalCanvas hostRef={headerRef} />
+              <BlueprintOverlay hostRef={headerRef} />
             </Suspense>
             <div className="relative z-10 mb-4 flex flex-wrap items-center justify-between gap-4">
               <p className="font-mono text-[0.6rem] uppercase tracking-[0.28em] text-brass">

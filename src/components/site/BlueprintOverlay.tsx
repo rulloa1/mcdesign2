@@ -8,7 +8,9 @@ export default function BlueprintOverlay({
   hostRef,
   scroll = false,
   tone = "dark",
+  align = "right",
 }: {
+  align?: "left" | "right";
   hostRef?: RefObject<HTMLElement | null>;
   scroll?: boolean;
   tone?: "dark" | "light";
@@ -142,7 +144,7 @@ export default function BlueprintOverlay({
       aria-hidden="true"
       data-paused="false"
       viewBox="0 0 1600 900"
-      preserveAspectRatio="xMaxYMid slice"
+      preserveAspectRatio={align === "left" ? "xMinYMid slice" : "xMaxYMid slice"}
       className={`blueprint pointer-events-none absolute inset-0 h-full w-full ${scroll ? "bp-scroll" : ""} ${tone === "light" ? "bp-light" : ""}`}
     >
       <defs>
@@ -159,7 +161,7 @@ export default function BlueprintOverlay({
       </defs>
       <rect width="1600" height="900" fill="url(#bp-grid)" mask="url(#bp-mask)" />
 
-      <g transform="translate(330 95) scale(0.78)">
+      <g transform={align === "left" ? "translate(-660 95) scale(0.78)" : "translate(330 95) scale(0.78)"}>
       <g className="bp-ivory">
         {footprint.map((d, i) => L(d, 0, i, "bp-strong"))}
         {walls.map((d, i) => L(d, 1, i))}
