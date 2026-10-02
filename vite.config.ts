@@ -15,5 +15,7 @@ export default defineConfig({
   },
   vite: {
     plugins: [mcpPlugin()],
+    // Support older Android/Samsung browsers that can't run the newest JS syntax.
+    build: { target: ["chrome87", "safari14", "firefox78", "edge88"] },
   },
 });

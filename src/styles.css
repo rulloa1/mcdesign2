@@ -349,3 +349,14 @@ html.journey :is(.bg-bone, #works, .bg-background) :is(input, textarea, select) 
 html.journey .marquee-container { background-color: color-mix(in oklab, #050505 70%, transparent) !important; }
 html.journey #hero > div.bg-gradient-to-t { display: none; }
 html.journey #hero > div.bg-gradient-to-r { opacity: 0.75; }
+
+/* Failsafe: if the app script never starts on a device, scroll-in content
+   (rendered hidden on the server) is revealed after a short delay instead of
+   leaving a blank page. Removed as soon as the app starts (html.mc-ready). */
+html:not(.mc-ready) [style*="opacity:0"],
+html:not(.mc-ready) [style*="opacity: 0"] {
+  animation: mc-failsafe-reveal 0.6s ease 2.5s forwards;
+}
+@keyframes mc-failsafe-reveal {
+  to { opacity: 1; transform: none; filter: none; }
+}
