@@ -3,7 +3,6 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { Nav } from "@/components/site/Nav";
 import { projects } from "@/data/projects";
 import { enhancedByProject } from "@/data/enhanced";
-import { BeforeAfter } from "@/components/site/BeforeAfter";
 
 export const Route = createFileRoute("/studio/before-after")({
   head: () => ({
@@ -23,6 +22,43 @@ export const Route = createFileRoute("/studio/before-after")({
 const enhancedPath = (src: string) =>
   src.replace(/^\/projects\/assets\/(.+)\.\w+$/, "/projects/assets/enh/$1.webp");
 
+function PhotoPair({
+  src,
+  projectTitle,
+}: {
+  src: string;
+  projectTitle: string;
+}) {
+  return (
+    <div className="grid grid-cols-2 gap-3">
+      <figure className="relative overflow-hidden bg-carbon">
+        <img
+          src={src}
+          alt={`${projectTitle} — original`}
+          loading="lazy"
+          draggable={false}
+          className="aspect-[4/3] h-auto w-full object-cover"
+        />
+        <span className="absolute bottom-2 left-2 bg-carbon/70 px-2 py-1 font-mono text-[0.55rem] uppercase tracking-[0.22em] text-bone backdrop-blur-sm">
+          Before
+        </span>
+      </figure>
+      <figure className="relative overflow-hidden bg-carbon">
+        <img
+          src={enhancedPath(src)}
+          alt={`${projectTitle} — enhanced`}
+          loading="lazy"
+          draggable={false}
+          className="aspect-[4/3] h-auto w-full object-cover"
+        />
+        <span className="absolute bottom-2 left-2 bg-brass/90 px-2 py-1 font-mono text-[0.55rem] uppercase tracking-[0.22em] text-carbon">
+          After
+        </span>
+      </figure>
+    </div>
+  );
+}
+
 function BeforeAfterGallery() {
   const groups = projects
     .map((p) => ({ project: p, images: enhancedByProject[p.id] ?? [] }))
@@ -38,7 +74,7 @@ function BeforeAfterGallery() {
         </p>
         <h1 className="mt-3 font-serif text-4xl md:text-5xl">Before &amp; After</h1>
         <p className="mt-4 text-sm font-light text-carbon/60">
-          {total} enhanced photos. Drag the slider on each photo to compare.
+          {total} enhanced photos. Original on the left, enhanced on the right.
         </p>
 
         {groups.map(({ project, images }) => (
@@ -55,11 +91,7 @@ function BeforeAfterGallery() {
             </div>
             <div className="grid gap-8 md:grid-cols-2">
               {images.map((src) => (
-                <BeforeAfter
-                  key={src}
-                  before={{ src, alt: `${project.title} — original` }}
-                  after={{ src: enhancedPath(src), alt: `${project.title} — enhanced` }}
-                />
+                <PhotoPair key={src} src={src} projectTitle={project.title} />
               ))}
             </div>
           </section>
