@@ -151,8 +151,8 @@ function ContactPage() {
                 </p>
                 <h2 className="mt-5 font-serif text-4xl">Thank you for reaching out.</h2>
                 <p className="mt-5 max-w-xl text-sm font-light leading-relaxed text-carbon/60">
-                  Your project details have been received. Michael will review them and follow up
-                  directly.
+                  Your project details have been received. I will review them personally and
+                  follow up directly.
                 </p>
                 <Button
                   type="button"
