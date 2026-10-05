@@ -4,9 +4,8 @@ import { Link } from "@tanstack/react-router";
 
 const links = [
   { href: "/#about", label: "About" },
-  { href: "/#works", label: "Selected Works" },
-  { href: "/#philosophy", label: "Philosophy" },
-  { href: "/#process", label: "Process" },
+  { href: "/#works", label: "Work" },
+  { href: "/#services", label: "Services" },
 ];
 
 export function Nav() {
