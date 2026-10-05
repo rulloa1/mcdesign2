@@ -8,7 +8,6 @@ export const heroConfig = {
   videoSrc: heroVideo.url as string | undefined, // 1.8 MB phone-friendly cut of the South Coast cover video
   videoPosition: "center",
   experienceHref: "#works",
-  resumeTo: "/resume" as const,
   contactTo: "/contact" as const,
 };
 
@@ -78,11 +77,8 @@ export function Hero({ poster }: { poster: string }) {
 
       <div className="relative mx-auto w-full max-w-[1400px]">
         <div className="hero-fade max-w-4xl">
-          <p className="mb-2 font-mono text-[0.7rem] uppercase tracking-[0.15em] text-brass md:mb-4 md:text-sm md:tracking-[0.35em]">
-            Luxury Residential • Hospitality • Development
-          </p>
-          <p className="mb-3 text-xs font-light text-bone/80 md:mb-6 md:text-xl">
-            MC Design Build — Owner-first construction leadership
+          <p className="mb-4 font-mono text-[0.7rem] uppercase tracking-[0.08em] text-brass md:mb-6 md:text-sm md:tracking-[0.35em]">
+            <span className="hidden sm:inline">Luxury </span>Residential • Hospitality • Development
           </p>
           <h1 className="hero-headline mb-6 font-serif text-[1.75rem] leading-[1.1] tracking-tight md:mb-8 md:text-[clamp(2.25rem,6vw,4.75rem)] md:leading-[1.05]">
             Built to impress.
@@ -102,27 +98,6 @@ export function Hero({ poster }: { poster: string }) {
             <Link to={heroConfig.contactTo} className="hero-btn group border border-brass/60 text-bone">
               Book a Consultation <span className="hero-arrow" aria-hidden="true">→</span>
             </Link>
-            <Link
-              to={heroConfig.resumeTo}
-              className="group mt-1 inline-flex min-h-11 items-center gap-1 text-sm uppercase tracking-widest text-bone/80 underline-offset-8 hover:text-brass hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brass md:mt-0"
-            >
-              View Resume <span className="hero-arrow" aria-hidden="true">→</span>
-            </Link>
-          </div>
-
-          <div className="mt-8 grid max-w-xl grid-cols-3 gap-4 text-left md:mt-10 md:max-w-2xl">
-            {[
-              { value: "20+", label: "Years Leading Builds" },
-              { value: "$500M+", label: "Capital Delivered" },
-              { value: "6", label: "Regions Served" },
-            ].map((item) => (
-              <div key={item.label} className="rounded-full border border-bone/15 bg-bone/5 px-3 py-3 backdrop-blur-sm">
-                <div className="font-serif text-xl text-brass md:text-2xl">{item.value}</div>
-                <div className="mt-1 font-mono text-[0.7rem] uppercase tracking-[0.18em] text-bone/65">
-                  {item.label}
-                </div>
-              </div>
-            ))}
           </div>
         </div>
       </div>
