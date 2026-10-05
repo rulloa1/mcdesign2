@@ -1,5 +1,5 @@
-import { lazy, Suspense, useEffect, useRef, useState } from "react";
-import { ClientOnly, Link } from "@tanstack/react-router";
+import { useEffect, useRef, useState } from "react";
+import { Link } from "@tanstack/react-router";
 
 import heroVideo from "@/assets/videos/southcoast-hero-sm.mp4.asset.json";
 
@@ -12,18 +12,38 @@ export const heroConfig = {
   contactTo: "/contact" as const,
 };
 
+const heroStats = [
+  { value: "20+", label: "Years Leading Builds" },
+  { value: "$500M+", label: "Capital Delivered" },
+  { value: "6", label: "Regions Served" },
+];
+
 export function Hero({ poster }: { poster: string }) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const heroRef = useRef<HTMLElement>(null);
-  const [videoOk, setVideoOk] = useState(true);
+  // Start without the video; it is enabled below only on capable larger screens,
+  // after the page is idle — phones never fetch it.
+  const [videoOk, setVideoOk] = useState(false);
+
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const coarse = window.matchMedia("(pointer: coarse)").matches;
+    const narrow = window.matchMedia("(max-width: 899px)").matches;
+    const conn = (navigator as Navigator & { connection?: { saveData?: boolean; effectiveType?: string } }).connection;
+    const dataSaver = Boolean(conn?.saveData) || conn?.effectiveType === "2g";
+    if (coarse || narrow || dataSaver) return;
+    const enable = () => setVideoOk(true);
+    if (typeof window.requestIdleCallback === "function") {
+      const id = window.requestIdleCallback(enable, { timeout: 2500 });
+      return () => window.cancelIdleCallback(id);
+    }
+    const t = window.setTimeout(enable, 1500);
+    return () => window.clearTimeout(t);
+  }, []);
 
   useEffect(() => {
     const v = videoRef.current;
-    if (!v) return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      setVideoOk(false);
-      return;
-    }
+    if (!v || !videoOk) return;
     v.playbackRate = 0.55;
     const onPlay = () => {
       v.playbackRate = 0.55;
@@ -38,7 +58,7 @@ export function Hero({ poster }: { poster: string }) {
       v.removeEventListener("play", onPlay);
       io.disconnect();
     };
-  }, []);
+  }, [videoOk]);
 
   const showVideo = heroConfig.videoSrc && videoOk;
 
@@ -46,7 +66,7 @@ export function Hero({ poster }: { poster: string }) {
     <section
       ref={heroRef}
       id="hero"
-      className="relative z-10 isolate flex min-h-[82svh] flex-col justify-center overflow-hidden bg-carbon px-6 pb-12 pt-24 md:px-20 md:pb-20 md:pt-28"
+      className="relative z-10 isolate flex min-h-[88svh] flex-col justify-between overflow-hidden bg-carbon px-6 pb-8 pt-24 md:px-20 md:pb-12 md:pt-28"
     >
       <img
         src={poster}
@@ -55,7 +75,7 @@ export function Hero({ poster }: { poster: string }) {
         fetchPriority="high"
         decoding="async"
         className="absolute inset-0 -z-10 h-full w-full object-cover"
-        style={{ objectPosition: heroConfig.videoPosition, filter: "grayscale(35%) brightness(0.7)" }}
+        style={{ objectPosition: heroConfig.videoPosition, filter: "grayscale(35%) brightness(0.55)" }}
       />
       {showVideo ? (
         <video
@@ -69,56 +89,66 @@ export function Hero({ poster }: { poster: string }) {
           aria-hidden="true"
           onError={() => setVideoOk(false)}
           className="absolute inset-0 -z-10 h-full w-full object-cover"
-          style={{ objectPosition: heroConfig.videoPosition, filter: "grayscale(35%) brightness(0.7)" }}
+          style={{ objectPosition: heroConfig.videoPosition, filter: "grayscale(35%) brightness(0.55)" }}
         />
       ) : null}
-      <div aria-hidden="true" className="absolute inset-0 -z-10 bg-gradient-to-r from-carbon via-carbon/75 to-carbon/25" />
-      <div aria-hidden="true" className="absolute inset-0 -z-10 bg-gradient-to-t from-carbon via-transparent to-carbon/60" />
+      <div aria-hidden="true" className="absolute inset-0 -z-10 bg-gradient-to-r from-carbon via-carbon/80 to-carbon/15" />
+      <div aria-hidden="true" className="absolute inset-0 -z-10 bg-gradient-to-t from-carbon via-carbon/30 to-carbon/75" />
       <div aria-hidden="true" className="hero-noise pointer-events-none absolute inset-0 -z-10" />
+      <svg
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 h-full w-full text-brass opacity-[0.16]"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <line x1="10%" y1="0" x2="10%" y2="100%" stroke="currentColor" strokeWidth="1" />
+        <line x1="90%" y1="0" x2="90%" y2="100%" stroke="currentColor" strokeWidth="1" />
+        <line x1="0" y1="14%" x2="100%" y2="14%" stroke="currentColor" strokeWidth="1" />
+        <circle cx="10%" cy="14%" r="3" fill="currentColor" stroke="none" />
+      </svg>
 
-      <div className="relative mx-auto w-full max-w-[1400px]">
-        <div className="hero-fade max-w-4xl">
-          <p className="mb-2 font-mono text-[10px] uppercase tracking-[0.15em] text-brass md:mb-4 md:text-sm md:tracking-[0.35em]">
+      <div className="relative mx-auto flex w-full max-w-[1400px] flex-1 flex-col justify-between">
+        <div className="hero-fade">
+          <p className="font-mono text-[9px] uppercase tracking-[0.3em] text-brass md:text-xs md:tracking-[0.35em]">
             Luxury Residential • Hospitality • Development
           </p>
-          <p className="mb-3 text-xs font-light text-bone/80 md:mb-6 md:text-xl">
+          <p className="mt-2 text-xs font-light text-bone/50 md:text-sm">
             MC Design Build — Owner-first construction leadership
           </p>
-          <h1 className="hero-headline mb-6 font-serif text-[1.75rem] leading-[1.1] tracking-tight md:mb-8 md:text-[clamp(2.25rem,6vw,4.75rem)] md:leading-[1.05]">
+        </div>
+
+        <div className="hero-fade py-10 md:py-12">
+          <h1 className="font-serif text-[2.25rem] leading-[1.12] tracking-tight text-bone md:text-[clamp(2.5rem,5.5vw,4.5rem)] md:leading-[1.08]">
             Built to impress.
             <br />
-            <span className="relative inline-block pb-3" style={{ WebkitTextFillColor: "initial" }}>
-              <span className="hero-headline">Delivered without compromise.</span>
-              <span aria-hidden="true" className="hero-underline absolute bottom-0 left-0 h-[2px] w-full" />
-            </span>
+            <span className="italic">Delivered without compromise.</span>
           </h1>
-          <p className="hidden max-w-xl text-sm font-light leading-relaxed text-bone/80 md:mb-10 md:block md:text-lg">
+          <div aria-hidden="true" className="mb-5 mt-6 h-[2px] w-12 bg-brass md:mb-7 md:mt-8" />
+          <p className="max-w-[280px] text-sm font-light leading-relaxed text-bone/70 md:max-w-xl md:text-lg">
             We guide private owners and hospitality teams through design, construction, and final delivery with a rigorous eye on budget, craft, and schedule certainty.
           </p>
-          <div className="flex flex-wrap items-center gap-3 md:gap-4">
-            <a href={heroConfig.experienceHref} className="hero-btn group bg-brass text-carbon">
+        </div>
+
+        <div className="hero-fade">
+          <div className="grid grid-cols-2 gap-3 md:flex md:items-center md:gap-4">
+            <a href={heroConfig.experienceHref} className="hero-btn group justify-center bg-brass text-carbon">
               View Projects <span className="hero-arrow" aria-hidden="true">→</span>
             </a>
-            <Link to={heroConfig.contactTo} className="hero-btn group border border-brass/60 text-bone">
+            <Link to={heroConfig.contactTo} className="hero-btn group justify-center border border-brass/40 text-bone">
               Book a Consultation <span className="hero-arrow" aria-hidden="true">→</span>
             </Link>
             <Link
               to={heroConfig.resumeTo}
-              className="group mt-1 text-sm uppercase tracking-widest text-bone/80 underline-offset-8 hover:text-brass hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brass md:mt-0"
+              className="col-span-2 mt-1 justify-self-center px-2 py-1.5 font-mono text-[10px] uppercase tracking-[0.3em] text-bone/50 underline decoration-brass/40 underline-offset-4 transition-colors hover:text-brass focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brass md:col-span-1"
             >
-              View Resume <span className="hero-arrow" aria-hidden="true">→</span>
+              View Resume
             </Link>
           </div>
 
-          <div className="mt-8 grid max-w-xl grid-cols-3 gap-4 text-left md:mt-10">
-            {[
-              { value: "20+", label: "Years Leading Builds" },
-              { value: "$500M+", label: "Capital Delivered" },
-              { value: "6", label: "Regions Served" },
-            ].map((item) => (
-              <div key={item.label} className="rounded-full border border-bone/15 bg-bone/5 px-3 py-3 backdrop-blur-sm">
-                <div className="font-serif text-xl text-brass md:text-2xl">{item.value}</div>
-                <div className="mt-1 font-mono text-[0.55rem] uppercase tracking-[0.18em] text-bone/65">
+          <div className="mt-10 grid grid-cols-3 border-t border-bone/10 pt-4 md:mt-12 md:pt-5">
+            {heroStats.map((item, i) => (
+              <div key={item.label} className={i > 0 ? "border-l border-bone/10 pl-4 md:pl-6" : "pr-2"}>
+                <div className="font-mono text-lg leading-none text-bone md:text-xl">{item.value}</div>
+                <div className="mt-2 font-mono text-[8px] uppercase leading-tight tracking-[0.14em] text-brass md:text-[9px]">
                   {item.label}
                 </div>
               </div>
