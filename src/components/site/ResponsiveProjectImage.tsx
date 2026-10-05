@@ -2,8 +2,8 @@ import type { ImgHTMLAttributes } from "react";
 
 type ResponsiveProjectImageProps = ImgHTMLAttributes<HTMLImageElement> & {
   desktopSrc: string;
-  mobileSrc?: string;
-  resolvedSrc?: string;
+  mobileSrc?: string | undefined;
+  resolvedSrc?: string | undefined;
 };
 
 export function ResponsiveProjectImage({

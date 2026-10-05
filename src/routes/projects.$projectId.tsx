@@ -72,6 +72,12 @@ function ProjectPage() {
   const [editing, setEditing] = useState(false);
   const [lightbox, setLightbox] = useState<number | null>(null);
   const headerRef = useRef<HTMLElement>(null);
+  const albumSpan = (index: number) => {
+    if (index % 7 === 0) return "md:col-span-8";
+    if (index % 7 === 1) return "md:col-span-4";
+    if (index % 5 === 0) return "md:col-span-7";
+    return "md:col-span-4";
+  };
 
   useEffect(() => {
     if (lightbox === null) return;
@@ -193,7 +199,7 @@ function ProjectPage() {
                   variant="ghost"
                   type="button"
                   onClick={() => setLightbox(i)}
-                  className={`group relative h-auto overflow-hidden rounded-none border border-brass-dark/25 bg-brass/5 p-1 hover:bg-brass/10 md:col-span-${i % 7 === 0 ? "8" : i % 7 === 1 ? "4" : i % 5 === 0 ? "7" : "4"}`}
+                  className={`group relative h-auto overflow-hidden rounded-none border border-brass-dark/25 bg-brass/5 p-1 hover:bg-brass/10 ${albumSpan(i)}`}
                 >
                   <span className={`relative block w-full overflow-hidden ${i % 7 === 0 ? "aspect-[16/10]" : i % 7 === 1 ? "aspect-[4/5]" : i % 5 === 0 ? "aspect-[3/2]" : "aspect-[4/3]"}`}>
                     <img

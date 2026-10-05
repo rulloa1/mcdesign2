@@ -1,12 +1,11 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { lazy, Suspense, useRef } from "react";
+import { useRef } from "react";
 
 import { ScrollText } from "@/components/ui/text-scroll-animation";
 import { Nav } from "@/components/site/Nav";
 import { Marquee } from "@/components/site/Marquee";
 import { Hero } from "@/components/site/Hero";
 import { Testimonial } from "@/components/ui/design-testimonial";
-import CircularSplitRoll from "@/components/ui/circular-split-roll";
 
 
 import { PinnedCase } from "@/components/site/PinnedCase";

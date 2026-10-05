@@ -28,12 +28,9 @@ export function Hero({ poster }: { poster: string }) {
     if (phone || constrained || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
     const enableVideo = () => setVideoOk(true);
-    const idleId = "requestIdleCallback" in window
-      ? window.requestIdleCallback(enableVideo, { timeout: 1800 })
-      : window.setTimeout(enableVideo, 900);
+    const idleId = window.requestIdleCallback(enableVideo, { timeout: 1800 });
     return () => {
-      if ("cancelIdleCallback" in window) window.cancelIdleCallback(idleId);
-      else window.clearTimeout(idleId);
+      window.cancelIdleCallback(idleId);
     };
   }, []);
 
