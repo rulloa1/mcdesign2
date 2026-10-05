@@ -111,7 +111,7 @@ export function PrivateGallery({ projectId }: { projectId: string }) {
     <section className="pt-20">
       <div className="mb-8 flex items-baseline justify-between">
         <h2 className="font-serif text-3xl">My Gallery</h2>
-        <p className="font-mono text-[0.6rem] uppercase tracking-[0.24em] text-carbon/40">
+        <p className="font-mono text-[0.7rem] uppercase tracking-[0.24em] text-carbon/40">
           Private · only you can see this
         </p>
       </div>
@@ -178,19 +178,19 @@ export function PrivateGallery({ projectId }: { projectId: string }) {
                     <input className={input} value={editCaption} onChange={(e) => setEditCaption(e.target.value)} placeholder="Caption" />
                     <input className={input} type="date" value={editDate} onChange={(e) => setEditDate(e.target.value)} />
                     <div className="flex gap-2">
-                      <button type="button" onClick={() => void saveEdit(item.id)} className="bg-carbon px-4 py-1.5 text-[0.65rem] uppercase tracking-[0.2em] text-bone">Save</button>
-                      <button type="button" onClick={() => setEditId(null)} className="border border-carbon/25 px-4 py-1.5 text-[0.65rem] uppercase tracking-[0.2em]">Cancel</button>
+                      <button type="button" onClick={() => void saveEdit(item.id)} className="bg-carbon px-4 py-1.5 text-[0.75rem] uppercase tracking-[0.2em] text-bone">Save</button>
+                      <button type="button" onClick={() => setEditId(null)} className="border border-carbon/25 px-4 py-1.5 text-[0.75rem] uppercase tracking-[0.2em]">Cancel</button>
                     </div>
                   </div>
                 ) : (
                   <>
-                    <p className="font-mono text-[0.6rem] uppercase tracking-[0.22em] text-brass-dark">
+                    <p className="font-mono text-[0.7rem] uppercase tracking-[0.22em] text-brass-dark">
                       {item.taken_on
                         ? new Date(item.taken_on + "T00:00:00").toLocaleDateString(undefined, { year: "numeric", month: "long", day: "numeric" })
                         : "No date"}
                     </p>
                     <p className="mt-2 text-sm font-light text-carbon/80">{item.caption || "—"}</p>
-                    <div className="mt-3 flex gap-4 text-[0.65rem] uppercase tracking-[0.2em]">
+                    <div className="mt-3 flex gap-4 text-[0.75rem] uppercase tracking-[0.2em]">
                       <button type="button" onClick={() => { setEditId(item.id); setEditCaption(item.caption); setEditDate(item.taken_on ?? ""); }} className="text-carbon/60 hover:text-carbon">Edit</button>
                       <button type="button" onClick={() => void remove(item)} className="text-destructive">Delete</button>
                     </div>

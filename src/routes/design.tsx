@@ -104,7 +104,7 @@ function Tile({
       />
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-carbon/70 via-transparent to-transparent opacity-70" />
       {caption ? (
-        <figcaption className="absolute bottom-4 left-4 text-[0.6rem] uppercase tracking-[0.28em] text-bone/80">
+        <figcaption className="absolute bottom-4 left-4 text-[0.7rem] uppercase tracking-[0.28em] text-bone/80">
           {caption}
         </figcaption>
       ) : null}
@@ -129,7 +129,7 @@ function DesignPage() {
 
       <section ref={headerRef} className="relative overflow-hidden px-6 pt-36 pb-14 md:pt-44">
         <div className="relative z-10 mx-auto max-w-6xl">
-          <p className="text-[0.65rem] uppercase tracking-[0.35em] text-bone/50">MC Design Build</p>
+          <p className="text-[0.75rem] uppercase tracking-[0.35em] text-bone/50">MC Design Build</p>
           <h1 className="mt-4 font-serif text-5xl uppercase tracking-[0.3em] text-bone md:text-7xl">
             Design
           </h1>

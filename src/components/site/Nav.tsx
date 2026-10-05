@@ -46,7 +46,7 @@ export function Nav() {
             <img src={logoMono.url} alt="MC" className="h-7 w-auto" />
           </Link>
 
-          <div className="hidden gap-7 text-[0.7rem] uppercase tracking-[0.22em] text-bone/70 md:flex">
+          <div className="hidden gap-7 text-[0.75rem] uppercase tracking-[0.22em] text-bone/80 md:flex">
             {links.map((l) => (
               <a
                 key={l.href}
@@ -91,23 +91,25 @@ export function Nav() {
             aria-label={open ? "Close navigation menu" : "Open navigation menu"}
             aria-expanded={open}
             onClick={() => setOpen((v) => !v)}
-            className="relative h-5 w-[30px] md:hidden cursor-pointer"
+            className="-my-2 -mr-2 flex h-11 w-11 cursor-pointer items-center justify-center md:hidden"
           >
-            <span
-              className={`absolute left-0 h-px w-full bg-brass transition-all duration-400 ${
-                open ? "top-1/2 rotate-45" : "top-0"
-              }`}
-            />
-            <span
-              className={`absolute top-1/2 left-0 h-px w-full -translate-y-1/2 bg-brass transition-opacity duration-400 ${
-                open ? "opacity-0" : "opacity-100"
-              }`}
-            />
-            <span
-              className={`absolute left-0 h-px w-full bg-brass transition-all duration-400 ${
-                open ? "top-1/2 -rotate-45" : "bottom-0"
-              }`}
-            />
+            <span className="relative block h-5 w-[30px]">
+              <span
+                className={`absolute left-0 h-px w-full bg-brass transition-all duration-400 ${
+                  open ? "top-1/2 rotate-45" : "top-0"
+                }`}
+              />
+              <span
+                className={`absolute top-1/2 left-0 h-px w-full -translate-y-1/2 bg-brass transition-opacity duration-400 ${
+                  open ? "opacity-0" : "opacity-100"
+                }`}
+              />
+              <span
+                className={`absolute left-0 h-px w-full bg-brass transition-all duration-400 ${
+                  open ? "top-1/2 -rotate-45" : "bottom-0"
+                }`}
+              />
+            </span>
           </button>
         </nav>
       </header>

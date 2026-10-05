@@ -113,7 +113,7 @@ function ProjectPage() {
               {project.categories.map((c) => (
                 <span
                   key={c}
-                  className="inline-flex items-center rounded-full border border-brass/25 bg-brass/10 px-3 py-1 font-mono text-[0.6rem] uppercase tracking-[0.22em] text-brass"
+                  className="inline-flex items-center rounded-full border border-brass/25 bg-brass/10 px-3 py-1 font-mono text-[0.7rem] uppercase tracking-[0.22em] text-brass"
                 >
                   {categoryLabels[c]}
                 </span>
@@ -123,7 +123,7 @@ function ProjectPage() {
             <p className="mt-4 text-lg font-light text-bone/70">
               {project.subtitle} • {project.location}
             </p>
-            <p className="mt-4 font-mono text-[0.65rem] uppercase tracking-[0.2em] text-brass/80">
+            <p className="mt-4 font-mono text-[0.75rem] uppercase tracking-[0.2em] text-brass/80">
               {project.specs}
             </p>
           </div>
@@ -133,13 +133,13 @@ function ProjectPage() {
       <main className="mx-auto max-w-[1600px] px-6 py-20 md:px-12">
         <div className="grid gap-12 border-b border-carbon/10 pb-16 md:grid-cols-3">
           <div>
-            <p className="font-mono text-[0.6rem] uppercase tracking-[0.24em] text-brass-dark">
+            <p className="font-mono text-[0.7rem] uppercase tracking-[0.24em] text-brass-dark">
               Role
             </p>
             <p className="mt-3 text-sm font-light leading-relaxed text-carbon/70">{project.role}</p>
           </div>
           <div className="md:col-span-2">
-            <p className="font-mono text-[0.6rem] uppercase tracking-[0.24em] text-brass-dark">
+            <p className="font-mono text-[0.7rem] uppercase tracking-[0.24em] text-brass-dark">
               Overview
             </p>
             <p className="mt-3 text-base font-light leading-relaxed text-carbon/70">
@@ -153,14 +153,14 @@ function ProjectPage() {
           <div className="mb-10 flex items-baseline justify-between">
             <h2 className="font-serif text-3xl">Album</h2>
             <div className="flex items-center gap-6">
-              <p className="font-mono text-[0.6rem] uppercase tracking-[0.24em] text-carbon/40">
+              <p className="font-mono text-[0.7rem] uppercase tracking-[0.24em] text-carbon/40">
                 {images.length} {images.length === 1 ? "Photo" : "Photos"}
               </p>
               {isAdmin && !editing ? (
                 <button
                   type="button"
                   onClick={() => setEditing(true)}
-                  className="border border-carbon/25 px-5 py-2 text-[0.65rem] uppercase tracking-[0.22em] transition-colors hover:bg-carbon hover:text-bone"
+                  className="border border-carbon/25 px-5 py-2 text-[0.75rem] uppercase tracking-[0.22em] transition-colors hover:bg-carbon hover:text-bone"
                 >
                   Edit Album
                 </button>
@@ -208,7 +208,7 @@ function ProjectPage() {
           <section className="pt-16">
             <div className="mb-10 flex items-baseline justify-between">
               <h2 className="font-serif text-3xl">Gallery</h2>
-              <p className="font-mono text-[0.6rem] uppercase tracking-[0.24em] text-carbon/40">
+              <p className="font-mono text-[0.7rem] uppercase tracking-[0.24em] text-carbon/40">
                 {galleryItems.length} {galleryItems.length === 1 ? "Item" : "Items"}
               </p>
             </div>
@@ -237,7 +237,7 @@ function ProjectPage() {
                     <figcaption className="mt-2 flex items-baseline justify-between gap-3">
                       <span className="text-xs font-light text-carbon/70">{item.caption}</span>
                       {item.taken_on ? (
-                        <span className="shrink-0 font-mono text-[0.55rem] uppercase tracking-[0.18em] text-carbon/40">
+                        <span className="shrink-0 font-mono text-[0.7rem] uppercase tracking-[0.18em] text-carbon/40">
                           {item.taken_on}
                         </span>
                       ) : null}

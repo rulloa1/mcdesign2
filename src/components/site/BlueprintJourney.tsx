@@ -51,7 +51,7 @@ export function BlueprintJourney() {
           type="button"
           onClick={() => setSimple((s) => !s)}
           aria-pressed={simple}
-          className="fixed bottom-4 left-4 z-50 rounded-full border border-brass/40 bg-carbon/85 px-4 py-2 font-mono text-[0.6rem] uppercase tracking-[0.22em] text-bone/80 backdrop-blur transition hover:border-brass hover:text-brass focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brass"
+          className="fixed bottom-4 left-4 z-50 rounded-full border border-brass/40 bg-carbon/85 px-4 py-2 font-mono text-[0.7rem] uppercase tracking-[0.22em] text-bone/80 backdrop-blur transition hover:border-brass hover:text-brass focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brass"
         >
           {simple ? "Blueprint View" : "Simple View"}
         </button>

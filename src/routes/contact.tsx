@@ -94,7 +94,7 @@ function ContactPage() {
       <Nav />
       <header ref={headerRef} className="relative overflow-hidden bg-carbon px-6 pb-20 pt-40 text-bone md:px-20 md:pb-28 md:pt-48">
         <div className="relative z-10 mx-auto max-w-[1400px]">
-          <p className="font-mono text-[0.65rem] uppercase tracking-[0.24em] text-brass">
+          <p className="font-mono text-[0.75rem] uppercase tracking-[0.24em] text-brass">
             Begin a conversation
           </p>
           <h1 className="mt-6 max-w-4xl font-serif text-5xl leading-tight md:text-7xl">
@@ -110,7 +110,7 @@ function ContactPage() {
       <main className="px-6 py-20 md:px-20 md:py-28">
         <div className="mx-auto grid max-w-[1400px] gap-16 lg:grid-cols-[0.72fr_1.28fr] lg:gap-24">
           <aside>
-            <p className="font-mono text-[0.65rem] uppercase tracking-[0.24em] text-brass-dark">
+            <p className="font-mono text-[0.75rem] uppercase tracking-[0.24em] text-brass-dark">
               Project inquiries
             </p>
             <h2 className="mt-5 font-serif text-3xl leading-snug md:text-4xl">
@@ -122,13 +122,13 @@ function ContactPage() {
             </p>
             <dl className="mt-12 space-y-8 border-t border-carbon/10 pt-8">
               <div>
-                <dt className="font-mono text-[0.6rem] uppercase tracking-[0.22em] text-carbon/40">
+                <dt className="font-mono text-[0.7rem] uppercase tracking-[0.22em] text-carbon/40">
                   Based in
                 </dt>
                 <dd className="mt-2 text-sm">Spring, Texas · Projects worldwide</dd>
               </div>
               <div>
-                <dt className="font-mono text-[0.6rem] uppercase tracking-[0.22em] text-carbon/40">
+                <dt className="font-mono text-[0.7rem] uppercase tracking-[0.22em] text-carbon/40">
                   Direct email
                 </dt>
                 <dd className="mt-2">
@@ -149,7 +149,7 @@ function ContactPage() {
             </h2>
             {status === "sent" ? (
               <div className="border-y border-brass/30 py-16" role="status">
-                <p className="font-mono text-[0.65rem] uppercase tracking-[0.24em] text-brass-dark">
+                <p className="font-mono text-[0.75rem] uppercase tracking-[0.24em] text-brass-dark">
                   Inquiry received
                 </p>
                 <h2 className="mt-5 font-serif text-4xl">Thank you for reaching out.</h2>
@@ -375,7 +375,7 @@ function Field({
     <div className={full ? "md:col-span-2" : undefined}>
       <label
         htmlFor={htmlFor}
-        className="block font-mono text-[0.6rem] uppercase tracking-[0.22em] text-carbon/50"
+        className="block font-mono text-[0.7rem] uppercase tracking-[0.22em] text-carbon/50"
       >
         {label}
         {required ? (

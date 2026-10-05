@@ -13,6 +13,7 @@ import { PinnedCase } from "@/components/site/PinnedCase";
 import { projects } from "@/data/projects";
 import { projectSlotKey } from "@/data/media-slots";
 import { useSiteMedia } from "@/lib/site-media";
+import { useIsAdmin } from "@/lib/project-albums";
 
 import profileAsset from "@/assets/mike-headshot.jpg.asset.json";
 const profile = profileAsset.url;
@@ -139,6 +140,7 @@ const Arrow = () => (
 
 function Index() {
   const media = useSiteMedia();
+  const isAdmin = useIsAdmin();
   const worksRef = useRef<HTMLElement>(null);
 
   return (
@@ -154,7 +156,7 @@ function Index() {
         {/* Selected Works */}
         <section id="works" ref={worksRef} className="relative py-32 [overflow:clip]">
           <div className="relative mx-auto mb-12 max-w-[1600px] px-6 md:px-12">
-            <div className="mb-6 inline-flex items-center rounded-full border border-carbon/12 bg-carbon/5 px-3 py-1 font-mono text-[0.6rem] uppercase tracking-[0.22em] text-carbon/60">
+            <div className="mb-6 inline-flex items-center rounded-full border border-carbon/12 bg-carbon/5 px-3 py-1 font-mono text-[0.7rem] uppercase tracking-[0.22em] text-carbon/60">
               Selected Works
             </div>
             <ScrollText text="A Legacy of Scale." className="font-serif text-4xl md:text-6xl" />
@@ -184,7 +186,7 @@ function Index() {
                   <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-carbon/85 via-carbon/10 to-transparent" />
                   <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 p-5 md:p-7">
                     <div>
-                      <p className="mb-2 font-mono text-[0.6rem] uppercase tracking-[0.3em] text-brass">
+                      <p className="mb-2 font-mono text-[0.7rem] uppercase tracking-[0.3em] text-brass">
                         {String(i + 1).padStart(2, "0")} / {project.location}
                       </p>
                       <h3 className="font-serif text-2xl leading-tight text-bone md:text-3xl">{g.label}</h3>
@@ -232,7 +234,7 @@ function Index() {
             </div>
 
             <div className="md:w-3/5">
-              <div className="mb-5 inline-flex items-center rounded-full border border-brass/20 bg-brass/5 px-3 py-1 font-mono text-[0.6rem] uppercase tracking-[0.22em] text-brass/80">
+              <div className="mb-5 inline-flex items-center rounded-full border border-brass/20 bg-brass/5 px-3 py-1 font-mono text-[0.7rem] uppercase tracking-[0.22em] text-brass/80">
                 About the Owner
               </div>
               <h2 className="mb-8 font-serif text-4xl md:text-5xl">Michael Chandler</h2>
@@ -257,7 +259,7 @@ function Index() {
               </div>
               <div className="mt-10 flex flex-wrap gap-8">
                 {[
-                  { v: "21+", l: "Signature Projects" },
+                  { v: String(projects.length), l: "Signature Projects" },
                   { v: "$500M+", l: "Capital Managed" },
                   { v: "6", l: "Global Regions" },
                 ].map((s) => (
@@ -374,7 +376,7 @@ function Index() {
         {/* Services */}
         <section id="services" className="bg-carbon px-6 py-32 text-bone md:px-20">
           <div className="mx-auto max-w-7xl">
-            <div className="mb-6 inline-flex items-center rounded-full border border-brass/20 bg-brass/5 px-3 py-1 font-mono text-[0.6rem] uppercase tracking-[0.22em] text-brass/80">
+            <div className="mb-6 inline-flex items-center rounded-full border border-brass/20 bg-brass/5 px-3 py-1 font-mono text-[0.7rem] uppercase tracking-[0.22em] text-brass/80">
               WHAT I DO
             </div>
             <ScrollText text="One Team. Every Discipline." className="mb-24 font-serif text-4xl md:text-5xl" />
@@ -419,7 +421,7 @@ function Index() {
         {/* Testimonials */}
         <section className="overflow-hidden bg-bone px-6 py-32 md:px-20">
           <div className="mx-auto max-w-5xl">
-            <div className="mb-16 inline-flex items-center rounded-full border border-carbon/12 bg-carbon/5 px-3 py-1 font-mono text-[0.6rem] uppercase tracking-[0.22em] text-carbon/60 md:hidden">
+            <div className="mb-16 inline-flex items-center rounded-full border border-carbon/12 bg-carbon/5 px-3 py-1 font-mono text-[0.7rem] uppercase tracking-[0.22em] text-carbon/60 md:hidden">
               Client Perspectives
             </div>
             <Testimonial items={testimonials} />
@@ -445,22 +447,30 @@ function Index() {
               </span>
             </Link>
 
-            <div className="mt-20 flex flex-wrap justify-center gap-12 font-mono text-sm text-bone/60">
+            <div className="mt-20 flex flex-wrap items-center justify-center gap-x-12 gap-y-2 font-mono text-sm text-bone/60">
               <a
                 href="https://www.linkedin.com/in/michael-chandler-mc-design-build"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="transition-colors hover:text-brass"
+                className="inline-flex min-h-11 items-center transition-colors hover:text-brass"
               >
                 LinkedIn
               </a>
-              <a href="mailto:mike.rcccon@yahoo.com" className="transition-colors hover:text-brass">
+              <a
+                href="mailto:mike.rcccon@yahoo.com"
+                className="inline-flex min-h-11 items-center transition-colors hover:text-brass"
+              >
                 Email
               </a>
               <span>Spring, TX</span>
-              <Link to="/studio/media" className="transition-colors hover:text-brass">
-                Media Studio
-              </Link>
+              {isAdmin ? (
+                <Link
+                  to="/studio/media"
+                  className="inline-flex min-h-11 items-center transition-colors hover:text-brass"
+                >
+                  Media Studio
+                </Link>
+              ) : null}
             </div>
           </div>
         </section>

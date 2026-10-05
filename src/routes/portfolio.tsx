@@ -160,7 +160,7 @@ function PortfolioCard({
             </span>
           </div>
 
-          <p className="font-mono text-[0.65rem] uppercase tracking-[0.18em]">{project.specs}</p>
+          <p className="font-mono text-[0.75rem] uppercase tracking-[0.18em]">{project.specs}</p>
 
           <p className="max-w-[280px] text-sm font-light leading-relaxed">{project.role}</p>
 

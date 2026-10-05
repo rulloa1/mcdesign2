@@ -78,7 +78,7 @@ export function Hero({ poster }: { poster: string }) {
 
       <div className="relative mx-auto w-full max-w-[1400px]">
         <div className="hero-fade max-w-4xl">
-          <p className="mb-2 font-mono text-[10px] uppercase tracking-[0.15em] text-brass md:mb-4 md:text-sm md:tracking-[0.35em]">
+          <p className="mb-2 font-mono text-[0.7rem] uppercase tracking-[0.15em] text-brass md:mb-4 md:text-sm md:tracking-[0.35em]">
             Luxury Residential • Hospitality • Development
           </p>
           <p className="mb-3 text-xs font-light text-bone/80 md:mb-6 md:text-xl">
@@ -104,13 +104,13 @@ export function Hero({ poster }: { poster: string }) {
             </Link>
             <Link
               to={heroConfig.resumeTo}
-              className="group mt-1 text-sm uppercase tracking-widest text-bone/80 underline-offset-8 hover:text-brass hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brass md:mt-0"
+              className="group mt-1 inline-flex min-h-11 items-center gap-1 text-sm uppercase tracking-widest text-bone/80 underline-offset-8 hover:text-brass hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brass md:mt-0"
             >
               View Resume <span className="hero-arrow" aria-hidden="true">→</span>
             </Link>
           </div>
 
-          <div className="mt-8 grid max-w-xl grid-cols-3 gap-4 text-left md:mt-10">
+          <div className="mt-8 grid max-w-xl grid-cols-3 gap-4 text-left md:mt-10 md:max-w-2xl">
             {[
               { value: "20+", label: "Years Leading Builds" },
               { value: "$500M+", label: "Capital Delivered" },
@@ -118,7 +118,7 @@ export function Hero({ poster }: { poster: string }) {
             ].map((item) => (
               <div key={item.label} className="rounded-full border border-bone/15 bg-bone/5 px-3 py-3 backdrop-blur-sm">
                 <div className="font-serif text-xl text-brass md:text-2xl">{item.value}</div>
-                <div className="mt-1 font-mono text-[0.55rem] uppercase tracking-[0.18em] text-bone/65">
+                <div className="mt-1 font-mono text-[0.7rem] uppercase tracking-[0.18em] text-bone/65">
                   {item.label}
                 </div>
               </div>

@@ -29,7 +29,7 @@ export function PinnedCase({ id, subtitle, title, images, alts, captions, stats 
   return (
     <section id={id} className="relative bg-carbon px-6 py-24 text-bone md:px-20 md:py-32">
       <div className="mx-auto max-w-[1400px]">
-        <motion.p {...reveal(0, 20)} className="mb-4 font-mono text-[0.65rem] uppercase tracking-[0.3em] text-brass">{subtitle}</motion.p>
+        <motion.p {...reveal(0, 20)} className="mb-4 font-mono text-[0.75rem] uppercase tracking-[0.3em] text-brass">{subtitle}</motion.p>
         <ScrollText text={title} className="mb-10 max-w-4xl font-serif text-4xl leading-[1.05] md:mb-14 md:text-7xl" />
 
         <div className="grid gap-3 md:grid-cols-3 md:gap-4">
@@ -57,7 +57,7 @@ export function PinnedCase({ id, subtitle, title, images, alts, captions, stats 
               {stats.map((s) => (
                 <div key={s.label}>
                   <div className="font-serif text-4xl leading-none text-brass md:text-5xl">{s.value}</div>
-                  <div className="mt-2 text-[0.65rem] uppercase tracking-[0.2em] text-bone/60">{s.label}</div>
+                  <div className="mt-2 text-[0.75rem] uppercase tracking-[0.2em] text-bone/60">{s.label}</div>
                 </div>
               ))}
             </div>

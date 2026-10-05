@@ -343,6 +343,8 @@ html.journey :is(.bg-bone, #works, .bg-background).text-carbon,
 html.journey :is(.bg-bone, #works, .bg-background) :is(h1, h2, h3, h4, p, li, dt, dd, label, blockquote) {
   color: color-mix(in oklab, var(--bone) 88%, transparent);
 }
+/* The testimonial numeral is a faint watermark; keep it ghosted instead of the 88% text rule above. */
+html.journey .testimonial-ghost { color: color-mix(in oklab, var(--bone) 5%, transparent) !important; }
 html.journey :is(.bg-bone, #works, .bg-background) [class*="border-carbon"] { border-color: color-mix(in oklab, var(--bone) 14%, transparent); }
 html.journey :is(.bg-bone, #works, .bg-background) [class*="bg-carbon/"] { background-color: color-mix(in oklab, var(--bone) 6%, transparent); }
 html.journey :is(.bg-bone, #works, .bg-background) :is(input, textarea, select) { color: var(--bone); background-color: color-mix(in oklab, #050505 60%, transparent); }

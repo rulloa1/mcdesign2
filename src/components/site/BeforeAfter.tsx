@@ -67,10 +67,10 @@ export function BeforeAfter({ before, after, className = "" }: Props) {
         />
       </div>
 
-      <span className="pointer-events-none absolute bottom-4 left-4 text-[0.6rem] uppercase tracking-[0.28em] text-bone/80">
+      <span className="pointer-events-none absolute bottom-4 left-4 text-[0.7rem] uppercase tracking-[0.28em] text-bone/80">
         Before
       </span>
-      <span className="pointer-events-none absolute bottom-4 right-4 text-[0.6rem] uppercase tracking-[0.28em] text-bone/80">
+      <span className="pointer-events-none absolute bottom-4 right-4 text-[0.7rem] uppercase tracking-[0.28em] text-bone/80">
         After
       </span>
 
@@ -79,7 +79,7 @@ export function BeforeAfter({ before, after, className = "" }: Props) {
         style={{ left: `${pos}%` }}
       >
         <div className="absolute top-1/2 left-1/2 flex h-10 w-10 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-brass bg-carbon/70 backdrop-blur-sm">
-          <span className="text-[0.65rem] tracking-[0.1em] text-brass">‹›</span>
+          <span className="text-[0.75rem] tracking-[0.1em] text-brass">‹›</span>
         </div>
       </div>
 

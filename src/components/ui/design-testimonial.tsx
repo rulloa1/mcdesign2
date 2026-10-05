@@ -58,7 +58,7 @@ export function Testimonial({ items }: { items: TestimonialItem[] }) {
   return (
     <div ref={containerRef} className="relative w-full" onMouseMove={handleMouseMove}>
       <motion.div
-        className="pointer-events-none absolute -left-4 top-1/2 -translate-y-1/2 select-none font-serif text-[12rem] leading-none text-carbon/[0.04] md:-left-8 md:text-[22rem]"
+        className="testimonial-ghost pointer-events-none absolute -left-4 top-1/2 -translate-y-1/2 select-none font-serif text-[12rem] leading-none text-carbon/[0.04] md:-left-8 md:text-[22rem]"
         style={{ x: numberX, y: numberY }}
         aria-hidden="true"
       >
@@ -79,7 +79,7 @@ export function Testimonial({ items }: { items: TestimonialItem[] }) {
       <div className="relative flex">
         <div className="hidden flex-col items-center justify-center border-r border-carbon/10 pr-12 md:flex">
           <span
-            className="font-mono text-[0.6rem] uppercase tracking-[0.22em] text-carbon/50"
+            className="font-mono text-[0.7rem] uppercase tracking-[0.22em] text-carbon/50"
             style={{ writingMode: "vertical-rl" }}
           >
             Client Perspectives
@@ -137,7 +137,7 @@ export function Testimonial({ items }: { items: TestimonialItem[] }) {
                   transition={{ duration: 0.6, delay: 0.3 }}
                   style={{ originX: 0 }}
                 />
-                <p className="font-mono text-[0.65rem] uppercase tracking-[0.22em] text-carbon/50">
+                <p className="font-mono text-[0.75rem] uppercase tracking-[0.22em] text-carbon/50">
                   {current.source.replace(/^—\s*/, "")}
                 </p>
               </motion.div>

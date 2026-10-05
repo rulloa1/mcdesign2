@@ -1,5 +1,7 @@
+import { projects } from "@/data/projects";
+
 const items = [
-  "21 Signature Projects",
+  `${projects.length} Signature Projects`,
   "$500M+ Capital Managed",
   "20+ Years Executive Leadership",
   "Discovery Land Company Rep",

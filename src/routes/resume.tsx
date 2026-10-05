@@ -294,7 +294,7 @@ const certifications = [
 function SectionHeading({ children }: { children: string }) {
   return (
     <div className="mb-8 flex items-center gap-4">
-      <h2 className="shrink-0 font-mono text-[0.65rem] uppercase tracking-[0.28em] text-brass">
+      <h2 className="shrink-0 font-mono text-[0.75rem] uppercase tracking-[0.28em] text-brass">
         {children}
       </h2>
       <div className="h-px w-full bg-bone/10" />
@@ -307,7 +307,7 @@ function RoleBlock({ role }: { role: Role }) {
     <article className="border-l border-bone/10 pl-6 md:pl-8">
       <div className="mb-2 flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
         <h3 className="font-serif text-xl text-bone md:text-2xl">{role.company}</h3>
-        <span className="font-mono text-[0.65rem] uppercase tracking-[0.2em] text-bone/40">
+        <span className="font-mono text-[0.75rem] uppercase tracking-[0.2em] text-bone/40">
           {role.period}
         </span>
       </div>
@@ -347,13 +347,13 @@ function ResumePage() {
         <div className="mx-auto max-w-3xl">
           <header ref={headerRef} className="relative mb-16 overflow-hidden border-b border-bone/10 pb-12">
             <div className="relative z-10 mb-4 flex flex-wrap items-center justify-between gap-4">
-              <p className="font-mono text-[0.6rem] uppercase tracking-[0.28em] text-brass">
+              <p className="font-mono text-[0.7rem] uppercase tracking-[0.28em] text-brass">
                 MC Design Build
               </p>
               <button
                 type="button"
                 onClick={() => window.print()}
-                className="print:hidden cursor-pointer inline-flex items-center gap-2 border border-bone/20 px-4 py-1.5 font-mono text-[0.6rem] uppercase tracking-[0.2em] text-bone/70 transition-colors hover:border-brass hover:text-brass"
+                className="print:hidden cursor-pointer inline-flex items-center gap-2 border border-bone/20 px-4 py-1.5 font-mono text-[0.7rem] uppercase tracking-[0.2em] text-bone/70 transition-colors hover:border-brass hover:text-brass"
               >
                 Print / Save PDF
               </button>
@@ -393,7 +393,7 @@ function ResumePage() {
                   className="border border-bone/10 p-5"
                   style={{ background: "rgb(201 169 97 / 0.03)" }}
                 >
-                  <dt className="mb-2 font-mono text-[0.6rem] uppercase tracking-[0.22em] text-brass">
+                  <dt className="mb-2 font-mono text-[0.7rem] uppercase tracking-[0.22em] text-brass">
                     {c.label}
                   </dt>
                   <dd className="text-sm leading-relaxed text-bone/70">{c.items}</dd>
@@ -420,7 +420,7 @@ function ResumePage() {
                     <h3 className="text-base text-bone/90">
                       {e.role} · <span className="text-brass/90">{e.org}</span>
                     </h3>
-                    <span className="font-mono text-[0.65rem] uppercase tracking-[0.2em] text-bone/40">
+                    <span className="font-mono text-[0.75rem] uppercase tracking-[0.2em] text-bone/40">
                       {e.period}
                     </span>
                   </div>
@@ -440,7 +440,7 @@ function ResumePage() {
                   style={{ background: "rgb(201 169 97 / 0.03)" }}
                 >
                   <p className="font-serif text-xl text-brass md:text-2xl">{m.value}</p>
-                  <p className="mt-2 font-mono text-[0.55rem] uppercase tracking-[0.18em] text-bone/50">
+                  <p className="mt-2 font-mono text-[0.7rem] uppercase tracking-[0.18em] text-bone/50">
                     {m.label}
                   </p>
                 </div>
@@ -454,7 +454,7 @@ function ResumePage() {
               <h3 className="font-serif text-lg text-bone">
                 Architecture Studies — University of Texas
               </h3>
-              <span className="font-mono text-[0.65rem] uppercase tracking-[0.2em] text-bone/40">
+              <span className="font-mono text-[0.75rem] uppercase tracking-[0.2em] text-bone/40">
                 1985
               </span>
             </div>
@@ -469,7 +469,7 @@ function ResumePage() {
                 </li>
               ))}
             </ul>
-            <p className="mt-10 border-t border-bone/10 pt-6 font-mono text-[0.6rem] uppercase tracking-[0.2em] text-bone/40">
+            <p className="mt-10 border-t border-bone/10 pt-6 font-mono text-[0.7rem] uppercase tracking-[0.2em] text-bone/40">
               Professional references and detailed project portfolio available upon request.
             </p>
           </section>
