@@ -8,6 +8,7 @@ import { useOrderedProjects } from "@/lib/project-order";
 import { projectSlotKey } from "@/data/media-slots";
 import { useSiteMedia } from "@/lib/site-media";
 import type { Project } from "@/data/projects";
+import { projectAlbums } from "@/data/albums";
 
 export const Route = createFileRoute("/portfolio")({
   head: () => ({
@@ -164,8 +165,8 @@ function PortfolioCard({
 
           <p className="max-w-[280px] text-sm font-light leading-relaxed">{project.role}</p>
 
-          <span className="inline-flex items-center gap-4 pt-3 font-mono text-[10px] uppercase tracking-[0.5em] transition-colors duration-500 group-hover:text-carbon">
-            View Album
+          <span className="inline-flex items-center gap-4 pt-3 font-mono text-[10px] uppercase tracking-[0.32em] transition-colors duration-500 group-hover:text-carbon">
+            View {projectAlbums[project.id]?.images.length ?? 0}-Photo Album
             <span className="text-base leading-none transition-transform duration-500 group-hover:translate-x-2">
               →
             </span>

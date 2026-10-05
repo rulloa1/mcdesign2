@@ -1,7 +1,9 @@
-import { lazy, Suspense, useEffect, useRef, useState } from "react";
-import { ClientOnly, Link } from "@tanstack/react-router";
+import { useEffect, useRef, useState } from "react";
+import { Link } from "@tanstack/react-router";
 
 import heroVideo from "@/assets/videos/southcoast-hero-sm.mp4.asset.json";
+import mobileHeroPoster from "@/assets/mobile/hero.webp";
+import { ResponsiveProjectImage } from "@/components/site/ResponsiveProjectImage";
 
 /** Central hero configuration — swap media and destinations here. */
 export const heroConfig = {
@@ -12,18 +14,29 @@ export const heroConfig = {
   contactTo: "/contact" as const,
 };
 
-export function Hero({ poster }: { poster: string }) {
+export function Hero({ poster, posterFallback }: { poster: string; posterFallback: string }) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const heroRef = useRef<HTMLElement>(null);
-  const [videoOk, setVideoOk] = useState(true);
+  const [videoOk, setVideoOk] = useState(false);
+
+  useEffect(() => {
+    const connection = (navigator as Navigator & {
+      connection?: { saveData?: boolean; effectiveType?: string };
+    }).connection;
+    const phone = window.matchMedia("(pointer: coarse)").matches || window.innerWidth < 900;
+    const constrained = connection?.saveData || connection?.effectiveType === "2g";
+    if (phone || constrained || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    const enableVideo = () => setVideoOk(true);
+    const idleId = window.requestIdleCallback(enableVideo, { timeout: 1800 });
+    return () => {
+      window.cancelIdleCallback(idleId);
+    };
+  }, []);
 
   useEffect(() => {
     const v = videoRef.current;
     if (!v) return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      setVideoOk(false);
-      return;
-    }
     v.playbackRate = 0.55;
     const onPlay = () => {
       v.playbackRate = 0.55;
@@ -48,8 +61,11 @@ export function Hero({ poster }: { poster: string }) {
       id="hero"
       className="relative z-10 isolate flex min-h-[82svh] flex-col justify-center overflow-hidden bg-carbon px-6 pb-12 pt-24 md:px-20 md:pb-20 md:pt-28"
     >
-      <img
-        src={poster}
+      <ResponsiveProjectImage
+        desktopSrc={poster}
+        mobileSrc={mobileHeroPoster}
+        resolvedSrc={poster}
+        fallbackSrc={posterFallback}
         alt=""
         aria-hidden="true"
         fetchPriority="high"
@@ -65,7 +81,7 @@ export function Hero({ poster }: { poster: string }) {
           muted
           loop
           playsInline
-          preload="metadata"
+          preload="none"
           aria-hidden="true"
           onError={() => setVideoOk(false)}
           className="absolute inset-0 -z-10 h-full w-full object-cover"

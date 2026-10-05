@@ -1,12 +1,11 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { lazy, Suspense, useRef } from "react";
+import { useRef } from "react";
 
 import { ScrollText } from "@/components/ui/text-scroll-animation";
 import { Nav } from "@/components/site/Nav";
 import { Marquee } from "@/components/site/Marquee";
 import { Hero } from "@/components/site/Hero";
 import { Testimonial } from "@/components/ui/design-testimonial";
-import CircularSplitRoll from "@/components/ui/circular-split-roll";
 
 
 import { PinnedCase } from "@/components/site/PinnedCase";
@@ -17,6 +16,13 @@ import { useSiteMedia } from "@/lib/site-media";
 import profileAsset from "@/assets/mike-headshot.jpg.asset.json";
 const profile = profileAsset.url;
 import heroImage from "@/assets/southcoast-cover.webp";
+import mobileMiami from "@/assets/mobile/miami-beach.webp";
+import mobileAlpine from "@/assets/mobile/alpine-ranch.webp";
+import mobileSouthcoast from "@/assets/mobile/southcoast.webp";
+import mobilePool from "@/assets/mobile/hospitality-pool.webp";
+import mobileCarmel from "@/assets/mobile/carmel-knolls.webp";
+import mobileSyracuse from "@/assets/mobile/syracuse.webp";
+import { ResponsiveProjectImage } from "@/components/site/ResponsiveProjectImage";
 
 const TITLE = "Michael Chandler — Luxury Construction Executive";
 const DESCRIPTION =
@@ -103,6 +109,15 @@ const gridProjects = [
   },
 ];
 
+const mobileCovers: Record<string, string> = {
+  "miami-beach": mobileMiami,
+  "alpine-ranch": mobileAlpine,
+  southcoast: mobileSouthcoast,
+  "hospitality-pool": mobilePool,
+  "carmel-knolls": mobileCarmel,
+  syracuse: mobileSyracuse,
+};
+
 
 const testimonials = [
   {
@@ -146,7 +161,7 @@ function Index() {
       <Nav />
 
       <main>
-        <Hero poster={media("hero", heroImage)} />
+        <Hero poster={media("hero", heroImage)} posterFallback={heroImage} />
 
         <Marquee />
 
@@ -175,10 +190,13 @@ function Index() {
                   params={{ projectId: g.id }}
                   className={`group relative block overflow-hidden bg-carbon ${full ? "md:col-span-6" : big ? "md:col-span-3" : "md:col-span-2"}`}
                 >
-                  <img
-                    src={media(projectSlotKey(g.id), project.cover)}
+                  <ResponsiveProjectImage
+                    desktopSrc={project.cover}
+                    mobileSrc={mobileCovers[g.id]}
+                    resolvedSrc={media(projectSlotKey(g.id), project.cover)}
                     alt={g.label}
                     loading="lazy"
+                    decoding="async"
                     className={`w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.04] ${full ? "aspect-[4/3] md:aspect-[21/9]" : big ? "aspect-[4/3]" : "aspect-[4/5]"}`}
                   />
                   <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-carbon/85 via-carbon/10 to-transparent" />
@@ -307,6 +325,11 @@ function Index() {
             media("case-pool-2-v2", "/projects/assets/enh/pool-design-26.webp"),
             media("case-pool-3-v2", "/projects/assets/enh/pool-design-22.webp"),
           ]}
+          mobileImages={[
+            "/projects/assets/mobile/pool-1.webp",
+            "/projects/assets/mobile/pool-26.webp",
+            "/projects/assets/mobile/pool-22.webp",
+          ]}
           alts={[
             "Ultra Luxe Pool — Daylight Overview",
             "Ultra Luxe Pool — Resort Detail",
@@ -331,6 +354,11 @@ function Index() {
             media("case-alpine-2-v2", "/projects/assets/enh/alpine-ranch-5.webp"),
             media("case-alpine-3-v2", "/projects/assets/enh/alpine-ranch-9.webp"),
           ]}
+          mobileImages={[
+            "/projects/assets/mobile/alpine-cover.webp",
+            "/projects/assets/mobile/alpine-5.webp",
+            "/projects/assets/mobile/alpine-9.webp",
+          ]}
           alts={[
             "Alpine Ranch — Mountain Vista",
             "Alpine Ranch — Craftsmanship Detail",
@@ -354,6 +382,11 @@ function Index() {
             media("case-miami-1-v2", "/projects/assets/enh/miami-beach-sunset-pool-sharp-u.webp"),
             media("case-miami-2-v2", "/projects/assets/enh/miami-beach-20.webp"),
             media("case-miami-3-v2", "/projects/assets/enh/miami-beach-18.webp"),
+          ]}
+          mobileImages={[
+            "/projects/assets/mobile/miami-1.webp",
+            "/projects/assets/mobile/miami-20.webp",
+            "/projects/assets/mobile/miami-18.webp",
           ]}
           alts={[
             "Miami Beach — Beachfront Panorama",

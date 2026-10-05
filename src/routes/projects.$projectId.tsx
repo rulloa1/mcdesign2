@@ -11,6 +11,7 @@ import { AlbumEditor } from "@/components/site/AlbumEditor";
 import { PrivateGallery, galleryQuery } from "@/components/site/PrivateGallery";
 import { albumOverrideQuery, useIsAdmin } from "@/lib/project-albums";
 import { coverVideos } from "@/data/cover-videos";
+import { Button } from "@/components/ui/button";
 
 
 
@@ -71,6 +72,12 @@ function ProjectPage() {
   const [editing, setEditing] = useState(false);
   const [lightbox, setLightbox] = useState<number | null>(null);
   const headerRef = useRef<HTMLElement>(null);
+  const albumSpan = (index: number) => {
+    if (index % 7 === 0) return "md:col-span-8";
+    if (index % 7 === 1) return "md:col-span-4";
+    if (index % 5 === 0) return "md:col-span-7";
+    return "md:col-span-4";
+  };
 
   useEffect(() => {
     if (lightbox === null) return;
@@ -150,20 +157,21 @@ function ProjectPage() {
         </div>
 
         <section className="pt-16">
-          <div className="mb-10 flex items-baseline justify-between">
+          <div className="mb-10 grid grid-cols-[minmax(0,1fr)_auto] items-end gap-4 border-b border-brass-dark/25 pb-5">
             <h2 className="font-serif text-3xl">Album</h2>
             <div className="flex items-center gap-6">
               <p className="font-mono text-[0.6rem] uppercase tracking-[0.24em] text-carbon/40">
                 {images.length} {images.length === 1 ? "Photo" : "Photos"}
               </p>
               {isAdmin && !editing ? (
-                <button
+                <Button
+                  variant="outline"
                   type="button"
                   onClick={() => setEditing(true)}
-                  className="border border-carbon/25 px-5 py-2 text-[0.65rem] uppercase tracking-[0.22em] transition-colors hover:bg-carbon hover:text-bone"
+                  className="border-brass-dark/40 bg-transparent px-5 text-[0.65rem] uppercase tracking-[0.22em] hover:bg-carbon hover:text-bone"
                 >
                   Edit Album
-                </button>
+                </Button>
               ) : null}
             </div>
           </div>
@@ -184,21 +192,27 @@ function ProjectPage() {
               No photos have been added to this album yet.
             </p>
           ) : (
-            <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
+            <div className="grid grid-cols-2 gap-3 md:grid-cols-12 md:gap-5">
               {images.map((src, i) => (
-                <button
+                <Button
                   key={src}
+                  variant="ghost"
                   type="button"
                   onClick={() => setLightbox(i)}
-                  className="group relative aspect-[4/3] overflow-hidden bg-brass/5"
+                  className={`group relative h-auto overflow-hidden rounded-none border border-brass-dark/25 bg-brass/5 p-1 hover:bg-brass/10 ${albumSpan(i)}`}
                 >
-                  <img
-                    src={src}
-                    alt={`${project.title} — photo ${i + 1}`}
-                    loading="lazy"
-                    className="h-full w-full object-cover transition-transform duration-[1200ms] group-hover:scale-[1.06]"
-                  />
-                </button>
+                  <span className={`relative block w-full overflow-hidden ${i % 7 === 0 ? "aspect-[16/10]" : i % 7 === 1 ? "aspect-[4/5]" : i % 5 === 0 ? "aspect-[3/2]" : "aspect-[4/3]"}`}>
+                    <img
+                      src={src}
+                      alt={`${project.title} — photo ${i + 1}`}
+                      loading="lazy"
+                      decoding="async"
+                      className="h-full w-full object-cover transition-transform duration-[1200ms] motion-safe:group-hover:scale-[1.04]"
+                    />
+                    <span className="absolute bottom-3 right-3 border-b border-r border-brass-dark/70 p-3 opacity-0 transition-opacity group-hover:opacity-100" />
+                    <span className="absolute left-3 top-3 bg-carbon/85 px-2 py-1 font-mono text-[0.55rem] tracking-[0.18em] text-brass opacity-0 transition-opacity group-hover:opacity-100">{String(i + 1).padStart(2, "0")}</span>
+                  </span>
+                </Button>
               ))}
             </div>
           )}
@@ -275,38 +289,47 @@ function ProjectPage() {
           <img
             src={images[lightbox]}
             alt={`${project.title} — photo ${lightbox + 1}`}
-            className="max-h-[88vh] max-w-full object-contain"
+            className="max-h-[82vh] max-w-[calc(100vw-3rem)] border border-brass/35 p-1 object-contain"
           />
-          <button
+          <p className="absolute bottom-5 left-1/2 -translate-x-1/2 font-mono text-[0.6rem] uppercase tracking-[0.22em] text-brass">
+            {String(lightbox + 1).padStart(2, "0")} / {String(images.length).padStart(2, "0")}
+          </p>
+          <Button
+            variant="ghost"
+            size="sm"
             type="button"
             aria-label="Close"
             onClick={() => setLightbox(null)}
-            className="absolute right-6 top-6 font-mono text-xs uppercase tracking-[0.22em] text-bone/70 hover:text-bone"
+            className="absolute right-6 top-6 border border-brass/35 font-mono text-xs uppercase tracking-[0.22em] text-bone/70 hover:bg-brass/10 hover:text-brass"
           >
             Close
-          </button>
-          <button
+          </Button>
+          <Button
+            variant="ghost"
+            size="icon"
             type="button"
             aria-label="Previous photo"
             onClick={(e) => {
               e.stopPropagation();
               setLightbox((i) => (i === null ? i : (i - 1 + images.length) % images.length));
             }}
-            className="absolute left-4 font-mono text-sm text-bone/60 hover:text-bone md:left-10"
+            className="absolute left-4 rounded-full border border-brass/35 font-mono text-sm text-bone/70 hover:bg-brass/10 hover:text-brass md:left-10"
           >
             ←
-          </button>
-          <button
+          </Button>
+          <Button
+            variant="ghost"
+            size="icon"
             type="button"
             aria-label="Next photo"
             onClick={(e) => {
               e.stopPropagation();
               setLightbox((i) => (i === null ? i : (i + 1) % images.length));
             }}
-            className="absolute right-4 font-mono text-sm text-bone/60 hover:text-bone md:right-10"
+            className="absolute right-4 rounded-full border border-brass/35 font-mono text-sm text-bone/70 hover:bg-brass/10 hover:text-brass md:right-10"
           >
             →
-          </button>
+          </Button>
         </div>
       ) : null}
     </div>

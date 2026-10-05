@@ -16,5 +16,5 @@
 - [x] Signature Projects: choose better photos for the 3 showcase image sets
 - [x] Portfolio grid redesigned to staggered three-column layout (user picked 'Asymmetric Architectural Grid')
 
-- [ ] Replace Portfolio card album actions with real, gold-framed project album experiences
-- [ ] Optimize homepage hero video and cover photos for instant mobile loading without a white screen
+- [x] Replace Portfolio card album actions with real, gold-framed project album experiences
+- [x] Optimize homepage hero video and cover photos for instant mobile loading without a white screen
