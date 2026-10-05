@@ -129,7 +129,7 @@ export function Hero({ poster }: { poster: string }) {
         </div>
 
         <div className="hero-fade">
-          <div className="grid grid-cols-2 gap-3 md:flex md:items-center md:gap-4">
+          <div className="grid grid-cols-1 gap-2.5 md:flex md:items-center md:gap-4">
             <a href={heroConfig.experienceHref} className="hero-btn group justify-center bg-brass text-carbon">
               View Projects <span className="hero-arrow" aria-hidden="true">→</span>
             </a>
@@ -138,7 +138,7 @@ export function Hero({ poster }: { poster: string }) {
             </Link>
             <Link
               to={heroConfig.resumeTo}
-              className="col-span-2 mt-1 justify-self-center px-2 py-1.5 font-mono text-[10px] uppercase tracking-[0.3em] text-bone/50 underline decoration-brass/40 underline-offset-4 transition-colors hover:text-brass focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brass md:col-span-1"
+              className="mt-1 justify-self-center px-2 py-1.5 font-mono text-[10px] uppercase tracking-[0.3em] text-bone/50 underline decoration-brass/40 underline-offset-4 transition-colors hover:text-brass focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brass"
             >
               View Resume
             </Link>
