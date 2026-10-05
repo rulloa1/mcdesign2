@@ -1,5 +1,6 @@
 import { ScrollText } from "@/components/ui/text-scroll-animation";
 import { motion, useReducedMotion } from "framer-motion";
+import { ResponsiveProjectImage } from "@/components/site/ResponsiveProjectImage";
 
 export type PinnedCaseProps = {
   id: string;
@@ -9,11 +10,12 @@ export type PinnedCaseProps = {
   alts: [string, string, string];
   captions: [string, string];
   stats: [{ value: string; label: string }, { value: string; label: string }];
+  mobileImages?: [string, string, string];
 };
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
-export function PinnedCase({ id, subtitle, title, images, alts, captions, stats }: PinnedCaseProps) {
+export function PinnedCase({ id, subtitle, title, images, mobileImages, alts, captions, stats }: PinnedCaseProps) {
   const labels = ["01 / The Vision", "02 / The Execution", "03 / The Result"];
   const reduce = useReducedMotion();
   const reveal = (delay = 0, y = 40) =>
@@ -34,13 +36,13 @@ export function PinnedCase({ id, subtitle, title, images, alts, captions, stats 
 
         <div className="grid gap-3 md:grid-cols-3 md:gap-4">
           <motion.figure {...reveal(0, 60)} className="overflow-hidden md:col-span-2 md:row-span-2">
-            <img src={images[0]} alt={alts[0]} loading="lazy" className="aspect-[4/3] h-full w-full object-cover md:aspect-auto" />
+            <ResponsiveProjectImage desktopSrc={images[0]} mobileSrc={mobileImages?.[0]} alt={alts[0]} loading="lazy" decoding="async" className="aspect-[4/3] h-full w-full object-cover md:aspect-auto" />
           </motion.figure>
           <motion.figure {...reveal(0.15, 60)} className="overflow-hidden">
-            <img src={images[1]} alt={alts[1]} loading="lazy" className="aspect-[4/3] h-full w-full object-cover" />
+            <ResponsiveProjectImage desktopSrc={images[1]} mobileSrc={mobileImages?.[1]} alt={alts[1]} loading="lazy" decoding="async" className="aspect-[4/3] h-full w-full object-cover" />
           </motion.figure>
           <motion.figure {...reveal(0.3, 60)} className="overflow-hidden">
-            <img src={images[2]} alt={alts[2]} loading="lazy" className="aspect-[4/3] h-full w-full object-cover" />
+            <ResponsiveProjectImage desktopSrc={images[2]} mobileSrc={mobileImages?.[2]} alt={alts[2]} loading="lazy" decoding="async" className="aspect-[4/3] h-full w-full object-cover" />
           </motion.figure>
         </div>
 

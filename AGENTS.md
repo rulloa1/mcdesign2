@@ -11,3 +11,4 @@
 - MCP endpoint requires OAuth sign-in (Lovable Cloud auth as issuer); consent page lives at /.lovable/oauth/consent — why: assistant tools must never be callable anonymously.
 - Site-wide 3D blueprint backdrop is one persistent R3F scene mounted in __root (BlueprintJourney); tune it via src/lib/journey-config.ts, and theme it via the html.journey CSS class so Simple View can restore the original look — why: one scene/loop, no per-page duplicates.
 - Phones (coarse pointer or <900px wide) get the flat BlueprintOverlay instead of the live 3D scene — why: the WebGL scene blanked the page on Android.
+- Homepage video is desktop-only and deferred until idle; phones use responsive WebP artwork — why: first paint must not wait on video or oversized covers.
