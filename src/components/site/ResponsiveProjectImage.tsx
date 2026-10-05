@@ -4,13 +4,14 @@ type ResponsiveProjectImageProps = ImgHTMLAttributes<HTMLImageElement> & {
   desktopSrc: string;
   mobileSrc?: string | undefined;
   resolvedSrc?: string | undefined;
+  fallbackSrc?: string | undefined;
 };
 
 export function ResponsiveProjectImage({
   desktopSrc,
   mobileSrc,
   resolvedSrc = desktopSrc,
-  "data-fallback-src": fallbackSrc,
+  fallbackSrc,
   ...props
 }: ResponsiveProjectImageProps) {
   const canUseMobileVariant = Boolean(mobileSrc && resolvedSrc === (fallbackSrc ?? desktopSrc));

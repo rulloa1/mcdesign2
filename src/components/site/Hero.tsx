@@ -65,7 +65,7 @@ export function Hero({ poster, posterFallback }: { poster: string; posterFallbac
         desktopSrc={poster}
         mobileSrc={mobileHeroPoster}
         resolvedSrc={poster}
-        data-fallback-src={posterFallback}
+        fallbackSrc={posterFallback}
         alt=""
         aria-hidden="true"
         fetchPriority="high"
