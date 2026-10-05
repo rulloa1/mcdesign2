@@ -18,9 +18,9 @@ import profileAsset from "@/assets/mike-headshot.jpg.asset.json";
 const profile = profileAsset.url;
 import heroImage from "@/assets/southcoast-cover.webp";
 
-const TITLE = "Michael Chandler — Luxury Construction Executive";
+const TITLE = "MC Design Build | Luxury Residential & Hospitality Construction";
 const DESCRIPTION =
-  "Ultra-luxury residential, hospitality, and civil construction led by Michael Chandler — 20+ years and $500M+ delivered across six global regions.";
+  "Luxury residential, hospitality, and development construction led by Michael Chandler — owner-first project leadership, disciplined execution, and refined design-build delivery.";
 
 export const Route = createFileRoute("/")({
   head: () => ({
