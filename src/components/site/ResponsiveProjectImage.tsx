@@ -10,9 +10,10 @@ export function ResponsiveProjectImage({
   desktopSrc,
   mobileSrc,
   resolvedSrc = desktopSrc,
+  "data-fallback-src": fallbackSrc,
   ...props
 }: ResponsiveProjectImageProps) {
-  const canUseMobileVariant = Boolean(mobileSrc && resolvedSrc === desktopSrc);
+  const canUseMobileVariant = Boolean(mobileSrc && resolvedSrc === (fallbackSrc ?? desktopSrc));
 
   return (
     <picture>

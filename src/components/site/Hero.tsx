@@ -14,7 +14,7 @@ export const heroConfig = {
   contactTo: "/contact" as const,
 };
 
-export function Hero({ poster }: { poster: string }) {
+export function Hero({ poster, posterFallback }: { poster: string; posterFallback: string }) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const heroRef = useRef<HTMLElement>(null);
   const [videoOk, setVideoOk] = useState(false);
@@ -65,6 +65,7 @@ export function Hero({ poster }: { poster: string }) {
         desktopSrc={poster}
         mobileSrc={mobileHeroPoster}
         resolvedSrc={poster}
+        data-fallback-src={posterFallback}
         alt=""
         aria-hidden="true"
         fetchPriority="high"

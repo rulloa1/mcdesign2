@@ -161,7 +161,7 @@ function Index() {
       <Nav />
 
       <main>
-        <Hero poster={media("hero", heroImage)} />
+        <Hero poster={media("hero", heroImage)} posterFallback={heroImage} />
 
         <Marquee />
 
