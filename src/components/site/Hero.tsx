@@ -109,6 +109,21 @@ export function Hero({ poster }: { poster: string }) {
               View Resume <span className="hero-arrow" aria-hidden="true">→</span>
             </Link>
           </div>
+
+          <div className="mt-8 grid max-w-xl grid-cols-3 gap-4 text-left md:mt-10">
+            {[
+              { value: "20+", label: "Years Leading Builds" },
+              { value: "$500M+", label: "Capital Delivered" },
+              { value: "6", label: "Regions Served" },
+            ].map((item) => (
+              <div key={item.label} className="rounded-full border border-bone/15 bg-bone/5 px-3 py-3 backdrop-blur-sm">
+                <div className="font-serif text-xl text-brass md:text-2xl">{item.value}</div>
+                <div className="mt-1 font-mono text-[0.55rem] uppercase tracking-[0.18em] text-bone/65">
+                  {item.label}
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
