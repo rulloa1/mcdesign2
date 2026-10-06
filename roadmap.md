@@ -18,3 +18,4 @@
 
 - [ ] Replace Portfolio card album actions with real, gold-framed project album experiences
 - [ ] Optimize homepage hero video and cover photos for instant mobile loading without a white screen
+- [ ] Replace the homepage hero video with a lightweight responsive still and show desktop/phone previews
