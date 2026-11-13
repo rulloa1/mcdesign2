@@ -39,8 +39,8 @@ export async function uploadAlbumPhoto(projectId: string, file: File) {
   return supabase.storage.from(SITE_MEDIA_BUCKET).getPublicUrl(path).data.publicUrl;
 }
 
-/** True when the signed-in visitor is a site admin. */
-export function useIsAdmin() {
+/** The signed-in admin ID, or null while signed out or unauthorized. */
+export function useAdminUserId() {
   const [userId, setUserId] = useState<string | null>(null);
   useEffect(() => {
     supabase.auth.getSession().then(({ data }) => setUserId(data.session?.user.id ?? null));
@@ -61,5 +61,9 @@ export function useIsAdmin() {
       return !!data;
     },
   });
-  return !!data;
+  return userId && data ? userId : null;
+}
+
+export function useIsAdmin() {
+  return !!useAdminUserId();
 }

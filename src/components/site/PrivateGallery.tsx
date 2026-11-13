@@ -3,7 +3,9 @@ import { useQuery, useQueryClient } from "@tanstack/react-query";
 
 import { supabase } from "@/integrations/supabase/client";
 import { compressImage } from "@/lib/compress-image";
-import { SITE_MEDIA_BUCKET } from "@/lib/site-media";
+import { useAdminUserId } from "@/lib/project-albums";
+
+const PRIVATE_GALLERY_BUCKET = "private-gallery";
 
 type Item = {
   id: string;
@@ -14,8 +16,9 @@ type Item = {
   url: string;
 };
 
-export const galleryQuery = (projectId: string) => ({
-  queryKey: ["private-gallery", projectId] as const,
+const galleryQuery = (projectId: string, userId: string | null) => ({
+  enabled: !!userId,
+  queryKey: ["private-gallery", projectId, userId] as const,
   queryFn: async (): Promise<Item[]> => {
     const { data, error } = await supabase
       .from("project_gallery")
@@ -25,20 +28,29 @@ export const galleryQuery = (projectId: string) => ({
       .order("created_at", { ascending: false });
     if (error) throw error;
     if (!data?.length) return [];
-    const { data: signed } = await supabase.storage
-      .from(SITE_MEDIA_BUCKET)
+    const { data: signed, error: signingError } = await supabase.storage
+      .from(PRIVATE_GALLERY_BUCKET)
       .createSignedUrls(
         data.map((d) => d.storage_path),
         3600,
       );
+    if (signingError) throw signingError;
+    const failed = signed?.find((item) => item.error);
+    if (failed) throw new Error(failed.error || "Could not load a gallery item.");
     return data.map((d, i) => ({ ...d, url: signed?.[i]?.signedUrl ?? "" }));
   },
-  staleTime: 30 * 60_000,
+  staleTime: 5 * 60_000,
+  refetchInterval: 50 * 60_000,
 });
 
 export function PrivateGallery({ projectId }: { projectId: string }) {
   const qc = useQueryClient();
-  const { data: items = [] } = useQuery(galleryQuery(projectId));
+  const userId = useAdminUserId();
+  const {
+    data: items = [],
+    error: loadError,
+    isPending,
+  } = useQuery(galleryQuery(projectId, userId));
   const fileInput = useRef<HTMLInputElement>(null);
   const [files, setFiles] = useState<File[]>([]);
   const [caption, setCaption] = useState("");
@@ -63,7 +75,7 @@ export function PrivateGallery({ projectId }: { projectId: string }) {
         const ext = isVideo ? (f.name.split(".").pop() ?? "mp4") : "webp";
         const path = `private-gallery/${projectId}/${Date.now()}-${Math.random().toString(36).slice(2, 8)}.${ext}`;
         const { error: upErr } = await supabase.storage
-          .from(SITE_MEDIA_BUCKET)
+          .from(PRIVATE_GALLERY_BUCKET)
           .upload(path, body, { contentType: isVideo ? f.type : "image/webp" });
         if (upErr) throw upErr;
         const { error: dbErr } = await supabase.from("project_gallery").insert({
@@ -73,7 +85,16 @@ export function PrivateGallery({ projectId }: { projectId: string }) {
           caption: caption.trim(),
           taken_on: date || null,
         });
-        if (dbErr) throw dbErr;
+        if (dbErr) {
+          const { error: cleanupError } = await supabase.storage
+            .from(PRIVATE_GALLERY_BUCKET)
+            .remove([path]);
+          if (cleanupError)
+            throw new Error(
+              "The upload could not be saved or cleaned up. Please contact the site administrator.",
+            );
+          throw dbErr;
+        }
       }
       setFiles([]);
       setCaption("");
@@ -98,10 +119,24 @@ export function PrivateGallery({ projectId }: { projectId: string }) {
 
   const remove = async (item: Item) => {
     if (!confirm("Delete this item from your gallery?")) return;
-    await supabase.storage.from(SITE_MEDIA_BUCKET).remove([item.storage_path]);
-    const { error } = await supabase.from("project_gallery").delete().eq("id", item.id);
-    if (error) return setError(error.message);
-    await refresh();
+    setBusy("Deleting…");
+    setError(null);
+    try {
+      const { error: storageError } = await supabase.storage
+        .from(PRIVATE_GALLERY_BUCKET)
+        .remove([item.storage_path]);
+      if (storageError) throw storageError;
+      const { error: deleteError } = await supabase
+        .from("project_gallery")
+        .delete()
+        .eq("id", item.id);
+      if (deleteError) throw deleteError;
+      await refresh();
+    } catch (e) {
+      setError(e instanceof Error ? e.message : "Delete failed. Please try again.");
+    } finally {
+      setBusy(null);
+    }
   };
 
   const input =
@@ -112,7 +147,7 @@ export function PrivateGallery({ projectId }: { projectId: string }) {
       <div className="mb-8 flex items-baseline justify-between">
         <h2 className="font-serif text-3xl">My Gallery</h2>
         <p className="font-mono text-[0.7rem] uppercase tracking-[0.24em] text-carbon/40">
-          Private · only you can see this
+          Private · site admins only
         </p>
       </div>
 
@@ -157,9 +192,15 @@ export function PrivateGallery({ projectId }: { projectId: string }) {
         </button>
       </div>
 
-      {error ? <p className="mb-6 text-sm text-destructive">{error}</p> : null}
+      {error || loadError ? (
+        <p role="alert" className="mb-6 text-sm text-destructive">
+          {error ?? loadError?.message}
+        </p>
+      ) : null}
 
-      {items.length === 0 ? (
+      {isPending ? (
+        <p className="text-sm font-light text-carbon/50">Loading gallery…</p>
+      ) : items.length === 0 ? (
         <p className="text-sm font-light text-carbon/50">Nothing uploaded yet.</p>
       ) : (
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -167,32 +208,85 @@ export function PrivateGallery({ projectId }: { projectId: string }) {
             <figure key={item.id} className="border border-carbon/10">
               <div className="aspect-[4/3] overflow-hidden bg-carbon/5">
                 {item.kind === "video" ? (
-                  <video src={item.url} controls playsInline className="h-full w-full object-cover" />
+                  <video
+                    src={item.url}
+                    controls
+                    playsInline
+                    className="h-full w-full object-cover"
+                  />
                 ) : (
-                  <img src={item.url} alt={item.caption || "Gallery photo"} loading="lazy" className="h-full w-full object-cover" />
+                  <img
+                    src={item.url}
+                    alt={item.caption || "Gallery photo"}
+                    loading="lazy"
+                    className="h-full w-full object-cover"
+                  />
                 )}
               </div>
               <figcaption className="p-4">
                 {editId === item.id ? (
                   <div className="grid gap-2">
-                    <input className={input} value={editCaption} onChange={(e) => setEditCaption(e.target.value)} placeholder="Caption" />
-                    <input className={input} type="date" value={editDate} onChange={(e) => setEditDate(e.target.value)} />
+                    <input
+                      className={input}
+                      value={editCaption}
+                      onChange={(e) => setEditCaption(e.target.value)}
+                      placeholder="Caption"
+                    />
+                    <input
+                      className={input}
+                      type="date"
+                      value={editDate}
+                      onChange={(e) => setEditDate(e.target.value)}
+                    />
                     <div className="flex gap-2">
-                      <button type="button" onClick={() => void saveEdit(item.id)} className="bg-carbon px-4 py-1.5 text-[0.75rem] uppercase tracking-[0.2em] text-bone">Save</button>
-                      <button type="button" onClick={() => setEditId(null)} className="border border-carbon/25 px-4 py-1.5 text-[0.75rem] uppercase tracking-[0.2em]">Cancel</button>
+                      <button
+                        type="button"
+                        onClick={() => void saveEdit(item.id)}
+                        className="bg-carbon px-4 py-1.5 text-[0.75rem] uppercase tracking-[0.2em] text-bone"
+                      >
+                        Save
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => setEditId(null)}
+                        className="border border-carbon/25 px-4 py-1.5 text-[0.75rem] uppercase tracking-[0.2em]"
+                      >
+                        Cancel
+                      </button>
                     </div>
                   </div>
                 ) : (
                   <>
                     <p className="font-mono text-[0.7rem] uppercase tracking-[0.22em] text-brass-dark">
                       {item.taken_on
-                        ? new Date(item.taken_on + "T00:00:00").toLocaleDateString(undefined, { year: "numeric", month: "long", day: "numeric" })
+                        ? new Date(item.taken_on + "T00:00:00").toLocaleDateString(undefined, {
+                            year: "numeric",
+                            month: "long",
+                            day: "numeric",
+                          })
                         : "No date"}
                     </p>
                     <p className="mt-2 text-sm font-light text-carbon/80">{item.caption || "—"}</p>
                     <div className="mt-3 flex gap-4 text-[0.75rem] uppercase tracking-[0.2em]">
-                      <button type="button" onClick={() => { setEditId(item.id); setEditCaption(item.caption); setEditDate(item.taken_on ?? ""); }} className="text-carbon/60 hover:text-carbon">Edit</button>
-                      <button type="button" onClick={() => void remove(item)} className="text-destructive">Delete</button>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setEditId(item.id);
+                          setEditCaption(item.caption);
+                          setEditDate(item.taken_on ?? "");
+                        }}
+                        className="text-carbon/60 hover:text-carbon"
+                      >
+                        Edit
+                      </button>
+                      <button
+                        type="button"
+                        disabled={!!busy}
+                        onClick={() => void remove(item)}
+                        className="text-destructive"
+                      >
+                        Delete
+                      </button>
                     </div>
                   </>
                 )}

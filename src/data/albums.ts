@@ -19,10 +19,7 @@ export const projectAlbums: Record<string, ProjectAlbum> = {
   },
   "houston-oaks": {
     description: "",
-    images: [
-      "/projects/assets/houston-oaks-cover.webp",
-      "/projects/assets/enh/montana-4.webp",
-    ],
+    images: ["/projects/assets/houston-oaks-cover.webp", "/projects/assets/enh/montana-4.webp"],
   },
   "miami-beach": {
     description:
@@ -446,7 +443,7 @@ export const projectAlbums: Record<string, ProjectAlbum> = {
       "/projects/assets/enh/carmel-valley-2.webp",
       "/projects/assets/enh/carmel-valley-1.webp",
       "/projects/assets/enh/carmel-valley-cover-u.webp",
-      "/projects/assets/enh/carmel-valley-4-u.webp",
+      "/projects/assets/enh/carmel-valley-new-4.webp",
       "/projects/assets/enh/carmel-valley-3-u.webp",
     ],
   },

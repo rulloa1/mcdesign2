@@ -1,5 +1,5 @@
 import logoMono from "@/assets/mc-logo-mono.png.asset.json";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "@tanstack/react-router";
 
 const links = [
@@ -11,11 +11,14 @@ const links = [
 export function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const toggleRef = useRef<HTMLButtonElement>(null);
+  const menuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
+
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
@@ -23,15 +26,35 @@ export function Nav() {
     if (!open) return;
     const originalOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
+    const toggle = toggleRef.current;
+    const links = Array.from(menuRef.current?.querySelectorAll<HTMLElement>("a[href]") ?? []);
+    links[0]?.focus();
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") setOpen(false);
+      if (e.key === "Tab") {
+        const targets = toggle ? [toggle, ...links] : links;
+        const index = targets.indexOf(document.activeElement as HTMLElement);
+        const next = e.shiftKey ? index - 1 : index + 1;
+        e.preventDefault();
+        targets[(next + targets.length) % targets.length]?.focus();
+      }
     };
     window.addEventListener("keydown", onKey);
     return () => {
       document.body.style.overflow = originalOverflow;
       window.removeEventListener("keydown", onKey);
+      toggle?.focus();
     };
   }, [open]);
+
+  useEffect(() => {
+    const desktop = window.matchMedia("(min-width: 768px)");
+    const closeOnDesktop = () => {
+      if (desktop.matches) setOpen(false);
+    };
+    desktop.addEventListener("change", closeOnDesktop);
+    return () => desktop.removeEventListener("change", closeOnDesktop);
+  }, []);
 
   return (
     <>
@@ -90,6 +113,8 @@ export function Nav() {
             type="button"
             aria-label={open ? "Close navigation menu" : "Open navigation menu"}
             aria-expanded={open}
+            aria-controls="mobile-navigation"
+            ref={toggleRef}
             onClick={() => setOpen((v) => !v)}
             className="-my-2 -mr-2 flex h-11 w-11 cursor-pointer items-center justify-center md:hidden"
           >
@@ -115,6 +140,9 @@ export function Nav() {
       </header>
 
       <div
+        id="mobile-navigation"
+        ref={menuRef}
+        inert={!open}
         aria-hidden={!open}
         className={`fixed inset-0 z-40 flex items-center justify-center bg-carbon transition-transform duration-700 md:hidden ${
           open ? "translate-y-0" : "-translate-y-full"
