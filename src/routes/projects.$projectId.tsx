@@ -8,11 +8,9 @@ import { projectSlotKey } from "@/data/media-slots";
 import { useSiteMedia } from "@/lib/site-media";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { AlbumEditor } from "@/components/site/AlbumEditor";
-import { PrivateGallery, galleryQuery } from "@/components/site/PrivateGallery";
+import { PrivateGallery } from "@/components/site/PrivateGallery";
 import { albumOverrideQuery, useIsAdmin } from "@/lib/project-albums";
 import { coverVideos } from "@/data/cover-videos";
-
-
 
 export const Route = createFileRoute("/projects/$projectId")({
   loader: ({ params }) => {
@@ -66,7 +64,6 @@ function ProjectPage() {
   const { data: override } = useQuery(albumOverrideQuery(project.id));
   const images: string[] = override ?? album?.images ?? [];
   const isAdmin = useIsAdmin();
-  const { data: galleryItems = [] } = useQuery(galleryQuery(project.id));
   const queryClient = useQueryClient();
   const [editing, setEditing] = useState(false);
   const [lightbox, setLightbox] = useState<number | null>(null);
@@ -203,51 +200,6 @@ function ProjectPage() {
             </div>
           )}
         </section>
-
-        {galleryItems.length > 0 ? (
-          <section className="pt-16">
-            <div className="mb-10 flex items-baseline justify-between">
-              <h2 className="font-serif text-3xl">Gallery</h2>
-              <p className="font-mono text-[0.7rem] uppercase tracking-[0.24em] text-carbon/40">
-                {galleryItems.length} {galleryItems.length === 1 ? "Item" : "Items"}
-              </p>
-            </div>
-            <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
-              {galleryItems.map((item) => (
-                <figure key={item.id} className="group">
-                  <div className="relative aspect-[4/3] overflow-hidden bg-brass/5">
-                    {item.kind === "video" ? (
-                      <video
-                        src={item.url}
-                        controls
-                        playsInline
-                        preload="metadata"
-                        className="h-full w-full object-cover"
-                      />
-                    ) : (
-                      <img
-                        src={item.url}
-                        alt={item.caption || project.title}
-                        loading="lazy"
-                        className="h-full w-full object-cover transition-transform duration-[1200ms] group-hover:scale-[1.06]"
-                      />
-                    )}
-                  </div>
-                  {item.caption || item.taken_on ? (
-                    <figcaption className="mt-2 flex items-baseline justify-between gap-3">
-                      <span className="text-xs font-light text-carbon/70">{item.caption}</span>
-                      {item.taken_on ? (
-                        <span className="shrink-0 font-mono text-[0.7rem] uppercase tracking-[0.18em] text-carbon/40">
-                          {item.taken_on}
-                        </span>
-                      ) : null}
-                    </figcaption>
-                  ) : null}
-                </figure>
-              ))}
-            </div>
-          </section>
-        ) : null}
 
         {isAdmin ? <PrivateGallery projectId={project.id} /> : null}
 

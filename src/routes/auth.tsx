@@ -2,11 +2,12 @@ import { useState } from "react";
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 
 import { supabase } from "@/integrations/supabase/client";
+import { safeRedirect } from "@/lib/safe-redirect";
 
 export const Route = createFileRoute("/auth")({
   validateSearch: (s: Record<string, unknown>): { redirect?: string } => {
-    const r = s["redirect"];
-    return typeof r === "string" && r.startsWith("/") && !r.startsWith("//") ? { redirect: r } : {};
+    const redirect = safeRedirect(s["redirect"]);
+    return redirect ? { redirect } : {};
   },
   head: () => ({
     meta: [
@@ -27,7 +28,8 @@ export const Route = createFileRoute("/auth")({
 
 function AuthPage() {
   const navigate = useNavigate();
-  const { redirect } = Route.useSearch();
+  // Router search merging may retain raw keys omitted by validateSearch.
+  const redirect = safeRedirect(Route.useSearch().redirect);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [busy, setBusy] = useState(false);

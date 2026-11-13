@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { mediaSlots } from "@/data/media-slots";
 import { matchSlotForFilename } from "@/lib/media-match";
@@ -108,11 +108,7 @@ export function BulkUpload({ canEdit, onDone }: { canEdit: boolean; onDone: () =
               className="flex flex-wrap items-center gap-4 border border-bone/10 p-3"
               style={{ background: "rgb(201 169 97 / 0.03)" }}
             >
-              <img
-                src={URL.createObjectURL(item.file)}
-                alt={item.file.name}
-                className="h-14 w-20 flex-none object-cover"
-              />
+              <FilePreview file={item.file} />
               <div className="min-w-[8rem] flex-1">
                 <p className="truncate text-sm">{item.file.name}</p>
                 <p className="font-mono text-[0.55rem] uppercase tracking-[0.18em] text-bone/35">
@@ -177,4 +173,14 @@ export function BulkUpload({ canEdit, onDone }: { canEdit: boolean; onDone: () =
       )}
     </section>
   );
+}
+
+function FilePreview({ file }: { file: File }) {
+  const [src, setSrc] = useState<string>();
+  useEffect(() => {
+    const url = URL.createObjectURL(file);
+    setSrc(url);
+    return () => URL.revokeObjectURL(url);
+  }, [file]);
+  return <img src={src} alt={file.name} className="h-14 w-20 flex-none object-cover" />;
 }
